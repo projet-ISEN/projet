@@ -14,6 +14,6 @@
 
         public static function all(){
 
-            var_dump( \Models\Club::getAll() );
+            var_dump( \Models\Club::getAll() );//test de debug
         }
     }

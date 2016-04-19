@@ -10,7 +10,19 @@
     $userData["gidNumber"]  = ''; // numero de groupe (voir ci-dessous)
     $groupeISEN             = ''; // 'M1'
 
-    require( 'vendor/autoload.php' );
+
+
+
+/*   Permet de faire un require_once de tous les fichier php sauf index.php    */
+
+
+    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("."), RecursiveIteratorIterator::SELF_FIRST);
+    foreach($objects as $name => $object){
+        if($name !="index.php") require_once ($name);
+    }
+
+
+/*    require( 'vendor/autoload.php' );// composer, on l'a enlevé*/
 
     $router = new API\Router( $_GET['url'] );
 
