@@ -1,0 +1,43 @@
+{
+  "name": "projet-m1-front",
+  "version": "1.0.0",
+  "description": "PR and PB manager system for ISEN Brest",
+  "main": "build/index.html",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projet-ISEN/projet-front.git"
+  },
+  "author": "",
+  "contributors": [
+      {
+        "name": "miton18",
+        "email": "rcd18@hotmail.fr"    
+      },{
+        "name": "Artentica",
+        "email": ""
+      }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/projet-ISEN/projet-front/issues"
+  },
+  "homepage": "https://github.com/projet-ISEN/projet-front#readme",
+  "config": {
+    "debug": "true"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "colors": "^1.1.2",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-util": "^3.0.7",
+    "gulp-w3c-css": "^1.0.0",
+    "gulp-w3c-html": "^1.0.0",
+    "map-stream": "0.0.6",
+    "w3cjs": "^0.3.0"
+  }
+}

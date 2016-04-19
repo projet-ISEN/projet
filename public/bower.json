@@ -1,0 +1,27 @@
+{
+  "name": "gestion-pb-pr",
+  "description": "PR and PB manager system for ISEN Brest",
+  "main": "build/index.html",
+  "author": [
+    "artentica <>",
+    "miton18 <rcd18@hotmail.fr>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-aria": "^1.5.3",
+    "angular-animate": "^1.5.3",
+    "angular-material": "^1.0.6"
+  }
+}

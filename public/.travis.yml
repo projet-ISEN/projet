@@ -1,0 +1,12 @@
+language: node_js
+
+# Version of node to use
+node_js:
+  - "5"
+
+before_script:
+  - npm install 
+  
+script: 
+  - gulp render
+  - gulp test
