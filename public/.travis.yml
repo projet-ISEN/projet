@@ -8,5 +8,6 @@ before_script:
   - npm install 
   
 script: 
-  - gulp render
+  - gulp make
   - gulp test
+  - gulp build

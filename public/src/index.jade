@@ -3,9 +3,20 @@ html( lang="fr" )
     head
         meta( charset="UTF-8" )
         title Title
-    body
+        
+        // Injecteur de Gulp
+        // inject:css 
+        // endinject 
+    body( data-ng-app="app" )
     
-        script( type="text/javascript" src="js/libs/angular/angular.js" )
-        script( type="text/javascript" src="js/libs/angular-aria/angular-aria.js" )
-        script( type="text/javascript" src="js/libs/angular-animate/angular-animate.js" )
-        script( type="text/javascript" src="js/libs/angular-material/angular-material.js" )
+        div( data-ng-view )
+        
+        script( type="text/javascript" src="libs/angular/angular.js" )
+        script( type="text/javascript" src="libs/angular-aria/angular-aria.js" )
+        script( type="text/javascript" src="libs/angular-route/angular-route.js" )
+        script( type="text/javascript" src="libs/angular-animate/angular-animate.js" )
+        script( type="text/javascript" src="libs/angular-material/angular-material.js" )
+        
+        // Injecteur de Gulp
+        // inject:js 
+        // endinject 

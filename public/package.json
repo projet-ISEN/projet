@@ -12,13 +12,14 @@
   },
   "author": "",
   "contributors": [
-      {
-        "name": "miton18",
-        "email": "rcd18@hotmail.fr"    
-      },{
-        "name": "Artentica",
-        "email": ""
-      }
+    {
+      "name": "miton18",
+      "email": "rcd18@hotmail.fr"
+    },
+    {
+      "name": "Artentica",
+      "email": ""
+    }
   ],
   "license": "MIT",
   "bugs": {
@@ -32,12 +33,22 @@
     "coffee-script": "^1.10.0",
     "colors": "^1.1.2",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-csso": "^1.1.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-inject": "^4.0.0",
     "gulp-jade": "^1.1.0",
+    "gulp-jsmin": "^0.1.5",
     "gulp-load-plugins": "^1.2.0",
+    "gulp-plumber-notifier": "0.0.3",
+    "gulp-sass": "^2.2.0",
     "gulp-util": "^3.0.7",
     "gulp-w3c-css": "^1.0.0",
     "gulp-w3c-html": "^1.0.0",
     "map-stream": "0.0.6",
+    "ncp": "^2.0.0",
     "w3cjs": "^0.3.0"
   }
 }
