@@ -55,6 +55,7 @@ gulp.task 'trans-coffee', ->
             'src/app/services/*.coffee'],   'build/app/'
 
 gulp.task 'load-libs', ->
+
     fs.exists 'build/libs/', (exists) ->
 
         unless exists then fs.mkdirSync 'build/libs/'
@@ -62,8 +63,6 @@ gulp.task 'load-libs', ->
         ncp 'src/libs/', 'build/libs/', (err)->
             if      err? then console.error err
             unless  err? then console.log 'Copying libs complete'
-
-
 
     
 #------------------------------------------------------------------------------
