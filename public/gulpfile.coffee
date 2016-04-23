@@ -5,6 +5,7 @@ gulp            = require 'gulp'
 gulpLoadPlugins = require 'gulp-load-plugins'
 colors          = require 'colors'
 ncp             = require 'ncp'
+fs              = require 'fs'
 
 #------------------------------------------------------------------------------
 #           INITIALIZE
@@ -54,9 +55,16 @@ gulp.task 'trans-coffee', ->
             'src/app/services/*.coffee'],   'build/app/'
 
 gulp.task 'load-libs', ->
-    ncp 'src/libs/', 'build/libs/', (err)->
-        if      err? then console.error err 
-        unless  err? then console.log 'Copying libs complete' 
+    fs.exists 'build/libs/', (exists) ->
+
+        unless exists then fs.mkdirSync 'build/libs/'
+
+        ncp 'src/libs/', 'build/libs/', (err)->
+            if      err? then console.error err
+            unless  err? then console.log 'Copying libs complete'
+
+
+
     
 #------------------------------------------------------------------------------
 #           WATCHER
@@ -201,4 +209,3 @@ injectBuild  = (files) ->
     .pipe P.inject files,
         relative: true
     .pipe gulp.dest 'dist/'
-    
