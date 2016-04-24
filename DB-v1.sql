@@ -1,303 +1,303 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  23/04/2016 14:19:47                      */
+/* Date de création :  24/04/2016 14:28:38                      */
 /*==============================================================*/
 
 
-drop table if exists CHOICE;
+drop table if exists choice;
 
-drop table if exists CLUB;
+drop table if exists club;
 
-drop table if exists EFFFECTIF;
+drop table if exists effectif;
 
-drop table if exists EVENT;
+drop table if exists event;
 
-drop table if exists LOG;
+drop table if exists log;
 
-drop table if exists MEMBER;
+drop table if exists member;
 
-drop table if exists NOTE_CLUB;
+drop table if exists note_club;
 
-drop table if exists PROJECT_CLUB;
+drop table if exists project_club;
 
-drop table if exists PROJET;
+drop table if exists projet;
 
-drop table if exists RECOMMENDATION;
+drop table if exists recommendation;
 
-drop table if exists REMPLI;
+drop table if exists rempli;
 
-drop table if exists REUNIONS;
+drop table if exists reunions;
 
-drop table if exists ROLE;
+drop table if exists role;
 
-drop table if exists USERS;
+drop table if exists users;
 
-drop table if exists YEAR;
+drop table if exists year;
 
 /*==============================================================*/
-/* Table : CHOICE                                               */
+/* Table : choice                                               */
 /*==============================================================*/
-create table CHOICE
+create table choice
 (
-   LOGIN                char(8) not null,
-   ID_CLUB              char(36) not null,
-   CHOICE_NUMBER        int not null,
-   primary key (LOGIN, ID_CLUB)
+   login                char(8) not null,
+   id_club              char(36) not null,
+   choice_number        int not null,
+   primary key (login, id_club)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : CLUB                                                 */
+/* Table : club                                                 */
 /*==============================================================*/
-create table CLUB
+create table club
 (
-   ID_CLUB              char(36) not null,
-   LOGIN                char(8) not null,
-   CLUB_NAME            char(40) not null,
-   CLUB_DESCRIPTION     longtext,
-   CLUB_MAIL            char(30),
-   ACTIF                bool,
-   BLOCKNOTE            longtext,
-   primary key (ID_CLUB)
+   id_club              char(36) not null,
+   login                char(8) not null,
+   club_name            char(40) not null,
+   club_description     longtext,
+   club_mail            char(30),
+   actif                bool,
+   blocknote            longtext,
+   primary key (id_club)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : EFFFECTIF                                            */
+/* Table : effectif                                             */
 /*==============================================================*/
-create table EFFFECTIF
+create table effectif
 (
-   ID_CLUB              char(36) not null,
-   PROJECT_ID           char(36) not null,
-   NB_ASKED_MIN         int not null,
-   NB_ASKED_MAX         int,
-   primary key (ID_CLUB, PROJECT_ID)
+   id_club              char(36) not null,
+   project_id           char(36) not null,
+   nb_asked_min         int not null,
+   nb_asked_max         int,
+   primary key (id_club, project_id)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : EVENT                                                */
+/* Table : event                                                */
 /*==============================================================*/
-create table EVENT
+create table event
 (
-   ID_CLUB              char(36) not null,
-   ID_EVENT             char(36) not null,
-   EVENT_NAME           char(80),
-   EVENT_DATE           bigint,
-   CHANGED_DATE         bigint,
-   NB_PARTICIPANT       smallint,
-   PLACE                char(80),
-   CANCELLED            bool,
-   EVENT_DESCRIPTION    longtext,
-   FEEDBACK             longtext,
-   primary key (ID_CLUB, ID_EVENT)
+   id_club              char(36) not null,
+   id_event             char(36) not null,
+   event_name           char(80),
+   event_date           bigint,
+   changed_date         bigint,
+   nb_participant       smallint,
+   place                char(80),
+   cancelled            bool,
+   event_description    longtext,
+   feedback             longtext,
+   primary key (id_club, id_event)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : LOG                                                  */
+/* Table : log                                                  */
 /*==============================================================*/
-create table LOG
+create table log
 (
-   TIME                 bigint not null,
-   TYPE                 char(20) not null,
-   CONTENT              longtext not null,
-   primary key (TIME)
+   timestamp            bigint not null,
+   type                 char(20) not null,
+   content              longtext not null,
+   primary key (timestamp)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : MEMBER                                               */
+/* Table : member                                               */
 /*==============================================================*/
-create table MEMBER
+create table member
 (
-   ID_CLUB              char(36) not null,
-   LOGIN                char(8) not null,
-   SCHOOL_YEAR          int not null,
-   PRO_ID_CLUB          char(36),
-   ID_PROJET_CLUB       char(36),
-   PROJECT_ID           char(36) not null,
-   MAIN_CLUB            bool not null,
-   MUMBER_MARK          float,
-   EX_MEMBER_NOT_WANTED bool,
-   RECOMMANDATION       bool,
-   PROJECT_VALIDATION   bool,
-   primary key (ID_CLUB, LOGIN, SCHOOL_YEAR)
+   id_club              char(36) not null,
+   login                char(8) not null,
+   school_year          int not null,
+   pro_id_club          char(36),
+   id_projet_club       char(36),
+   project_id           char(36) not null,
+   main_club            bool not null,
+   mumber_mark          float,
+   ex_member_not_wanted bool,
+   recommandation       bool,
+   project_validation   bool,
+   primary key (id_club, login, school_year)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : NOTE_CLUB                                            */
+/* Table : note_club                                            */
 /*==============================================================*/
-create table NOTE_CLUB
+create table note_club
 (
-   ID_CLUB              char(36) not null,
-   SCHOOL_YEAR          int not null,
-   NOTE_CLUB            float not null,
-   PROCUREMENT_FILE     char(250),
-   BUDGET               float,
-   primary key (ID_CLUB, SCHOOL_YEAR)
+   id_club              char(36) not null,
+   school_year          int not null,
+   note_club            float not null,
+   procurement_file     char(250),
+   budget               float,
+   primary key (id_club, school_year)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : PROJECT_CLUB                                         */
+/* Table : project_club                                         */
 /*==============================================================*/
-create table PROJECT_CLUB
+create table project_club
 (
-   ID_CLUB              char(36) not null,
-   ID_PROJET_CLUB       char(36) not null,
-   NAME                 char(80) not null,
-   LINK                 char(255),
-   PROJECT_CLUB_DESCRIPTION longtext,
-   primary key (ID_CLUB, ID_PROJET_CLUB)
+   id_club              char(36) not null,
+   id_projet_club       char(36) not null,
+   name                 char(80) not null,
+   link                 char(255),
+   project_club_description longtext,
+   primary key (id_club, id_projet_club)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : PROJET                                               */
+/* Table : projet                                               */
 /*==============================================================*/
-create table PROJET
+create table projet
 (
-   PROJECT_ID           char(36) not null,
-   PROJECT_TYPE         char(10) not null,
-   PROJECT_DESCRIPTION  longtext,
-   primary key (PROJECT_ID)
+   project_id           char(36) not null,
+   project_type         char(10) not null,
+   project_description  longtext,
+   primary key (project_id)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : RECOMMENDATION                                       */
+/* Table : recommendation                                       */
 /*==============================================================*/
-create table RECOMMENDATION
+create table recommendation
 (
-   ID_CLUB              char(36) not null,
-   LOGIN                char(8) not null,
-   RECOMMANDED          bool,
-   primary key (ID_CLUB, LOGIN)
+   id_club              char(36) not null,
+   login                char(8) not null,
+   recommanded          bool,
+   primary key (id_club, login)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : REMPLI                                               */
+/* Table : rempli                                               */
 /*==============================================================*/
-create table REMPLI
+create table rempli
 (
-   ID_CLUB              char(36) not null,
-   LOGIN                char(8) not null,
-   SCHOOL_YEAR          int not null,
-   ID_ROLE              char(36) not null,
-   primary key (ID_CLUB, LOGIN, SCHOOL_YEAR, ID_ROLE)
+   id_club              char(36) not null,
+   login                char(8) not null,
+   school_year          int not null,
+   id_role              char(36) not null,
+   primary key (id_club, login, school_year, id_role)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : REUNIONS                                             */
+/* Table : reunions                                             */
 /*==============================================================*/
-create table REUNIONS
+create table reunions
 (
-   ID_CLUB              char(36) not null,
-   ID_REUNION           char(36) not null,
-   REUNION_DATE         bigint,
-   REUNION_ORDER        char(250),
-   REPORTING            char(250),
-   INTERNAL_REUNION     bool,
-   primary key (ID_CLUB, ID_REUNION)
+   id_club              char(36) not null,
+   id_reunion           char(36) not null,
+   reunion_date         bigint,
+   reunion_order        char(250),
+   reporting            char(250),
+   internal_reunion     bool,
+   primary key (id_club, id_reunion)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : ROLE                                                 */
+/* Table : role                                                 */
 /*==============================================================*/
-create table ROLE
+create table role
 (
-   ID_ROLE              char(36) not null,
-   ROLE                 char(40) not null,
-   primary key (ID_ROLE)
+   id_role              char(36) not null,
+   role                 char(40) not null,
+   primary key (id_role)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : USERS                                                */
+/* Table : users                                                */
 /*==============================================================*/
-create table USERS
+create table users
 (
-   LOGIN                char(8) not null,
-   USER_FIRSTNAME       char(20) not null,
-   USER_NAME            char(20),
-   USER_MAIL            char(50) not null,
-   IS_EVALUATOR         bool,
-   PHONE                char(12),
-   primary key (LOGIN)
+   login                char(8) not null,
+   user_firstname       char(20) not null,
+   user_name            char(20),
+   user_mail            char(50) not null,
+   is_evaluator         bool,
+   phone                char(12),
+   primary key (login)
 )
-engine = InnoDB;
+engine = innodb;
 
 /*==============================================================*/
-/* Table : YEAR                                                 */
+/* Table : year                                                 */
 /*==============================================================*/
-create table YEAR
+create table year
 (
-   SCHOOL_YEAR          int not null,
-   primary key (SCHOOL_YEAR)
+   school_year          int not null,
+   primary key (school_year)
 )
-engine = InnoDB;
+engine = innodb;
 
-alter table CHOICE add constraint FK_ASSOCIATION_8 foreign key (LOGIN)
-      references USERS (LOGIN) on delete restrict on update restrict;
+alter table choice add constraint fk_association_8 foreign key (login)
+      references users (login) on delete restrict on update restrict;
 
-alter table CHOICE add constraint FK_ASSOCIATION_9 foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table choice add constraint fk_association_9 foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table CLUB add constraint FK_MANAGE foreign key (LOGIN)
-      references USERS (LOGIN) on delete restrict on update restrict;
+alter table club add constraint fk_manage foreign key (login)
+      references users (login) on delete restrict on update restrict;
 
-alter table EFFFECTIF add constraint FK_EFFFECTIF foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table effectif add constraint fk_effectif foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table EFFFECTIF add constraint FK_EFFFECTIF2 foreign key (PROJECT_ID)
-      references PROJET (PROJECT_ID) on delete restrict on update restrict;
+alter table effectif add constraint fk_effectif2 foreign key (project_id)
+      references projet (project_id) on delete restrict on update restrict;
 
-alter table EVENT add constraint FK_ASSOCIATION_14 foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table event add constraint fk_association_14 foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table MEMBER add constraint FK_AFFECTE foreign key (PRO_ID_CLUB, ID_PROJET_CLUB)
-      references PROJECT_CLUB (ID_CLUB, ID_PROJET_CLUB) on delete restrict on update restrict;
+alter table member add constraint fk_affecte foreign key (pro_id_club, id_projet_club)
+      references project_club (id_club, id_projet_club) on delete restrict on update restrict;
 
-alter table MEMBER add constraint FK_ASSOCIATION_10 foreign key (LOGIN)
-      references USERS (LOGIN) on delete restrict on update restrict;
+alter table member add constraint fk_association_10 foreign key (login)
+      references users (login) on delete restrict on update restrict;
 
-alter table MEMBER add constraint FK_ASSOCIATION_11 foreign key (SCHOOL_YEAR)
-      references YEAR (SCHOOL_YEAR) on delete restrict on update restrict;
+alter table member add constraint fk_association_11 foreign key (school_year)
+      references year (school_year) on delete restrict on update restrict;
 
-alter table MEMBER add constraint FK_ASSOCIATION_12 foreign key (PROJECT_ID)
-      references PROJET (PROJECT_ID) on delete restrict on update restrict;
+alter table member add constraint fk_association_12 foreign key (project_id)
+      references projet (project_id) on delete restrict on update restrict;
 
-alter table MEMBER add constraint FK_COMPOSE foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table member add constraint fk_compose foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table NOTE_CLUB add constraint FK_NOTE_CLUB foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table note_club add constraint fk_note_club foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table NOTE_CLUB add constraint FK_NOTE_CLUB2 foreign key (SCHOOL_YEAR)
-      references YEAR (SCHOOL_YEAR) on delete restrict on update restrict;
+alter table note_club add constraint fk_note_club2 foreign key (school_year)
+      references year (school_year) on delete restrict on update restrict;
 
-alter table PROJECT_CLUB add constraint FK_ASSOCIATION_15 foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table project_club add constraint fk_association_15 foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table RECOMMENDATION add constraint FK_RECOMMENDATION foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table recommendation add constraint fk_recommendation foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
-alter table RECOMMENDATION add constraint FK_RECOMMENDATION2 foreign key (LOGIN)
-      references USERS (LOGIN) on delete restrict on update restrict;
+alter table recommendation add constraint fk_recommendation2 foreign key (login)
+      references users (login) on delete restrict on update restrict;
 
-alter table REMPLI add constraint FK_REMPLI foreign key (ID_CLUB, LOGIN, SCHOOL_YEAR)
-      references MEMBER (ID_CLUB, LOGIN, SCHOOL_YEAR) on delete restrict on update restrict;
+alter table rempli add constraint fk_rempli foreign key (id_club, login, school_year)
+      references member (id_club, login, school_year) on delete restrict on update restrict;
 
-alter table REMPLI add constraint FK_REMPLI2 foreign key (ID_ROLE)
-      references ROLE (ID_ROLE) on delete restrict on update restrict;
+alter table rempli add constraint fk_rempli2 foreign key (id_role)
+      references role (id_role) on delete restrict on update restrict;
 
-alter table REUNIONS add constraint FK_ASSOCIATION_16 foreign key (ID_CLUB)
-      references CLUB (ID_CLUB) on delete restrict on update restrict;
+alter table reunions add constraint fk_association_16 foreign key (id_club)
+      references club (id_club) on delete restrict on update restrict;
 
 
 
