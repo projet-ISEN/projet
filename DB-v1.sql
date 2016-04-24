@@ -302,15 +302,15 @@ alter table reunions add constraint fk_association_16 foreign key (id_club)
 
 
 
-INSERT INTO year (SCHOOL_YEAR) VALUES (2016);
+INSERT INTO year (school_year) VALUES (2016);
 
 
-INSERT INTO users (LOGIN, USER_FIRSTNAME, USER_NAME, USER_MAIL, IS_EVALUATOR, PHONE) VALUES
+INSERT INTO users (login, user_firstname, user_name, user_mail, is_evaluator, phone) VALUES
   ('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 0, NULL ),
   ('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL );
 
 
-INSERT INTO role (ID_ROLE, ROLE) VALUES
+INSERT INTO role (id_role, role) VALUES
   (UUID(), 'président'),
   (UUID(), 'vice-président'),
   (UUID(), 'trésorier'),
@@ -320,7 +320,7 @@ INSERT INTO role (ID_ROLE, ROLE) VALUES
 
 
 
-INSERT INTO projet (PROJECT_ID, PROJECT_TYPE, PROJECT_DESCRIPTION) VALUES
+INSERT INTO projet (project_id, project_type, project_description) VALUES
   (UUID(), 'PR+', '{ "title": "Projet à responsabilité +",
                       "objectif": "Transmettre son savoir-faire, son expérience",
                       "exemple": "Suivre son ancien PR avec le nouveau responsable",
@@ -344,7 +344,7 @@ INSERT INTO projet (PROJECT_ID, PROJECT_TYPE, PROJECT_DESCRIPTION) VALUES
 
 
 
-INSERT INTO club (ID_CLUB, LOGIN, CLUB_NAME, CLUB_DESCRIPTION, CLUB_MAIL, ACTIF) VALUES
+INSERT INTO club (id_club, login, club_name, club_description, club_mail, actif) VALUES
   (UUID(), 'rcolli17', 'Don du sang', '', '', 1),
   (UUID(), 'rcolli17', 'Soutien Harteloire', '', '', 1),
   (UUID(), 'rcolli17', 'Bureau des Arts', '', '', 1),
@@ -380,112 +380,112 @@ INSERT INTO club (ID_CLUB, LOGIN, CLUB_NAME, CLUB_DESCRIPTION, CLUB_MAIL, ACTIF)
 
 
 
-INSERT INTO efffectif (ID_CLUB, PROJECT_ID, NB_ASKED_MIN, NB_ASKED_MAX)
-  VALUES  ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Soutien ISEN"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 0, 2),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Soutien ISEN"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 0, 2),
+INSERT INTO effectif (id_club, project_id, nb_asked_min, nb_asked_max)
+  VALUES  ( (SELECT id_club FROM club WHERE club.club_name="Soutien ISEN"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Soutien ISEN"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 0, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club foyer"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"),  2, 3),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club foyer"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR+"), 5, 9),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club foyer"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"),  0, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 5, 9),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  0, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Gala"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 4, 6),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Gala"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 6, 8),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Gala"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 12, 14),
+          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 4, 6),
+          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 6, 8),
+          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 12, 14),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Eva"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 2, 4),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Eva"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 2, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Eva"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 2, 4),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Eva"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 3),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club musique"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 1, 3),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club musique"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 2, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club musique"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 0, 1),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des Arts"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"),  3, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des Arts"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR+"), 1, 2),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des Arts"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"),  3, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des Arts"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"),  0, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  3, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 1, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  3, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 3),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des sports"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 6, 8),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des sports"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 5, 8),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau des sports"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 4, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 6, 8),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 5, 8),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 4, 5),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club glisse"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 1, 3),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club glisse"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 3, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club glisse"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club glisse"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 5),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau du développement durable"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 3, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau du développement durable"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 3, 6),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau du développement durable"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 3, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 6),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 3, 5),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Pon Pon Nippon"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 1, 4),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Pon Pon Nippon"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 2, 4),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Pon Pon Nippon"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 2, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 4),
+          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
+          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 2, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Kengred"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 1, 2),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Kengred"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 1, 2),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Kengred"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 1, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 1, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 1, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Digital Design"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"), 3, 6),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Digital Design"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"), 2, 4),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Digital Design"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"), 0, 1),
+          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 6),
+          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
+          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Elec"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR+"), 10, 12),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Elec"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"),  8, 10),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Elec"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"),  8, 10),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Club Elec"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"),  0, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 10, 12),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  8, 10),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  8, 10),
+          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Moviezen"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR+"), 3, 4),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Moviezen"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"),  4, 6),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Moviezen"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"),  4, 6),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Moviezen"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"),  1, 2),
+          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 3, 4),
+          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  4, 6),
+          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  4, 6),
+          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  1, 2),
 
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau de l'international"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR+"), 2, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau de l'international"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PR"),  2, 5),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau de l'international"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PA"),  1, 3),
-          ( (SELECT ID_CLUB FROM club WHERE club.CLUB_NAME="Bureau de l'international"),
-            (SELECT PROJECT_ID FROM projet WHERE PROJECT_TYPE="PI"),  0, 2)
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 2, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 5),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  1, 3),
+          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2)
 ;
 
