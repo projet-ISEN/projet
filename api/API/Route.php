@@ -78,7 +78,8 @@
                 $controller = new $controller( $this->matches );
 
                 // params[1] = function in controller
-                return call_user_func([$controller, $params[1]]);
+                //return call_user_func([$controller, $params[1]]);
+                return call_user_func_array([$controller, $params[1]], $this->matches );
 
             } else {
 

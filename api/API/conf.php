@@ -4,25 +4,17 @@ namespace API;
 
 class conf{
 	
-	public $debug = true;
+	public static $debug = true;
 	
-	public $DB_NAME = ;
+	public static $DB_NAME = 'projetm1';
 	
-	public DB_HOST = ;
+	public static $DB_HOST = 'localhost';
 	
-	public DB_USER = ;
+	public static $DB_USER = 'root';
 	
-	public DB_PASSWORD = ;
-	
-	
+	public static $DB_PASSWORD = '';
 	
 	
-}
-
-
-
-
-
-
-
-?>
+	
+	
+}?>

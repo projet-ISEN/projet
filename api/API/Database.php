@@ -14,7 +14,7 @@
      */
     class Database {
 
-        private         $PDOInstance    = null;
+        public          $PDOInstance    = null;
         private static  $instance       = null;
 
         /**
@@ -24,9 +24,9 @@
         {
             try {
 
-                $dsn        = 'mysql:dbname='. getenv('DB_NAME') .';host=' . getenv('DB_HOST');
-                $user       = getenv( 'DB_USER' );
-                $pass       = getenv( 'DB_PASSWORD' );
+                $dsn        = 'mysql:dbname='. \API\conf::$DB_NAME .';host=' . \API\conf::$DB_HOST;
+                $user       = \API\conf::$DB_USER;
+                $pass       = \API\conf::$DB_PASSWORD;
                 $options    = array(
                     \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING
@@ -79,10 +79,9 @@
             }
         }
 
-        public static function prepare( $req ) {
+        public static function getUID() {
 
-            $d = self::getInstance();
-            return $d->PDOInstance->prepare( $req );
+            return self::getInstance()->PDOInstance->query("SELECT UUID()")->fetchAll(\PDO::FETCH_NUM)[0][0];
         }
     }
 ?>

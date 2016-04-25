@@ -16,13 +16,14 @@
 /*   Permet de faire un require_once de tous les fichier php sauf index.php    */
 
 
-    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator("."), RecursiveIteratorIterator::SELF_FIRST);
+    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
     foreach($objects as $name => $object){
-        if($name !="index.php") require_once ($name);
+
+        if(is_file($name) && $name != '.' && $name[2] != '.' && (strpos($name, 'index.php') == false) ) {
+            require_once($name);
+        }
     }
 
-
-/*    require( 'vendor/autoload.php' );// composer, on l'a enlevé*/
 
     $router = new API\Router( $_GET['url'] );
 
@@ -33,7 +34,10 @@
     // Use controller user and method one
     $router->get('/users/:id', 'User.get');
 
-    $router->get('/clubs', 'Club.all');
+    $router->get( '/clubs/:id', 'Club.getOne');
+    $router->get( '/clubs',     'Club.getAll');
+    $router->post('/clubs',     'Club.create');
+
 
     //Exemple de route particulière
     /*$router->get('club/:id-:nom', function($id, $nom) {

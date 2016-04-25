@@ -4,7 +4,7 @@
 
     class User extends \API\Model {
 
-        protected static $table = 'USER';
+        protected static $table = 'user';
         
         public function __construct( $login ) {
 
