@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  25/04/2016 09:19:37                      */
+/* Date de création :  25/04/2016 14:14:32                      */
 /*==============================================================*/
 
 
@@ -17,6 +17,8 @@ drop table if exists log;
 drop table if exists member;
 
 drop table if exists note_club;
+
+drop table if exists process;
 
 drop table if exists project_club;
 
@@ -137,6 +139,19 @@ create table note_club
    procurement_file     char(250),
    budget               float,
    primary key (club_id, school_year)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table : process                                              */
+/*==============================================================*/
+create table process
+(
+   club_id              char(36) not null,
+   process_id           char(36) not null,
+   process_name         char(60) not null,
+   process_link         char(100),
+   primary key (club_id, process_id)
 )
 engine = innodb;
 
@@ -281,6 +296,9 @@ alter table note_club add constraint fk_note_club foreign key (club_id)
 alter table note_club add constraint fk_note_club2 foreign key (school_year)
       references year (school_year) on delete restrict on update restrict;
 
+alter table process add constraint fk_association_17 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
+
 alter table project_club add constraint fk_association_15 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
 
@@ -298,6 +316,7 @@ alter table rempli add constraint fk_rempli2 foreign key (id_role)
 
 alter table reunions add constraint fk_association_16 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
+
 
 
 
