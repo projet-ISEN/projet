@@ -10,4 +10,9 @@ angular.module('app')
         .when '/', 
             templateUrl: 'views/home.html',
             controller:  'homeCtrl'
+            
+        $routeProvider
+        .when '/yolotest', 
+            templateUrl: 'views/yolotest.html',
+            controller:  'yolotestctrl'
 ]

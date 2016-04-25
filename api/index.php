@@ -14,8 +14,6 @@
 
 
 /*   Permet de faire un require_once de tous les fichier php sauf index.php    */
-
-
     $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
     foreach($objects as $name => $object){
 
@@ -30,13 +28,13 @@
     $router->get('/users', function() {
         echo 'all users'; 
     });
-
+ 
     // Use controller user and method one
-    $router->get('/users/:id', 'User.get');
+    $router->get('/user/:id', 'User.get');
 
-    $router->get( '/clubs/:id', 'Club.getOne');
+    $router->get( '/club/:id', 'Club.getOne');
     $router->get( '/clubs',     'Club.getAll');
-    $router->post('/clubs',     'Club.create');
+    $router->post('/club',     'Club.create');
 
 
     //Exemple de route particulière

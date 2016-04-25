@@ -133,7 +133,7 @@
          * @param null $name
          * @return Route
          */
-        public function delete( string $path, callable $callback, string $name = null ):Route {
+        public function delete( string $path, callable $callback, string $name = null ) {
 
             return $this->add($path, $callback, $name, 'DELETE');
         }

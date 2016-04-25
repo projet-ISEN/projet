@@ -23,7 +23,7 @@
 
         public function getAll()
         {
-            var_dump( \Models\Club::get() );//test de debug
+            if(\API\conf->debug) var_dump( \Models\Club::get() );//test de debug
         }
         public static function getOne($id)
         {
