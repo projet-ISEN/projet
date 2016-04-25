@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  24/04/2016 14:28:38                      */
+/* Date de création :  25/04/2016 09:19:37                      */
 /*==============================================================*/
 
 
@@ -40,9 +40,9 @@ drop table if exists year;
 create table choice
 (
    login                char(8) not null,
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    choice_number        int not null,
-   primary key (login, id_club)
+   primary key (login, club_id)
 )
 engine = innodb;
 
@@ -51,14 +51,14 @@ engine = innodb;
 /*==============================================================*/
 create table club
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    login                char(8) not null,
    club_name            char(40) not null,
    club_description     longtext,
    club_mail            char(30),
    actif                bool,
    blocknote            longtext,
-   primary key (id_club)
+   primary key (club_id)
 )
 engine = innodb;
 
@@ -67,11 +67,11 @@ engine = innodb;
 /*==============================================================*/
 create table effectif
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    project_id           char(36) not null,
    nb_asked_min         int not null,
    nb_asked_max         int,
-   primary key (id_club, project_id)
+   primary key (club_id, project_id)
 )
 engine = innodb;
 
@@ -80,7 +80,7 @@ engine = innodb;
 /*==============================================================*/
 create table event
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    id_event             char(36) not null,
    event_name           char(80),
    event_date           bigint,
@@ -90,7 +90,7 @@ create table event
    cancelled            bool,
    event_description    longtext,
    feedback             longtext,
-   primary key (id_club, id_event)
+   primary key (club_id, id_event)
 )
 engine = innodb;
 
@@ -111,10 +111,10 @@ engine = innodb;
 /*==============================================================*/
 create table member
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    login                char(8) not null,
    school_year          int not null,
-   pro_id_club          char(36),
+   pro_club_id          char(36),
    id_projet_club       char(36),
    project_id           char(36) not null,
    main_club            bool not null,
@@ -122,7 +122,7 @@ create table member
    ex_member_not_wanted bool,
    recommandation       bool,
    project_validation   bool,
-   primary key (id_club, login, school_year)
+   primary key (club_id, login, school_year)
 )
 engine = innodb;
 
@@ -131,12 +131,12 @@ engine = innodb;
 /*==============================================================*/
 create table note_club
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    school_year          int not null,
    note_club            float not null,
    procurement_file     char(250),
    budget               float,
-   primary key (id_club, school_year)
+   primary key (club_id, school_year)
 )
 engine = innodb;
 
@@ -145,12 +145,12 @@ engine = innodb;
 /*==============================================================*/
 create table project_club
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    id_projet_club       char(36) not null,
    name                 char(80) not null,
    link                 char(255),
    project_club_description longtext,
-   primary key (id_club, id_projet_club)
+   primary key (club_id, id_projet_club)
 )
 engine = innodb;
 
@@ -171,10 +171,10 @@ engine = innodb;
 /*==============================================================*/
 create table recommendation
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    login                char(8) not null,
    recommanded          bool,
-   primary key (id_club, login)
+   primary key (club_id, login)
 )
 engine = innodb;
 
@@ -183,11 +183,11 @@ engine = innodb;
 /*==============================================================*/
 create table rempli
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    login                char(8) not null,
    school_year          int not null,
    id_role              char(36) not null,
-   primary key (id_club, login, school_year, id_role)
+   primary key (club_id, login, school_year, id_role)
 )
 engine = innodb;
 
@@ -196,13 +196,13 @@ engine = innodb;
 /*==============================================================*/
 create table reunions
 (
-   id_club              char(36) not null,
+   club_id              char(36) not null,
    id_reunion           char(36) not null,
    reunion_date         bigint,
    reunion_order        char(250),
    reporting            char(250),
    internal_reunion     bool,
-   primary key (id_club, id_reunion)
+   primary key (club_id, id_reunion)
 )
 engine = innodb;
 
@@ -245,23 +245,23 @@ engine = innodb;
 alter table choice add constraint fk_association_8 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table choice add constraint fk_association_9 foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table choice add constraint fk_association_9 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 alter table club add constraint fk_manage foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table effectif add constraint fk_effectif foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table effectif add constraint fk_effectif foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 alter table effectif add constraint fk_effectif2 foreign key (project_id)
       references projet (project_id) on delete restrict on update restrict;
 
-alter table event add constraint fk_association_14 foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table event add constraint fk_association_14 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
-alter table member add constraint fk_affecte foreign key (pro_id_club, id_projet_club)
-      references project_club (id_club, id_projet_club) on delete restrict on update restrict;
+alter table member add constraint fk_affecte foreign key (pro_club_id, id_projet_club)
+      references project_club (club_id, id_projet_club) on delete restrict on update restrict;
 
 alter table member add constraint fk_association_10 foreign key (login)
       references users (login) on delete restrict on update restrict;
@@ -272,33 +272,32 @@ alter table member add constraint fk_association_11 foreign key (school_year)
 alter table member add constraint fk_association_12 foreign key (project_id)
       references projet (project_id) on delete restrict on update restrict;
 
-alter table member add constraint fk_compose foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table member add constraint fk_compose foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
-alter table note_club add constraint fk_note_club foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table note_club add constraint fk_note_club foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 alter table note_club add constraint fk_note_club2 foreign key (school_year)
       references year (school_year) on delete restrict on update restrict;
 
-alter table project_club add constraint fk_association_15 foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table project_club add constraint fk_association_15 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
-alter table recommendation add constraint fk_recommendation foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
+alter table recommendation add constraint fk_recommendation foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 alter table recommendation add constraint fk_recommendation2 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli foreign key (id_club, login, school_year)
-      references member (id_club, login, school_year) on delete restrict on update restrict;
+alter table rempli add constraint fk_rempli foreign key (club_id, login, school_year)
+      references member (club_id, login, school_year) on delete restrict on update restrict;
 
 alter table rempli add constraint fk_rempli2 foreign key (id_role)
       references role (id_role) on delete restrict on update restrict;
 
-alter table reunions add constraint fk_association_16 foreign key (id_club)
-      references club (id_club) on delete restrict on update restrict;
-
+alter table reunions add constraint fk_association_16 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 
 
@@ -344,7 +343,7 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
 
 
 
-INSERT INTO club (id_club, login, club_name, club_description, club_mail, actif) VALUES
+INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif) VALUES
   (UUID(), 'rcolli17', 'Don du sang', '', '', 1),
   (UUID(), 'rcolli17', 'Soutien Harteloire', '', '', 1),
   (UUID(), 'rcolli17', 'Bureau des Arts', '', '', 1),
@@ -380,112 +379,112 @@ INSERT INTO club (id_club, login, club_name, club_description, club_mail, actif)
 
 
 
-INSERT INTO effectif (id_club, project_id, nb_asked_min, nb_asked_max)
-  VALUES  ( (SELECT id_club FROM club WHERE club.club_name="Soutien ISEN"),
+INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
+  VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
-          ( (SELECT id_club FROM club WHERE club.club_name="Soutien ISEN"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 0, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
             (SELECT project_id FROM projet WHERE project_type="PR"),  2, 3),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
             (SELECT project_id FROM projet WHERE project_type="PR+"), 5, 9),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club foyer"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
             (SELECT project_id FROM projet WHERE project_type="PA"),  0, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 4, 6),
-          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 6, 8),
-          ( (SELECT id_club FROM club WHERE club.club_name="Gala"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 12, 14),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Eva"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 2, 4),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Eva"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 2, 3),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 2, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club musique"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
             (SELECT project_id FROM projet WHERE project_type="PR"),  3, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
             (SELECT project_id FROM projet WHERE project_type="PR+"), 1, 2),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
             (SELECT project_id FROM projet WHERE project_type="PA"),  3, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des Arts"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
             (SELECT project_id FROM projet WHERE project_type="PI"),  0, 3),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 6, 8),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 5, 8),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau des sports"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 4, 5),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Club glisse"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club glisse"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 3, 5),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 3, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 3, 6),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau du développement durable"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 3, 5),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 1, 4),
-          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
-          ( (SELECT id_club FROM club WHERE club.club_name="Pon Pon Nippon"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 2, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 1, 2),
-          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 1, 2),
-          ( (SELECT id_club FROM club WHERE club.club_name="Kengred"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 1, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 3, 6),
-          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
             (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
-          ( (SELECT id_club FROM club WHERE club.club_name="Digital Design"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
             (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
             (SELECT project_id FROM projet WHERE project_type="PR+"), 10, 12),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
             (SELECT project_id FROM projet WHERE project_type="PR"),  8, 10),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
             (SELECT project_id FROM projet WHERE project_type="PA"),  8, 10),
-          ( (SELECT id_club FROM club WHERE club.club_name="Club Elec"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
             (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
             (SELECT project_id FROM projet WHERE project_type="PR+"), 3, 4),
-          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
             (SELECT project_id FROM projet WHERE project_type="PR"),  4, 6),
-          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
             (SELECT project_id FROM projet WHERE project_type="PA"),  4, 6),
-          ( (SELECT id_club FROM club WHERE club.club_name="Moviezen"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
             (SELECT project_id FROM projet WHERE project_type="PI"),  1, 2),
 
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
             (SELECT project_id FROM projet WHERE project_type="PR+"), 2, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
             (SELECT project_id FROM projet WHERE project_type="PR"),  2, 5),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
             (SELECT project_id FROM projet WHERE project_type="PA"),  1, 3),
-          ( (SELECT id_club FROM club WHERE club.club_name="Bureau de l'international"),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
             (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2)
 ;
 
