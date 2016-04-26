@@ -11,7 +11,6 @@
     $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
 
 
-
     // Permet de faire un require_once de tous les fichier php sauf index.php
 
     $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
@@ -45,8 +44,9 @@
     $router->get('/me', function() {
         echo json_encode( $_SESSION['user'] );
     });
-
+ 
     // Use controller user and method one
+
     $router->get(       '/users/:id',   'User.get');
 
     $router->get(       '/clubs/:id',   'Club.getOne');

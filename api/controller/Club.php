@@ -58,7 +58,7 @@ class Club
             echo json_encode( array('err' => 'Un nom de club est nécéssaire') );
             return;
         }
-
+        
         $club = new \Models\Club();
         $club->club_name        = $_POST['club_name'];
         $club->club_description = empty($_POST['club_description']) ? '' : $_POST['club_description'];

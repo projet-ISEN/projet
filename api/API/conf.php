@@ -18,5 +18,9 @@ class conf{
 	public static $DB_USER = 'root';
 	
 	public static $DB_PASSWORD = '';
-	
-}?>
+
+/*  public static $PROTOCOLE = 'http://';
+    
+  	public static $DOMAIN = '127.0.0.1/projet';*/
+
+}

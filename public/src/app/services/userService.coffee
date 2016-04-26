@@ -9,7 +9,7 @@ angular.module('app')
         getInfos: ->
             $http
                 method: 'GET'
-                url: "http://localhost/projet-m1-api/user"
+                url: "../../api/users"
 
             .then (res)->          # On success
                 return res.data
