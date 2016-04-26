@@ -1,5 +1,5 @@
-div(layout='row', ng-controller='sidenavCtrl')
-  md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='left', md-is-locked-open="$mdMedia('gt-md')")
+div.fullheight( layout="column" ng-controller="sidenavCtrl")
+  md-sidenav.fullheight( class="md-sidenav-left md-whiteframe-z2" md-component-id="left" hide-print="hide-print" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1")
     md-toolbar.md-tall.md-hue-2
       span(flex='')
       .md-toolbar-tools-bottom.inset(layout='column')

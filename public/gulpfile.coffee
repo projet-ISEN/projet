@@ -45,7 +45,7 @@ gulp.task 'render-directive', ->
         
 # Transpile les styles SASS en CSS    
 gulp.task 'render-sass', ->
-    sass 'src/styles/**',                   'build/styles/'
+    sass 'src/styles/*.sass',                   'build/styles/'
         
     
 # Transpile l'app coffee en js
@@ -87,7 +87,7 @@ gulp.task 'watch', ->
     gulp.watch 'src/styles/*.sass'
     .on 'change', (e)->
         
-        sass e.path, 'build/styles'
+        sass e.path, 'build/styles/'
         console.log "#{e.path} Reloaded"
     
     # Watch les coffee
@@ -186,7 +186,7 @@ jade    = (src, dest) ->
     .pipe gulp.dest dest 
 
 sass    = (src, dest)->
-    return
+    
     gulp.src src
     .pipe P.plumberNotifier()
     .pipe P.sass()

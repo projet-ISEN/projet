@@ -5,7 +5,6 @@ angular.module("app").controller 'sidenavCtrl', [
 
     $scope.toggleSidenav = (menuId) ->
       $mdSidenav(menuId).toggle()
-      return
 
     $scope.menu = [
       {
@@ -36,7 +35,6 @@ angular.module("app").controller 'sidenavCtrl', [
         icon: 'settings'
       }
     ]
-    return
 ]
 
 # ---
