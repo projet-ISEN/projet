@@ -7,11 +7,17 @@ html( lang="fr" )
         // Injecteur de Gulp
         // inject:css 
         // endinject 
+        link( rel="stylesheet" type="text/css" href="libs/angular-material-icons/angular-material-icons.css" )
+        link( rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.css")
     body( data-ng-app="app" )
     
-        div( data-ng-view )
+        div( data-ng-include = "'views/sidenav.html'")
+        
+        md-content( md-scroll-y layout='column' flex)
+            div( data-ng-view layout-padding flex='noshrink')
         
         script( type="text/javascript" src="libs/angular/angular.js" )
+        script( type="text/javascript" src="libs/angular-material-icons/angular-material-icons.js" )
         script( type="text/javascript" src="libs/angular-aria/angular-aria.js" )
         script( type="text/javascript" src="libs/angular-route/angular-route.js" )
         script( type="text/javascript" src="libs/angular-animate/angular-animate.js" )

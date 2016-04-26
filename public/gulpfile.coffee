@@ -50,9 +50,7 @@ gulp.task 'render-sass', ->
     
 # Transpile l'app coffee en js
 gulp.task 'trans-coffee', ->
-    coffee ['src/app/*.coffee'
-            'src/app/controllers/*.coffee'
-            'src/app/services/*.coffee'],   'build/app/'
+    coffee 'src/app/**/**.coffee',             'build/app/'
 
 gulp.task 'load-libs', ->
 
@@ -93,9 +91,7 @@ gulp.task 'watch', ->
         console.log "#{e.path} Reloaded"
     
     # Watch les coffee
-    gulp.watch ['src/app/*.coffee'
-                'src/app/controllers/*.coffee'
-                'src/app/services/*.coffee']
+    gulp.watch 'src/app/**/**.coffee'
     .on 'change', (e)->
         
         coffee e.path, 'build/app/'
@@ -177,6 +173,7 @@ coffee  = (src, dest) ->
     gulp.src src
     .pipe P.plumberNotifier()
     .pipe P.coffee()
+    .pipe(P.flatten())
     .pipe gulp.dest dest
     
 jade    = (src, dest) ->
