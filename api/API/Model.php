@@ -6,6 +6,10 @@
     /**
      * Class Model
      * @package API
+     *
+     *
+     *          CETTE CLASSE N ' EST PLUS UTILISEE
+     *
      */
     abstract class Model {
      

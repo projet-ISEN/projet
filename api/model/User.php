@@ -1,25 +1,94 @@
 <?php
 
-    namespace Models;
+namespace Models;
+use API\Database;
+use \ReflectionObject;
 
-    class User extends \API\Model {
+/**
+ * Class User
+ * @package Models
+ */
+class User {
 
-        protected static $table = 'user';
-        
-        public function __construct( $login ) {
+    public $login;
+    public $user_firstname;
+    public $user_name;
+    public $user_mail;
+    public $is_evaluator;
+    public $phone;
 
-            parent::__construct();
+    /**
+     * User constructor.
+     *
+     * @param $cas_data
+     */
+    public function __construct( $cas_data ) {
 
-            // Champs de la base de donnée
-            $this->needed = [ 'uid', 'groupe', 'prenom', 'nom'];
-            $this->uid = $login ;
+        // Champs de la base de donnée
+        $this->login            = $cas_data['Login'];
+        $this->user_firstname   = $cas_data['FirstName'];
+        $this->user_name        = $cas_data['LastName'];
+        $this->user_mail        = $cas_data['Mail'];
+        $this->is_evaluator     = ($cas_data['gidNumber'] == '1000')? 1 : 0;
+        $this->phone            = $cas_data['Telephone'];
 
+    }
 
-        }
+    /**
+     * Es ce que l'utilisateur existe dans la base?
+     * @return bool
+     */
+    public function exist() {
+        $res = Database::getInstance()->PDOInstance->query("SELECT login FROM users WHERE login='" . $this->login . "'")
+            ->fetchAll(\PDO::FETCH_NUM);
+        return !empty($res);
+    }
 
-        public function existInOwnDb() {
+    public function load() {
 
-            // user in already in db ? else create
+        $res = Database::getInstance()->PDOInstance->query("SELECT * FROM users WHERE login='" . $this->login . "'" )
+            ->fetchAll( \PDO::FETCH_ASSOC )[0];
+
+        // complète le this avec les valeurs récupérées
+        foreach( $res as $key => $val ) {
+            $this->$key = $val;
         }
     }
-?>
+
+    /**
+     * Sauvegarde toutes les modifications de l'USER dans la base de donnée
+     * Le crée s'il n'y est pas encore
+     * @return bool
+     */
+    public function save() {
+
+        $values = array();
+
+        // Récupère les attributs de classe
+        $props = (new ReflectionObject($this))->getProperties();
+        foreach ($props as $prop) {
+            $k = $prop->name;
+            $values[$prop->name] = $this->$k;
+        }
+
+        // Creation
+        if( !$this->exist() ) {
+
+            $req = Database::getInstance()->PDOInstance->prepare(
+                "INSERT INTO users (login, user_firstname, user_name, user_mail, is_evaluator, phone) ".
+                "VALUES (:login, :user_firstname, :user_name, :user_mail, :is_evaluator, :phone)"
+            );
+
+            return $req->execute($values);
+        }
+        // Mise à jour
+        else {
+            $req = Database::getInstance()->PDOInstance->prepare(
+                "UPDATE users SET user_firstname=:user_firstname, user_name=:user_name, ".
+                "user_mail=:user_mail, is_evaluator=:is_evaluator, phone=:phone WHERE login=:login"
+            );
+            return $req->execute($values);
+        }
+    }
+
+}

@@ -9,6 +9,7 @@
     namespace API;
 
     /**
+     * Fournit une connexion à la base de donnée
      * Class Database
      * @package API
      */
@@ -19,6 +20,7 @@
 
         /**
          * Database constructor.
+         * Initialise la connexion
          */
         private function __construct()
         {
@@ -42,6 +44,7 @@
 
         /**
          * Fonction du singleton
+         * retourne une instance unique de la classe Database
          * @return Database|null
          */
         public static function getInstance()
@@ -54,8 +57,9 @@
         }
 
         /**
+         * Raccourcis permettant d'effectuer une requête de stype SELECT dans la base
+         * Elle retourne un TABLEAU de résultat
          * @param $query
-         *
          * @return null
          */
         public static function Select( $query )
@@ -79,6 +83,11 @@
             }
         }
 
+        /**
+         * Demande au SGBD de génerer un identifiant unique
+         * (utilisé pour l'insertion d'éléments)
+         * @return mixed
+         */
         public static function getUID() {
 
             return self::getInstance()->PDOInstance->query("SELECT UUID()")->fetchAll(\PDO::FETCH_NUM)[0][0];

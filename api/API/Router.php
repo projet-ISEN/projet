@@ -14,6 +14,7 @@
 
         /**
          * Router constructor.
+         * Lance l'application en fonction de l'URL demandée
          * @param $url
          */
         public function __construct( $url ) {
@@ -22,7 +23,7 @@
         }
 
         /**
-         * Cherche la fonction a appeller en fonction de l'URL
+         * Cherche la route qui match en fonction de l'URL
          * @return mixed
          */
         public function run() {
@@ -42,7 +43,6 @@
                     return $route->call();
                 }
             }
-
             throw new RouterException( 'No matching route with method: ' . $method . " and url: " . $this->url );
         }
 
@@ -71,7 +71,7 @@
 
 
         /**
-         * Add a route,
+         * Ajoute une nouvelle route
          * @param $path
          * @param $callback
          * @param $name
@@ -95,47 +95,51 @@
         }
 
         /**
+         * Ajoute une nouvelle route de utilisant le protocol HTTP en GET
          * @param $path
          * @param $callback
          * @param null $name
          * @return Route
          */
-        public function get($path, $callback, $name = null ) {
+        public function get( $path, $callback, $name = null ) {
 
-            return $this->add($path, $callback, $name, 'GET');
+            return $this->add( $path, $callback, $name, 'GET' );
         }
 
         /**
+         * * Ajoute une nouvelle route de utilisant le protocol HTTP en POST
          * @param $path
          * @param $callback
          * @param null $name
          * @return Route
          */
-        public function post($path, $callback, $name = null ) {
+        public function post( $path, $callback, $name = null ) {
 
-            return $this->add($path, $callback, $name, 'POST');
+            return $this->add( $path, $callback, $name, 'POST' );
         }
 
         /**
+         * * Ajoute une nouvelle route de utilisant le protocol HTTP en PUT
          * @param $path
          * @param $callback
          * @param null $name
          * @return Route
          */
-        public function put($path, $callback, $name = null ) {
+        public function put( $path, $callback, $name = null ) {
 
-            return $this->add($path, $callback, $name, 'PUT');
+            return $this->add( $path, $callback, $name, 'PUT' );
         }
 
         /**
+         * * Ajoute une nouvelle route de utilisant le protocol HTTP en DELETE
          * @param $path
          * @param $callback
          * @param null $name
          * @return Route
          */
-        public function delete( string $path, callable $callback, string $name = null ):Route {
+        public function delete( $path, $callback, $name = null ) {
 
-            return $this->add($path, $callback, $name, 'DELETE');
+            return $this->add( $path, $callback, $name, 'DELETE' );
         }
     }
 ?>

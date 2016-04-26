@@ -15,6 +15,7 @@
 
         /**
          * Route constructor.
+         * En fonction d'une URI, appelle une fonction
          * @param $path
          * @param $callback
          */
@@ -66,7 +67,8 @@
         }
 
         /**
-         * Appelle la fonction en fonction de la route, avec comme parametre ceux de l'URL
+         * Appelle la fonction de callback de la route en fonction de la route qui match
+         * avec comme parametre ceux de l'URL
          * @return mixed
          */
         public function call() {
@@ -77,8 +79,6 @@
                 $controller = "\\Controllers\\" . $params[0] ;
                 $controller = new $controller( $this->matches );
 
-                // params[1] = function in controller
-                //return call_user_func([$controller, $params[1]]);
                 return call_user_func_array([$controller, $params[1]], $this->matches );
 
             } else {
@@ -88,6 +88,7 @@
         }
 
         /**
+         * Permet l'ajout de format de variable personnalisé dans l'URL
          * @param $param
          * @param $regexp
          * @return mixed
@@ -111,7 +112,6 @@
 
                 $path = str_replace( ':' . $k, $v, $path);
             }
-
             return $path;
         }
     }

@@ -1,20 +1,18 @@
 <?php
 
+    // Données de l'ENT
     $userData["Login"]      = 'rcolli17'; // login
-    $userData["Name"]       = ''; // prénom nom
-    $userData["FirstName"]  = ''; // prénom
-    $userData["LastName"]   = ''; // nom
-    $userData["Mail"]       = ''; // mail
-    $userData["Telephone"]  = ''; // telephone
-    $userData["uidNumber"]  = ''; // numero d'identifiant (pas nécessaire pour vous)
-    $userData["gidNumber"]  = ''; // numero de groupe (voir ci-dessous)
-    $groupeISEN             = ''; // 'M1'
+    $userData["Name"]       = 'prename name'; // prénom nom
+    $userData["FirstName"]  = 'prename'; // prénom
+    $userData["LastName"]   = 'name'; // nom
+    $userData["Mail"]       = 'email'; // mail
+    $userData["Telephone"]  = 'tel'; // telephone
+    $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
+    $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
 
 
 
-
-/*   Permet de faire un require_once de tous les fichier php sauf index.php    */
-
+    // Permet de faire un require_once de tous les fichier php sauf index.php
 
     $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
     foreach($objects as $name => $object){
@@ -24,19 +22,43 @@
         }
     }
 
+/*================================================================
+                            WHO IS THIS
+ ================================================================*/
+
+
+    // Identifie la personne et le stock en variable de session
+    $_SESSION['user'] = new \Models\User($userData);
+    if( $_SESSION['user']->exist() ){
+        $_SESSION['user']->load();
+    }
+    else {
+        $_SESSION['user']->save();
+    }
+
+/*================================================================
+                            ROUTES
+ ================================================================*/
 
     $router = new API\Router( $_GET['url'] );
 
-    $router->get('/users', function() {
-        echo 'all users'; 
+    $router->get('/me', function() {
+        echo json_encode( $_SESSION['user'] );
     });
 
     // Use controller user and method one
-    $router->get('/users/:id', 'User.get');
+    $router->get(       '/users/:id',   'User.get');
 
-    $router->get( '/clubs/:id', 'Club.getOne');
-    $router->get( '/clubs',     'Club.getAll');
-    $router->post('/clubs',     'Club.create');
+    $router->get(       '/clubs/:id',   'Club.getOne');
+    $router->get(       '/clubs',       'Club.getAll');
+    $router->post(      '/clubs',       'Club.create');
+    $router->put(       '/club/:id',    'Club.update');
+    $router->delete(    '/club/:id',    'Club.delete');
+
+    $router->get(       '/choices/:id', 'Choice.get'    );
+    $router->get(       '/choices',     'Choice.get'    );
+    $router->post(      '/choices',     'Choice.create' );
+    $router->put(       '/choices/:id', 'Choice.update' );
 
 
     //Exemple de route particulière
@@ -45,6 +67,6 @@
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
 
 
-
+    header('Content-Type: application/json');
+    header('Content-Type: text/html; charset=utf-8');
     $router->run();
-?>
