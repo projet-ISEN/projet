@@ -16,7 +16,7 @@ gulp.task 'default',    ['make', 'watch']
 gulp.task 'render',     ['render-index', 'render-view', 'render-directive']
 gulp.task 'transpile',  ['trans-coffee', 'render-sass']
 gulp.task 'test',       ['test-html', 'test-css']
-gulp.task 'make',       ['render', 'transpile', 'load-libs'], ->
+gulp.task 'make',       ['render', 'transpile', 'load-libs', 'load-imgs'], ->
     
     injectMake  gulp.src [
         'build/app/main.js', 'build/app/*.js', 'build/styles/*.css']
@@ -61,6 +61,16 @@ gulp.task 'load-libs', ->
         ncp 'src/libs/', 'build/libs/', (err)->
             if      err? then console.error err
             unless  err? then console.log 'Copying libs complete'
+
+gulp.task 'load-imgs', ->
+
+    fs.exists 'build/images/', (exists) ->
+
+        unless exists then fs.mkdirSync 'build/images/'
+
+        ncp 'src/images/', 'build/images/', (err)->
+            if      err? then console.error err
+            unless  err? then console.log 'Copying libs complete'            
 
     
 #------------------------------------------------------------------------------
