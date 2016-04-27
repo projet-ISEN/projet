@@ -9,6 +9,8 @@ env:
     - TRAVIS_BUILD_DIR=`pwd`/public/
 
 before_script:
+
+  - cd public/
   - npm install -g bower
   - npm install
   - bower install

@@ -3,7 +3,7 @@ md-card
         md-card-header-text
           span.md-title {{ club.club_name }}
           span.md-subhead {{ club.stats.members }} membre
-            span( ng-if="club.stats.members >1" ) s
+            span( ng-if="club.stats.members >=2" ) s
             
     img.md-card-image(ng-src="images/{{club.club_id}}.jpg", alt='logo du club')
                
