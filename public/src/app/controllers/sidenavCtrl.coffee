@@ -2,7 +2,8 @@ angular.module("app").controller 'sidenavCtrl', [
   '$scope'
   '$mdSidenav'
   ($scope, $mdSidenav) ->
-
+    
+            
      $scope.menu = {
         withoutclub : {
             name : ''
@@ -55,6 +56,7 @@ angular.module("app").controller 'sidenavCtrl', [
               }
         		]
         }
+			
         evaluator : {
             name : ''
       			values : [
@@ -76,4 +78,7 @@ angular.module("app").controller 'sidenavCtrl', [
         		]
         }
     }
+	
+
+
 ]

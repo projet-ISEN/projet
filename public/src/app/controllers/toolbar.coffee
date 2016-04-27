@@ -6,7 +6,5 @@ angular.module "app"
         
     $scope.toggleSidenav = (menuId) ->
       $mdSidenav(menuId).toggle()
-
-
-        
+    
 ]
