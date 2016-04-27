@@ -3,15 +3,16 @@ angular.module("app").controller 'sidenavCtrl', [
   '$mdSidenav'
   ($scope, $mdSidenav) ->
     
-            
-     $scope.menu = {
+
+    $scope.menu = {
         withoutclub : {
             name : ''
+            expanded : true
       			values : [
               {
                   link: ''
                   title: 'Dashboard'
-                  icon: 'face'
+                  icon: 'dashboard'
               }
               {
                   link: ''
@@ -38,6 +39,7 @@ angular.module("app").controller 'sidenavCtrl', [
     
         moviezen : {
             name : 'Moviezen'
+            expanded : false
       			values : [
               {
                   link: ''
@@ -56,9 +58,10 @@ angular.module("app").controller 'sidenavCtrl', [
               }
         		]
         }
-			
+
         evaluator : {
-            name : ''
+            name : 'Evaluateur'
+            expanded : false
       			values : [
               {
                   link: ''
@@ -78,7 +81,4 @@ angular.module("app").controller 'sidenavCtrl', [
         		]
         }
     }
-	
-
-
 ]
