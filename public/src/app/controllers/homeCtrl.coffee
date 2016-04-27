@@ -7,7 +7,6 @@ angular.module('app')
 
     $user.getInfos().then (infos)->
         
-        console.log infos
         $scope.user = infos
         $scope.$apply
 ]

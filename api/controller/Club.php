@@ -39,7 +39,7 @@ class Club
      * STATIC
      * @param $id
      */
-    pusblic static function getOne( $id )
+    public static function getOne( $id )
     {
         $club = new \Models\Club($id);
         $club->load();

@@ -1,6 +1,8 @@
 h1 home
 
-div {{user.uid}}
-div {{user.prenom}} {{user.nom}}
-div {{user.mail}}
-div {{user.groupe}}
+div {{user.login}}
+div {{user.user_firstname}} {{user.user_name}}
+div {{user.user_mail}}
+div( ng-if="user.is_evaluator=='0'" ) Not evaluator
+div( ng-if="user.is_evaluator!='0'" ) Evaluator
+div {{user.phone}}

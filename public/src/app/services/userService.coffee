@@ -9,11 +9,12 @@ angular.module('app')
         getInfos: ->
             $http
                 method: 'GET'
-                url: "../../api/users"
+                url: "../../api/me"
 
             .then (res)->          # On success
                 return res.data
             , (err)->              # On error
                 console.log err if err?
+                return null
     }       
 ]
