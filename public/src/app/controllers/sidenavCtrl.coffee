@@ -3,18 +3,14 @@ angular.module("app").controller 'sidenavCtrl', [
   '$mdSidenav'
   ($scope, $mdSidenav) ->
 
-    $scope.toggleSidenav = (menuId) ->
-      $mdSidenav(menuId).toggle()
-        
-
-    $scope.menu = {
+     $scope.menu = {
         withoutclub : {
             name : ''
       			values : [
               {
                   link: ''
                   title: 'Dashboard'
-                  icon: 'dashboard'
+                  icon: 'face'
               }
               {
                   link: ''
@@ -59,7 +55,6 @@ angular.module("app").controller 'sidenavCtrl', [
               }
         		]
         }
-
         evaluator : {
             name : ''
       			values : [
