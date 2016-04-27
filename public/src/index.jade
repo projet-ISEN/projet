@@ -21,6 +21,7 @@ html( lang="fr" )
         md-content( md-scroll-y layout='column' flex)
             div( data-ng-include = "'views/toolbar.html'")
             div( data-ng-view layout-padding flex='noshrink')
+            //on charge la vue ici
             div( data-ng-include = "'views/footer.html'")
         
         script( type="text/javascript" src="libs/angular/angular.js" )
@@ -31,4 +32,4 @@ html( lang="fr" )
         script( type="text/javascript" src="libs/angular-material/angular-material.js" )        
         // Injecteur de Gulp
         // inject:js 
-        // endinject 
+        // endinject
