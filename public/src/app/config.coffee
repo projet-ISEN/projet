@@ -10,5 +10,5 @@ angular.module('app')
         .when '/', 
             templateUrl: 'views/home.html',
             controller:  'homeCtrl'
-
+        .otherwise({redirectTo:'/'})
 ]
