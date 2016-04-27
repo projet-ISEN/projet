@@ -51,6 +51,7 @@
 
     $router->get(       '/clubs/:id',   'Club.getOne');
     $router->get(       '/clubs',       'Club.getAll');
+    $router->get(       '/clubs/:id/stat', 'Club.stat');
     $router->post(      '/clubs',       'Club.create');
     $router->put(       '/club/:id',    'Club.update');
     $router->delete(    '/club/:id',    'Club.delete');

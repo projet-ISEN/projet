@@ -6,3 +6,6 @@ div {{user.user_mail}}
 div( ng-if="user.is_evaluator=='0'" ) Not evaluator
 div( ng-if="user.is_evaluator!='0'" ) Evaluator
 div {{user.phone}}
+
+md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
+    club-card( flex="30" flex-xs="100" club="club" ng-repeat="club in clubs")

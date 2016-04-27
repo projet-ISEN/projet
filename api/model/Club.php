@@ -52,7 +52,7 @@ class Club {
     public static function get( $id=null )
     {
         if(!$id){
-            return Database::getInstance()->Select("SELECT club_id, club_name FROM club");
+            return Database::getInstance()->Select("SELECT club_id, club_name, club_description, club_mail, actif, login FROM club");
         }
         else {
             return Database::getInstance()->Select(
@@ -62,6 +62,16 @@ class Club {
         }
     }
 
+    
+    public function numberOfMembers() {
+        
+        $res = Database::getInstance()->PDOInstance->query(
+            "SELECT count(*) FROM member WHERE club_id='".
+            $this->club_id ."' AND school_year='2016' AND main_club='1'");
+        return $res->fetchAll(\PDO::FETCH_NUM)[0][0];
+        
+    }
+    
     /**
      * Charge toutes les données du club portant l'ID de l'objet courant
      */

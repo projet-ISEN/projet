@@ -33,7 +33,6 @@ class Club
         echo json_encode( \Models\Club::get() );
     }
 
-
     /**
      * Renvoi les informations d' 1 club
      * STATIC
@@ -46,6 +45,18 @@ class Club
         echo json_encode($club);
     }
 
+    
+    public static function stat( $id )
+    {
+        
+        $club = new \Models\Club($id);
+        
+        echo json_encode( array(
+        
+            'members' => $club->numberOfMembers()
+        ));
+    }
+    
     /**
      * Crée un nouveau club
      * STATIC
