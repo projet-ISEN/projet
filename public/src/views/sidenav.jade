@@ -4,16 +4,24 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
       span(flex='')
       .md-toolbar-tools-bottom.inset(layout='column')
         img(src='https://material.angularjs.org/latest/img/icons/angular-logo.svg', alt='')
-    md-list(flex)
-      md-list-item(ng-repeat='item in menu')
-        a
-          div(md-ink-ripple='', layout='row', layout-align='start center')
-            .inset
-              ng-md-icon(icon='{{item.icon}}')
-            .inset
-              | {{item.title}}
-      md-divider
-      md-subheader Management
+    md-list(flex )
+      div(ng-repeat='underpart in menu')
+        md-divider(ng-if = "$index")
+        md-subheader(ng-if = "underpart.name != ''") {{underpart.name}}
+        md-list-item(ng-repeat='item in underpart.values')
+          a
+            div(md-ink-ripple='', layout='row', layout-align='start center')
+              .inset
+                ng-md-icon(icon='{{item.icon}}')
+              .inset
+                | {{item.title}}
+
+      
+      
+      
+      
+      
+//      md-subheader Management
       md-list-item(ng-repeat='item in admin')
         a
           md-item-content(md-ink-ripple='', layout='row', layout-align='start center')
