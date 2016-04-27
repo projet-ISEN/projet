@@ -30,6 +30,9 @@ gulp.task 'build',
 #------------------------------------------------------------------------------
 #           TASKS
 #------------------------------------------------------------------------------
+
+fs.mkdirSync './build/'
+
 # Transpile l'index.jade en HTML
 gulp.task 'render-index', ->
     jade 'src/*.jade',                      'build/' 

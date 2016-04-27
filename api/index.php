@@ -58,6 +58,12 @@ if (date("n")>7) $myYear++;
  
     // Use controller user and method one
 
+    $router->get(       '/year',        function() {
+         echo json_encode(array(
+            'currentYear' => $_SESSION['year']
+         ));
+    });
+
     $router->get(       '/users/:id',   'User.get');
 
     $router->get(       '/clubs/:id',   'Club.getOne');
