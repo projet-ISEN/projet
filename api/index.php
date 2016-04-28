@@ -1,7 +1,7 @@
 <?php
 
     // Données de l'ENT
-    $userData["Login"]      = 'vrioua17'; // login
+    $userData["Login"]      = 'rcolli17'; // login
     $userData["Name"]       = 'prename name'; // prénom nom
     $userData["FirstName"]  = 'prename'; // prénom
     $userData["LastName"]   = 'name'; // nom
