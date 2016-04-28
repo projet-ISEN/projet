@@ -1,10 +1,11 @@
 div(
   layout='row'
   layout-align='center center'
+  layout-xs="column"
   style='min-height: 300px;'
   ng-cloak='')
-    md-content( flex="50" )
-        form(name='myForm' layout-padding )
+    md-content( flex="50" flex-xs="100" layout-padding)
+        form(name='myForm' )
 
             h3 Faites vos choix de club pour l'année prochaine
 
@@ -12,23 +13,29 @@ div(
                 label Premier choix
                 md-select(
                     name="choicOne"
-                    ng-model="choicOne"
+                    ng-model="choices[0]"
                     ng-disabled="!clubs"
                     ng-change="choosing()"
                     required )
-                    md-option( ng-repeat="club in clubs | orderBy: 'club_name'" 	values="club.club_id") {{club.club_name}}
+                    md-option(
+                        ng-repeat="club in clubs | orderBy: 'club_name' "
+                        ng-disabled="$index == choices[0]"
+                        ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
 
             md-input-container.md-block
                 label Deuxième choix
                 md-select(
-                    name="choiceTwo"
-                    ng-model="choiceTwo"
+                    name="choicesTwo"
+                    ng-model="choices[1]"
                     ng-disabled="!clubs"
                     ng-change="choosing()"
                     required)
-                    md-option( ng-repeat="club in clubs | orderBy: 'club_name'" values="club.club_id") {{club.club_name}}
+                    md-option(
+                        ng-repeat="club in clubs | orderBy: 'club_name'"
+                        ng-disabled="$index == choices[1]"
+                        ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
 
@@ -36,11 +43,14 @@ div(
                 label Troisième choix
                 md-select(
                     name="choiceThree"
-                    ng-model="choiceThree"
+                    ng-model="choices[2]"
                     ng-disabled="!clubs"
                     ng-change="choosing()"
                     required)
-                    md-option( ng-repeat="club in clubs | orderBy: 'club_name'" values="club.club_id") {{club.club_name}}
+                    md-option(
+                        ng-repeat="club in clubs  track by club.club_id | orderBy: 'club_name'"
+                        ng-disabled="$index == choices[2]"
+                        ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
 
@@ -49,7 +59,7 @@ div(
             md-button(ng-click='clearValue()' ng-disabled='!disabled' style='margin-right: 20px;') Sauvegarder
             md-button.md-primary(ng-click='save()' ng-disabled='myForm.$invalid' layout='' layout-align='center end') Annuler
 
-    md-content( flex="50" layout-padding )
+    md-content( flex="50" flex-xs="100" layout-padding )
         md-card
             md-card-title
                 md-card-title-text

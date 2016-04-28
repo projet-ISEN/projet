@@ -1,6 +1,8 @@
 angular.module 'app'
 .controller 'candidatureCtrl', ['$user', '$club', '$scope', ($user, $club, $scope)->
 
+  $scope.choices = []
+
   $scope.clearValue = ->
     $scope.myModel = undefined
 
@@ -10,8 +12,19 @@ angular.module 'app'
 
 
   $scope.choosing = ->
-    #for club in clubs
-    #if club.club_id == true
+    console.log $scope.choices
+    ###for club in $scope.clubs
+        club.hide = false
+
+    # Si le club fait partis des choix on l'enleve de la liste
+    for choice in $scope.choices
+        # Choice est un ID de CLUB
+
+        indice = $scope.clubs.indexOf( choice )
+        console.log indice
+        $scope.clubs[indice].hide = true
+    return###
+
 
 
   $scope.goCapisen = ->
