@@ -14,7 +14,7 @@ class User {
     public $user_firstname;
     public $user_name;
     public $user_mail;
-    public $is_evaluator;
+    public $is_administrator;
     public $phone;
 
     /**
@@ -29,7 +29,7 @@ class User {
         $this->user_firstname   = $cas_data['FirstName'];
         $this->user_name        = $cas_data['LastName'];
         $this->user_mail        = $cas_data['Mail'];
-        $this->is_evaluator     = ($cas_data['gidNumber'] == '1000')? 1 : 0;
+        $this->is_administrator    = ($cas_data['gidNumber'] = 0;//TODO... ???
         $this->phone            = $cas_data['Telephone'];
 
     }
@@ -75,8 +75,8 @@ class User {
         if( !$this->exist() ) {
 
             $req = Database::getInstance()->PDOInstance->prepare(
-                "INSERT INTO users (login, user_firstname, user_name, user_mail, is_evaluator, phone) ".
-                "VALUES (:login, :user_firstname, :user_name, :user_mail, :is_evaluator, :phone)"
+                "INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, phone) ".
+                "VALUES (:login, :user_firstname, :user_name, :user_mail, :is_administrator, :phone)"
             );
 
             return $req->execute($values);
@@ -85,7 +85,7 @@ class User {
         else {
             $req = Database::getInstance()->PDOInstance->prepare(
                 "UPDATE users SET user_firstname=:user_firstname, user_name=:user_name, ".
-                "user_mail=:user_mail, is_evaluator=:is_evaluator, phone=:phone WHERE login=:login"
+                "user_mail=:user_mail, is_administrator=:is_administrator, phone=:phone WHERE login=:login"
             );
             return $req->execute($values);
         }
