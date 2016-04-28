@@ -13,13 +13,9 @@ div(
                 label Premier choix
                 md-select(
                     name="choicOne"
-                    ng-model="choices[0]"
-                    ng-disabled="!clubs"
-                    ng-change="choosing()"
                     required )
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name' "
-                        ng-disabled="$index == choices[0]"
                         ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
@@ -28,13 +24,9 @@ div(
                 label Deuxième choix
                 md-select(
                     name="choicesTwo"
-                    ng-model="choices[1]"
-                    ng-disabled="!clubs"
-                    ng-change="choosing()"
                     required)
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
-                        ng-disabled="$index == choices[1]"
                         ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
@@ -49,7 +41,6 @@ div(
                     required)
                     md-option(
                         ng-repeat="club in clubs  track by club.club_id | orderBy: 'club_name'"
-                        ng-disabled="$index == choices[2]"
                         ng-value="$index") {{club.club_name}}
                 .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
                     div(ng-message='required') Required
