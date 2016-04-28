@@ -26,7 +26,7 @@ class Club
     }
 
     /**
-     * Renvoi la liste tout les clubs
+     * Renvoie la liste tout les clubs
      * STATIC
      */
     public static function getAll() {
@@ -34,22 +34,22 @@ class Club
     }
 
     /**
-     * Renvoi les informations d' 1 club
+     * Renvoie les informations d' 1 club
      * STATIC
      * @param $id
      */
-    public static function getOne( $id )
+    public static function getOne( $id_Club )
     {
-        $club = new \Models\Club($id);
+        $club = new \Models\Club($id_Club);
         $club->load();
         echo json_encode($club);
     }
 
     
-    public static function stat( $id )
+    public static function stat( $id_Club )
     {
         
-        $club = new \Models\Club($id);
+        $club = new \Models\Club($id_Club);
         
         echo json_encode( array(
         
@@ -91,11 +91,11 @@ class Club
      * STATIC
      * @param $id
      */
-    public static function update( $id ) {
+    public static function update( $id_Club ) {
 
         parse_str(file_get_contents("php://input"),$_PUT);
 
-        $club = new \Models\Club($id);
+        $club = new \Models\Club($id_Club);
         $club->load();
 
         // Pour toutes les modifs encoyées
@@ -117,9 +117,9 @@ class Club
      * Supprime un club existant
      * @param $id
      */
-    public static function delete( $id ) {
+    public static function delete( $id_Club ) {
 
-        $club = new \Models\Club($id);
+        $club = new \Models\Club($id_Club);
         if( $club->delete() ) {
             echo json_encode( array('err' => 'null') );
         }

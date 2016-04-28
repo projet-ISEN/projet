@@ -32,9 +32,9 @@ class Club {
      *
      * @param null $id
      */
-    public function __construct( $id = null ) {
+    public function __construct( $id_Club = null ) {
 
-        $this->club_id          = $id;
+        $this->club_id          = $id_Club;
         $this->login            = '';
         $this->club_name        = '';
         $this->club_description = '';
