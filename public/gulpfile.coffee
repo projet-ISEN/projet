@@ -30,8 +30,9 @@ gulp.task 'build',
 #------------------------------------------------------------------------------
 #           TASKS
 #------------------------------------------------------------------------------
+fs.exists 'build', (exists) ->
 
-fs.mkdirSync './build/'
+    unless exists then fs.mkdirSync 'build'
 
 # Transpile l'index.jade en HTML
 gulp.task 'render-index', ->

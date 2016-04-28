@@ -1,0 +1,12 @@
+div(layout='column', layout-align='center center', style='min-height: 300px;', ng-cloak='')
+  form(name='myForm')
+    p Note that invalid styling only applies if invalid and dirty
+    md-input-container.md-block
+      label Favorite Number
+      md-select(name="myModel" ng-model="myModel"  required)
+        md-option( ng-repeat="club in clubs | orderBy: 'club_name'" values="club.club_id") club.club_name
+      .errors(ng-messages='myForm.myModel.$error', ng-if='myForm.$dirty')
+        div(ng-message='required') Required
+    div(layout='row')
+      md-button(ng-click='clearValue()', ng-disabled='!disabled', style='margin-right: 20px;') Sauvegarder
+      md-button.md-primary(ng-click='save()', ng-disabled='myForm.$invalid', layout='', layout-align='center end') Annuler
