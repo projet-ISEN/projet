@@ -68,7 +68,10 @@ class Menu {
         $menu ='';
 
 
-        //$_SESSION["user"] -> login;
+
+        if($_SESSION["user"] -> is_administrator){
+
+        }
 
 
         echo json_encode($menu);
