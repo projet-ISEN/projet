@@ -8,9 +8,17 @@ angular.module 'app'
   $scope.save = ->
     alert 'Form was valid!'
 
+
+  $scope.choosing = ->
+    #for club in clubs
+    #if club.club_id == true
+
+
+  $scope.goCapisen = ->
+        alert "Prévenons Capisen !"
+
   $club.all().then (clubs)->
 
         $scope.clubs = clubs
         $scope.$apply
-
 ]
