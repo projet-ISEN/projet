@@ -29,7 +29,7 @@ class User {
         $this->user_firstname   = $cas_data['FirstName'];
         $this->user_name        = $cas_data['LastName'];
         $this->user_mail        = $cas_data['Mail'];
-        $this->is_administrator    = ($cas_data['gidNumber'] = 0;//TODO... ???
+        $this->is_administrator = 0;//TODO... ???
         $this->phone            = $cas_data['Telephone'];
 
     }
@@ -43,6 +43,16 @@ class User {
             ->fetchAll(\PDO::FETCH_NUM);
         return !empty($res);
     }
+
+
+    /**
+     * L'utilisateur est un evaluateur
+     * @return bool
+     */
+    public function isEvaluator() {
+
+    }
+
 
     public function load() {
 
