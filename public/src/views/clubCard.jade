@@ -1,11 +1,15 @@
-hmd-card
+md-card
     md-card-header
         md-card-header-text
           span.md-title {{ club.club_name }}
           span.md-subhead {{ club.stats.members }} membre
             span( ng-if="club.stats.members >=2" ) s
             
-    img.md-card-image(ng-src="images/{{club.club_id}}.jpg", alt='logo du club')
+    img.md-card-image( 
+        ng-src="images/{{club.club_id}}.jpg"
+        onerror="this.src='images/blank.jpg'"
+        alt='logo du club'
+        style="height: 15rem")
                
     md-card-title
         md-card-title-text
