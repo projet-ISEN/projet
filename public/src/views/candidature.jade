@@ -1,10 +1,10 @@
 div(layout='column', layout-align='center center', style='min-height: 300px;', ng-cloak='')
   form(name='myForm')
-    p Note that invalid styling only applies if invalid and dirty
+    p Candidature pour les clubs
     md-input-container.md-block
-      label Favorite Number
+      label Ton 1er choix
       md-select(name="myModel" ng-model="myModel"  required)
-        md-option( ng-repeat="club in clubs | orderBy: 'club_name'" values="club.club_id") club.club_name
+        md-option( ng-repeat="club in clubs | orderBy: 'club_name'" values="{{club.club_id}}") {{club.club_name}}
       .errors(ng-messages='myForm.myModel.$error', ng-if='myForm.$dirty')
         div(ng-message='required') Required
     div(layout='row')
