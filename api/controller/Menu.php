@@ -6,7 +6,7 @@
  * Time: 14:01
  */
 
-namespace Models;
+namespace Controllers;
 
 use API\Database;
 
