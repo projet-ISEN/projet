@@ -44,7 +44,7 @@ class Club {
     }
 
     /**
-     * Renvoi les informations de tout les clubs
+     * Renvoi les informations de tous les clubs
      * Ou d'un club si un ID est spécifié
      * @param null $id
      * @return null
@@ -59,6 +59,7 @@ class Club {
                 "SELECT club_id, club_name, club_description, club_mail, actif, login FROM club " .
                 "WHERE club_id='" . $id . "'"
             )[0];
+
         }
     }
 
