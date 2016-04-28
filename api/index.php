@@ -1,7 +1,7 @@
 <?php
 
     // Données de l'ENT
-    $userData["Login"]      = 'rcolli17'; // login
+    $userData["Login"]      = 'vrioua17'; // login
     $userData["Name"]       = 'prename name'; // prénom nom
     $userData["FirstName"]  = 'prename'; // prénom
     $userData["LastName"]   = 'name'; // nom
@@ -46,6 +46,12 @@ if (date("n")>7) $myYear++;
         $_SESSION['user']->save();
     }
 
+/*    $router->get(       '/year',        function() {
+         echo json_encode(array(
+            'currentYear' => $_SESSION['year']
+         ));
+    });*/
+
 /*================================================================
                             ROUTES
  ================================================================*/
@@ -58,11 +64,7 @@ if (date("n")>7) $myYear++;
  
     // Use controller user and method one
 
-    $router->get(       '/year',        function() {
-         echo json_encode(array(
-            'currentYear' => $_SESSION['year']
-         ));
-    });
+
 
     $router->get(       '/users/:id',   'User.get');
 
@@ -73,12 +75,16 @@ if (date("n")>7) $myYear++;
     $router->put(       '/club/:id',    'Club.update');
     $router->delete(    '/club/:id',    'Club.delete');
 
-    $router->get(       '/choices/:id', 'Choice.get'    );
-    $router->get(       '/choices',     'Choice.get'    );
+    $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
+    $router->get(       '/choices',     'Choice.getChoiceAll'    );
     $router->post(      '/choices',     'Choice.create' );
-    $router->put(       '/choices/:id', 'Choice.update' );
+    $router->put(       '/choices/:choice_number', 'Choice.update' );
+    $router->delete(    '/choices', 'Choice.deleteAll' );
 
-
+/*    $router->get(       '/choice',   function(){
+        $choice = new \Models\Choice();
+        $choice -> alreadyChoose();
+    });*/
     //Exemple de route particulière
     /*$router->get('club/:id-:nom', function($id, $nom) {
 
