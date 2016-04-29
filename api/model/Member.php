@@ -1,0 +1,68 @@
+<?php
+/**
+ * User: Vincent Riouallon
+ * Date: 29/04/2016
+ * Time: 14:00
+ */
+
+namespace Models;
+
+use \API\Database;
+use \ReflectionObject;
+
+/**
+ * Class Member
+ * @package Models
+ */
+class Member {
+
+    // Equivalent d'une collection JS, plus simple pour les modifier
+    // Tout les attributs doivent correspondre à la table correspondante
+    public $login;
+
+    /**
+     * Member constructor.
+     *
+     *
+     */
+    public function __construct( ) {
+
+        $this->login = $_SESSION['user']->login;
+
+    }
+
+
+    /**
+     * Check if the user is a member
+     * @return number
+     */
+    public function isAMemberOf($year = null, $club_id = null){
+            if(!isset($year)) $year =$_SESSION['year'];
+            $query = "SELECT count(*) FROM member WHERE login='".$this->login ."' AND school_year='".$year."' ORDER BY main_club";
+
+            if(isset($club)){
+                $query .= "AND club_id = '".$club_id."'";
+            }
+
+            $res = Database::getInstance()->PDOInstance->query($query);
+            return $res->fetchAll(\PDO::FETCH_NUM)[0][0];
+    }
+
+
+
+
+
+    /**
+     * Return the list of the club of the member
+     * @return array
+     */
+    public function ClubMembers($year = null){
+
+        if(!isset($year)) $year =$_SESSION['year'];
+        return Database::Select("SELECT club.club_name, club.club_id FROM club INNER JOIN member ON member.club_id = club.club_id WHERE member.login = '". $this->login."' AND school_year = '". $year."'");
+    }
+
+
+
+}
+?>
