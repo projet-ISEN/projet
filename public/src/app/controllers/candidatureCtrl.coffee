@@ -1,37 +1,44 @@
 angular.module 'app'
-.controller 'candidatureCtrl', ['$user', '$club', '$scope', ($user, $club, $scope)->
+.controller 'candidatureCtrl', ['$user'
+    '$club'
+    '$scope'
+    '$http'
+    ($user, $club, $scope, $http)->
 
-  $scope.choices = []
+        $scope.choices = []
 
-  $scope.clearValue = ->
-    $scope.myModel = undefined
+        # Delete all choices
+        $scope.clearValue = ->
 
-  ###TODO###
-  $scope.save = ->
-    alert 'Form was valid!'
+            $scope.choices = []
 
+        # Send choices
+        $scope.save = ->
 
-  $scope.choosing = ->
-    console.log $scope.choices
-    ###for club in $scope.clubs
-        club.hide = false
+            $http.post "../../api/choices", $scope.choices
 
-    # Si le club fait partis des choix on l'enleve de la liste
-    for choice in $scope.choices
-        # Choice est un ID de CLUB
+            .then (res)->          # On success
+                return res.data
+            , (err)->              # On error
+                console.log err if err?
+                return null
 
-        indice = $scope.clubs.indexOf( choice )
-        console.log indice
-        $scope.clubs[indice].hide = true
-    return###
+        # This club is already choose
+        $scope.isDisabled = (club)->
 
+            club.hide = ($scope.choices.indexOf(club) != -1)
 
+            if club.club_name == 'Capisen'
+                club.hide = true
 
-  $scope.goCapisen = ->
-        alert "Prévenons Capisen !"
+        # Send message to Capisen
+        $scope.goCapisen = ->
+            alert "Prévenons Capisen !"
 
-  $club.all().then (clubs)->
+        # Load select input with clubs
+        $club.all().then (clubs)->
 
-        $scope.clubs = clubs
-        $scope.$apply
+            $scope.clubs = clubs
+
+            $scope.$apply
 ]

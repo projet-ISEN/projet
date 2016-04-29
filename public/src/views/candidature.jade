@@ -4,51 +4,63 @@ div(
   layout-xs="column"
   style='min-height: 300px;'
   ng-cloak='')
-    md-content( flex="50" flex-xs="100" layout-padding)
-        form(name='myForm' )
+    md-content( flex="50" flex-xs="100" layout-padding )
+        form( name='candidature' ng-submit="save()")
 
             h3 Faites vos choix de club pour l'année prochaine
 
             md-input-container.md-block
                 label Premier choix
                 md-select(
-                    name="choicOne"
+                    name="choices[0]"
+                    ng-model="choices[0]"
+                    ng-disabled="!clubs"
                     required )
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name' "
-                        ng-value="$index") {{club.club_name}}
-                .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
-                    div(ng-message='required') Required
+                        ng-disabled="isDisabled(club)"
+                        ng-value="club" ) {{club.club_name}}
+                //div( ng-messages="candidature.choice[0].$error" )
+                    div( ng-message="required" )
+                        | Requis
 
             md-input-container.md-block
                 label Deuxième choix
                 md-select(
-                    name="choicesTwo"
+                    name='choices[1]'
+                    ng-model='choices[1]'
+                    ng-disabled='!clubs'
                     required)
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
-                        ng-value="$index") {{club.club_name}}
-                .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
-                    div(ng-message='required') Required
+                        ng-disabled='isDisabled(club)'
+                        ng-value='club') {{club.club_name}}
+                //div( ng-messages="candidature.choices[1].$error" )
+                    div( ng-message="required" )
+                        | Requis
 
             md-input-container.md-block
                 label Troisième choix
                 md-select(
-                    name="choiceThree"
-                    ng-model="choices[2]"
-                    ng-disabled="!clubs"
-                    ng-change="choosing()"
+                    name='choices[2]'
+                    ng-model='choices[2]'
+                    ng-disabled='!clubs'
                     required)
                     md-option(
-                        ng-repeat="club in clubs  track by club.club_id | orderBy: 'club_name'"
-                        ng-value="$index") {{club.club_name}}
-                .errors(ng-messages='myForm.myModel.$error' ng-if='myForm.$dirty')
-                    div(ng-message='required') Required
+                        ng-repeat="club in clubs | orderBy: 'club_name'"
+                        ng-disabled='isDisabled(club)'
+                        ng-value='club' ) {{club.club_name}}
+                //div( ng-messages="candidature.choices[2].$error" )
+                    div( ng-message="required" )
+                        | Requis
 
 
         div(layout='row')
-            md-button(ng-click='clearValue()' ng-disabled='!disabled' style='margin-right: 20px;') Sauvegarder
-            md-button.md-primary(ng-click='save()' ng-disabled='myForm.$invalid' layout='' layout-align='center end') Annuler
+            md-button( type='submit' ng-click='save()' ) Sauvegarder
+            md-button.md-primary(
+                ng-click='clearValue()'
+                layout=''
+                layout-align='center end') Annuler
 
     md-content( flex="50" flex-xs="100" layout-padding )
         md-card
