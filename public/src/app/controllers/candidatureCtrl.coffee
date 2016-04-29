@@ -1,44 +1,44 @@
 angular.module 'app'
-.controller 'candidatureCtrl', ['$user'
+.controller 'candidatureCtrl', [ '$user'
     '$club'
+    '$mdToast'
     '$scope'
     '$http'
-    ($user, $club, $scope, $http)->
+    ($user, $club, $mdToast, $scope, $http)->
 
         $scope.choices = []
 
         # Delete all choices
         $scope.clearValue = ->
-
             $scope.choices = []
 
         # This club is already choose
         $scope.isDisabled = (club)->
-
             club.hide = ($scope.choices.indexOf(club) != -1)
-
-            if club.club_name == 'Capisen'
-                club.hide = true
 
         # Send choices
         $scope.save = ->
 
-            data =
-                "1": $scope.choices[0]
-                "2": $scope.choices[1]
-                "3": $scope.choices[2]
-
             $http
+                method: 'POST'
                 url: "../../api/choices"
-                data: data
                 headers:
                     'Content-Type': 'application/json'
+                data:
+                    choices:
+                        "1": $scope.choices[0].club_id
+                        "2": $scope.choices[1].club_id
+                        "3": $scope.choices[2].club_id
+            .then (res)->
+                unless res.err?
+                    return $mdToast.showSimple 'Vos choix ont été sauvegardés'
 
-            .then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
+                console.log res.err
+                return $mdToast.showSimple "Une erreur est survenue"
+
+            , (err)->
+                    console.log err
+                    return $mdToast.showSimple "impossible de contacter le serveur"
 
         # Send message to Capisen
         $scope.goCapisen = ->
@@ -48,6 +48,9 @@ angular.module 'app'
         $club.all().then (clubs)->
 
             $scope.clubs = clubs
+
+            $scope.clubs = $scope.clubs.filter (elem, index)->
+                return elem.club_name != 'Capisen'
 
             $scope.$apply
 ]

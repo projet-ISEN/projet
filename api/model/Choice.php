@@ -36,7 +36,7 @@ class Choice {
      * Renvoi un boolean en fonction de si les choix ont été fait ou non
      */
 
-    public static function alreadyChoose() {
+    public function alreadyChoose() {
         $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM choice WHERE login='" . $this->login . "'")
             ->fetchAll(\PDO::FETCH_NUM)[0][0];
         return ($res == 3);
@@ -69,21 +69,21 @@ class Choice {
      * Ajoute les 3 choix de la personne postulante dans une club dans la base de donnée
      *param $choices
      */
-    public static function create($choices) {
+    public function create($choices) {
 
-        if( alreadyChoose() ){ // Il y a déja des choix
-            return array('err' => 'Il existe déja des choix, vous ne pouvez que les modifier');
+        if( $this->alreadyChoose() ){ // Il y a déja des choix
+            return ['err' => 'Il existe déja des choix, vous ne pouvez que les modifier' ];
         }
         else {
 
             // Check les tricheurs
             if( count($choices) != 3 )
             {
-                return array( 'err' => '3 choix obligatoirement ' . count($choices) . ' envoyés' );
+                return [ 'err' => '3 choix obligatoirement ' . count($choices) . ' envoyés' ];
             }
-            if( $choices[0] == $choices[1] OR $choices[1] == $choices[2] OR $choices[0] == $choices[2] )
+            if( $choices[1] == $choices[2] OR $choices[2] == $choices[3] OR $choices[1] == $choices[3] )
             {
-                return array( 'err' => 'Les choix doivent être différents' );
+                return [ 'err' => 'Les choix doivent être différents' ];
             }
 
             $req = Database::getInstance()->PDOInstance->prepare("INSERT INTO choice (login, club_id, choice_number) ".
@@ -101,13 +101,11 @@ class Choice {
                 }
             }
 
-            return $status;
-
             if($status) {
-                return array( 'err' => 'null' );
+                return [ 'err' => 'null' ];
             }
             else {
-                return array( 'err' => 'Impossible de sauvegarder vos choix' );
+                return [ 'err' => 'Impossible de sauvegarder vos choix' ];
             }
         }
     }

@@ -63,17 +63,18 @@ class Club
      */
     public static function create() {
 
-        // if evaluator or admin
+        $post = json_decode( file_get_contents("php://input"), true);
 
-        if( empty($_POST['club_name']) ) {
+        // if evaluator or admin
+        if( empty($post['club_name']) ) {
             echo json_encode( array('err' => 'Un nom de club est nécéssaire') );
             return;
         }
         
         $club = new \Models\Club();
-        $club->club_name        = $_POST['club_name'];
-        $club->club_description = empty($_POST['club_description']) ? '' : $_POST['club_description'];
-        $club->club_mail        = empty($_POST['club_mail'])        ? '' : $_POST['club_mail'] ;
+        $club->club_name        = $post['club_name'];
+        $club->club_description = empty($post['club_description']) ? '' : $post['club_description'];
+        $club->club_mail        = empty($post['club_mail'])        ? '' : $post['club_mail'] ;
         $club->login            = $_SESSION['user']->login;
         $club->actif            = 1;
         if( $club->save() ) {

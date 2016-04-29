@@ -50,11 +50,19 @@ class Choice
      * STATIC
      */
     public static function create() {
-        if( $_POST['choices'] ) {
-            $choices = json_decode( $_POST['choices'], true );//récupére les choix émis en POST
-            echo \Models\Choice::create($choices);
+        // Get angular POST variables
+        $post = json_decode( file_get_contents("php://input"), true);
+        if( empty($post['choices']) ) {
+
+            echo json_encode([
+                'err' => 'Aucune données reçue'
+            ]);
         }
-        var_dump( $_POST );
+        else {
+            $choices = json_decode( $post['choices'], true );//récupére les choix émis en POST
+            $tmp = new \Models\Choice();
+            echo json_encode( $tmp->create($choices) );
+        }
     }
 
     /**
@@ -73,7 +81,4 @@ class Choice
     public static function deleteAll() {
         echo json_encode (\Models\Choice::deleteAll());
     }
-
-
-
 }

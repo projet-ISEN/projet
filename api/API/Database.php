@@ -8,6 +8,8 @@
 
     namespace API;
 
+    use \PDOException;
+
     /**
      * Fournit une connexion à la base de donnée
      * Class Database
@@ -36,9 +38,12 @@
 
                 $this->PDOInstance = new \PDO( $dsn, $user, $pass, $options );
             }
-            catch( \PDOException $e ) {
+            catch( PDOException $e ) {
 
-                throw new \Exception($e->getMessage());
+                echo json_encode([
+                    'err' => $e
+                ]);
+                die();
             }
         }
 
