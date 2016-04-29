@@ -35,7 +35,7 @@ class User {
     }
 
     /**
-     * Es ce que l'utilisateur existe dans la base?
+     * the user exist in database or not
      * @return bool
      */
     public function exist() {
@@ -46,7 +46,7 @@ class User {
 
 
     /**
-     * L'utilisateur est un evaluateur
+     * The user return if he is an evaluator
      * @return bool
      */
     public function isEvaluator() {//TODO add the year
@@ -68,15 +68,15 @@ class User {
     }
 
     /**
-     * Sauvegarde toutes les modifications de l'USER dans la base de donnée
-     * Le crée s'il n'y est pas encore
+     * Save all the modifications of the USER in the database
+     * If not it create it
      * @return bool
      */
     public function save() {
 
         $values = array();
 
-        // Récupère les attributs de classe
+        // Take back the class attributs
         $props = (new ReflectionObject($this))->getProperties();
         foreach ($props as $prop) {
             $k = $prop->name;
@@ -93,7 +93,7 @@ class User {
 
             return $req->execute($values);
         }
-        // Mise à jour
+        // Update
         else {
             $req = Database::getInstance()->PDOInstance->prepare(
                 "UPDATE users SET user_firstname=:user_firstname, user_name=:user_name, ".
