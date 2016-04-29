@@ -24,7 +24,7 @@ class User {
      */
     public function __construct( $cas_data ) {
 
-        // Champs de la base de donnée
+        // Database fields
         $this->login            = $cas_data['Login'];
         $this->user_firstname   = $cas_data['FirstName'];
         $this->user_name        = $cas_data['LastName'];
@@ -47,10 +47,11 @@ class User {
 
     /**
      * The user return if he is an evaluator
+     *and only of an active club (this mean his evaluator this year)
      * @return bool
      */
-    public function isEvaluator() {//TODO add the year
-        $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM club WHERE login='" . $this->login . "'")
+    public function isEvaluator() {
+        $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM club WHERE login='" . $this->login . "' AND actif = 1 ")
             ->fetchAll(\PDO::FETCH_NUM)[0][0];
         return ($res >= 1);
     }
