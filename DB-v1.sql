@@ -339,6 +339,18 @@ INSERT INTO role (id_role, role) VALUES
   (UUID(), 'membre')
 ;
 
+--
+-- Contenu de la table `choice`
+--
+
+INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
+('baboli17', '6d748391-0de7-11e6-9aa9-448a5b42bfcd', 3),
+('baboli17', '6d74861b-0de7-11e6-9aa9-448a5b42bfcd', 2),
+('baboli17', '6d7487b2-0de7-11e6-9aa9-448a5b42bfcd', 1),
+('qduche17', '6d746b50-0de7-11e6-9aa9-448a5b42bfcd', 2),
+('qduche17', '6d7485ce-0de7-11e6-9aa9-448a5b42bfcd', 1),
+('qduche17', '6d7488a5-0de7-11e6-9aa9-448a5b42bfcd', 3);
+
 
 
 INSERT INTO projet (project_id, project_type, project_description) VALUES
