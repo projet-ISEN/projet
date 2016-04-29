@@ -8,7 +8,6 @@
 namespace Models;
 
 use \API\Database;
-use \ReflectionObject;
 
 /**
  * Class Menu
@@ -19,7 +18,7 @@ class Menu {
     // Equivalent d'une collection JS, plus simple pour les modifier
     // Tout les attributs doivent correspondre à la table correspondante
 
-    public $login;
+
 
 
     /**
@@ -27,14 +26,14 @@ class Menu {
      */
     public function __construct( ) {
 
-        $this->login            =  $_SESSION["user"] -> login;
+
 
 
     }
 
     public static function addMenuUserNonMember() {
         return [
-                    'BDE' => [
+                    'notMember' => [
                     'name' => '',
                     'expanded' => true,
                     'values' => [
@@ -62,10 +61,10 @@ class Menu {
                 ];
     }
 
-    public static function addMenuUserMember() {
+    public static function addMenuUserMember($club) {
         return [
-                    'Club' => [
-                    'name' => 'Club',
+                    $club => [
+                    'name' => $club,
                     'expanded' => false,
                     'values' => [
                             [
@@ -106,10 +105,10 @@ class Menu {
                 ];
     }
 
-    public static function addMenuPresident() {
+    public static function addMenuPresident($club) {
         return [
-                    'Pres' => [
-                    'name' => 'Président de club',//TODO add club name
+                    'Pres'.$club => [
+                    'name' => ' Administration de "' . $club.'"',//TODO add club name
                     'expanded' => false,
                     'values' => [
                             [
@@ -154,9 +153,9 @@ class Menu {
 
     public static function addMenuCapisen() {
         return [
-                    'Capisen' => [
+                    'Capisenadministration' => [
                     'name' => 'Capisen',
-                    'expanded' => true,
+                    'expanded' => false,
                     'values' => [
                             [
                                 "link" => '',
@@ -171,9 +170,9 @@ class Menu {
 
     public static function addMenuBDE() {
         return [
-                    'BDE' => [
-                    'name' => 'BDE',
-                    'expanded' => true,
+                    'BDEadministration' => [
+                    'name' => 'Administration des Clubs',
+                    'expanded' => false,
                     'values' => [
                             [
                                 "link" => '',
@@ -240,6 +239,9 @@ class Menu {
                 ];
     }
 
+
+
+
     public static function jsonMenu() {
 
         $menu = [];
@@ -250,17 +252,48 @@ class Menu {
             if($_SESSION["user"] -> is_administrator){
                  $menu = array_merge($menu, self::addMenuAdministrator());
             }
-        }else{
+        }else{//If it is a member
             $menu = array_merge($menu, self::addMenuUserNonMember());
+
+            $member = new Member();
+            if($i = $member->isAMemberOf()){//user member menu
+                $list = $member->ClubMembers();
+                for($i; $i > 0 ; $i--){
+                    $name = $list[$i -1] -> club_name;
+                    $menu = array_merge($menu, self::addMenuUserMember($name));
+                }
+
+                $club = new Club();
+                $role = new Role();
+
+                for($i = $member->isAMemberOf(); $i > 0 ; $i--){//si bde ou capisen CAS SPE
+
+
+                       $club_id = $list[$i -1] -> club_id;
+
+                       $role_id = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
+
+                       if( $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name));//if president we add the menu
+
+
+                   if($list[$i -1] -> club_name == $_SESSION["BDE"]){
+
+                       if($role -> ID2Role($role_id) == $_SESSION["tresorier"] || $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuBDE());
+
+                   }
+                    if($list[$i -1] -> club_name == $_SESSION["Capisen"]){
+                       if($role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuCapisen());
+                   }
+                }
+
+            }
+
+
 
 
 
         }
-
-
-
-
-        echo json_encode($menu);
+        return $menu;
 
     }
 
