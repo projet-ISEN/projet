@@ -26,7 +26,7 @@ drop table if exists projet;
 
 drop table if exists recommendation;
 
-drop table if exists rempli;
+drop table if exists role_link;
 
 drop table if exists reunions;
 
@@ -195,9 +195,9 @@ create table recommendation
 engine = innodb;
 
 /*==============================================================*/
-/* Table : rempli                                               */
+/* Table : role_link                                            */
 /*==============================================================*/
-create table rempli
+create table role_link
 (
    club_id              char(36) not null,
    login                char(8) not null,
@@ -309,10 +309,10 @@ alter table recommendation add constraint fk_recommendation foreign key (club_id
 alter table recommendation add constraint fk_recommendation2 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli foreign key (club_id, login, school_year)
+alter table role_link add constraint fk_role_link foreign key (club_id, login, school_year)
       references member (club_id, login, school_year) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli2 foreign key (id_role)
+alter table role_link add constraint fk_role_link2 foreign key (id_role)
       references role (id_role) on delete restrict on update restrict;
 
 alter table reunions add constraint fk_association_16 foreign key (club_id)
@@ -360,6 +360,27 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
 
 
 
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `phone`) VALUES
+('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, NULL),
+('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, NULL),
+('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, NULL),
+('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, NULL),
+('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
+('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, NULL),
+('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
+('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
+('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
+('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
+('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL),
+('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, NULL);
+
+
+
 INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif) VALUES
   (UUID(), 'rcolli17', 'Don du sang', '', '', 1),
   (UUID(), 'rcolli17', 'Soutien Harteloire', '', '', 1),
@@ -368,13 +389,13 @@ INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif)
   (UUID(), 'rcolli17', 'Asso. sociale A.F.E.V.', '', '', 1),
   (UUID(), 'rcolli17', 'Bureau des sports', '', '', 1),
   (UUID(), 'rcolli17', 'Gala', '', '', 1),
-  (UUID(), 'rcolli17', 'Bureau des élèves', '', '', 1),
+  (UUID(), 'vrioua17', 'Bureau des élèves', '', '', 1),
   (UUID(), 'rcolli17', 'Club foyer', '', '', 1),
   (UUID(), 'rcolli17', 'Club musique', '', '', 1),
   (UUID(), 'rcolli17', 'Intégration', '', '', 1),
   (UUID(), 'rcolli17', 'Capisen', '', '', 1),
   (UUID(), 'rcolli17', 'Digital Design', '', '', 1),
-  (UUID(), 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
+  (UUID(), 'vrioua17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
   (UUID(), 'rcolli17', 'Web TV ISEN', '', '', 1),
   (UUID(), 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
   (UUID(), 'rcolli17', 'Bureau du développement durable', '', '', 1),
@@ -394,22 +415,34 @@ INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif)
   (UUID(), 'rcolli17', 'Clubs externes', '', '', 1)
 ;
 
+
 --
--- Contenu de la table `users`
+-- Contenu de la table `choice`
 --
 
-INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `phone`) VALUES
-('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, NULL),
-('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, NULL),
-('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, NULL),
-('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, NULL),
-('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
-('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, NULL),
-('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
-('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
-('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
-('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL);
+INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 1),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 2),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Club Elec"), 3),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 1),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 2),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Moviezen"), 3);
 
+
+--
+-- Contenu de la table `member`
+--
+
+INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'fduboi17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'pverba17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'qduche17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'gymorv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'mgoanv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 0, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'tcouss17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'ftoque17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL);
 
 
 

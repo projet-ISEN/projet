@@ -35,8 +35,8 @@ class Menu {
     public static function addMenuUserNonMember() {
         return [
                     'BDE' => [
-                    'name' => 'BDE',
-                    'expanded' => false,
+                    'name' => '',
+                    'expanded' => true,
                     'values' => [
                             [
                                 "link" => '',
@@ -64,8 +64,8 @@ class Menu {
 
     public static function addMenuUserMember() {
         return [
-                    'BDE' => [
-                    'name' => 'BDE',
+                    'Club' => [
+                    'name' => 'Club',
                     'expanded' => false,
                     'values' => [
                             [
@@ -108,7 +108,7 @@ class Menu {
 
     public static function addMenuPresident() {
         return [
-                    'Président de club' => [
+                    'Pres' => [
                     'name' => 'Président de club',//TODO add club name
                     'expanded' => false,
                     'values' => [
@@ -250,6 +250,11 @@ class Menu {
             if($_SESSION["user"] -> is_administrator){
                  $menu = array_merge($menu, self::addMenuAdministrator());
             }
+        }else{
+            $menu = array_merge($menu, self::addMenuUserNonMember());
+
+
+
         }
 
 
