@@ -27,6 +27,9 @@ class Menu
         $this->params = $params;
     }
 
+    public static function jsonMenu() {
 
+        \Models\Menu::jsonMenu();
+    }
 
 }
