@@ -64,13 +64,14 @@ class Club {
     }
 
     /**
-     * Return the number of member in the club
+     * Return the number of member in the club and
+     *escape the member as second club
      *
      * @param currentYear $year
      * @return null
      */
-    public function numberOfMembers($year = $_SESSION['user']) {
-        
+    public function numberOfMembers($year = null) {
+        if($year) $year =$_SESSION['user'];
         $res = Database::getInstance()->PDOInstance->query(
             "SELECT count(*) FROM member WHERE club_id='".
             $this->club_id ."' AND school_year=".$year." AND main_club='1'");
