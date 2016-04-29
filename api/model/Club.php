@@ -63,12 +63,17 @@ class Club {
         }
     }
 
-    
-    public function numberOfMembers() {
+    /**
+     * Return the number of member in the club
+     *
+     * @param currentYear $year
+     * @return null
+     */
+    public function numberOfMembers($year = $_SESSION['user']) {
         
         $res = Database::getInstance()->PDOInstance->query(
             "SELECT count(*) FROM member WHERE club_id='".
-            $this->club_id ."' AND school_year='2016' AND main_club='1'");
+            $this->club_id ."' AND school_year=."$year". AND main_club='1'");
         return $res->fetchAll(\PDO::FETCH_NUM)[0][0];
         
     }
