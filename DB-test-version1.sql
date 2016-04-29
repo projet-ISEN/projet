@@ -376,7 +376,8 @@ INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_ad
 ('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
 ('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
 ('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
-('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL);
+('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL),
+('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, NULL);
 
 
 
@@ -423,9 +424,9 @@ INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
 ('qduche17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 1),
 ('qduche17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 2),
 ('qduche17', (SELECT club_id FROM club WHERE club.club_name="Club Elec"), 3),
-('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 1),
-('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 2),
-('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Moviezen"), 3);
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 1),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 2),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Moviezen"), 3);
 
 
 --
