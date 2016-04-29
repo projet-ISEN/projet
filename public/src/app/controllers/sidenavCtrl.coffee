@@ -1,10 +1,17 @@
 angular.module("app").controller 'sidenavCtrl', [
   '$scope'
   '$mdSidenav'
-  ($scope, $mdSidenav) ->
+  '$menu'
+  ($scope, $mdSidenav, $menu) ->
     
+    $menu.myMenu().then (menu)->
 
-    $scope.menu = {
+        $scope.menu = menu
+        $scope.$apply
+
+
+]
+###    $scope.menu = {
         withoutclub : {
             name : ''
             expanded : true
@@ -80,5 +87,4 @@ angular.module("app").controller 'sidenavCtrl', [
               }
         		]
         }
-    }
-]
+    }###
