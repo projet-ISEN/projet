@@ -49,8 +49,10 @@ class User {
      * L'utilisateur est un evaluateur
      * @return bool
      */
-    public function isEvaluator() {
-
+    public function isEvaluator() {//TODO add the year
+        $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM club WHERE login='" . $this->login . "'")
+            ->fetchAll(\PDO::FETCH_NUM)[0][0];
+        return ($res >= 1);
     }
 
 

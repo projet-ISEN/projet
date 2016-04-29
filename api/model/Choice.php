@@ -36,7 +36,7 @@ class Choice {
      * Renvoi un boolean en fonction de si les choix ont été fait ou non
      */
 
-    public function alreadyChoose() {
+    public static function alreadyChoose() {
         $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM choice WHERE login='" . $this->login . "'")
             ->fetchAll(\PDO::FETCH_NUM)[0][0];
         return ($res == 3);

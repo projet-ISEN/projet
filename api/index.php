@@ -1,7 +1,7 @@
 <?php
 
     // Données de l'ENT
-    $userData["Login"]      = 'vrioua17'; // login
+    $userData["Login"]      = 'rcolli17'; // login
     $userData["Name"]       = 'prename name'; // prénom nom
     $userData["FirstName"]  = 'prename'; // prénom
     $userData["LastName"]   = 'name'; // nom
@@ -80,6 +80,8 @@ if (date("n")>7) $myYear++;
     $router->post(      '/choices',     'Choice.create' );
     $router->put(       '/choices/:choice_number', 'Choice.update' );
     $router->delete(    '/choices', 'Choice.deleteAll' );
+
+    $router->get(       '/menu', 'Menu.jsonMenu'    );
 
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
