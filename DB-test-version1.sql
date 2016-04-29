@@ -120,7 +120,7 @@ create table member
    id_projet_club       char(36),
    project_id           char(36) not null,
    main_club            bool not null,
-   mumber_mark          float,
+   member_mark          float,
    ex_member_not_wanted bool,
    recommandation       bool,
    project_validation   bool,
