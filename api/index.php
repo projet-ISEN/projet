@@ -1,7 +1,24 @@
 <?php
 
+/*================================================================
+                        Global Variable
+ ================================================================*/
+
+    $_SESSION['president'] = "président";
+    $_SESSION['vice-president'] = "vice-président";
+    $_SESSION['tresorier'] = "trésorier";
+    $_SESSION['secrétaire'] = "secrétaire";
+
+    $_SESSION['BDE'] = "Bureau des élèves";
+    $_SESSION['Capisen'] = "Capisen";//La junior entreprise
+
+
+
+
+
+
     // Données de l'ENT
-    $userData["Login"]      = 'rcolli17'; // login
+    $userData["Login"]      = 'gbiann17'; // login
     $userData["Name"]       = 'prename name'; // prénom nom
     $userData["FirstName"]  = 'prename'; // prénom
     $userData["LastName"]   = 'name'; // nom
