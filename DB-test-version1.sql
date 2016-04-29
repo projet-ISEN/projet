@@ -373,6 +373,7 @@ INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_ad
 ('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
 ('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, NULL),
 ('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
+('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
 ('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
 ('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
 ('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL);
@@ -414,21 +415,33 @@ INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif)
 ;
 
 
+--
+-- Contenu de la table `choice`
+--
+
+INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 1),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 2),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Club Elec"), 3),
+('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 1),
+('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 2),
+('ejoly017', (SELECT club_id FROM club WHERE club.club_name="Moviezen"), 3);
+
 
 --
 -- Contenu de la table `member`
 --
 
 INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
-(SELECT club_id FROM club WHERE club.club_name="Bureau des élèves", 'fduboi17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Bureau des élèves", 'pverba17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR+", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Bureau des élèves", 'qduche17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PA", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Capisen", 'gymorv17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PA", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Capisen", 'mgoanv17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR+", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Club Elec", 'gbiann17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR", 0, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Club Elec", 'tcouss17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Moviezen", 'ftoque17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR+", 1, NULL, NULL, NULL, NULL, NULL),
-(SELECT club_id FROM club WHERE club.club_name="Moviezen", 'gbiann17', 2016, NULL, SELECT project_id FROM projet WHERE project_type="PR", 1, NULL, NULL, NULL, NULL, NULL);
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'fduboi17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'pverba17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'qduche17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'gymorv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'mgoanv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 0, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'tcouss17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'ftoque17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL);
 
 
 
