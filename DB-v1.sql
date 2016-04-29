@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  29/04/2016 10:46:35                      */
+/* Date de création :  29/04/2016 11:16:24                      */
 /*==============================================================*/
 
 
@@ -26,11 +26,11 @@ drop table if exists projet;
 
 drop table if exists recommendation;
 
-drop table if exists rempli;
-
 drop table if exists reunions;
 
 drop table if exists role;
+
+drop table if exists role_link;
 
 drop table if exists users;
 
@@ -119,7 +119,7 @@ create table member
    id_projet_club       char(36),
    project_id           char(36) not null,
    main_club            bool not null,
-   mumber_mark          float,
+   member_mark          float,
    ex_member_not_wanted bool,
    recommandation       bool,
    project_validation   bool,
@@ -194,19 +194,6 @@ create table recommendation
 engine = innodb;
 
 /*==============================================================*/
-/* Table : rempli                                               */
-/*==============================================================*/
-create table rempli
-(
-   club_id              char(36) not null,
-   login                char(8) not null,
-   school_year          int not null,
-   id_role              char(36) not null,
-   primary key (club_id, login, school_year, id_role)
-)
-engine = innodb;
-
-/*==============================================================*/
 /* Table : reunions                                             */
 /*==============================================================*/
 create table reunions
@@ -229,6 +216,19 @@ create table role
    id_role              char(36) not null,
    role                 char(40) not null,
    primary key (id_role)
+)
+engine = innodb;
+
+/*==============================================================*/
+/* Table : role_link                                            */
+/*==============================================================*/
+create table role_link
+(
+   club_id              char(36) not null,
+   login                char(8) not null,
+   school_year          int not null,
+   id_role              char(36) not null,
+   primary key (club_id, login, school_year, id_role)
 )
 engine = innodb;
 
@@ -308,14 +308,15 @@ alter table recommendation add constraint fk_recommendation foreign key (club_id
 alter table recommendation add constraint fk_recommendation2 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli foreign key (club_id, login, school_year)
-      references member (club_id, login, school_year) on delete restrict on update restrict;
-
-alter table rempli add constraint fk_rempli2 foreign key (id_role)
-      references role (id_role) on delete restrict on update restrict;
-
 alter table reunions add constraint fk_association_16 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
+
+alter table role_link add constraint fk_role_link foreign key (club_id, login, school_year)
+      references member (club_id, login, school_year) on delete restrict on update restrict;
+
+alter table role_link add constraint fk_role_link2 foreign key (id_role)
+      references role (id_role) on delete restrict on update restrict;
+
 
 
 

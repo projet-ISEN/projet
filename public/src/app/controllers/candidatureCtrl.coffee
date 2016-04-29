@@ -12,17 +12,6 @@ angular.module 'app'
 
             $scope.choices = []
 
-        # Send choices
-        $scope.save = ->
-
-            $http.post "../../api/choices", $scope.choices
-
-            .then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
-
         # This club is already choose
         $scope.isDisabled = (club)->
 
@@ -30,6 +19,26 @@ angular.module 'app'
 
             if club.club_name == 'Capisen'
                 club.hide = true
+
+        # Send choices
+        $scope.save = ->
+
+            data =
+                "1": $scope.choices[0]
+                "2": $scope.choices[1]
+                "3": $scope.choices[2]
+
+            $http
+                url: "../../api/choices"
+                data: data
+                headers:
+                    'Content-Type': 'application/json'
+
+            .then (res)->          # On success
+                return res.data
+            , (err)->              # On error
+                console.log err if err?
+                return null
 
         # Send message to Capisen
         $scope.goCapisen = ->

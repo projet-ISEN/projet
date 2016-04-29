@@ -50,8 +50,11 @@ class Choice
      * STATIC
      */
     public static function create() {
-        $choices = json_decode( $_POST['choices'], true );//récupére les choix émis en POST
-        echo \Models\Choice::create($choices);
+        if( $_POST['choices'] ) {
+            $choices = json_decode( $_POST['choices'], true );//récupére les choix émis en POST
+            echo \Models\Choice::create($choices);
+        }
+        var_dump( $_POST );
     }
 
     /**
