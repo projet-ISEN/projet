@@ -335,6 +335,22 @@ INSERT INTO role (id_role, role) VALUES
 ;
 
 
+--
+-- Contenu de la table `member`
+--
+
+INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
+('6d748570-0de7-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, NULL, '6d71691a-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d748570-0de7-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, NULL, '6d714a22-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d748570-0de7-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, NULL, '6d716a63-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d7486b1-0de7-11e6-9aa9-448a5b42bfcd', 'gymorv17', 2016, NULL, '6d716a63-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d7486b1-0de7-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, NULL, '6d71691a-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d748747-0de7-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '6d71691a-0de7-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
+('6d748747-0de7-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, NULL, '6d71691a-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d7487ff-0de7-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, NULL, '6d714a22-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('6d7487ff-0de7-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '6d71691a-0de7-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL);
+
+
 
 INSERT INTO projet (project_id, project_type, project_description) VALUES
   (UUID(), 'PR+', '{ "title": "Projet à responsabilité +",
