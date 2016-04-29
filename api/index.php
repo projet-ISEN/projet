@@ -81,6 +81,8 @@ if (date("n")>7) $myYear++;
     $router->put(       '/choices/:choice_number', 'Choice.update' );
     $router->delete(    '/choices', 'Choice.deleteAll' );
 
+    $router->get(       '/menu', 'Menu.jsonMenu'    );
+
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
         $choice -> alreadyChoose();
