@@ -326,11 +326,6 @@ alter table reunions add constraint fk_association_16 foreign key (club_id)
 INSERT INTO year (school_year) VALUES (2016);
 
 
-INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, phone) VALUES
-  ('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 0, NULL ),
-  ('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL );
-
-
 INSERT INTO role (id_role, role) VALUES
   (UUID(), 'président'),
   (UUID(), 'vice-président'),
