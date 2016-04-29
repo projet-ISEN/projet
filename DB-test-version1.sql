@@ -26,7 +26,7 @@ drop table if exists projet;
 
 drop table if exists recommendation;
 
-drop table if exists rempli;
+drop table if exists role_link;
 
 drop table if exists reunions;
 
@@ -195,9 +195,9 @@ create table recommendation
 engine = innodb;
 
 /*==============================================================*/
-/* Table : rempli                                               */
+/* Table : role_link                                            */
 /*==============================================================*/
-create table rempli
+create table role_link
 (
    club_id              char(36) not null,
    login                char(8) not null,
@@ -309,10 +309,10 @@ alter table recommendation add constraint fk_recommendation foreign key (club_id
 alter table recommendation add constraint fk_recommendation2 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli foreign key (club_id, login, school_year)
+alter table role_link add constraint fk_role_link foreign key (club_id, login, school_year)
       references member (club_id, login, school_year) on delete restrict on update restrict;
 
-alter table rempli add constraint fk_rempli2 foreign key (id_role)
+alter table role_link add constraint fk_role_link2 foreign key (id_role)
       references role (id_role) on delete restrict on update restrict;
 
 alter table reunions add constraint fk_association_16 foreign key (club_id)
