@@ -59,7 +59,7 @@ class Choice
             ]);
         }
         else {
-            $choices = json_decode( $post['choices'], true );//récupére les choix émis en POST
+            $choices = $post['choices'];//récupére les choix émis en POST
             $tmp = new \Models\Choice();
             echo json_encode( $tmp->create($choices) );
         }
