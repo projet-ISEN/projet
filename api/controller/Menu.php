@@ -29,7 +29,7 @@ class Menu
 
     public static function jsonMenu() {
 
-        \Models\Menu::jsonMenu();
+        echo json_encode(\Models\Menu::jsonMenu());
     }
 
 }

@@ -63,6 +63,18 @@ class Club {
         }
     }
 
+
+    public static function getByName( $name )
+    {
+            return Database::getInstance()->Select(
+                "SELECT club_id, club_name, club_description, club_mail, actif, login FROM club " .
+                "WHERE club_name='" . $name . "'"
+            )[0];
+
+        }
+
+
+
     /**
      * Return the number of member in the club and
      *escape the member as second club
