@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  28/04/2016 16:21:18                      */
+/* Date de création :  29/04/2016 10:46:35                      */
 /*==============================================================*/
 
 
@@ -116,7 +116,6 @@ create table member
    club_id              char(36) not null,
    login                char(8) not null,
    school_year          int not null,
-   pro_club_id          char(36),
    id_projet_club       char(36),
    project_id           char(36) not null,
    main_club            bool not null,
@@ -161,12 +160,12 @@ engine = innodb;
 /*==============================================================*/
 create table project_club
 (
-   club_id              char(36) not null,
    id_projet_club       char(36) not null,
+   club_id              char(36) not null,
    name                 char(80) not null,
    link                 char(255),
    project_club_description longtext,
-   primary key (club_id, id_projet_club)
+   primary key (id_projet_club)
 )
 engine = innodb;
 
@@ -276,8 +275,8 @@ alter table effectif add constraint fk_effectif2 foreign key (project_id)
 alter table event add constraint fk_association_14 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
 
-alter table member add constraint fk_affecte foreign key (pro_club_id, id_projet_club)
-      references project_club (club_id, id_projet_club) on delete restrict on update restrict;
+alter table member add constraint fk_affecte foreign key (id_projet_club)
+      references project_club (id_projet_club) on delete restrict on update restrict;
 
 alter table member add constraint fk_association_10 foreign key (login)
       references users (login) on delete restrict on update restrict;
@@ -317,6 +316,7 @@ alter table rempli add constraint fk_rempli2 foreign key (id_role)
 
 alter table reunions add constraint fk_association_16 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
+
 
 
 
