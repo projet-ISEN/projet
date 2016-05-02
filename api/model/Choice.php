@@ -92,17 +92,17 @@ class Choice {
             $status = true;
 
             foreach( $choices as $number => $club ) {
-                if( !$req->execute( array(
+                if( !$req->execute( [
                     ':login' => $_SESSION['user']->login,
                     ':club_id' => $club,
-                    'choice_number' => $number
-                ))) {
+                    ':choice_number' => $number
+                ])) {
                     $status = false;
                 }
             }
 
             if($status) {
-                return [ 'err' => 'null' ];
+                return [ 'err' => null ];
             }
             else {
                 return [ 'err' => 'Impossible de sauvegarder vos choix' ];
@@ -114,18 +114,24 @@ class Choice {
      * Permet de changer un choix de l'utilisateur connecté
      * @param $choice_number
      */
-    public static function update( $choice_number ) {
+    public static function update( $choices ) {
         //création d'une variable locale _PUT
-        parse_str(file_get_contents("php://input"),$_PUT);
 
-        $req = Database::getInstance()->PDOInstance->prepare("UPDATE choice SET club_id=:club WHERE login=:login " .
-            "AND choice_number=:number");
-        if( $req->execute(array(
-            ':club' => $_PUT['club'],
-            ':login' => $_SESSION['user']->login,
-            ':number' => $choice_number
-        )) ) {
-             return array( 'err' => 'null' );
+        $req = Database::getInstance()->PDOInstance->prepare("UPDATE choice SET club_id=:club_id WHERE login=:login " . "AND choice_number=:choice_number");
+
+        $status = true;
+        foreach( $choices as $number => $club ) {
+            if( !$req->execute( [
+                    ':login' => $_SESSION['user']->login,
+                    ':club_id' => $club,
+                    ':choice_number' => $number
+                ])) {
+                    $status = false;
+                }
+        }
+
+        if( $status ) {
+            return array( 'err' => null );
         }
         return array( 'err' => 'Impossible de sauvegarder votre choix' );
     }
@@ -136,7 +142,7 @@ class Choice {
      */
     public static function deleteAll() {
         $req = Database::getInstance()->PDOInstance->exec("Delete from choice");
-        if( $req ) return array( 'err' => 'null' );
+        if( $req ) return array( 'err' => null );
         else return array( 'err' => "An error occurred" );
     }
 }

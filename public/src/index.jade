@@ -3,28 +3,29 @@ html( lang="fr" )
     head
         meta( charset="UTF-8" )
         title Title
-        
+
         // Injecteur de Gulp
-        // inject:css 
-        // endinject 
+        // inject:css
+        // endinject
 
         link( href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         link( rel="stylesheet" type="text/css" href="libs/angular-material-icons/angular-material-icons.css" )
         link( rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.css")
-        
+
         link( rel="stylesheet" type="text/css" href="styles/main.css")
     body( data-ng-app="app" layout="" )
-    
-        
+
+
         div( data-ng-include = "'views/sidenav.html'" class="fullheight")
-        
+
         md-content( md-scroll-y layout='column' flex)
             div( data-ng-include = "'views/toolbar.html'")
             div( data-ng-view layout-padding flex='noshrink')
             //on charge la vue ici
             div( data-ng-include = "'views/footer.html'")
-        
+
         script( type="text/javascript" src="libs/angular/angular.js" )
+        script( type="text/javascript" src="libs/angular-sanitize/angular-sanitize.js" )
         script( type="text/javascript" src="libs/angular-material-icons/angular-material-icons.js" )
         script( type="text/javascript" src="libs/angular-aria/angular-aria.js" )
         script( type="text/javascript" src="libs/angular-route/angular-route.js" )
@@ -32,5 +33,5 @@ html( lang="fr" )
         script( type="text/javascript" src="libs/angular-material/angular-material.js" )
         script( type="text/javascript" src="libs/angular-messages/angular-messages.js")
         // Injecteur de Gulp
-        // inject:js 
+        // inject:js
         // endinject
