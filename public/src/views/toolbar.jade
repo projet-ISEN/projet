@@ -3,4 +3,7 @@ md-toolbar.md-hue-2(ng-controller="toolbarCtrl")
     md-button.md-icon-button( ng-click="toggleSidenav('left')" hide-gt-sm)
       md-icon( aria-label="Menu" class="material-icons") menu
     h2
-      span my Page Title
+      //span my Page Title
+      span( ng-repeat='crumb in crumbs' )
+        a( ng-href="#{{crumb.path}}" ) {{crumb.name}}
+        md-icon.material-icons( ng-if="!$last" ) play_arrow

@@ -38,7 +38,7 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
-                                "link" => '#/',
+                                "link" => '#/accueil',
                                 "title" => 'Informations Globales',
                                 "icon" => 'dashboard'
                             ]
