@@ -38,14 +38,14 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
-                                "link" => '',
+                                "link" => '#/',
                                 "title" => 'Informations Globales',
                                 "icon" => 'dashboard'
                             ]
                             ,
 
                             [
-                                "link" => '',
+                                "link" => '#/candidature',
                                 "title" => 'Candidature',
                                 "icon" => 'dashboard'
                             ]

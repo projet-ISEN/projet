@@ -29,18 +29,15 @@ angular.module 'app'
 
         # Send message to Capisen
         $scope.goCapisen = ->
-            $mdDialog.show( $mdDialog.alert()
-                .htmlContent 'views/dialogCapisen.html'
-                .ok('OK!')
-            )
+            $mdDialog.show
+                templateUrl: 'views/dialogCapisen.html'
+
 
 
         # Load select input with clubs
         $club.all().then (clubs)->
 
             $scope.clubs = clubs
-            $scope.clubs = $scope.clubs.filter (elem, index)->
-                return elem.club_name != 'Capisen'
             $scope.$apply
 
             # load choices of user
