@@ -1,1 +1,7 @@
-app = angular.module 'app', ['ngRoute',  'ngMaterial', 'ngMdIcons', 'ngMessages']
+app = angular.module 'app', [
+    'ngRoute'
+    'ngMaterial'
+    'ngMdIcons'
+    'ngMessages'
+    'ngSanitize'
+]

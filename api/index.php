@@ -61,7 +61,7 @@ if (date("n")>7) $myYear++;
     $router->get('/me', function() {
         echo json_encode( $_SESSION['user'] );
     });
- 
+
     // Use controller user and method one
 
 
@@ -78,8 +78,8 @@ if (date("n")>7) $myYear++;
     $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
     $router->get(       '/choices',     'Choice.getChoiceAll'    );
     $router->post(      '/choices',     'Choice.create' );
-    $router->put(       '/choices/:choice_number', 'Choice.update' );
-    $router->delete(    '/choices', 'Choice.deleteAll' );
+    $router->put(       '/choices/',    'Choice.update' );
+    $router->delete(    '/choices',     'Choice.deleteAll' );
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
 

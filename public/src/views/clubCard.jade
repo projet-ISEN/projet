@@ -4,16 +4,16 @@ md-card
           span.md-title {{ club.club_name }}
           span.md-subhead {{ club.stats.members }} membre
             span( ng-if="club.stats.members >=2" ) s
-            
-    img.md-card-image( 
+
+    img.md-card-image(
         ng-src="images/{{club.club_id}}.jpg"
         onerror="this.src='images/blank.jpg'"
         alt='logo du club'
-        style="height: 15rem")
-               
+        )
+
     md-card-title
         md-card-title-text
             span.md-headline {{ club.club_mail }}
-               
+
     md-card-content
         p {{ club.club_description }}

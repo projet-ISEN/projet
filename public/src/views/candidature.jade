@@ -56,7 +56,8 @@ div(
 
 
         div(layout='row')
-            md-button( type='submit' ng-click='save()' ) Sauvegarder
+            md-button( type='submit' ng-click='save()' ng-if="saveAction == 'post'") Sauvegarder
+            md-button( type='submit' ng-click='save()' ng-if="saveAction != 'post'") Mettre à jour
             md-button.md-primary(
                 ng-click='clearValue()'
                 layout=''
