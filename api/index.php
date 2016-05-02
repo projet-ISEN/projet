@@ -18,7 +18,25 @@
 
 
     // Données de l'ENT
-    $userData["Login"]      = 'gbiann17'; // login
+
+
+    //test variable
+    //$userData["Login"]      = 'rcolli17'; //Evaluator & administrator
+   // $userData["Login"]      = 'vrioua17'; //Evaluator
+    //$userData["Login"]      = 'pverba17'; //Prez BDE
+   // $userData["Login"]      = 'fduboi17'; //trez BDE
+   // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
+    $userData["Login"]      = 'tcouss17'; //Prez club
+    //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
+    //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
+    //$userData["Login"]      = 'qduche17'; //PA BDE
+    //$userData["Login"]      = 'gymorv17'; //PA Capisen
+    //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+
+
+
+
+
     $userData["Name"]       = 'prename name'; // prénom nom
     $userData["FirstName"]  = 'prename'; // prénom
     $userData["LastName"]   = 'name'; // nom
