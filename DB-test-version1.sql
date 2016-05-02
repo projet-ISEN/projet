@@ -446,6 +446,7 @@ INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `proj
 
 
 
+
 INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
   VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
