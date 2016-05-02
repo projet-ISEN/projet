@@ -63,6 +63,18 @@ class Club {
         }
     }
 
+
+    public static function getByName( $name )
+    {
+            return Database::getInstance()->Select(
+                "SELECT club_id, club_name, club_description, club_mail, actif, login FROM club " .
+                "WHERE club_name='" . $name . "'"
+            )[0];
+
+        }
+
+
+
     /**
      * Return the number of member in the club and
      *escape the member as second club
@@ -71,7 +83,7 @@ class Club {
      * @return null
      */
     public function numberOfMembers($year = null) {
-        if($year) $year =$_SESSION['user'];
+        if($year) $year =$_SESSION['year'];
         $res = Database::getInstance()->PDOInstance->query(
             "SELECT count(*) FROM member WHERE club_id='".
             $this->club_id ."' AND school_year=".$year." AND main_club='1'");
