@@ -1,11 +1,11 @@
 div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
-  md-sidenav( class="md-sidenav-left md-whiteframe-z2 fullheight" md-component-id="left" hide-print="hide-print" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1")
+  md-sidenav( class="md-sidenav-left md-whiteframe-z2 fullheight" md-component-id="left" hide-print="hide-print" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" )
 
-    md-toolbar.md-tall.md-hue-2
+    md-toolbar
 
-      .md-toolbar-tools-bottom.inset(layout='column')
-        img(src='images/isen.jpg', alt="logo de l'ISEN")
+        //.md-toolbar-tools-bottom( layout='column' )
+        img(src='images/isen.jpg' alt="logo de l'ISEN")
 
     md-list( flex )
 
@@ -29,7 +29,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
             a( ng-href='{{item.link}}')
 
-              div(md-ink-ripple='', layout='row', layout-align='start center')
+              div(md-ink-ripple='' layout='row' layout-align='start center')
                 .inset
                   md-icon.material-icons {{item.icon}}
                 .inset

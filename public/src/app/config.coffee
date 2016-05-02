@@ -3,15 +3,27 @@
 #------------------------------------------------------------------------------
 
 angular.module('app')
-.config ['$routeProvider', ($routeProvider)->
+.config [
+    '$routeProvider'
+    '$mdThemingProvider'
+    ($routeProvider, $mdThemingProvider)->
 
 
         $routeProvider
-        .when '/', 
+        .when '/',
             templateUrl: 'views/home.html',
             controller:  'homeCtrl'
         .when '/candidature',
             templateUrl: 'views/candidature.html',
             controller:  'candidatureCtrl'
-        .otherwise({redirectTo:'/'})
+        .otherwise
+            redirectTo:'/'
+
+
+
+        $mdThemingProvider.theme('default')
+        .primaryPalette('red')
+        .accentPalette('blue')
+        .warnPalette('red')
+        #.backgroundPalette('red')
 ]
