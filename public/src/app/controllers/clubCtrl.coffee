@@ -5,11 +5,14 @@ angular.module 'app'
     '$routeParams'
     ($scope, $club, $routeParams)->
 
-        console.log $routeParams.club_name
+        $scope.club = {}
 
-        $club.getByName $routeParams.club_name, (club)->
+        $club.getByName $routeParams.club_name, (club) ->
             $scope.club = club
-            console.log $scope.club
+            console.log club
 
+            $club.stat club.club_id, (stat) ->
+                $scope.club.stat = stat
+                console.log stat
 
 ]

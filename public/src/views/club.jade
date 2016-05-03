@@ -1,0 +1,21 @@
+md-card
+    img.md-card-image(
+        ng-src="images/{{club.club_id}}.jpg"
+        alt="logo club"
+        onerror="this.src='images/blank.jpg'"
+        style="height: 10rem; width: auto")
+
+    md-card-title
+        md-card-title-text
+            span.md-headline {{club.club_name}}
+            span.md-subhead {{club.stat.members}} membre
+                span(ng-if="club.stat.members > 1") s
+
+    md-card-actions( layout="row" layout-align="start center" )
+
+        md-chips
+            md-chip( ng-repeat="projet in club.stat.details" ) {{projet.project_type}} : {{projet.number}}
+
+    md-content( flex layout-padding )
+
+        p {{club.club_description}}

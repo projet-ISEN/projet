@@ -97,6 +97,13 @@ gulp.task 'watch', ->
         jade e.path, 'build/views/'
         console.log "#{e.path} Reloaded"
 
+    # Watch Directives
+    gulp.watch 'src/directives/*.jade'
+    .on 'change', (e)->
+
+        jade e.path, 'build/directives/'
+        console.log "#{e.path} Reloaded"
+
     # Watch styles
     gulp.watch 'src/styles/*.sass'
     .on 'change', (e)->
