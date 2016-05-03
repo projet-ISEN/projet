@@ -9,7 +9,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
     md-list( flex )
 
-      menu-toggle.animate( ng-repeat='underpart in menu' )
+      menu-toggle( ng-repeat='underpart in menu' )
 
         md-divider(ng-if = "$index")
 
@@ -17,23 +17,26 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
             flex=''
             layout='row'
             ng-if = "$index"
-            ng-click = "underpart.expanded = !underpart.expanded")
+            ng-click = "underpart.expanded = !underpart.expanded"
+            ng-class = "{noHight : underpart.expanded}")
               | {{underpart.name}}
               span.flex(flex='')
               span
-                md-icon( ng-class="{rotateP90: !underpart.expanded}" ) keyboard_arrow_down
+                md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
 
-          md-list-item.animate(
-            ng-repeat='item in underpart.values'
-            ng-if="underpart.expanded")
+          .toggle(
+            ng-class = "{noHeight : !underpart.expanded}")
+            md-list-item(
+              ng-repeat='item in underpart.values'
+              )
 
-            a( ng-href='{{item.link}}')
+              a( ng-href='{{item.link}}')
 
-              div(md-ink-ripple='' layout='row' layout-align='start center')
-                .inset
-                  md-icon.material-icons {{item.icon}}
-                .inset
-                  | {{item.title}}
+                div(md-ink-ripple='' layout='row' layout-align='start center')
+                  .inset
+                    md-icon.material-icons {{item.icon}}
+                  .inset
+                    | {{item.title}}
 
 
 
