@@ -13,14 +13,17 @@ angular.module('app')
         .when '/accueil',
             templateUrl: 'views/home.html'
             controller:  'homeCtrl'
+            name: "Informations Globales"
 
         .when '/candidature',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
+            name: "Candidature"
 
         .when '/clubs/:club_name',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
+            name: "????????"
 
         .otherwise
             redirectTo:'/accueil'
@@ -55,7 +58,7 @@ angular.module('app')
             i=0
             while i < pathElements.length
                 result.push
-                    name: pathElements[i]
+                    name: current.name
                     path: breadcrumbPath(i)
                 i++
             breadcrumbs = result
