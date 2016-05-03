@@ -5,16 +5,16 @@ angular.module('app')
     return {
         restrict: 'E'
         controller: 'clubCardCtrl'
-        scope: 
+        scope:
             club: '='
-        templateUrl: "views/clubCard.html"    
+        templateUrl: "directives/clubCard.html"
     }
 
 
 .controller 'clubCardCtrl', ['$club', '$scope', ($club, $scope)->
 
     # demande les infos d'un club
-        
+
     $club.stat( $scope.club.club_id )
     .then (stats)->
         $scope.club.stats = stats

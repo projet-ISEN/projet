@@ -8,8 +8,9 @@ angular.module 'app'
     '$http'
     ($user, $mdDialog, $club, $mdToast, $scope, $http)->
 
+        # Tableau de choix
         $scope.choices = []
-        #default action
+        # Default action
         $scope.saveAction = 'post'
 
         # Delete all choices
@@ -22,6 +23,9 @@ angular.module 'app'
 
         # Send choices
         $scope.save = ->
+
+            unless $scope.choices[0]? and $scope.choices[1]? and $scope.choices[0]?
+                return $mdToast.showSimple 'Vous devez séléctionner vos choix'
             if $scope.saveAction == 'post'
                 post()
             else
@@ -29,18 +33,17 @@ angular.module 'app'
 
         # Send message to Capisen
         $scope.goCapisen = ->
-            $mdDialog.show( $mdDialog.alert()
-                .htmlContent 'views/dialogCapisen.html'
-                .ok('OK!')
-            )
+            $mdDialog.show
+                templateUrl: 'directives/dialogCapisen.html'
+                clickOutsideToClose: true
+                controller: 'capisenDialogCtrl'
+
 
 
         # Load select input with clubs
         $club.all().then (clubs)->
 
             $scope.clubs = clubs
-            $scope.clubs = $scope.clubs.filter (elem, index)->
-                return elem.club_name != 'Capisen'
             $scope.$apply
 
             # load choices of user
@@ -55,13 +58,7 @@ angular.module 'app'
                         for club in $scope.clubs
                             if choice.club_id == club.club_id
                                 $scope.choices[choice.choice_number - 1 ] = club
-
-
                     $scope.$apply
-
-
-
-
         post = ->
 
             $http
@@ -85,8 +82,7 @@ angular.module 'app'
             , (err)->
                     console.log err
                     $mdToast.showSimple "impossible de contacter le serveur"
-        put  = ->
-
+        put = ->
             $http
                 method: 'PUT'
                 url: "../../api/choices"

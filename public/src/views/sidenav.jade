@@ -1,20 +1,35 @@
 div.fullheight( layout="column" ng-controller="sidenavCtrl")
-  md-sidenav( class="md-sidenav-left md-whiteframe-z2 fullheight" md-component-id="left" hide-print="hide-print" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1")
-    md-toolbar.md-tall.md-hue-2
-      span(flex='')
-      .md-toolbar-tools-bottom.inset(layout='column')
-        img(src='images/isen.jpg', alt='' style='height: 7rem')
-    md-list(flex )
-      menu-toggle(ng-repeat='underpart in menu')
+
+  md-sidenav( class="md-sidenav-left md-whiteframe-z2 fullheight" md-component-id="left" hide-print="hide-print" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" )
+
+    md-toolbar
+
+        //.md-toolbar-tools-bottom( layout='column' )
+        img(src='images/isen.jpg' alt="logo de l'ISEN")
+
+    md-list( flex )
+
+      menu-toggle.animate( ng-repeat='underpart in menu' )
+
         md-divider(ng-if = "$index")
-        .ng-binding.ng-scope.layout-row.flex(flex='', layout='row' ng-if = "$index"  ng-click = "underpart.expanded = !underpart.expanded")
+
+        .ng-binding.ng-scope.layout-row.flex(
+            flex=''
+            layout='row'
+            ng-if = "$index"
+            ng-click = "underpart.expanded = !underpart.expanded")
               | {{underpart.name}}
               span.flex(flex='')
               span
-                md-icon keyboard_arrow_down
-          md-list-item(ng-repeat='item in underpart.values' ng-if="underpart.expanded")
-            a
-              div(md-ink-ripple='', layout='row', layout-align='start center')
+                md-icon( ng-class="{rotateP90: !underpart.expanded}" ) keyboard_arrow_down
+
+          md-list-item.animate(
+            ng-repeat='item in underpart.values'
+            ng-if="underpart.expanded")
+
+            a( ng-href='{{item.link}}')
+
+              div(md-ink-ripple='' layout='row' layout-align='start center')
                 .inset
                   md-icon.material-icons {{item.icon}}
                 .inset
