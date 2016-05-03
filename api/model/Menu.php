@@ -61,7 +61,7 @@ class Menu {
                 ];
     }
 
-    public static function addMenuUserMember($club) {
+    public static function addMenuUserMember($club, $club_id) {
         return [
                     $club => [
                     'name' => $club,
@@ -82,7 +82,7 @@ class Menu {
                             ,
 
                             [
-                                "link" => '',
+                                "link" => '#/contact/:'.$club_id,
                                 "title" => 'Contact',
                                 "icon" => 'dashboard'
                             ]
@@ -105,7 +105,7 @@ class Menu {
                 ];
     }
 
-    public static function addMenuPresident($club) {
+    public static function addMenuPresident($club, $club_id) {
         return [
                     'Pres'.$club => [
                     'name' => ' Administration de "' . $club.'"',//TODO add club name
@@ -260,7 +260,8 @@ class Menu {
                 $list = $member->ClubMembers();
                 for($i; $i > 0 ; $i--){
                     $name = $list[$i -1] -> club_name;
-                    $menu = array_merge($menu, self::addMenuUserMember($name));
+                    $club_id = $list[$i -1] -> club_id;
+                    $menu = array_merge($menu, self::addMenuUserMember($name, $club_id));
                 }
 
                 $club = new Club();
@@ -273,7 +274,7 @@ class Menu {
 
                        $role_id = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
 
-                       if( $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name));//if president we add the menu
+                       if( $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name, $club_id));//if president we add the menu
 
 
                    if($list[$i -1] -> club_name == $_SESSION["BDE"]){

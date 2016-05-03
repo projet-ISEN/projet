@@ -13,22 +13,25 @@ angular.module('app')
         .when '/accueil',
             templateUrl: 'views/home.html'
             controller:  'homeCtrl'
+            name: "Informations Globales"
 
         .when '/candidature',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
+            name: "Candidature"
 
         .when '/clubs/:club_name',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
+            name: "????????"
 
         .otherwise
             redirectTo:'/accueil'
 
-        $mdThemingProvider.theme('default')
-        .primaryPalette('red')
-        .accentPalette('blue')
-        .warnPalette('red')
+        ###        $mdThemingProvider.theme('default')
+                .primaryPalette('red')
+                .accentPalette('blue')
+                .warnPalette('red')###
 ]
 
 
@@ -45,6 +48,7 @@ angular.module('app')
         $rootScope.$on '$routeChangeSuccess', (event, current) ->
             pathElements = $location.path().split('/')
             result = []
+            breadcrumbs = []
 
             breadcrumbPath = (index) ->
                 return '/' + pathElements.slice(0, index + 1).join('/')
@@ -54,7 +58,7 @@ angular.module('app')
             i=0
             while i < pathElements.length
                 result.push
-                    name: pathElements[i]
+                    name: current.name
                     path: breadcrumbPath(i)
                 i++
             breadcrumbs = result
