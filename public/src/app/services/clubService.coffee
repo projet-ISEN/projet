@@ -3,9 +3,9 @@
 #------------------------------------------------------------------------------
 angular.module('app')
 .factory '$club', ['$http', ($http)->
-    
+
     return {
-        
+
         all: ->
             $http(
                 method: 'GET'
@@ -16,7 +16,7 @@ angular.module('app')
             , (err)->              # On error
                 console.log err if err?
                 return null
-            
+
         one: (id)->
             $http(
                 method: 'GET'
@@ -27,7 +27,18 @@ angular.module('app')
             , (err)->              # On error
                 console.log err if err?
                 return null
-            
+
+        getByName: (name)->
+            $http(
+                method: 'GET'
+                url: "../../api/clubs/name/" + id
+
+            ).then (res)->          # On success
+                return res.data
+            , (err)->              # On error
+                console.log err if err?
+                return null
+
         stat: (id)->
             $http(
                 method: 'GET'
@@ -37,6 +48,6 @@ angular.module('app')
                 return res.data
             , (err)->              # On error
                 console.log err if err?
-                return null    
-    }   
+                return null
+    }
 ]

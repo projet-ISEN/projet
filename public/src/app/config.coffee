@@ -16,8 +16,6 @@ angular.module('app')
         .when '/candidature',
             templateUrl: 'views/candidature.html',
             controller:  'candidatureCtrl'
-        .when '/candidature/:id/test/:tu',
-            template: 'coucou'
         .otherwise
             redirectTo:'/accueil'
 

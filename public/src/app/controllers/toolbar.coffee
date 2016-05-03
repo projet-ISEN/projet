@@ -13,5 +13,4 @@ angular.module "app"
     breadcrumbsService.registerObserverCallback ->
 
         $scope.crumbs = breadcrumbsService.getAll()
-        console.log breadcrumbsService.getAll()
 ]
