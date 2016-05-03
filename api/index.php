@@ -21,6 +21,7 @@
 
 
     //test variable
+
    // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
    // $userData["Login"]      = 'vrioua17'; //Evaluator
     //$userData["Login"]      = 'pverba17'; //Prez BDE

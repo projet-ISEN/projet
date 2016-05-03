@@ -8,9 +8,10 @@ angular.module('app')
     '$scope'
     ($club, $scope)->
 
-        $club.all().then (clubs)->
+        $club.all (clubs)->
 
             $scope.clubs = clubs
+
             $scope.$apply
 
         $scope.clearValue = ->
