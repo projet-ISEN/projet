@@ -21,10 +21,10 @@ angular.module('app')
 
 
 
-        $mdThemingProvider.theme('default')
-        .primaryPalette('red')
-        .accentPalette('blue')
-        .warnPalette('red')
+        ###        $mdThemingProvider.theme('default')
+                .primaryPalette('red')
+                .accentPalette('blue')
+                .warnPalette('red')###
 ]
 
 
@@ -41,6 +41,7 @@ angular.module('app')
         $rootScope.$on '$routeChangeSuccess', (event, current) ->
             pathElements = $location.path().split('/')
             result = []
+            breadcrumbs = []
 
             breadcrumbPath = (index) ->
                 return '/' + pathElements.slice(0, index + 1).join('/')
