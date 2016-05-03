@@ -12,4 +12,8 @@ angular.module('app')
 
             $scope.clubs = clubs
             $scope.$apply
+
+        $scope.clearValue = ->
+            $scope.search = undefined;
+
 ]
