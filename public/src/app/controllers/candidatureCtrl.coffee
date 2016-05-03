@@ -41,10 +41,9 @@ angular.module 'app'
 
 
         # Load select input with clubs
-        $club.all().then (clubs)->
+        $club.all (clubs)->
 
             $scope.clubs = clubs
-            $scope.$apply
 
             # load choices of user
             $http.get '../../api/choices'

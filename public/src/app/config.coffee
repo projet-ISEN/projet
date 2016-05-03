@@ -11,15 +11,19 @@ angular.module('app')
 
         $routeProvider
         .when '/accueil',
-            templateUrl: 'views/home.html',
+            templateUrl: 'views/home.html'
             controller:  'homeCtrl'
+
         .when '/candidature',
-            templateUrl: 'views/candidature.html',
+            templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
+
+        .when '/clubs/:club_name',
+            templateUrl: 'views/club.html'
+            controller: 'clubCtrl'
+
         .otherwise
             redirectTo:'/accueil'
-
-
 
         ###        $mdThemingProvider.theme('default')
                 .primaryPalette('red')

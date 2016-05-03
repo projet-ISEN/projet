@@ -2,52 +2,47 @@
 #           GET CLUB INFOS
 #------------------------------------------------------------------------------
 angular.module('app')
-.factory '$club', ['$http', ($http)->
+.service '$club', ['$http', ($http)->
+    @all = (cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/clubs"
 
-    return {
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
 
-        all: ->
-            $http(
-                method: 'GET'
-                url: "../../api/clubs"
+    @one = (id, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/clubs/" + id
 
-            ).then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
 
-        one: (id)->
-            $http(
-                method: 'GET'
-                url: "../../api/clubs/" + id
+    @getByName = (name, cb)=>
+        @all (clubs)->
+            for club in clubs
+                if club.club_name == name
+                    cb club
+            cb null
 
-            ).then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
 
-        getByName: (name)->
-            $http(
-                method: 'GET'
-                url: "../../api/clubs/name/" + id
+    @stat = (id, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/clubs/" + id + "/stat"
 
-            ).then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
 
-        stat: (id)->
-            $http(
-                method: 'GET'
-                url: "../../api/clubs/" + id + "/stat"
-
-            ).then (res)->          # On success
-                return res.data
-            , (err)->              # On error
-                console.log err if err?
-                return null
-    }
+    return this
 ]
