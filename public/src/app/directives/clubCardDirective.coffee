@@ -15,9 +15,7 @@ angular.module('app')
 
     # demande les infos d'un club
 
-    $club.stat( $scope.club.club_id )
-    .then (stats)->
+    $club.stat $scope.club.club_id, (stats)->
         $scope.club.stats = stats
-        $scope.$apply
 ]
 
