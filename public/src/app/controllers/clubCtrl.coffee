@@ -9,6 +9,7 @@ angular.module 'app'
 
         $scope.club = {}
 
+
         $club.getByName $routeParams.club_name, (club) ->
             $scope.club = club
 
@@ -18,10 +19,14 @@ angular.module 'app'
             $effectif.one club.club_id, (effectifs)->
                 $scope.club.effectifs = effectifs
 
+                $project.all (projects)=>
 
-                    #$project.idToType e.project_id, (project_type)=>
-                    #    e.project_type = project_type
-                    #    console.log(e)
+                    for effectif in effectifs
+                        for project in projects
+                            if effectif.project_id == project.project_id
+                                effectif.project_type = project.project_type
+
+
 
 
 
