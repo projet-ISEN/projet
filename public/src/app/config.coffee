@@ -25,7 +25,7 @@ angular.module('app')
             controller: 'clubCtrl'
             name: "Liste des clubs"
 
-        .when '/contact/:club_name',
+        .when '/contact/:club_id',
             templateUrl: 'views/contactInClub.html'
             controller: 'contactInClubCtrl'
             name: "Contact ?????????"
