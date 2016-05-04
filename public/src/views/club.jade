@@ -18,4 +18,17 @@ md-card
 
     md-content( flex layout-padding )
 
+        h4
+            a( ng-href="mailto: {{club.club_mail}}" ) {{club.club_mail}}
+
         p {{club.club_description}}
+
+    md-divider
+
+
+    md-card-actions( layout="row" layout-align="start center" )
+        div
+            h5 Demande d'effectifs pour l'année prochaine :
+        //md-chips
+            //md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}/{{effectif.nb_asked_max}}
+        p( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}}
