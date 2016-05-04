@@ -1,3 +1,14 @@
+md-content.md-padding( layout-xs="column" layout="row" )
+
+
+    md-subheader Informations sur les différents projets
+
+    md-button.md-fab.md-mini.md-primary(
+        aria-label="Use Android"
+        ng-repeat="project in projects"
+        ng-click="openDialog(project)")
+        | {{project.project_type}}
+
 md-input-container
     label Recherche de club
     input( type='text' ng-model='search')
