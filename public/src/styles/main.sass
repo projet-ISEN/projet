@@ -1,5 +1,5 @@
 @mixin rotate($rayon)
-    transform: rotate($rayon);
+    transform: rotate($rayon)
 
 *
     box-sizing: border-box
@@ -19,6 +19,9 @@
         outline: 0
         cursor: pointer
 
+    club-card
+        min-width: 20rem
+
 
     .rotateP180
         @include rotate(-180deg)
@@ -37,7 +40,7 @@
 
 .toggle
     transition-duration: 2s
-    white-space:nowrap
+    white-space: nowrap
 
 .noHeight
     height : 0px
