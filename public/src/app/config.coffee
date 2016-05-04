@@ -25,6 +25,11 @@ angular.module('app')
             controller: 'clubCtrl'
             name: "????????"
 
+        .when '/contact/:club_name',
+            templateUrl: 'views/contactInClub.html'
+            controller: 'contactInClubCtrl'
+            name: "Contact ?????????"
+
         .otherwise
             redirectTo:'/accueil'
 
