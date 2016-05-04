@@ -1,0 +1,13 @@
+md-input-container
+    label Rechercher un membre
+    input( type='text' ng-model='search')
+
+md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
+
+md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
+    club-card(
+        flex="30"
+        flex-xs="100"
+        club="club"
+        ng-repeat="club in clubs | orderBy: 'club_name' | club: search"
+    )
