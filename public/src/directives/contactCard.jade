@@ -1,4 +1,4 @@
 md-card
     md-card-header
         md-card-header-text
-          span.md-title {{ contact[0].user_firstname }} {{ contact[0].user_name }}
+          span.md-title {{ contact[0].user_firstname | firstLetterUppercase}} {{ contact[0].user_name | firstLetterUppercase}}
