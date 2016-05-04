@@ -8,4 +8,7 @@ angular.module 'app'
 
         $contacts.all $routeParams.club_id, (contacts)->
             $scope.contacts = contacts
+
+        $scope.clearValue = ->
+            $scope.search = undefined;
 ]
