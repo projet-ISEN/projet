@@ -5,9 +5,9 @@ md-input-container
 md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
 
 md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
-    club-card(
+    contact-card(
         flex="30"
         flex-xs="100"
-        club="club"
-        ng-repeat="club in clubs | orderBy: 'club_name' | club: search"
+        contact="contact"
+        ng-repeat="contact in contacts"
     )
