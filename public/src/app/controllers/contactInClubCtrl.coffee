@@ -6,8 +6,6 @@ angular.module 'app'
     ($scope, $contacts, $routeParams)->
 
 
-        $club.getByName $routeParams.club_name, (contacts)->
+        $contacts.all $routeParams.club_id, (contacts)->
             $scope.contacts = contacts
-
-
 ]
