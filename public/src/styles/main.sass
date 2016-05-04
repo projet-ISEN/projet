@@ -1,13 +1,32 @@
 @mixin rotate($rayon)
-    transform: rotate($rayon);
+    transform: rotate($rayon)
 
 *
     box-sizing: border-box
     transition: all 0.2s
 
-    md-sidenav a
-        text-decoration: none
-        color: rgba(0, 0, 0, 0.87)
+
+    $menu-bg:         #2d323e
+    $menu-text:       #c0c2c5
+    $toggle-content:  #282c37
+
+    md-sidenav
+
+        background-color: $menu-bg
+        color: $menu-text
+
+        a
+            color: $menu-text
+            text-decoration: none
+
+        .toggle:not(:first-child)
+            background-color: $toggle-content
+
+        header img
+          width: 100%
+          padding: 0
+          //padding: 0 20% 0 20%
+
 
     .fullheight
         height: 100% !important
@@ -15,9 +34,14 @@
     md-icon
         transition: all 0.3s
 
-    menu-toggle div
+    menu-toggle .menu-toggle-head
         outline: 0
         cursor: pointer
+        padding: 0.5rem
+        background-color: #c02d2e
+
+    club-card
+        min-width: 20rem
 
 
     .rotateP180
@@ -37,7 +61,7 @@
 
 .toggle
     transition-duration: 2s
-    white-space:nowrap
+    white-space: nowrap
 
 .noHeight
     height : 0px

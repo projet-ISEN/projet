@@ -8,7 +8,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
     tabindex="-1" )
 
     header
-        img(src='images/isen2.jpg' alt="logo de l'ISEN" style="width: 100%; padding: 0 20% 0 20%" )
+        img(src='images/isen-troncated.jpg' alt="logo de l'ISEN" )
 
     md-list( flex )
 
@@ -16,12 +16,11 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
         md-divider(ng-if = "$index")
 
-        .ng-binding.ng-scope.layout-row.flex(
+        .menu-toggle-head.layout-row.flex(
             flex=''
             layout='row'
             ng-if = "$index"
-            ng-click = "underpart.expanded = !underpart.expanded"
-            ng-class = "{noHight : underpart.expanded}")
+            ng-click = "underpart.expanded = !underpart.expanded")
               | {{underpart.name}}
               span.flex(flex='')
               span
