@@ -70,15 +70,25 @@ class Member {
     }
 
     public static function membersIntelsInClub($club_id,$year = null){
-
+        if(!isset($year)) $year =$_SESSION['year'];
        /* $user = new User();*/
         $intels = [];
 
-        $list = self::membersInClub($club_id,$year = null);
+        $list = self::membersInClub($club_id,$year);
 
         foreach($list as $value){
-            array_push($intels, user::Info($value->login));
+            $info = user::Info($value->login);
+            $role = role::whichRoleID($year,$club_id,$value->login);
+
+            foreach($role as $value) {
+                array_push($info, role::ID2Role($value -> id_role));
+            }
+
+
+            //$info = array_merge($info, $role);
+            array_push($intels, $info);
         }
+
 
         return $intels;
 
