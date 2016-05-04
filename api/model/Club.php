@@ -88,9 +88,22 @@ class Club {
             "SELECT count(*) FROM member WHERE club_id='".
             $this->club_id ."' AND school_year='".$year."' AND main_club='1'");
         return $res->fetchAll(\PDO::FETCH_NUM)[0][0];
-        
+
     }
-    
+
+    public function MemberDetails( $year = null ) {
+        if( !$year) $year = $_SESSION['year'];
+
+        $res = Database::getInstance()->PDOInstance->query(
+            "SELECT p.project_type, count(p.project_type) as number FROM member m, projet p ".
+            "WHERE club_id='" . $this->club_id .
+            "' AND school_year='" . $year . "' AND main_club='1' ".
+            "AND p.project_id=m.project_id".
+            " GROUP BY p.project_type");
+        return $res->fetchAll();
+
+    }
+
     /**
      * Charge toutes les données du club portant l'ID de l'objet courant
      */

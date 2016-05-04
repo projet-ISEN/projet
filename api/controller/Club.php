@@ -45,18 +45,19 @@ class Club
         echo json_encode($club);
     }
 
-    
+
     public static function stat( $id_Club )
     {
-        
+
         $club = new \Models\Club($id_Club);
-        
-        echo json_encode( array(
-        
-            'members' => $club->numberOfMembers()
-        ));
+
+        echo json_encode( [
+
+            'members' => $club->numberOfMembers(),
+            'details' => $club->memberDetails()
+        ]);
     }
-    
+
     /**
      * Crée un nouveau club
      * STATIC
@@ -70,7 +71,7 @@ class Club
             echo json_encode( array('err' => 'Un nom de club est nécéssaire') );
             return;
         }
-        
+
         $club = new \Models\Club();
         $club->club_name        = $post['club_name'];
         $club->club_description = empty($post['club_description']) ? '' : $post['club_description'];

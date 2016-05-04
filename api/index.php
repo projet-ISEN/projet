@@ -114,12 +114,20 @@ if (date("n")>7) $myYear++;
     $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
     $router->get(       '/choices',     'Choice.getChoiceAll'    );
     $router->post(      '/choices',     'Choice.create' );
-    $router->put(       '/choices/',    'Choice.update' );
+    $router->put(       '/choices',     'Choice.update' );
     $router->delete(    '/choices',     'Choice.deleteAll' );
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
 
+
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
+
+    $router->get(       '/effectifs',        'Effectif.getAll');
+    $router->get(       '/effectifs/:id',    'Effectif.getOne');
+
+    $router->get(       '/projects',         'Project.getAll');
+    $router->get(       '/projects/:id',     'Project.getOne');
+
 
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();

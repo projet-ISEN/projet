@@ -1,0 +1,34 @@
+md-card
+    img.md-card-image(
+        ng-src="images/{{club.club_id}}.jpg"
+        alt="logo club"
+        onerror="this.src='images/blank.jpg'"
+        style="height: 10rem; width: auto")
+
+    md-card-title
+        md-card-title-text
+            span.md-headline {{club.club_name}}
+            span.md-subhead {{club.stat.members}} membre
+                span(ng-if="club.stat.members > 1") s
+
+    md-card-actions( layout="row" layout-align="start center" )
+
+        md-chips
+            md-chip( ng-repeat="projet in club.stat.details" ) {{projet.project_type}} : {{projet.number}}
+
+    md-content( flex layout-padding )
+
+        h4
+            a( ng-href="mailto: {{club.club_mail}}" ) {{club.club_mail}}
+
+        p {{club.club_description}}
+
+    md-divider
+
+
+    md-card-actions( layout="row" layout-align="start center" )
+        div
+            h5 Demande d'effectifs pour l'année prochaine :
+        //md-chips
+            //md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}/{{effectif.nb_asked_max}}
+        p( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}}

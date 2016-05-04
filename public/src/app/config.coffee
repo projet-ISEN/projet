@@ -23,7 +23,7 @@ angular.module('app')
         .when '/clubs/:club_name',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
-            name: "????????"
+            name: "Liste des clubs"
 
         .when '/contact/:club_name',
             templateUrl: 'views/contactInClub.html'

@@ -17,4 +17,5 @@ md-card
             span.md-headline {{ club.club_mail }}
 
     md-card-content
-        p {{ club.club_description }}
+        p {{ club.club_description | limitTo: 100 }}
+            span(ng-if="club.club_description.length >= 100") ...

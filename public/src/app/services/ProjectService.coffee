@@ -2,47 +2,30 @@
 #           GET CLUB INFOS
 #------------------------------------------------------------------------------
 angular.module('app')
-.service '$club', ['$http', ($http)->
+.service '$project', ['$http', ($http)->
     @all = (cb)->
         $http(
             method: 'GET'
-            url: "../../api/clubs"
+            url: "../../api/projects"
 
         ).then (res)->          # On success
             cb res.data
         , (err)->              # On error
             console.log err if err?
             cb null
+        return
 
-    @one = (id, cb)->
+    @idToType = (project_id, cb)->
         $http(
             method: 'GET'
-            url: "../../api/clubs/" + id
+            url: "../../api/projects/" + project_id
 
         ).then (res)->          # On success
-            cb res.data
+            cb res.data.project_type
         , (err)->              # On error
             console.log err if err?
             cb null
-
-    @getByName = (name, cb)=>
-        @all (clubs)->
-            for club in clubs
-                if club.club_name == name
-                    return cb club
-            cb null
-
-
-    @stat = (id, cb)->
-        $http(
-            method: 'GET'
-            url: "../../api/clubs/" + id + "/stat"
-
-        ).then (res)->          # On success
-            cb res.data
-        , (err)->              # On error
-            console.log err if err?
-            cb null
+        return
 
     return this
 ]
