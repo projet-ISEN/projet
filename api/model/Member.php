@@ -79,10 +79,13 @@ class Member {
         foreach($list as $value){
             $info = user::Info($value->login);
             $role = role::whichRoleID($year,$club_id,$value->login);
-
-            foreach($role as $value) {
-                array_push($info, role::ID2Role($value -> id_role));
+            //var_dump(empty($role));
+            if(!empty($role)){
+                foreach($role as $value) {
+                    array_push($info, role::ID2Role($value -> id_role));
+                }
             }
+
 
 
             //$info = array_merge($info, $role);
