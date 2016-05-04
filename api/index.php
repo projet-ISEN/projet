@@ -24,10 +24,10 @@
 
    // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
    // $userData["Login"]      = 'vrioua17'; //Evaluator
-    //$userData["Login"]      = 'pverba17'; //Prez BDE
+    $userData["Login"]      = 'pverba17'; //Prez BDE
    //$userData["Login"]      = 'fduboi17'; //trez BDE
    // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
-    $userData["Login"]      = 'tcouss17'; //Prez club
+    //$userData["Login"]      = 'tcouss17'; //Prez club
     //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
     //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
     //$userData["Login"]      = 'qduche17'; //PA BDE
