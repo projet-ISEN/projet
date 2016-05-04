@@ -25,9 +25,9 @@
    // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
    // $userData["Login"]      = 'vrioua17'; //Evaluator
     //$userData["Login"]      = 'pverba17'; //Prez BDE
-   $userData["Login"]      = 'fduboi17'; //trez BDE
+   //$userData["Login"]      = 'fduboi17'; //trez BDE
    // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
-    //$userData["Login"]      = 'tcouss17'; //Prez club
+    $userData["Login"]      = 'tcouss17'; //Prez club
     //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
     //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
     //$userData["Login"]      = 'qduche17'; //PA BDE
@@ -118,6 +118,8 @@ if (date("n")>7) $myYear++;
     $router->delete(    '/choices',     'Choice.deleteAll' );
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
+
+    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
