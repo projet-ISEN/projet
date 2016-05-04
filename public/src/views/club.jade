@@ -1,9 +1,10 @@
 md-card
-    img.md-card-image(
-        ng-src="images/{{club.club_id}}.jpg"
-        alt="logo club"
-        onerror="this.src='images/blank.jpg'"
-        style="height: 10rem; width: auto")
+    md-content( style="margin: auto" )
+        img.md-card-image(
+            ng-src="images/{{club.club_id}}.jpg"
+            alt="logo club"
+            onerror="this.src='images/blank.jpg'"
+            style="height: 10rem; width: auto")
 
     md-card-title
         md-card-title-text
@@ -29,6 +30,6 @@ md-card
     md-card-actions( layout="row" layout-align="start center" )
         div
             h5 Demande d'effectifs pour l'année prochaine :
-        //md-chips
-            //md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}/{{effectif.nb_asked_max}}
-        p( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}}
+
+        md-chips
+            md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}-{{effectif.nb_asked_max}}
