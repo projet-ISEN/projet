@@ -82,7 +82,7 @@ class Menu {
                             ,
 
                             [
-                                "link" => '#/contact/:'.$club_id,
+                                "link" => '#/contact/'.$club_id,
                                 "title" => 'Contact',
                                 "icon" => 'dashboard'
                             ]
@@ -267,23 +267,31 @@ class Menu {
                 $club = new Club();
                 $role = new Role();
 
-                for($i = $member->isAMemberOf(); $i > 0 ; $i--){//si bde ou capisen CAS SPE
+                for($i = $member->isAMemberOf(); $i > 0 ; $i--){//on parcour ses clubs
+                    //si bde ou capisen CAS SPE
 
 
                        $club_id = $list[$i -1] -> club_id;
 
-                       $role_id = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
+                       $role_link = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
 
-                       if( $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name, $club_id));//if president we add the menu
+                        foreach($role_link as $value){
+                                $prez = (role::ID2Role($value -> id_role) == $_SESSION["president"]);
+                                $tres = (role::ID2Role($value -> id_role) == $_SESSION["tresorier"]);
+                                //var_dump($prez);
+                        }
+
+
+                       if( $prez )$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name, $club_id));//if president we add the menu
 
 
                    if($list[$i -1] -> club_name == $_SESSION["BDE"]){
 
-                       if($role -> ID2Role($role_id) == $_SESSION["tresorier"] || $role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuBDE());
+                       if($tres || $prez)$menu = array_merge($menu, self::addMenuBDE());
 
                    }
                     if($list[$i -1] -> club_name == $_SESSION["Capisen"]){
-                       if($role -> ID2Role($role_id) == $_SESSION["president"])$menu = array_merge($menu, self::addMenuCapisen());
+                       if($prez)$menu = array_merge($menu, self::addMenuCapisen());
                    }
                 }
 

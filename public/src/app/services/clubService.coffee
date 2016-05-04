@@ -30,7 +30,7 @@ angular.module('app')
             for club in clubs
                 if club.club_name == name
                     return cb club
-            cb null 
+            cb null
 
 
     @stat = (id, cb)->

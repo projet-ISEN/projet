@@ -30,14 +30,13 @@ class Role {
 
 
      /**
-     * Return id of the role
+     * Return an array of IDs of role or false
      * @return string
      */
     public static function whichRoleID($year,$club_id,$login){
 
         $role = Database::Select("SELECT id_role FROM role_link WHERE club_id='".$club_id."' AND login = '".$login."' AND school_year='".$year."'");
-
-        return (isset($role[0]->role_id))? $role[0]->role_id : false;
+        return (isset($role[0]->id_role))? $role : false;
 
     }
 
@@ -51,6 +50,8 @@ class Role {
 
         return (isset($role[0]->role))? $role[0]->role : false;
     }
+
+
 
 
 }

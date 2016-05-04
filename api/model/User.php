@@ -57,7 +57,13 @@ class User {
     }
 
 
-    public function load() {
+    public static function Info($login) {
+
+        return Database::Select("SELECT * FROM users WHERE login='" .$login . "'" );
+
+    }
+
+        public function load() {
 
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM users WHERE login='" . $this->login . "'" )
             ->fetchAll( \PDO::FETCH_ASSOC )[0];

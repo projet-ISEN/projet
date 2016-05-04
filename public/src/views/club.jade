@@ -30,5 +30,11 @@ md-card
     md-card-actions( layout="row" layout-align="start center" )
         div
             h5 Demande d'effectifs pour l'année prochaine :
+<<<<<<< HEAD
         md-chips
             md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}-{{effectif.nb_asked_max}}
+=======
+        //md-chips
+            //md-chip( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}} : {{effectif.nb_asked_min}}/{{effectif.nb_asked_max}}
+        p( ng-repeat="effectif in club.effectifs" ) {{effectif.project_type}}
+>>>>>>> master
