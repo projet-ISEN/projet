@@ -52,11 +52,6 @@ class Role {
     }
 
 
-    public static function RoleList($role_id){//TODO return list of role
-
-        //return Database::Select("SELECT role FROM role WHERE id_role = '".$role_id."'");
-
-    }
 
 
 }
