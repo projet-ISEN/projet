@@ -274,7 +274,8 @@ class Menu {
                        $club_id = $list[$i -1] -> club_id;
 
                        $role_link = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
-
+                        $prez = false;
+                        $tres = false;
 
                         if(!empty($role_link)){
                             foreach($role_link as $value){
