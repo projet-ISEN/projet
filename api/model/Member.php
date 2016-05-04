@@ -81,17 +81,21 @@ class Member {
             $role = role::whichRoleID($year,$club_id,$value->login);
             //var_dump(empty($role));
 
+            //var_dump($info);
+
+            $info[0] ->roles = [];
+
 
             if(!empty($role)){
                 foreach($role as $value) {
-                    array_push($info, role::ID2Role($value -> id_role));
+                    array_push($info[0] -> roles, role::ID2Role($value -> id_role));
                 }
             }
-
-
+            //var_dump($info);
+            //var_dump(gettype($info["roles"]));
 
             //$info = array_merge($info, $role);
-            array_push($intels, $info);
+            $intels = array_merge($intels, $info);
         }
 
 
