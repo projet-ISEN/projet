@@ -80,6 +80,8 @@ class Member {
             $info = user::Info($value->login);
             $role = role::whichRoleID($year,$club_id,$value->login);
             //var_dump(empty($role));
+
+
             if(!empty($role)){
                 foreach($role as $value) {
                     array_push($info, role::ID2Role($value -> id_role));

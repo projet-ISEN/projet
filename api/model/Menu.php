@@ -275,11 +275,15 @@ class Menu {
 
                        $role_link = $role -> whichRoleID($_SESSION["year"], $club_id , $_SESSION["user"] -> login);
 
-                        foreach($role_link as $value){
+
+                        if(!empty($role_link)){
+                            foreach($role_link as $value){
                                 $prez = (role::ID2Role($value -> id_role) == $_SESSION["president"]);
                                 $tres = (role::ID2Role($value -> id_role) == $_SESSION["tresorier"]);
                                 //var_dump($prez);
+                            }
                         }
+
 
 
                        if( $prez )$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name, $club_id));//if president we add the menu
