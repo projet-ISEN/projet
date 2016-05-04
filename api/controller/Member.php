@@ -41,7 +41,18 @@ class Member
      * @return array
      */
     public function ClubMembers($year = null){
-        echo json_encode(\Models\Menu::ClubMembers($year));
+        echo json_encode(\Models\Member::ClubMembers($year));
+
+    }
+
+    public function membersInClub($club_id,$year = null){
+        echo json_encode(\Models\Member::membersInClub($club_id,$year));
+
+    }
+
+
+    public function membersIntelsInClub($club_id,$year = null){
+        echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
 
     }
 
