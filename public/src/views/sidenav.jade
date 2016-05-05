@@ -12,18 +12,19 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
     md-list( flex )
 
-      menu-toggle( ng-repeat='underpart in menu' )
+      menu-list( ng-repeat='underpart in menu' )
 
         md-divider(ng-if = "$index")
-
-        .menu-toggle-head.layout-row.flex(
+        md-list-item(
             flex=''
             layout='row'
+            type = "button"
             ng-if = "$index"
+            ng-class="{openList: underpart.expanded}"
             ng-click = "collapse(underpart, $index)")
-              | {{underpart.name}}
-              span.flex(flex='')
-              span
+              {{underpart.name}}
+              span.flex(flex)
+              span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
 
           .toggle(
