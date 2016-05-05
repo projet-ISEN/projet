@@ -21,5 +21,5 @@ angular.module "app"
             $scope.me = me
 
         $scope.goToProfile = ->
-            $location.url '/moi'
+            $location.url '/me'
 ]
