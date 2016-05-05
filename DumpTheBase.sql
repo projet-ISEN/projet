@@ -237,16 +237,16 @@ CREATE TABLE IF NOT EXISTS `member` (
 --
 
 INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, NULL, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'gymorv17', 2016, NULL, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
-('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL);
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'gymorv17', 2016, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
