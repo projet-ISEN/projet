@@ -34,7 +34,6 @@ angular.module('app')
                     $scope.project = project
                     if typeof $scope.project.project_description == 'string'
                         $scope.project.project_description = JSON.parse(project.project_description)
-                    console.log $scope.project
                     $scope.close = ->
                         $mdDialog.hide()
 
