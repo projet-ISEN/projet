@@ -14,7 +14,7 @@ env:
 before_script:
 
   - mysql -e 'create database projet;'
-  - mysql -e < data.sql
+  - mysql projet < DumpTheBase.sql
 
   - cd public/
   - npm install -g bower
