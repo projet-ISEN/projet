@@ -40,21 +40,24 @@ class Menu {
                             [
                                 "link" => '#/accueil',
                                 "title" => 'Informations Globales',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '#/candidature',
                                 "title" => 'Candidature',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '',
                                 "title" => 'Mes informations',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -70,35 +73,40 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Evénements',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '',
                                 "title" => 'Réunions',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '#/contact/'.$club_id,
                                 "title" => 'Contact',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '',
                                 "title" => 'Informations du clubs',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                             ,
 
                             [
                                 "link" => '',
                                 "title" => 'Mon/mes projet(s)',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -114,37 +122,43 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Projets dans le club',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
 
                             [
                                 "link" => '',
                                 "title" => 'Réunions de club',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
 
                             [
                                 "link" => '',
                                 "title" => 'Notation',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
 
                             [
                                 "link" => '',
                                 "title" => 'Année prospective',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
 
                             [
                                 "link" => '',
                                 "title" => 'Gestion du club',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
 
                             [
                                 "link" => '',
                                 "title" => 'Effectif',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -160,7 +174,8 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Recrutement',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -177,7 +192,8 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Gestion globale des clubs',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -194,17 +210,20 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Gestions des clubs',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
                             [
                                 "link" => '',
                                 "title" => 'Réunions',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
                             [
                                 "link" => '',
                                 "title" => 'Activités des clubs',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
@@ -222,17 +241,20 @@ class Menu {
                             [
                                 "link" => '',
                                 "title" => 'Création de club',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
                             [
                                 "link" => '',
                                 "title" => 'Gestion des utilisateurs',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ],
                             [
                                 "link" => '',
                                 "title" => 'Administration',
-                                "icon" => 'dashboard'
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]
