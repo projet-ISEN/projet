@@ -1,4 +1,4 @@
-div.fullheight( layout="column" ng-controller="sidenavCtrl")
+div.fullheight( layout="column" ng-controller="sidenavCtrl"  ng-init="menuInit()")
 
   md-sidenav(
     class="md-sidenav-left md-whiteframe-z2 fullheight"
@@ -27,10 +27,9 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
 
-          .toggle(
-            ng-class = "{noHeight : !underpart.expanded}")
+          .toggle
             md-list-item(
-              ng-repeat='item in underpart.values'
+              ng-repeat='item in underpart.values' ng-class='{activeLink: item.active}'
               )
 
               a( ng-href='{{item.link}}')
