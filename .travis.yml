@@ -15,6 +15,7 @@ before_script:
 
   - mysql -e 'create database projet;'
   - mysql projet < DumpTheBase.sql
+  - mysql projet -e 'SELECT * FROM club;'
 
   - cd public/
   - npm install -g bower
