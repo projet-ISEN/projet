@@ -492,7 +492,6 @@ ALTER TABLE `event`
 -- Contraintes pour la table `member`
 --
 ALTER TABLE `member`
-  ADD CONSTRAINT `fk_affecte` FOREIGN KEY (`id_projet_club`) REFERENCES `project_club` (`club_id`, `id_projet_club`),
   ADD CONSTRAINT `fk_association_10` FOREIGN KEY (`login`) REFERENCES `users` (`login`),
   ADD CONSTRAINT `fk_association_11` FOREIGN KEY (`school_year`) REFERENCES `year` (`school_year`),
   ADD CONSTRAINT `fk_association_12` FOREIGN KEY (`project_id`) REFERENCES `projet` (`project_id`),
