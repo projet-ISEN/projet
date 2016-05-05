@@ -20,7 +20,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
             flex=''
             layout='row'
             ng-if = "$index"
-            ng-click = "underpart.expanded = !underpart.expanded")
+            ng-click = "collapse(underpart, $index)")
               | {{underpart.name}}
               span.flex(flex='')
               span
