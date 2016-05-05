@@ -14,6 +14,7 @@ env:
 before_script:
 
   - mysql -e 'create database projet;'
+  - mysql -e < data.sql
 
   - cd public/
   - npm install -g bower
