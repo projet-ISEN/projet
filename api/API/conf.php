@@ -7,7 +7,7 @@ namespace API;
  * Class conf
  * @package API
  */
-class conf{
+class Conf{
 	
 	public static $debug = true;
 	

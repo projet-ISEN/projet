@@ -9,6 +9,8 @@
     namespace API;
 
     use \PDOException;
+    use \API\Conf;
+    use \PDO;
 
     /**
      * Fournit une connexion à la base de donnée
@@ -26,20 +28,22 @@
          */
         private function __construct()
         {
+            $user       = empty($_ENV['DB-USER'])?          Conf::$DB_USER       : $_ENV['DB-USER'];
+            $pass       = empty($_ENV['DB-PASSWORD'])?      Conf::$DB_PASSWORD   : $_ENV['DB-PASSWORD'];
+            $name       = empty($_ENV['DB-NAME'])?          Conf::$DB_NAME       : $_ENV['DB-NAME'];
+            $host       = empty($_ENV['DB-HOST'])?          Conf::$DB_HOST       : $_ENV['DB-HOST'];
+            $dsn        = 'mysql:dbname='. $name .';host=' . $host;
+
+            $options    = array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
+                PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING
+            );
+
             try {
 
-                $dsn        = 'mysql:dbname='. \API\conf::$DB_NAME .';host=' . \API\conf::$DB_HOST;
-                $user       = \API\conf::$DB_USER;
-                $pass       = \API\conf::$DB_PASSWORD;
-                $options    = array(
-                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
-                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING
-                );
-
-                $this->PDOInstance = new \PDO( $dsn, $user, $pass, $options );
+                $this->PDOInstance = new PDO( $dsn, $user, $pass, $options );
             }
             catch( PDOException $e ) {
-
                 echo json_encode([
                     'err' => $e
                 ]);
@@ -76,7 +80,7 @@
             {
                 try {
 
-                    return $statement->fetchAll( \PDO::FETCH_OBJ ); // ne double pas les résultats
+                    return $statement->fetchAll( PDO::FETCH_OBJ ); // ne double pas les résultats
                 }
                 catch (\PDOException $e) {
 
@@ -95,7 +99,7 @@
          */
         public static function getUID() {
 
-            return self::getInstance()->PDOInstance->query("SELECT UUID()")->fetchAll(\PDO::FETCH_NUM)[0][0];
+            return self::getInstance()->PDOInstance->query("SELECT UUID()")->fetchAll(PDO::FETCH_NUM)[0][0];
         }
     }
 ?>
