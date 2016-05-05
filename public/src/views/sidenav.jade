@@ -1,11 +1,12 @@
-div.fullheight( layout="column" ng-controller="sidenavCtrl"  ng-init="menuInit()")
+div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
   md-sidenav(
     class="md-sidenav-left md-whiteframe-z2 fullheight"
     md-component-id="left"
     hide-print="hide-print"
     md-is-locked-open="$mdMedia('gt-sm')"
-    tabindex="-1" )
+    tabindex="-1"
+    )
 
     header
         img(src='images/isen-troncated.jpg' alt="logo de l'ISEN" )
@@ -14,22 +15,22 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl"  ng-init="menuInit()
 
       menu-list( ng-repeat='underpart in menu' )
 
-        md-divider(ng-if = "$index")
+        md-divider(ng-if = "$index" )
         md-list-item(
             flex=''
             layout='row'
             type = "button"
             ng-if = "$index"
             ng-class="{openList: underpart.expanded}"
-            ng-click = "collapse(underpart, $index)")
-              {{underpart.name}}
+            ng-click = "collapse(underpart)")
+              | {{underpart.name}}
               span.flex(flex)
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
 
           .toggle
             md-list-item(
-              ng-repeat='item in underpart.values' ng-class='{activeLink: item.active}'
+              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}" ng-if="underpart.expanded"
               )
 
               a( ng-href='{{item.link}}')
