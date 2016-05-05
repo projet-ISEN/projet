@@ -44,5 +44,5 @@ angular.module('app')
             console.log err if err?
             cb null
 
-    return this
+    return @
 ]

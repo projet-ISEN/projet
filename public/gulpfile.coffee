@@ -72,9 +72,8 @@ gulp.task 'load-imgs', ->
 
         unless exists then fs.mkdirSync 'build/images/'
 
-        ncp 'src/images/', 'build/images/', (err)->
-            if      err? then console.error err
-            unless  err? then console.log 'Copying libs complete'
+        gulp.src ['src/images/*.jpg', 'src/images/*.png']
+        .pipe gulp.dest 'build/images/'
 
 
 #------------------------------------------------------------------------------
