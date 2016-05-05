@@ -13,7 +13,7 @@ env:
 
 before_script:
 
-  - mysql -e 'create database $DB-HOST;'
+  - mysql -e 'create database projet;'
 
   - cd public/
   - npm install -g bower
