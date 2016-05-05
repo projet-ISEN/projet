@@ -2,7 +2,8 @@ angular.module("app").controller 'sidenavCtrl', [
   '$scope'
   '$mdSidenav'
   '$menu'
-  ($scope, $mdSidenav, $menu) ->
+  '$location'
+  ($scope, $mdSidenav, $menu, $location) ->
     
     $menu.myMenu().then (menu)->
 
@@ -13,11 +14,16 @@ angular.module("app").controller 'sidenavCtrl', [
         #console.log(underpart + " " + $index)
         underpart.expanded = !underpart.expanded
 
-        #console.log($scope.menu)
-        i = 0;
+
+     $scope.menuInit = ->
+        console.log($scope.menu)
         angular.forEach $scope.menu, (value, key) ->
-            #console.log(value) if i==$index
-            value.expanded = false if i!=$index and i!=0
-            i++
+            angular.forEach value.values, (item, key) ->
+                #console.log(value.link.indexOf($location.path()))
+
+                if item.link.indexOf($location.path()) isnt -1
+                    console.log(item.link.indexOf($location.path()) + "   " + item.title)
+                    item.active = true
+                    value.expanded = true
 ]
 
