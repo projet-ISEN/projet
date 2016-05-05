@@ -7,3 +7,14 @@ md-toolbar.md-hue-2.headToolbar.md-whiteframe-glow-z1(ng-controller="toolbarCtrl
       span( ng-repeat='crumb in crumbs' )
         a( ng-href="#{{crumb.path}}" ) {{crumb.name}}
         md-icon.material-icons( ng-if="!$last" ) play_arrow
+
+
+    span( flex )
+    img(
+        style="height: 75%; margin-right: 0.5rem"
+        ng-src="images/{{me.login}}"
+        alt="photo de profil"
+        onerror="this.src='images/blank-person.png'"
+        ng-click="goToProfile()")
+    a( ng-click="goToProfile()" href="#")
+        | {{me.user_firstname}} {{me.user_name | firstLetterUppercase}}
