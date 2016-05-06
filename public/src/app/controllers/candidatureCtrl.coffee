@@ -9,17 +9,13 @@ angular.module 'app'
     ($user, $mdDialog, $club, $mdToast, $scope, $http)->
 
         # Tableau de choix
-        $scope.choices = []
+        $scope.choices = [{}, {},{}]
         # Default action
         $scope.saveAction = 'post'
 
         # Delete all choices
         $scope.clearValue = ->
             $scope.choices = []
-
-        # This club is already choose
-        $scope.isDisabled = (club)->
-            club.hide = ($scope.choices.indexOf(club) != -1)
 
         # Send choices
         $scope.save = ->
@@ -38,9 +34,21 @@ angular.module 'app'
                 clickOutsideToClose: true
                 controller: 'capisenDialogCtrl'
 
+        $scope.updateList = (number)->
+
+            for club in $scope.clubs
+                if $scope.choices[0]? and club.club_id == ($scope.choices[0]).club_id
+                    club.disable = true
+                else if $scope.choices[1]? and club.club_id == ($scope.choices[1]).club_id
+                    club.disable = true
+                else if $scope.choices[2]? and club.club_id == ($scope.choices[2]).club_id
+                    club.disable = true
+                else
+                    club.disable = false
 
 
-        # Load select input with clubs
+
+        # Load all clubs
         $club.all (clubs)->
 
             $scope.clubs = clubs
@@ -48,7 +56,7 @@ angular.module 'app'
             # load choices of user
             $http.get '../../api/choices'
             .then (res)->
-                # If our user doesn't have choose
+                # If our user already have choosed
                 if res.data.length != 0
                     $scope.choices = []
                     $scope.saveAction = 'put'
@@ -57,7 +65,7 @@ angular.module 'app'
                         for club in $scope.clubs
                             if choice.club_id == club.club_id
                                 $scope.choices[choice.choice_number - 1 ] = club
-                    $scope.$apply
+
         post = ->
 
             $http
