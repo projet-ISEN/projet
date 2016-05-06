@@ -125,6 +125,39 @@ $activeLink:      #c02d2e
     overflow : hidden
 
 
+
+.slideDown.ng-hide
+    height: 0
+    transition: height 0.35s ease
+    overflow: hidden
+    position: relative
+
+.slideDown
+    height: 141px
+    transition: height 0.35s ease
+    overflow: hidden
+    position: relative
+
+.slideDown
+    &.ng-hide-remove, &.ng-hide-add
+        display: block !important
+
+.slideDown.ng-hide-add
+    animation-name: hide
+    -webkit-animation-name: hide
+    animation-duration: .5s
+    -webkit-animation-duration: .5s
+    animation-timing-function: ease-in
+    -webkit-animation-timing-function: ease-in
+
+.slideDown.ng-hide-remove
+    animation-name: show
+    -webkit-animation-name: show
+    animation-duration: .5s
+    -webkit-animation-duration: .5s
+    animation-timing-function: ease-out
+    -webkit-animation-timing-function: ease-out
+
 // Animation des menu et pour tout les ng-repeat en général
 /*.animate
     .ng-enter, .ng-leave
