@@ -3,35 +3,45 @@ angular.module("app").controller 'sidenavCtrl', [
   '$mdSidenav'
   '$menu'
   '$location'
-  ($scope, $mdSidenav, $menu, $location) ->
+  '$rootScope'
+  ($scope, $mdSidenav, $menu, $location, $rootScope) ->
     
     $menu.myMenu().then (menu)->
 
         $scope.menu = menu
         $scope.$apply
-        $scope.menuInit()
+        $scope.findActive()
 
     $scope.collapse = (underpart, $index)->
-        underpart.expanded = !underpart.expanded
         i = 0
+
+        underpart.expanded = !underpart.expanded
         angular.forEach $scope.menu, (value, key) ->
-            value.expanded = false if i!=$index and i!=0
+            activeInIt = false
+            angular.forEach value.values, (item, key) ->
+                activeInIt = true if item.active == true
+            value.expanded = false if i!=$index and i!=0 and !activeInIt
             i++
 
+        #console.log($location.path())
 
 
 
-     $scope.menuInit = ->
-        #console.log("menuInit")
-        console.log($scope.menu)
+    $rootScope.$on '$routeChangeSuccess', (event, current) ->
+        $scope.findActive()
+
+
+
+
+     $scope.findActive = ->
+        #console.log($location.path())
         angular.forEach $scope.menu, (value, key) ->
             angular.forEach value.values, (item, key) ->
-                #console.log(value.link.indexOf($location.path()))
                 if item.link.indexOf($location.path()) isnt -1
-                    #console.log(item.link.indexOf($location.path()) + "   " + item.title)
-                    console.log(item)
                     item.active = true
-                    console.log(item)
                     value.expanded = true
+                else
+                    #console.log(item.title + " " + item.active)
+                    item.active = false
 ]
 

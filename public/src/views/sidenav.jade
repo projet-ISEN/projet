@@ -30,7 +30,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
           .toggle
             md-list-item(
-              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}" ng-if="underpart.expanded"
+              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}" ng-if="underpart.expanded" ng-click="findActive()"
               )
 
               a( ng-href='{{item.link}}')
