@@ -36,6 +36,36 @@ class User {
         $user->load();
         echo json_encode($user);
     }
+
+    public static function getMe() {
+        echo json_encode( $_SESSION['user'] );
+        return;
+    }
+
+    public static function updateMe() {
+
+        $put = json_decode( file_get_contents("php://input"), true);
+
+        if( isset($put['user_mail']) ) {
+            $_SESSION['user']->user_mail = $put['user_mail'];
+        }
+
+        if( isset($put['phone']) ) {
+            $_SESSION['user']->phone = $put['phone'];
+        }
+
+        if( $_SESSION['user']->save() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+        }
+        else {
+            echo json_encode([
+                'err' => 'Impossible de modifier vos données.'
+            ]);
+        }
+        return;
+    }
 }
 
 /*
