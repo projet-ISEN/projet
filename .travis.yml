@@ -14,7 +14,7 @@ env:
 before_script:
 
   - mysql -e 'create database projet;'
-  - mysql projet < DumpTheBase.sql
+  - mysql projet < utils/DumpTheBase.sql
   - mysql projet -e 'SELECT * FROM club;'
 
   - cd public/
