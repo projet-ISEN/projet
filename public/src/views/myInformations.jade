@@ -2,15 +2,20 @@
    Created by rcd18 on 06/05/2016.
 div( layout='row' layout-xs='column' layout-padding )
 
-    md-content( flex='50' layout="column" layout-align='center center')
+    md-content( flex='30' layout="column" layout-align='center center')
         img(src='1' onerror="this.src='images/blank-person.png'")
-        h2 {{me.login}}
-
-        h2 {{me.user_firstname}} {{me.user_name | firstLetterUppercase}}
 
     md-content( flex='50' )
 
-        form( name='contactForm' ng-submit='save()')
+
+        h2
+            | {{me.user_firstname | firstLetterUppercase}}
+            | {{me.user_name | firstLetterUppercase}}
+            | ({{me.login}})
+
+        md-divider( layout-padding )
+
+        form( name='contactForm' ng-submit='save()' layout-padding )
             md-input-container.md-icon-float.md-block( flex-gt-xs )
                 label E-mail
                 md-icon( class="name" ) menu
@@ -24,7 +29,7 @@ div( layout='row' layout-xs='column' layout-padding )
                     div( ng-message="pattern" class="my-message") Cela ne semble pas être une adresse mail
 
             md-input-container.md-icon-float.md-block
-                label Telephone
+                label Téléphone
                 md-icon( class="name" ) menu
                 input(
                     type="tel"
@@ -34,23 +39,17 @@ div( layout='row' layout-xs='column' layout-padding )
                 div( ng-messages="contactForm.phone.$error" role="alert" multiple )
                     div( ng-message="pattern" class="my-message") Le format de votre numero ne semble pas bon
 
-<<<<<<< HEAD
-            div.md-block
-=======
-
-            div.pull-right
->>>>>>> master
+            md-input-container( layout-align='center center' layout="row" )
                 md-button.md-raised.md-primary(
                     type="submit"
                 ) Sauvegarder
-<<<<<<< HEAD
-        md-card.md-block
+
+div( layout='row' layout-xs='column' layout-padding layout-align='center center')
+        md-card
             md-card-content
                 p Les informations de contact ci-dessus sont indépendantes de l'ENT.
-                p Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter.
-=======
-
-        div.pull-right
-            md-button.md-raised.md-primary Sauvegarder
->>>>>>> master
-
+                p Concernant votre nom, prénom, adresse E-mail et numéro de téléphone :
+                ul
+                    li Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter.
+                    li Ces informations seront accessible à toute personne membres d'un club
+                        | dans lequel vous avez occupé une place.
