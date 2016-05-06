@@ -16,28 +16,27 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
       menu-list( ng-repeat='underpart in menu' )
 
-        md-divider(slide-toggle="#test")
+        md-divider(slide-toggle="#row_{{$index}}")
             md-list-item(
             flex=''
             layout='row'
             type = "button"
-            ng-if = "$index"
             ng-class="{openList: underpart.expanded}"
             ng-click = "collapse(underpart, $index)")
               span {{underpart.name}}
               span.flex(flex)
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
-          .slideable(id="test")
+        .slideable(id="row_{{$index}}")
             md-list-item(
-              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}"
-              )
-              a( ng-href='{{item.link}}')
-                div(md-ink-ripple='' layout='row' layout-align='start center')
-                  .inset
-                    md-icon.material-icons {{item.icon}}
-                  .inset
-                    | {{item.title}}
+                ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}"
+                )
+                    a( ng-href='{{item.link}}')
+                        div(md-ink-ripple='' layout='row' layout-align='start center')
+                            .inset
+                                md-icon.material-icons {{item.icon}}
+                            .inset
+                            | {{item.title}}
 
 
 

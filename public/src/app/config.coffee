@@ -100,7 +100,7 @@ angular.module('app')
       element.html '<div class="slideable_content" style="margin:0 !important; padding:0 !important" >' + contents + '</div>'
       (scope, element, attrs) ->
         # default properties
-        attrs.duration = if !attrs.duration then '1s' else attrs.duration
+        attrs.duration = if !attrs.duration then '0.5s' else attrs.duration
         attrs.easing = if !attrs.easing then 'ease-in-out' else attrs.easing
         element.css
           'overflow': 'hidden'
@@ -115,9 +115,9 @@ angular.module('app')
   {
     restrict: 'A'
     link: (scope, element, attrs) ->
-      target = document.querySelector(attrs.slideToggle)
       attrs.expanded = false
       element.bind 'click', ->
+        target = document.querySelector(attrs.slideToggle)
         content = target.querySelector('.slideable_content')
         if !attrs.expanded
           content.style.border = '1px solid rgba(0,0,0,0)'
