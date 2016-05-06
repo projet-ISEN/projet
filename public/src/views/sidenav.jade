@@ -8,7 +8,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
     tabindex="-1"
     )
 
-    header.headToolbar
+    header.headToolbar.md-whiteframe-glow-z1
         md-icon(md-svg-src="images/isen-troncated.svg")
         //img(src='images/isen-troncated.jpg' alt="logo de l'ISEN" )
 
@@ -24,7 +24,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
             ng-if = "$index"
             ng-class="{openList: underpart.expanded}"
             ng-click = "collapse(underpart, $index)")
-              | {{underpart.name}}
+              span {{underpart.name}}
               span.flex(flex)
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
