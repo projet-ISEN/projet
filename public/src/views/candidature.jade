@@ -23,11 +23,14 @@ div(
                         ng-value="club" ) {{club.club_name}}
                 div( ng-messages="candidature.choiceOne.$error" )
                     div( ng-message="required" role="alert" class="my-message") Requis
+                    div(
+                        ng-if="candidature.choiceOne.$untouched && saveAction == 'post'"
+                        role="alert") Requis
 
             md-input-container.md-block
                 label Deuxième choix
                 md-select(
-                    name='choicesTwo'
+                    name='choiceTwo'
                     ng-model='choices[1]'
                     ng-disabled='!clubs'
                     md-on-close="updateList(1)"
@@ -36,13 +39,16 @@ div(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
                         ng-disabled='club.disable'
                         ng-value='club') {{club.club_name}}
-                div( ng-messages="candidature.choicesTwo.$error" )
+                div( ng-messages="candidature.choiceTwo.$error" )
                     div( ng-message="required" role="alert" class="my-message") Requis
+                    div(
+                        ng-if="candidature.choiceTwo.$untouched && saveAction == 'post'"
+                        role="alert") Requis
 
             md-input-container.md-block
                 label Troisième choix
                 md-select(
-                    name='choicesThree'
+                    name='choiceThree'
                     ng-model='choices[2]'
                     ng-disabled='!clubs'
                     md-on-close="updateList(2)"
@@ -51,8 +57,11 @@ div(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
                         ng-disabled='club.disable'
                         ng-value='club' ) {{club.club_name}}
-                div( ng-messages="candidature.choicesThree.$error" )
+                div( ng-messages="candidature.choiceThree.$error" )
                     div( ng-message="required" role="alert" class="my-message") Requis
+                    div(
+                        ng-if="candidature.choiceThree.$untouched && saveAction == 'post'"
+                        role="alert" ) Requis
 
 
             div(layout='row')

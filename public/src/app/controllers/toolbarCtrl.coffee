@@ -4,8 +4,7 @@ angular.module "app"
     '$mdSidenav'
     'breadcrumbsService'
     '$scope'
-    '$location'
-    ($user, $mdSidenav, breadcrumbsService, $scope, $location) ->
+    ($user, $mdSidenav, breadcrumbsService, $scope) ->
 
         $scope.toggleSidenav = (menuId) ->
             $mdSidenav(menuId).toggle()
@@ -19,7 +18,4 @@ angular.module "app"
         $user.me (me)->
 
             $scope.me = me
-
-        $scope.goToProfile = ->
-            $location.url '/me'
 ]

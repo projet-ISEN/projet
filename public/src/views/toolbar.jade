@@ -16,5 +16,5 @@ md-toolbar.md-hue-2.headToolbar.md-whiteframe-glow-z1(ng-controller="toolbarCtrl
         alt="photo de profil"
         onerror="this.src='images/blank-person.png'"
         ng-click="goToProfile()")
-    a( ng-click="goToProfile()" href="#")
-        | {{me.user_firstname}} {{me.user_name | firstLetterUppercase}}
+    a( href="#/me")
+        | {{me.user_firstname| firstLetterUppercase}} {{me.user_name | firstLetterUppercase}}
