@@ -11,10 +11,13 @@ angular.module("app").controller 'sidenavCtrl', [
         $scope.$apply
         $scope.menuInit()
 
-    $scope.collapse = (underpart)->
+    $scope.collapse = (underpart, $index)->
         underpart.expanded = !underpart.expanded
-        angular.forEach underpart.values, (item, key) ->
-            console.log(item)
+        i = 0
+        angular.forEach $scope.menu, (value, key) ->
+            value.expanded = false if i!=$index and i!=0
+            i++
+
 
 
 
