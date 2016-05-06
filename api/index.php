@@ -93,9 +93,8 @@ if (date("n")>7) $myYear++;
 
     $router = new API\Router( $_GET['url'] );
 
-    $router->get('/me', function() {
-        echo json_encode( $_SESSION['user'] );
-    });
+    $router->get('/me', 'User.getMe');
+    $router->put('/me', 'User.updateMe');
 
     // Use controller user and method one
 

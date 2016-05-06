@@ -7,5 +7,7 @@ angular.module 'app'
         $user.me (me)->
             $scope.me = me
 
-
+        $scope.save = ->
+            $user.save $scope.me, (res)->
+                console.log res
 ]

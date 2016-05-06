@@ -15,5 +15,22 @@ angular.module('app')
         , (err)->
             console.log err if err?
             cb null
+
+    @save = (user, cb)->
+
+        $http(
+            method: 'PUT'
+            url: "../../api/me"
+            headers:
+                'Content-Type': 'application/json'
+            data: user
+
+
+        ).then (res)->
+            cb res.data
+        , (err)->
+            console.log err if err?
+            cb null
+
     return @
 ]
