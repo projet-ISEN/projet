@@ -1,4 +1,15 @@
 <?php
+    session_start();
+
+    // Permet de faire un require_once de tous les fichier php sauf index.php
+
+    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
+    foreach($objects as $name => $object){
+
+        if(is_file($name) && $name != '.' && $name[2] != '.' && (strpos($name, 'index.php') == false) ) {
+            require_once($name);
+        }
+    }
 
 /*================================================================
                         Global Variable
@@ -14,47 +25,35 @@
 
 
 
+    if(! \API\Conf::isDebug()) require_once ('/var/www/html/CAS/pluginCasBis.php');
+    else {
+        // Données de l'ENT
 
+        //test variable
 
-
-    // Données de l'ENT
-
-
-    //test variable
-
-   // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
-   // $userData["Login"]      = 'vrioua17'; //Evaluator
-    $userData["Login"]      = 'pverba17'; //Prez BDE
-   //$userData["Login"]      = 'fduboi17'; //trez BDE
-   // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
-    //$userData["Login"]      = 'tcouss17'; //Prez club
-    //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
-    //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
-    //$userData["Login"]      = 'qduche17'; //PA BDE
-    //$userData["Login"]      = 'gymorv17'; //PA Capisen
-    //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-
+        // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
+        // $userData["Login"]      = 'vrioua17'; //Evaluator
+        $userData["Login"]      = 'pverba17'; //Prez BDE
+        //$userData["Login"]      = 'fduboi17'; //trez BDE
+        // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
+        //$userData["Login"]      = 'tcouss17'; //Prez club
+        //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
+        //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
+        //$userData["Login"]      = 'qduche17'; //PA BDE
+        //$userData["Login"]      = 'gymorv17'; //PA Capisen
+        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
 
 
 
 
-    $userData["Name"]       = 'prename name'; // prénom nom
-    $userData["FirstName"]  = 'prename'; // prénom
-    $userData["LastName"]   = 'name'; // nom
-    $userData["Mail"]       = 'email'; // mail
-    $userData["Telephone"]  = 'tel'; // telephone
-    $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-    $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
 
-
-    // Permet de faire un require_once de tous les fichier php sauf index.php
-
-    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
-    foreach($objects as $name => $object){
-
-        if(is_file($name) && $name != '.' && $name[2] != '.' && (strpos($name, 'index.php') == false) ) {
-            require_once($name);
-        }
+        $userData["Name"]       = 'prename name'; // prénom nom
+        $userData["FirstName"]  = 'prename'; // prénom
+        $userData["LastName"]   = 'name'; // nom
+        $userData["Mail"]       = 'email'; // mail
+        $userData["Telephone"]  = 'tel'; // telephone
+        $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
+        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
     }
 
 /*================================================================
