@@ -9,7 +9,7 @@ angular.module 'app'
     ($user, $mdDialog, $club, $mdToast, $scope, $http)->
 
         # Tableau de choix
-        $scope.choices = []
+        $scope.choices = [{}, {},{}]
         # Default action
         $scope.saveAction = 'post'
 
@@ -17,15 +17,15 @@ angular.module 'app'
         $scope.clearValue = ->
             $scope.choices = []
 
-        # This club is already choose
-        $scope.isDisabled = (club)->
-            club.hide = ($scope.choices.indexOf(club) != -1)
-
         # Send choices
         $scope.save = ->
 
             unless $scope.choices[0]? and $scope.choices[1]? and $scope.choices[0]?
-                return $mdToast.showSimple 'Vous devez séléctionner vos choix'
+                return $mdToast.show (
+                    $mdToast.simple 'Vous devez séléctionner vos choix'
+                    .position 'bottom right'
+                )
+
             if $scope.saveAction == 'post'
                 post()
             else
@@ -38,9 +38,21 @@ angular.module 'app'
                 clickOutsideToClose: true
                 controller: 'capisenDialogCtrl'
 
+        $scope.updateList = (number)->
+
+            for club in $scope.clubs
+                if $scope.choices[0]? and club.club_id == ($scope.choices[0]).club_id
+                    club.disable = true
+                else if $scope.choices[1]? and club.club_id == ($scope.choices[1]).club_id
+                    club.disable = true
+                else if $scope.choices[2]? and club.club_id == ($scope.choices[2]).club_id
+                    club.disable = true
+                else
+                    club.disable = false
 
 
-        # Load select input with clubs
+
+        # Load all clubs
         $club.all (clubs)->
 
             $scope.clubs = clubs
@@ -48,7 +60,7 @@ angular.module 'app'
             # load choices of user
             $http.get '../../api/choices'
             .then (res)->
-                # If our user doesn't have choose
+                # If our user already have choosed
                 if res.data.length != 0
                     $scope.choices = []
                     $scope.saveAction = 'put'
@@ -57,7 +69,7 @@ angular.module 'app'
                         for club in $scope.clubs
                             if choice.club_id == club.club_id
                                 $scope.choices[choice.choice_number - 1 ] = club
-                    $scope.$apply
+
         post = ->
 
             $http
@@ -72,15 +84,24 @@ angular.module 'app'
                         "3": $scope.choices[2].club_id
             .then (res)->
                 if res.data.err == null
-                    $mdToast.showSimple 'Vos choix ont été sauvegardés'
+                    $mdToast.show(
+                        $mdToast.simple 'Vos choix ont été sauvegardés'
+                        .position 'bottom right'
+                    )
                     $scope.saveAction = "put"
                 else
                     console.log res.data.err
-                    $mdToast.showSimple "Une erreur est survenue: #{res.data.err}"
+                    $mdToast.show(
+                        $mdToast.simple "Une erreur est survenue: #{res.data.err}"
+                        .position 'bottom right'
+                    )
 
             , (err)->
                     console.log err
-                    $mdToast.showSimple "impossible de contacter le serveur"
+                    $mdToast.show(
+                        $mdToast.simple "impossible de contacter le serveur"
+                        .position 'bottom right'
+                    )
         put = ->
             $http
                 method: 'PUT'
@@ -94,13 +115,22 @@ angular.module 'app'
                         "3": $scope.choices[2].club_id
             .then (res)->
                 if res.data.err == null
-                    $mdToast.showSimple 'Vos choix ont été modifiés'
+                    $mdToast.show(
+                        $mdToast.simple 'Vos choix ont été modifiés'
+                        .position 'bottom right'
+                    )
 
                 else
                     console.log res.data.err
-                    $mdToast.showSimple "Une erreur est survenue: #{res.data.err}"
+                    $mdToast.show(
+                        $mdToast.simple "Une erreur est survenue: #{res.data.err}"
+                        .position 'bottom right'
+                    )
 
             , (err)->
                     console.log err
-                    $mdToast.showSimple "impossible de contacter le serveur"
+                    $mdToast.show(
+                        $mdToast.simple "impossible de contacter le serveur"
+                        .position 'bottom right'
+                    )
 ]

@@ -12,56 +12,60 @@ div(
             md-input-container.md-block
                 label Premier choix
                 md-select(
-                    name="choices[0]"
+                    name="choiceOne"
                     ng-model="choices[0]"
                     ng-disabled="!clubs"
-                    required )
+                    md-on-close="updateList(0)"
+                    required="" )
                     md-option(
-                        ng-repeat="club in clubs | orderBy: 'club_name' "
-                        ng-disabled="isDisabled(club)"
+                        ng-repeat="club in clubs | orderBy: 'club_name'"
+                        ng-disabled='club.disable'
                         ng-value="club" ) {{club.club_name}}
-                //div( ng-messages="candidature.choice[0].$error" )
-                    div( ng-message="required" )
-                        | Requis
+                div( ng-messages="candidature.choiceOne.$error" )
+                    div( ng-message="required" role="alert" class="my-message") Requis
 
             md-input-container.md-block
                 label Deuxième choix
                 md-select(
-                    name='choices[1]'
+                    name='choicesTwo'
                     ng-model='choices[1]'
                     ng-disabled='!clubs'
-                    required)
+                    md-on-close="updateList(1)"
+                    required="" )
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
-                        ng-disabled='isDisabled(club)'
+                        ng-disabled='club.disable'
                         ng-value='club') {{club.club_name}}
-                //div( ng-messages="candidature.choices[1].$error" )
-                    div( ng-message="required" )
-                        | Requis
+                div( ng-messages="candidature.choicesTwo.$error" )
+                    div( ng-message="required" role="alert" class="my-message") Requis
 
             md-input-container.md-block
                 label Troisième choix
                 md-select(
-                    name='choices[2]'
+                    name='choicesThree'
                     ng-model='choices[2]'
                     ng-disabled='!clubs'
-                    required)
+                    md-on-close="updateList(2)"
+                    required="" )
                     md-option(
                         ng-repeat="club in clubs | orderBy: 'club_name'"
-                        ng-disabled='isDisabled(club)'
+                        ng-disabled='club.disable'
                         ng-value='club' ) {{club.club_name}}
-                //div( ng-messages="candidature.choices[2].$error" )
-                    div( ng-message="required" )
-                        | Requis
+                div( ng-messages="candidature.choicesThree.$error" )
+                    div( ng-message="required" role="alert" class="my-message") Requis
 
 
-        div(layout='row')
-            md-button( type='submit' ng-click='save()' ng-if="saveAction == 'post'") Sauvegarder
-            md-button( type='submit' ng-click='save()' ng-if="saveAction != 'post'") Mettre à jour
-            md-button.md-primary(
-                ng-click='clearValue()'
-                layout=''
-                layout-align='center end') Annuler
+            div(layout='row')
+                md-button.md-primary.md-raised(
+                    type='submit'
+                    ng-if="saveAction == 'post'") Sauvegarder
+                md-button.md-primary.md-raised(
+                    type='submit'
+                    ng-if="saveAction != 'post'") Mettre à jour
+                md-button.md-primary(
+                    ng-click='clearValue()'
+                    layout=''
+                    layout-align='center end') Vider
 
     md-content( flex="50" flex-xs="100" layout-padding )
         md-card

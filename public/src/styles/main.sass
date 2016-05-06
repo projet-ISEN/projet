@@ -1,3 +1,8 @@
+$menu-bg:         #2d323e
+$menu-text:       #c0c2c5
+$toggle-content:  #282c37
+$activeLink:      #c02d2e
+
 @mixin rotate($rayon)
     transform: rotate($rayon)
 
@@ -5,24 +10,16 @@
     box-sizing: border-box
     transition: all 0.2s
 
-
-    $menu-bg:         #2d323e
-    $menu-text:       #c0c2c5
-    $toggle-content:  #282c37
-    $activeLink: #c02d2e
-
     header
         min-height: 64px
+
         md-icon
             width: 100%
             min-height: 64px
             padding: .6rem
             color: $activeLink
 
-
-
     md-sidenav
-
         background-color: $menu-bg
         color: $menu-text
         transition: all 0.2s
@@ -33,11 +30,12 @@
 
         .toggle:not(:first-child)
             background-color: $toggle-content
+
         .openList
             background-color: $toggle-content
+
         .headList
             cursor: pointer !important
-
 
         header img
           width: 100%
@@ -70,6 +68,9 @@
     md-icon
         transition: all 0.3s
 
+        &.darker
+          color: $menu-bg !important
+
     //menu-toggle
         position: relative
         padding: 0px 16px
@@ -96,21 +97,19 @@
     .nopadding
         padding: 0
 
+    #footer
+        align-self: flex-end
+        padding: 16px 32px
+        width: 100%
+        text-align: left
+        font-size: small
+        border-top: 1px solid rgb(221, 221, 221)
+
 .animate
-    .ng-enter, .ng-leave
+  .ng-enter, .ng-leave
 
 .pull-right
-    float: right
-
-#footer
-    align-self: flex-end
-    padding: 16px 32px
-    width: 100%
-    text-align: left
-    font-size: small
-    border-top: 1px solid rgb(221, 221, 221)
-
-
+  float: right
 
 //////////////////////////////////////////////////////////
 //                      In dev                          //

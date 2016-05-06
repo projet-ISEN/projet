@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  29/04/2016 11:16:24                      */
+/* Date de création :  28/04/2016 16:21:18                      */
 /*==============================================================*/
 
 
@@ -26,11 +26,11 @@ drop table if exists projet;
 
 drop table if exists recommendation;
 
+drop table if exists role_link;
+
 drop table if exists reunions;
 
 drop table if exists role;
-
-drop table if exists role_link;
 
 drop table if exists users;
 
@@ -160,12 +160,12 @@ engine = innodb;
 /*==============================================================*/
 create table project_club
 (
-   id_projet_club       char(36) not null,
    club_id              char(36) not null,
+   id_projet_club       char(36) not null,
    name                 char(80) not null,
    link                 char(255),
    project_club_description longtext,
-   primary key (id_projet_club)
+   primary key (club_id, id_projet_club)
 )
 engine = innodb;
 
@@ -194,6 +194,19 @@ create table recommendation
 engine = innodb;
 
 /*==============================================================*/
+/* Table : role_link                                            */
+/*==============================================================*/
+create table role_link
+(
+   club_id              char(36) not null,
+   login                char(8) not null,
+   school_year          int not null,
+   id_role              char(36) not null,
+   primary key (club_id, login, school_year, id_role)
+)
+engine = innodb;
+
+/*==============================================================*/
 /* Table : reunions                                             */
 /*==============================================================*/
 create table reunions
@@ -216,19 +229,6 @@ create table role
    id_role              char(36) not null,
    role                 char(40) not null,
    primary key (id_role)
-)
-engine = innodb;
-
-/*==============================================================*/
-/* Table : role_link                                            */
-/*==============================================================*/
-create table role_link
-(
-   club_id              char(36) not null,
-   login                char(8) not null,
-   school_year          int not null,
-   id_role              char(36) not null,
-   primary key (club_id, login, school_year, id_role)
 )
 engine = innodb;
 
@@ -276,7 +276,7 @@ alter table event add constraint fk_association_14 foreign key (club_id)
       references club (club_id) on delete restrict on update restrict;
 
 alter table member add constraint fk_affecte foreign key (id_projet_club)
-      references project_club (id_projet_club) on delete restrict on update restrict;
+      references project_club (club_id, id_projet_club) on delete restrict on update restrict;
 
 alter table member add constraint fk_association_10 foreign key (login)
       references users (login) on delete restrict on update restrict;
@@ -308,16 +308,14 @@ alter table recommendation add constraint fk_recommendation foreign key (club_id
 alter table recommendation add constraint fk_recommendation2 foreign key (login)
       references users (login) on delete restrict on update restrict;
 
-alter table reunions add constraint fk_association_16 foreign key (club_id)
-      references club (club_id) on delete restrict on update restrict;
-
 alter table role_link add constraint fk_role_link foreign key (club_id, login, school_year)
       references member (club_id, login, school_year) on delete restrict on update restrict;
 
 alter table role_link add constraint fk_role_link2 foreign key (id_role)
       references role (id_role) on delete restrict on update restrict;
 
-
+alter table reunions add constraint fk_association_16 foreign key (club_id)
+      references club (club_id) on delete restrict on update restrict;
 
 
 
@@ -327,29 +325,13 @@ alter table role_link add constraint fk_role_link2 foreign key (id_role)
 INSERT INTO year (school_year) VALUES (2016);
 
 
-INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, phone) VALUES
-  ('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 0, NULL ),
-  ('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL );
-
-
 INSERT INTO role (id_role, role) VALUES
   (UUID(), 'président'),
   (UUID(), 'vice-président'),
   (UUID(), 'trésorier'),
-  (UUID(), 'secrétaire')
+  (UUID(), 'secrétaire'),
+  (UUID(), 'membre')
 ;
-
---
--- Contenu de la table `choice`
---
-
-INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
-('baboli17', '6d748391-0de7-11e6-9aa9-448a5b42bfcd', 3),
-('baboli17', '6d74861b-0de7-11e6-9aa9-448a5b42bfcd', 2),
-('baboli17', '6d7487b2-0de7-11e6-9aa9-448a5b42bfcd', 1),
-('qduche17', '6d746b50-0de7-11e6-9aa9-448a5b42bfcd', 2),
-('qduche17', '6d7485ce-0de7-11e6-9aa9-448a5b42bfcd', 1),
-('qduche17', '6d7488a5-0de7-11e6-9aa9-448a5b42bfcd', 3);
 
 
 
@@ -369,7 +351,7 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
                       "exemple": "s\'occuper d\'une exposition du BDA, participation active à un club",
                       "quota": "50 h",
                       "eval": "Validation ou non validation"}'),
-  (UUID(), 'PI', '{   "title": "Projet d\'intégration (à l\ISEN",
+  (UUID(), 'PI', '{ title: "Projet d\'intégration (à l\ISEN",
                       "objectif": "Se mettre au service ponctuellement d\'un groupe ou d\'une association",
                       "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l\'équipe du Gala",
                       "quota": "15 h",
@@ -377,39 +359,88 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
 
 
 
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `phone`) VALUES
+('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, NULL),
+('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, NULL),
+('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, NULL),
+('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, NULL),
+('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
+('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, NULL),
+('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
+('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
+('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
+('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
+('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL),
+('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, NULL);
+
+
+
 INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif) VALUES
-  (UUID(), 'rcolli17', 'Don du sang', '', '', 1),
-  (UUID(), 'rcolli17', 'Soutien Harteloire', '', '', 1),
-  (UUID(), 'rcolli17', 'Bureau des Arts', '', '', 1),
-  (UUID(), 'rcolli17', 'Tournée info', '', '', 1),
-  (UUID(), 'rcolli17', 'Asso. sociale A.F.E.V.', '', '', 1),
-  (UUID(), 'rcolli17', 'Bureau des sports', '', '', 1),
-  (UUID(), 'rcolli17', 'Gala', '', '', 1),
-  (UUID(), 'rcolli17', 'Bureau des élèves', '', '', 1),
-  (UUID(), 'rcolli17', 'Club foyer', '', '', 1),
-  (UUID(), 'rcolli17', 'Club musique', '', '', 1),
-  (UUID(), 'rcolli17', 'Intégration', '', '', 1),
-  (UUID(), 'rcolli17', 'Capisen', '', '', 1),
-  (UUID(), 'rcolli17', 'Digital Design', '', '', 1),
-  (UUID(), 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
-  (UUID(), 'rcolli17', 'Web TV ISEN', '', '', 1),
-  (UUID(), 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
-  (UUID(), 'rcolli17', 'Bureau du développement durable', '', '', 1),
-  (UUID(), 'rcolli17', 'Club glisse', '', '', 1),
-  (UUID(), 'rcolli17', 'Kengred', '', '', 1),
-  (UUID(), 'rcolli17', '4L Trophy', '', '', 1),
-  (UUID(), 'rcolli17', 'Encadrement sport extérieur', '', '', 1),
-  (UUID(), 'rcolli17', 'AREI', '', '', 1),
-  (UUID(), 'rcolli17', 'Banque alimentaire', '', '', 1),
-  (UUID(), 'rcolli17', 'Forums', '', '', 1),
-  (UUID(), 'rcolli17', 'ISEN Immo', '', '', 1),
-  (UUID(), 'rcolli17', 'Club Eva', '', '', 1),
-  (UUID(), 'rcolli17', 'Club international', '', '', 1),
-  (UUID(), 'rcolli17', 'Pon Pon Nippon', '', '', 1),
-  (UUID(), 'rcolli17', 'Soutien ISEN', '', '', 1),
-  (UUID(), 'rcolli17', 'Bureau de l\'international', '', '', 1),
-  (UUID(), 'rcolli17', 'Clubs externes', '', '', 1)
-;
+  ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Don du sang', '', '', 1),
+  ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien Harteloire', '', '', 1),
+  ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des Arts', '', '', 1),
+  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Tournée info', '', '', 1),
+  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Asso. sociale A.F.E.V.', '', '', 1),
+  ('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des sports', '', '', 1),
+  ('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Gala', '', '', 1),
+  ('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des élèves', '', '', 1),
+  ('7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club foyer', '', '', 1),
+  ('7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club musique', '', '', 1),
+  ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Intégration', '', '', 1),
+  ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Capisen', '', '', 1),
+  ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Digital Design', '', '', 1),
+  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
+  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Web TV ISEN', '', '', 1),
+  ('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
+  ('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau du développement durable', '', '', 1),
+  ('7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club glisse', '', '', 1),
+  ('7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Kengred', '', '', 1),
+  ('7cbed4ba-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', '4L Trophy', '', '', 1),
+  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Encadrement sport extérieur', '', '', 1),
+  ('7cbed548-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'AREI', '', '', 1),
+  ('7cbed590-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Banque alimentaire', '', '', 1),
+  ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Forums', '', '', 1),
+  ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'ISEN Immo', '', '', 1),
+  ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Eva', '', '', 1),
+  ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club international', '', '', 1),
+  ('7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Pon Pon Nippon', '', '', 1),
+  ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien ISEN', '', '', 1),
+  ('7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau de l\'international', '', '', 1),
+  ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Clubs externes', '', '', 1);
+
+
+--
+-- Contenu de la table `choice`
+--
+
+INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 1),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 2),
+('qduche17', (SELECT club_id FROM club WHERE club.club_name="Club Elec"), 3),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"), 1),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 2),
+('baboli17', (SELECT club_id FROM club WHERE club.club_name="Moviezen"), 3);
+
+
+--
+-- Contenu de la table `member`
+--
+
+INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'fduboi17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'pverba17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Bureau des élèves"), 'qduche17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'gymorv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PA"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Capisen"), 'mgoanv17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 0, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Club Elec"), 'tcouss17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'ftoque17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR+"), 1, NULL, NULL, NULL, NULL, NULL),
+((SELECT club_id FROM club WHERE club.club_name="Moviezen"), 'gbiann17', 2016, NULL, (SELECT project_id FROM projet WHERE project_type="PR"), 1, NULL, NULL, NULL, NULL, NULL);
 
 
 
