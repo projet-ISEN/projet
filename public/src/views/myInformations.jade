@@ -2,12 +2,11 @@
    Created by rcd18 on 06/05/2016.
 div( layout='row' layout-xs='column' layout-padding )
 
-    md-content( flex='50' )
+    md-content( flex='50' layout="column" layout-align='center center')
         img(src='1' onerror="this.src='images/blank-person.png'")
         h2 {{me.login}}
 
-        label Nom
-        h2 {{me.user_name}} {{me.user_firstname}}
+        h2 {{me.user_firstname}} {{me.user_name | firstLetterUppercase}}
 
     md-content( flex='50' )
 
@@ -18,7 +17,11 @@ div( layout='row' layout-xs='column' layout-padding )
                 input(
                     type="email"
                     name="email"
-                    ng-model='me.user_mail' )
+                    ng-model='me.user_mail'
+                    required="")
+                div( ng-messages="contactForm.email.$error" role="alert" multiple )
+                    div( ng-message="required" class="my-message" ) Vous devez laisser une adresse mail
+                    div( ng-message="pattern" class="my-message") Cela ne semble pas être une adresse mail
 
             md-input-container.md-icon-float.md-block
                 label Telephone
@@ -26,15 +29,28 @@ div( layout='row' layout-xs='column' layout-padding )
                 input(
                     type="tel"
                     name="phone"
-                    ng-model='me.phone' )
+                    ng-model='me.phone'
+                    pattern="^0[0-9]{9}$" )
+                div( ng-messages="contactForm.phone.$error" role="alert" multiple )
+                    div( ng-message="pattern" class="my-message") Le format de votre numero ne semble pas bon
 
+<<<<<<< HEAD
+            div.md-block
+=======
 
             div.pull-right
+>>>>>>> master
                 md-button.md-raised.md-primary(
-
                     type="submit"
                 ) Sauvegarder
+<<<<<<< HEAD
+        md-card.md-block
+            md-card-content
+                p Les informations de contact ci-dessus sont indépendantes de l'ENT.
+                p Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter.
+=======
 
         div.pull-right
             md-button.md-raised.md-primary Sauvegarder
+>>>>>>> master
 

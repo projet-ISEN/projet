@@ -54,7 +54,7 @@ class Menu {
                             ,
 
                             [
-                                "link" => '',
+                                "link" => '#/me',
                                 "title" => 'Mes informations',
                                 "icon" => 'dashboard',
                                 "active" => false

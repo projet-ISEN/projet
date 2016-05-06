@@ -1,8 +1,9 @@
 angular.module 'app'
 .controller 'myInformationsCtrl', [
+    '$mdToast'
     '$user'
     '$scope'
-    ($user, $scope)->
+    ($mdToast, $user, $scope)->
 
         $user.me (me)->
             $scope.me = me
@@ -10,4 +11,17 @@ angular.module 'app'
         $scope.save = ->
             $user.save $scope.me, (res)->
                 console.log res
+                if res.err?
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .textContent 'Un problème est survenue'
+                        .position 'bottom right'
+                    )
+                else
+                    $mdToast.show(
+                        $mdToast.simple()
+                        .textContent 'Données sauvegardées!'
+                        .position 'bottom right'
+                    )
+
 ]
