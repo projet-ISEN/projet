@@ -16,7 +16,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
 
       menu-list( ng-repeat='underpart in menu' )
 
-        md-divider(slide-toggle="#row_{{$index}}"  ng-if = "$index")
+        md-divider(ng-if = "$index")
             md-list-item(
             flex=''
             layout='row'
@@ -28,7 +28,7 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
               span.flex(flex)
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
-        div(id="row_{{$index}}" ng-class="{ slideable: $index != pageNumber }")
+        .slideDown( ng-hide="!underpart.expanded")
             md-list-item(
                 ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}"
                 )
