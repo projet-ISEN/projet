@@ -21,7 +21,11 @@ angular.module 'app'
         $scope.save = ->
 
             unless $scope.choices[0]? and $scope.choices[1]? and $scope.choices[0]?
-                return $mdToast.showSimple 'Vous devez séléctionner vos choix'
+                return $mdToast.show (
+                    $mdToast.simple 'Vous devez séléctionner vos choix'
+                    .position 'bottom right'
+                )
+
             if $scope.saveAction == 'post'
                 post()
             else
@@ -80,15 +84,24 @@ angular.module 'app'
                         "3": $scope.choices[2].club_id
             .then (res)->
                 if res.data.err == null
-                    $mdToast.showSimple 'Vos choix ont été sauvegardés'
+                    $mdToast.show(
+                        $mdToast.simple 'Vos choix ont été sauvegardés'
+                        .position 'bottom right'
+                    )
                     $scope.saveAction = "put"
                 else
                     console.log res.data.err
-                    $mdToast.showSimple "Une erreur est survenue: #{res.data.err}"
+                    $mdToast.show(
+                        $mdToast.simple "Une erreur est survenue: #{res.data.err}"
+                        .position 'bottom right'
+                    )
 
             , (err)->
                     console.log err
-                    $mdToast.showSimple "impossible de contacter le serveur"
+                    $mdToast.show(
+                        $mdToast.simple "impossible de contacter le serveur"
+                        .position 'bottom right'
+                    )
         put = ->
             $http
                 method: 'PUT'
@@ -102,13 +115,22 @@ angular.module 'app'
                         "3": $scope.choices[2].club_id
             .then (res)->
                 if res.data.err == null
-                    $mdToast.showSimple 'Vos choix ont été modifiés'
+                    $mdToast.show(
+                        $mdToast.simple 'Vos choix ont été modifiés'
+                        .position 'bottom right'
+                    )
 
                 else
                     console.log res.data.err
-                    $mdToast.showSimple "Une erreur est survenue: #{res.data.err}"
+                    $mdToast.show(
+                        $mdToast.simple "Une erreur est survenue: #{res.data.err}"
+                        .position 'bottom right'
+                    )
 
             , (err)->
                     console.log err
-                    $mdToast.showSimple "impossible de contacter le serveur"
+                    $mdToast.show(
+                        $mdToast.simple "impossible de contacter le serveur"
+                        .position 'bottom right'
+                    )
 ]

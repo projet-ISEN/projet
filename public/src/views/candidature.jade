@@ -55,13 +55,17 @@ div(
                     div( ng-message="required" role="alert" class="my-message") Requis
 
 
-        div(layout='row')
-            md-button( type='submit' ng-if="saveAction == 'post'") Sauvegarder
-            md-button( type='submit' ng-if="saveAction != 'post'") Mettre à jour
-            md-button.md-primary(
-                ng-click='clearValue()'
-                layout=''
-                layout-align='center end') Vider
+            div(layout='row')
+                md-button.md-primary.md-raised(
+                    type='submit'
+                    ng-if="saveAction == 'post'") Sauvegarder
+                md-button.md-primary.md-raised(
+                    type='submit'
+                    ng-if="saveAction != 'post'") Mettre à jour
+                md-button.md-primary(
+                    ng-click='clearValue()'
+                    layout=''
+                    layout-align='center end') Vider
 
     md-content( flex="50" flex-xs="100" layout-padding )
         md-card
