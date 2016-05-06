@@ -72,8 +72,14 @@ $activeLink:      #c02d2e
             color: $menu-bg !important
     form
         md-input-container
+            // Fix non aligned icon on the left of the input
             md-icon.notAligned
                 top: 9px
+
+        .md-select-value
+            // Fix bad animation on focus input
+            border-bottom-width: 2px
+            padding-bottom: 0px
 
     //menu-toggle
         position: relative
