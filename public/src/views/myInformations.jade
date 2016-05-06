@@ -1,0 +1,25 @@
+//
+   Created by rcd18 on 06/05/2016.
+div( layout='row' layout-xs='column' layout-padding )
+
+    md-content( flex='50' )
+        img(src='1' onerror="this.src='images/blank-person.png'")
+        h2 {{me.login}}
+
+        label Nom
+        h2 {{me.user_name}} {{me.user_firstname}}
+
+    md-content( flex='50' )
+
+        md-input-container.md-icon-float
+            label E-mail
+            md-icon( class="name" ) menu
+            input( ng-model='me.user_mail' )
+
+        md-input-container.md-icon-float
+            label Telephone
+            md-icon( class="name" ) menu
+            input( ng-model='me.phone' )
+
+        div.pull-right
+            md-button.md-raised.md-primary Sauvegarder

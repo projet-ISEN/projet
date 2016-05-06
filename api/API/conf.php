@@ -8,9 +8,7 @@ namespace API;
  * @package API
  */
 class Conf{
-	
-	public static $debug = true;
-	
+
 	public static $DB_NAME = 'projetm1';
 	
 	public static $DB_HOST = 'localhost';
@@ -23,4 +21,9 @@ class Conf{
     
   	public static $DOMAIN = '127.0.0.1/projet';*/
 
+	public static function isDebug() {
+
+		if( empty($_ENV['DEBUG']) ) return true;
+		else return $_ENV['DEBUG'];
+	}
 }
