@@ -9,6 +9,15 @@
     $menu-bg:         #2d323e
     $menu-text:       #c0c2c5
     $toggle-content:  #282c37
+    $activeLink: #c02d2e
+
+    header
+        min-height: 64px
+        md-icon
+            width: 100%
+            min-height: 64px;
+            padding: .6rem
+            color: $activeLink
 
 
 
@@ -35,6 +44,17 @@
           padding: 0
           //padding: 0 20% 0 20%
 
+    md-sidenav > md-list
+        overflow: auto;
+
+    md-list-item > button
+        padding: 0 !important
+        > div
+            width: 100%
+            > a
+                width: 100%
+                padding: 0px 16px
+
 
     .fullheight
         height: 100% !important
@@ -56,7 +76,7 @@
 
 
     .activeLink
-        background-color: #c02d2e
+        background-color: $activeLink
 
     club-card
         min-width: 20rem

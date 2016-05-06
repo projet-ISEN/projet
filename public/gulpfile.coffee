@@ -72,7 +72,7 @@ gulp.task 'load-imgs', ->
 
         unless exists then fs.mkdirSync 'build/images/'
 
-        gulp.src ['src/images/*.jpg', 'src/images/*.png']
+        gulp.src ['src/images/*.jpg', 'src/images/*.png', 'src/images/*.svg', 'src/images/*.jpeg']
         .pipe gulp.dest 'build/images/'
 
 
