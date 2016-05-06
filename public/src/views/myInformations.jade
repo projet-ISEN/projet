@@ -16,20 +16,20 @@ div( layout='row' layout-padding layout-xs='column' flex-xs='100' )
         md-divider( layout-padding )
 
         form( name='contactForm' ng-submit='save()' layout-padding )
-            md-input-container.md-icon-float.md-block( flex-gt-xs )
+            md-input-container.md-icon-float.md-block
                 label E-mail
-                md-icon( class="name" ) email
+                md-icon.notAligned email
                 input(
                     type="email"
                     name="email"
                     ng-model='me.user_mail'
                     required="")
-                div( ng-messages="contactForm.email.$error" role="alert" multiple )
+                //div( ng-messages="contactForm.email.$error" role="alert" multiple )
                     div( ng-message="required" class="my-message" ) Vous devez laisser une adresse mail
                     div( ng-message="pattern" class="my-message") Cela ne semble pas être une adresse mail
 
             md-input-container.md-block.md-icon-float
-                md-icon( class="name" ) menu
+                md-icon.notAligned menu
                 input(
                     type="tel"
                     name="phone"
