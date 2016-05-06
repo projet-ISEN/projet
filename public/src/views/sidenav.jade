@@ -28,9 +28,9 @@ div.fullheight( layout="column" ng-controller="sidenavCtrl")
               span.flex(flex)
               span.md-toggle-icon
                 md-icon( ng-class="{rotateP180: !underpart.expanded}" ) keyboard_arrow_down
-          .toggle
+          .toggle.slideDown( ng-hide="!underpart.expanded")
             md-list-item(
-              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}" ng-if="underpart.expanded"
+              ng-repeat='item in underpart.values' ng-class="{activeLink: item.active}"
               )
               a( ng-href='{{item.link}}')
                 div(md-ink-ripple='' layout='row' layout-align='start center')
