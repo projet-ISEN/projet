@@ -6,6 +6,8 @@ angular.module("app").controller 'sidenavCtrl', [
   '$rootScope'
   ($scope, $mdSidenav, $menu, $location, $rootScope) ->
     
+
+    $scope.pageNumber = 0;
     $menu.myMenu().then (menu)->
 
         $scope.menu = menu
