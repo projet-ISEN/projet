@@ -8,7 +8,7 @@ namespace API;
  * @package API
  */
 class Conf{
-	
+
 	public static $DB_NAME = 'projetm1';
 	
 	public static $DB_HOST = 'localhost';
