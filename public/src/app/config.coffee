@@ -30,7 +30,7 @@ angular.module('app')
             controller: 'contactInClubCtrl'
             name: "Contact ?????????"
 
-        .when '/moi',
+        .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
             name: "Mes informations"
