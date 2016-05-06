@@ -18,7 +18,7 @@ div( layout='row' layout-xs='column' layout-padding )
         form( name='contactForm' ng-submit='save()' layout-padding )
             md-input-container.md-icon-float.md-block( flex-gt-xs )
                 label E-mail
-                md-icon( class="name" ) menu
+                md-icon( class="name" ) email
                 input(
                     type="email"
                     name="email"
@@ -28,12 +28,12 @@ div( layout='row' layout-xs='column' layout-padding )
                     div( ng-message="required" class="my-message" ) Vous devez laisser une adresse mail
                     div( ng-message="pattern" class="my-message") Cela ne semble pas être une adresse mail
 
-            md-input-container.md-icon-float.md-block
-                label Téléphone
+            md-input-container.md-block.md-icon-float
                 md-icon( class="name" ) menu
                 input(
                     type="tel"
                     name="phone"
+                    placeholder="Téléphone"
                     ng-model='me.phone'
                     pattern="^0[0-9]{9}$" )
                 div( ng-messages="contactForm.phone.$error" role="alert" multiple )
