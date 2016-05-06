@@ -33,10 +33,15 @@ angular.module("app").controller 'sidenavCtrl', [
 
 
 
+
      $scope.findActive = ->
         #console.log($location.path())
+        i = 0
         angular.forEach $scope.menu, (value, key) ->
+            value.expanded = false if i!=0
+            i++
             angular.forEach value.values, (item, key) ->
+
                 if item.link.indexOf($location.path()) isnt -1
                     item.active = true
                     value.expanded = true
