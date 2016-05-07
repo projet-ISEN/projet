@@ -208,6 +208,19 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
+                                "link" => '#/accueil',
+                                "title" => 'Informations Globales',
+                                "icon" => 'dashboard',
+                                "active" => false
+                            ],
+
+                            [
+                                "link" => '#/me',
+                                "title" => 'Mes informations',
+                                "icon" => 'dashboard',
+                                "active" => false
+                            ],
+                            [
                                 "link" => '',
                                 "title" => 'Gestions des clubs',
                                 "icon" => 'dashboard',
@@ -239,7 +252,7 @@ class Menu {
                     'expanded' => false,
                     'values' => [
                             [
-                                "link" => '',
+                                "link" => '#/addclub',
                                 "title" => 'Création de club',
                                 "icon" => 'dashboard',
                                 "active" => false
