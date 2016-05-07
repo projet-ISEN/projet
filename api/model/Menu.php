@@ -248,7 +248,7 @@ class Menu {
     public static function addMenuAdministrator() {
         return [
                     'administrator' => [
-                    'name' => 'Administrator',
+                    'name' => 'Administrat',
                     'expanded' => false,
                     'values' => [
                             [
