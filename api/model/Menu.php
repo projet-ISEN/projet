@@ -264,7 +264,7 @@ class Menu {
                                 "active" => false
                             ],
                             [
-                                "link" => '',
+                                "link" => '#/administration',
                                 "title" => 'Administration',
                                 "icon" => 'dashboard',
                                 "active" => false
