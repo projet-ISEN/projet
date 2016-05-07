@@ -9,7 +9,7 @@ angular.module 'app'
     ($user, $mdDialog, $club, $mdToast, $scope, $http)->
 
         # Tableau de choix
-        $scope.choices = [{}, {},{}]
+        $scope.choices = []
         # Default action
         $scope.saveAction = 'post'
 
@@ -31,7 +31,7 @@ angular.module 'app'
             else
                 put()
 
-        # Send message to Capisen
+        # CAPISEN message
         $scope.goCapisen = ->
             $mdDialog.show
                 templateUrl: 'directives/dialogCapisen.html'
@@ -60,15 +60,18 @@ angular.module 'app'
             # load choices of user
             $http.get '../../api/choices'
             .then (res)->
+                i = 0
                 # If our user already have choosed
                 if res.data.length != 0
                     $scope.choices = []
                     $scope.saveAction = 'put'
 
                     for choice in res.data
+
                         for club in $scope.clubs
                             if choice.club_id == club.club_id
                                 $scope.choices[choice.choice_number - 1 ] = club
+                $scope.updateList i++
 
         post = ->
 
