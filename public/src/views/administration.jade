@@ -1,0 +1,14 @@
+div( layout='row' layout-padding layout-xs='column' flex-xs='100' )
+
+    md-content( flex='50' flex-xs='100' )
+
+        h2 yolo
+
+        md-divider( layout-padding )
+
+        form( name='contactForm' ng-submit='save()' layout-padding )
+            md-input-container.md-icon-float.md-block
+                label E-mail
+                input(
+                    type="text"
+                    required)
