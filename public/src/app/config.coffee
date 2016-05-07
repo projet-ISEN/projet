@@ -35,6 +35,11 @@ angular.module('app')
             controller: 'addClubCtrl'
             name: "Ajout de clubs"
 
+        .when '/administration',
+            templateUrl: 'views/administration.html'
+            controller: 'administrationCtrl'
+            name: "Ajout de clubs"
+
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
