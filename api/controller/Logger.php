@@ -28,7 +28,7 @@ class Logger
      */
     private static function log( $type, $msg )
     {
-        $log = new Log( $type , $msg );
+        $log = new Log( null, $type , $msg );
         return $log->save();
     }
 
@@ -77,8 +77,8 @@ class Logger
         $startTimestamp = new DateTime($start);
         $endTimestamp   = new DateTime($end);
 
-        $res = Log::searchBetween( $startTimestamp->getTimestamp(), $endTimestamp->getTimestamp() );
-        
+        // getTimeStamp return value in second, we need it in milli seconds
+        $res = Log::searchBetween( $startTimestamp->getTimestamp() * 1000, $endTimestamp->getTimestamp() * 1000 );
         return var_dump($res);
     }
 
@@ -92,9 +92,9 @@ class Logger
     {
         $number = (int) $number;
         if( !is_int($number) or  $number <= 0 ){
-            return [
+            return var_dump([
                 'err' => 'Mauvais paramètre'
-            ];
+            ]);
         }
         return var_dump( Log::searchLastLogs($number) );
     }

@@ -27,7 +27,8 @@ class Log
     public function save()
     {
         $req = Database::getInstance()->PDOInstance->prepare(
-            "INSERT INTO log (timestamp, type, content) VALUES (UNIX_TIMESTAMP(), :type, :content)"
+            "INSERT INTO log (timestamp, type, content) VALUES ".
+            "( FLOOR(UNIX_TIMESTAMP(CURRENT_TIMESTAMP(3)) * 1000), :type, :content )"
         );
 
         if( $req->execute([
