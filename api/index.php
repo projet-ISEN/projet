@@ -126,6 +126,10 @@ if (date("n")>7) $myYear++;
     $router->get(       '/projects',         'Project.getAll');
     $router->get(       '/projects/:id',     'Project.getOne');
 
+    $router->get(       '/log',                 'Logger.getLastLogs');
+    $router->get(       '/log/:number',         'Logger.getLastLogs');
+    $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
+
 
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
@@ -136,6 +140,7 @@ if (date("n")>7) $myYear++;
 
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
 
+    \Controllers\Logger::info( $_SESSION['user']->login . ' vient de se connecter ' );
 
     header('Content-Type: application/json');
     header('Content-Type: text/html; charset=utf-8');
