@@ -30,6 +30,11 @@ angular.module('app')
             controller: 'contactInClubCtrl'
             name: "Contact ?????????"
 
+        .when '/addclub',
+            templateUrl: 'views/addClub.html'
+            controller: 'addClubCtrl'
+            name: "Ajout de clubs"
+
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
