@@ -1,0 +1,26 @@
+prod:
+    scheme: sftp
+    host: 192.168.2.101
+    port: 22
+    user: root
+
+    check: true
+
+    path:
+        local: /
+        remote: /var/www/html/clubs/
+
+    exclude: [
+        "*.yml",
+        "*.yaml",
+        ".htaccess",
+        ".gitignore",
+        "*.pdf",
+        "utils/*",
+        "public/.bowerrc",
+        "public/bower.json",
+        "public/gulpfile.coffee",
+        "public/package.json",
+        "public/src/*",
+        "public/node_modules/*"
+    ]
