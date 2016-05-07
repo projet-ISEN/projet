@@ -417,6 +417,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` char(20) DEFAULT NULL,
   `user_mail` char(50) NOT NULL,
   `is_administrator` tinyint(1) DEFAULT NULL,
+  `school_staff` tinyint(1) DEFAULT NULL,
   `phone` char(12) DEFAULT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -425,19 +426,19 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `phone`) VALUES
-('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, NULL),
-('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, NULL),
-('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, NULL),
-('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, NULL),
-('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, NULL),
-('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
-('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
-('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, NULL),
-('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
-('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
-('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
-('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL);
+INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `school_staff`, `phone`) VALUES
+('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, 0, NULL),
+('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, 0, NULL),
+('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, 0, NULL),
+('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, 0, NULL),
+('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, 0, NULL),
+('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, 0, NULL),
+('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, 0, NULL),
+('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, 0, NULL),
+('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, 0, NULL),
+('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, 1, NULL),
+('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, 0, NULL),
+('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
