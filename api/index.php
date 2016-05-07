@@ -31,8 +31,8 @@
 
         //test variable
 
-        $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
-        // $userData["Login"]      = 'vrioua17'; //Evaluator
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        // $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
