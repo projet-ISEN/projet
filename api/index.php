@@ -31,9 +31,9 @@
 
         //test variable
 
-        // $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
+         $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
         // $userData["Login"]      = 'vrioua17'; //Evaluator
-        $userData["Login"]      = 'pverba17'; //Prez BDE
+        //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
         //$userData["Login"]      = 'tcouss17'; //Prez club
