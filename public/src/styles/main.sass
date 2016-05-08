@@ -28,10 +28,10 @@ $activeLink:      #c02d2e
             color: $menu-text
             text-decoration: none
 
-        .toggle:not(:first-child)
+        .toggle
             background-color: $toggle-content
 
-        .openList
+        .openList:not(:first-child)
             background-color: $toggle-content
 
         .headList
@@ -48,18 +48,26 @@ $activeLink:      #c02d2e
     md-list
         padding: 0
 
-    md-list-item > button
-        padding: 0 !important
 
-        > div
-            > span
-                padding-left: 16px
-            .md-toggle-icon
-                padding-right: 16px
+
+
+
+
+    .openList > md-list-item
+        padding: 0 !important
+        > a
+            padding: 0 !important
             width: 100%
-            > a
+
+            > div
+                padding-left: 16px
+
+                .md-toggle-icon
+                    padding-right: 16px
                 width: 100%
-                padding: 0px 16px
+                > a
+                    width: 100%
+                    padding: 0px 16px
 
 
     .fullheight
