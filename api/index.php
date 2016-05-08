@@ -115,6 +115,9 @@ if (date("n")>7) $myYear++;
         $router->delete(    '/choices',     'Choice.deleteAll' );
 
 
+        $router->post(      '/projets',       '');
+
+
 
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
