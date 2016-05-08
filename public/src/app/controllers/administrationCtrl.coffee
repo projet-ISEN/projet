@@ -2,13 +2,22 @@ angular.module 'app'
 .controller 'administrationCtrl', [
     '$mdToast'
     '$scope'
+    "$project"
     '$http'
-    ($mdToast, $scope, $http)->
+    ($mdToast, $scope, $project, $http)->
 
 
         $scope.clearValue_addProject = ->
             $scope.addProject = ""
 
+
+        $scope.loadValue = ()->
+            project_description =  JSON.parse($scope.updateProject.projectChoice.project_description)
+            $scope.updateProject.projectName = project_description.title
+            $scope.updateProject.objectif = project_description.objectif
+            $scope.updateProject.example = project_description.exemple
+            $scope.updateProject.quota = parseInt(project_description.quota,10)
+            $scope.updateProject.evaluation = project_description.eval
 
         $scope.saveProject = ->
             project_description =
@@ -20,6 +29,12 @@ angular.module 'app'
             project_description = JSON.stringify(project_description, null, "\t")
             post_add(project_description)
 
+
+        $scope.updateProject = ->
+            console.log "maj"
+
+        $project.all (projects)->
+            $scope.projects = projects.reverse()
 
 
         post_add = (project_description)->
@@ -52,4 +67,7 @@ angular.module 'app'
                         $mdToast.simple "Impossible de contacter le serveur"
                         .position 'bottom right'
                     )
+
+
+
 ]
