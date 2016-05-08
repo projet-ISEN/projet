@@ -75,26 +75,26 @@ div( layout='row' layout-xs='column' flex-xs='100' ng-cloak)
                         div( ng-messages="updateForm.projectChoice.$error" )
                             div( ng-message="required" role="alert" class="my-message") Requis
 
-                    md-input-container.md-icon-float( flex='75' flex-xs='100' )
+                    md-input-container.md-icon-float( flex='75' flex-xs='100' ng-show="updateProject.projectChoice != null")
                         label Nom du projet
                         input( ng-model="updateProject.projectName" name="projetName" required="")
                         div(ng-messages="projectForm.projetName.$error")
                             div.my-message( ng-message="required" role="alert") Le nom du projet est requis
 
 
-                md-input-container.md-block
+                md-input-container.md-block(ng-show="updateProject.projectChoice != null")
                     label Objectif du projet
                     textarea( ng-model="updateProject.objectif" name="objectif"  md-maxlength="250" rows="5" md-select-on-focus required="")
                     div(ng-messages="projectForm.objectif.$error")
                             div.my-message( ng-message="required" role="alert") L'objectif du projet est requis
 
-                md-input-container.md-block
+                md-input-container.md-block(ng-show="updateProject.projectChoice != null")
                     label Exemple de poste
                     textarea( ng-model="updateProject.example" name="example"  md-maxlength="250" rows="5" md-select-on-focus required="")
                     div(ng-messages="projectForm.example.$error")
                             div.my-message( ng-message="required" role="alert") Un exemple de projet est requis
 
-                div(layout="row")
+                div(layout="row" ng-show="updateProject.projectChoice != null")
                     md-input-container.md-icon-float( flex='25'  flex-xs='100')
                         label Quota d'heure
                         input( type="number" ng-model="updateProject.quota" name="quota" required="")
