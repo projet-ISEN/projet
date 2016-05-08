@@ -34,4 +34,17 @@ class Project
         echo json_encode( $projects->load() );
         return;
     }
+
+    public function create()
+    {
+        $projects = new \Models\Project();
+
+        $projects->project_id           = $post['project_id'];
+        $projects->project_type         = $post['project_type'];
+        $projects->project_description  = $post['project_description'] ;
+
+
+        echo json_encode( $projects -> create );
+        return;
+    }
 }
