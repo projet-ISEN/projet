@@ -37,14 +37,12 @@ class Project
 
     public function create()
     {
+        $post = json_decode( file_get_contents("php://input"), true);
+
         $projects = new \Models\Project();
 
-        $projects->project_id           = $post['project_id'];
         $projects->project_type         = $post['project_type'];
         $projects->project_description  = $post['project_description'] ;
-
-
-        echo json_encode( $projects -> create );
-        return;
+        echo json_encode( $projects -> create() );
     }
 }
