@@ -43,4 +43,26 @@ class Project
             return  Database::Select("SELECT * FROM projet");
         }
     }
+
+    public function create() {
+
+            $this->project_id = Database::getUID();
+            $values['project_id'] = $this->project_id;
+            $values['project_type'] = $this->project_type;
+            $values['project_description'] = $this->project_description;
+
+            $req = Database::getInstance()->PDOInstance->prepare(
+                "INSERT INTO `projet`(`project_id`, `project_type`, `project_description`)"
+                ."VALUES (:project_id, :project_type, :project_description)"
+            );
+
+
+            if( $req->execute($values) ) {
+                return ['err' => null];
+            }
+            else {
+                return ['err' => 'Impossible de d\'enregistrer le nouveau club'];
+            }
+
+
 }
