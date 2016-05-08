@@ -115,7 +115,7 @@ if (date("n")>7) $myYear++;
         $router->delete(    '/choices',     'Choice.deleteAll' );
 
 
-        $router->post(      '/projets',       '');
+        $router->post(      '/projects',       'Project.create');
 
 
 
