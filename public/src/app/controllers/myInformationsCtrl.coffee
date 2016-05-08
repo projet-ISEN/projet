@@ -10,7 +10,7 @@ angular.module 'app'
 
         $scope.save = ->
             $user.save $scope.me, (res)->
-                console.log res
+                ######console.log res
                 if res.err?
                     $mdToast.show(
                         $mdToast.simple()
