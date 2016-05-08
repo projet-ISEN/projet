@@ -63,6 +63,7 @@ class Project
             else {
                 return ['err' => 'Impossible de d\'enregistrer le nouveau club'];
             }
+    }
 
 
 }
