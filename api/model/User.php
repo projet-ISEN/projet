@@ -108,7 +108,7 @@ class User {
         else {
             $req = Database::getInstance()->PDOInstance->prepare(
                 "UPDATE users SET user_firstname=:user_firstname, user_name=:user_name, ".
-                "user_mail=:user_mail, is_administrator=:is_administrator, phone=:phone WHERE login=:login"
+                "user_mail=:user_mail, is_administrator=:is_administrator, school_staff=:school_staff, phone=:phone WHERE login=:login"
             );
             return $req->execute($values);
         }
