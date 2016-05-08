@@ -108,16 +108,10 @@ if (date("n")>7) $myYear++;
         $router->put(       '/club/:id',    'Club.update');
         $router->delete(    '/club/:id',    'Club.delete');
 
-        $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
-        $router->get(       '/choices',     'Choice.getChoiceAll'    );
-        $router->post(      '/choices',     'Choice.create' );
-        $router->put(       '/choices',     'Choice.update' );
-        $router->delete(    '/choices',     'Choice.deleteAll' );
+
 
 
         $router->post(      '/projects',       'Project.create');
-
-
 
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
@@ -128,11 +122,15 @@ if (date("n")>7) $myYear++;
         $router->get(       '/projects/:id',     'Project.getOne');
 
     }elseif(!$_SESSION['user']->is_administrator){
-
+        $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
+        $router->get(       '/choices',     'Choice.getChoiceAll'    );
+        $router->post(      '/choices',     'Choice.create' );
+        $router->put(       '/choices',     'Choice.update' );
+        $router->delete(    '/choices',     'Choice.deleteAll' );
     }
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
-    $router->get('/me', 'User.getMe');
+    $router->get(       '/me', 'User.getMe');
     $router->get(       '/projects',         'Project.getAll');
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
