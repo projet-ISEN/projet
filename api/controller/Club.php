@@ -78,6 +78,7 @@ class Club
         $club->club_mail        = empty($post['club_mail'])        ? '' : $post['club_mail'] ;
         $club->login            = empty($post['login_evaluator'])  ? $_SESSION['user']->login : $post['login_evaluator'];
         $club->actif            = 1;
+
         if( $club->save() ) {
             echo json_encode(['err' => null] );
         }
