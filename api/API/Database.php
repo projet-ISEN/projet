@@ -44,7 +44,7 @@
             }
             catch( PDOException $e ) {
                 echo json_encode([
-                    'err' => $e
+                    'err' => $e->getMessage()
                 ]);
                 die();
             }

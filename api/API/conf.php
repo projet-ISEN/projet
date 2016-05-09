@@ -23,7 +23,7 @@ class Conf{
 
 	public static function isDebug() {
 
-		if( empty($_ENV['DEBUG']) ) return true;
+		if( empty($_ENV['DEBUG']) ) return false;
 		else return $_ENV['DEBUG'];
 	}
 }
