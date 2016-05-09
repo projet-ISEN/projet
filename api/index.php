@@ -31,8 +31,8 @@
 
         //test variable
 
-         $userData["Login"]      = 'rcolli17'; //Evaluator & administrator
-        // $userData["Login"]      = 'vrioua17'; //Evaluator
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        // $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -93,38 +93,48 @@ if (date("n")>7) $myYear++;
 
     $router = new API\Router( $_GET['url'] );
 
-    $router->get('/me', 'User.getMe');
-    $router->put('/me', 'User.updateMe');
+
+
+
 
     // Use controller user and method one
 
+    if($_SESSION['user']->is_administrator){
+        $router->put('/me', 'User.updateMe');
+
+        $router->get(       '/users/:id',   'User.get');
+        $router->post(      '/clubs',       'Club.create');
+        $router->get(       '/clubs/:id',   'Club.getOne');
+        $router->put(       '/club/:id',    'Club.update');
+        $router->delete(    '/club/:id',    'Club.delete');
 
 
-    $router->get(       '/users/:id',   'User.get');
 
-    $router->get(       '/clubs/:id',   'Club.getOne');
-    $router->get(       '/clubs',       'Club.getAll');
-    $router->get(       '/clubs/:id/stat', 'Club.stat');
-    $router->post(      '/clubs',       'Club.create');
-    $router->put(       '/club/:id',    'Club.update');
-    $router->delete(    '/club/:id',    'Club.delete');
 
-    $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
-    $router->get(       '/choices',     'Choice.getChoiceAll'    );
-    $router->post(      '/choices',     'Choice.create' );
-    $router->put(       '/choices',     'Choice.update' );
-    $router->delete(    '/choices',     'Choice.deleteAll' );
+        $router->post(      '/projects',       'Project.create');
+
+
+        $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
+
+        $router->get(       '/effectifs',        'Effectif.getAll');
+        $router->get(       '/effectifs/:id',    'Effectif.getOne');
+
+        $router->get(       '/projects/:id',     'Project.getOne');
+
+    }elseif(!$_SESSION['user']->is_administrator){
+        $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
+        $router->get(       '/choices',     'Choice.getChoiceAll'    );
+        $router->post(      '/choices',     'Choice.create' );
+        $router->put(       '/choices',     'Choice.update' );
+        $router->delete(    '/choices',     'Choice.deleteAll' );
+    }
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
-
-
-    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
-
-    $router->get(       '/effectifs',        'Effectif.getAll');
-    $router->get(       '/effectifs/:id',    'Effectif.getOne');
-
+    $router->get(       '/me', 'User.getMe');
     $router->get(       '/projects',         'Project.getAll');
-    $router->get(       '/projects/:id',     'Project.getOne');
+    $router->get(       '/clubs',       'Club.getAll');
+    $router->get(       '/clubs/:id/stat', 'Club.stat');
+
 
     $router->get(       '/log',                 'Logger.getLastLogs');
     $router->get(       '/log/:number',         'Logger.getLastLogs');

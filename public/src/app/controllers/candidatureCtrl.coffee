@@ -20,7 +20,7 @@ angular.module 'app'
         # Send choices
         $scope.save = ->
 
-            unless $scope.choices[0]? and $scope.choices[1]? and $scope.choices[0]?
+            unless $scope.choices[0]? and $scope.choices[1]? and $scope.choices[2]?
                 return $mdToast.show (
                     $mdToast.simple 'Vous devez séléctionner vos choix'
                     .position 'bottom right'
@@ -102,7 +102,7 @@ angular.module 'app'
             , (err)->
                     console.log err
                     $mdToast.show(
-                        $mdToast.simple "impossible de contacter le serveur"
+                        $mdToast.simple "Impossible de contacter le serveur"
                         .position 'bottom right'
                     )
         put = ->
@@ -133,7 +133,7 @@ angular.module 'app'
             , (err)->
                     console.log err
                     $mdToast.show(
-                        $mdToast.simple "impossible de contacter le serveur"
+                        $mdToast.simple "Impossible de contacter le serveur"
                         .position 'bottom right'
                     )
 ]
