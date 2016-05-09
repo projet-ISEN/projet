@@ -32,10 +32,9 @@
             $pass       = empty($_ENV['DB_PASSWORD'])?      Conf::$DB_PASSWORD   : $_ENV['DB_PASSWORD'];
             $name       = empty($_ENV['DB_NAME'])?          Conf::$DB_NAME       : $_ENV['DB_NAME'];
             $host       = empty($_ENV['DB_HOST'])?          Conf::$DB_HOST       : $_ENV['DB_HOST'];
-            $dsn        = 'mysql:dbname='. $name .';host=' . $host;
+            $dsn        = 'mysql:dbname='. $name .';host=' . $host . ';charset=utf8';
 
             $options    = array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
                 PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING
             );
 
@@ -45,7 +44,7 @@
             }
             catch( PDOException $e ) {
                 echo json_encode([
-                    'err' => $e
+                    'err' => $e->getMessage()
                 ]);
                 die();
             }

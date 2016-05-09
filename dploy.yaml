@@ -10,17 +10,6 @@ prod:
         local: /
         remote: /var/www/html/clubs/
 
-    exclude: [
-        "*.yml",
-        "*.yaml",
-        ".htaccess",
-        ".gitignore",
-        "*.pdf",
-        "utils/*",
-        "public/.bowerrc",
-        "public/bower.json",
-        "public/gulpfile.coffee",
-        "public/package.json",
-        "public/src/*",
-        "public/node_modules/*"
-    ]
+    exclude: [ "*.yml","*.yaml",".htaccess",".gitignore","*.pdf","public/src/**","utils/*","public/node_modules/*"]
+    include :
+        "public/build/**" : "public/build/"
