@@ -100,7 +100,6 @@ if (date("n")>7) $myYear++;
     // Use controller user and method one
 
     if($_SESSION['user']->is_administrator){
-        $router->put('/me', 'User.updateMe');
 
         $router->get(       '/users/:id',   'User.get');
         $router->post(      '/clubs',       'Club.create');
@@ -131,6 +130,7 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
     $router->get(       '/me', 'User.getMe');
+    $router->put(       '/me', 'User.updateMe');
     $router->get(       '/projects',         'Project.getAll');
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
