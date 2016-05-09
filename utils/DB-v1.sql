@@ -89,6 +89,10 @@ INSERT INTO `club` (`club_id`, `login`, `club_name`, `club_description`, `club_m
 ('7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Pon Pon Nippon', '', '', 1, NULL),
 ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien ISEN', '', '', 1, NULL),
 ('7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau de l''international', '', '', 1, NULL),
+('ab0df152-15be-11e6-8c14-363366383662', 'rcolli17', 'Wiki-radio', '', '', 1, NULL),
+('ab0df2e2-15be-11e6-8c14-363366383662', 'rcolli17', 'Culture celtique', '', '', 1, NULL),
+('ab0df318-15be-11e6-8c14-363366383662', 'rcolli17', 'What the flub', '', '', 1, NULL),
+('ab0df346-15be-11e6-8c14-363366383662', 'rcolli17', 'Association des rennais', '', '', 1, NULL),
 ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Clubs externes', '', '', 1, NULL);
 
 -- --------------------------------------------------------
