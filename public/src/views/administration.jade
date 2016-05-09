@@ -1,0 +1,117 @@
+div( layout='row' layout-xs='column' flex-xs='100' ng-cloak)
+
+    md-content(flex="100")
+        md-card
+            h2 Ajout d'un type de projet
+
+            //md-divider( layout-padding )
+
+            form( name='projectForm' ng-submit='saveProject()' layout-padding )
+                div(layout="row")
+                    md-input-container.md-icon-float( flex='25' flex-xs='100' )
+                        label Abréviation du projet
+                        input( ng-model="addProject.abrev" name="abrev" required="")
+                        div(ng-messages="projectForm.abrev.$error")
+                            div.my-message( ng-message="required" role="alert") L'abréviation du projet est requis
+
+                    md-input-container.md-icon-float( flex='75' flex-xs='100' )
+                        label Nom du projet
+                        input( ng-model="addProject.projectName" name="projetName" required="")
+                        div(ng-messages="projectForm.projetName.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+
+
+                md-input-container.md-block
+                    label Objectif du projet
+                    textarea( ng-model="addProject.objectif" name="objectif"  md-maxlength="250" rows="5" md-select-on-focus required="")
+                    div(ng-messages="projectForm.objectif.$error")
+                            div.my-message( ng-message="required" role="alert") L'objectif du projet est requis
+
+                md-input-container.md-block
+                    label Exemple de poste
+                    textarea( ng-model="addProject.example" name="example"  md-maxlength="250" rows="5" md-select-on-focus required="")
+                    div(ng-messages="projectForm.example.$error")
+                            div.my-message( ng-message="required" role="alert") Un exemple de projet est requis
+
+                div(layout="row")
+                    md-input-container.md-icon-float( flex='25'  flex-xs='100')
+                        label Quota d'heure
+                        input( type="number" ng-model="addProject.quota" name="quota" required="")
+                        div(ng-messages="projectForm.quota.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+
+                    md-input-container.md-icon-float( flex='75'  flex-xs='100')
+                        label Evaluation du projet
+                        textarea( ng-model="addProject.evaluation" name="evaluation"  md-maxlength="250" rows="5" md-select-on-focus required="")
+
+                div(layout='row' layout-align='center center')
+                    md-button.md-primary.md-raised(
+                        type='submit') Sauvegarder
+                    md-button.md-primary(
+                        ng-click='clearValue_addProject()'
+                        layout=''
+                        layout-align='center end') Vider
+
+            md-divider( layout-padding )
+
+
+
+            h2 Mise à jour/Suppression de types de projets
+
+
+            form( name='updateForm' ng-submit='updateProject()' layout-padding )
+                div(layout="row")
+                    md-input-container.md-block( flex='25' flex-xs='100' )
+                        label Abréviation du projet
+                        md-select(
+                            name="projectChoice"
+                            ng-disabled="!projects"
+                            ng-model="updateProject.projectChoice"
+                            md-on-close = "loadValue()"
+                            required="")
+                            md-option(
+                                ng-repeat="project in projects | orderBy: 'project_type'"
+                                ng-value="project" ) {{project.project_type}}
+                        div( ng-messages="updateForm.projectChoice.$error" )
+                            div( ng-message="required" role="alert" class="my-message") Requis
+
+                    md-input-container.md-icon-float( flex='75' flex-xs='100' ng-show="updateProject.projectChoice != null")
+                        label Nom du projet
+                        input( ng-model="updateProject.projectName" name="projetName" required="")
+                        div(ng-messages="projectForm.projetName.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+
+
+                md-input-container.md-block(ng-show="updateProject.projectChoice != null")
+                    label Objectif du projet
+                    textarea( ng-model="updateProject.objectif" name="objectif"  md-maxlength="250" rows="5" md-select-on-focus required="")
+                    div(ng-messages="projectForm.objectif.$error")
+                            div.my-message( ng-message="required" role="alert") L'objectif du projet est requis
+
+                md-input-container.md-block(ng-show="updateProject.projectChoice != null")
+                    label Exemple de poste
+                    textarea( ng-model="updateProject.example" name="example"  md-maxlength="250" rows="5" md-select-on-focus required="")
+                    div(ng-messages="projectForm.example.$error")
+                            div.my-message( ng-message="required" role="alert") Un exemple de projet est requis
+
+                div(layout="row" ng-show="updateProject.projectChoice != null")
+                    md-input-container.md-icon-float( flex='25'  flex-xs='100')
+                        label Quota d'heure
+                        input( type="number" ng-model="updateProject.quota" name="quota" required="")
+                        div(ng-messages="projectForm.quota.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+
+                    md-input-container.md-icon-float( flex='75'  flex-xs='100')
+                        label Evaluation du projet
+                        textarea( ng-model="updateProject.evaluation" name="evaluation"  md-maxlength="250" rows="5" md-select-on-focus required="")
+
+                div(layout='row' layout-align='center center')
+                    md-button.md-primary.md-raised(
+                        type='submit') Sauvegarder
+                    md-button.md-warn.md-raised(
+                        ng-click='suppressProject()'
+                        layout=''
+                        layout-align='center end') Supprimer
+
+
+

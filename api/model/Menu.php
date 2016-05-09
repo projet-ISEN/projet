@@ -208,6 +208,19 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
+                                "link" => '#/accueil',
+                                "title" => 'Informations Globales',
+                                "icon" => 'dashboard',
+                                "active" => false
+                            ],
+
+                            [
+                                "link" => '#/me',
+                                "title" => 'Mes informations',
+                                "icon" => 'dashboard',
+                                "active" => false
+                            ],
+                            [
                                 "link" => '',
                                 "title" => 'Gestions des clubs',
                                 "icon" => 'dashboard',
@@ -235,11 +248,11 @@ class Menu {
     public static function addMenuAdministrator() {
         return [
                     'administrator' => [
-                    'name' => 'Administrator',
+                    'name' => 'Administration',
                     'expanded' => false,
                     'values' => [
                             [
-                                "link" => '',
+                                "link" => '#/addclub',
                                 "title" => 'Création de club',
                                 "icon" => 'dashboard',
                                 "active" => false
@@ -251,7 +264,7 @@ class Menu {
                                 "active" => false
                             ],
                             [
-                                "link" => '',
+                                "link" => '#/administration',
                                 "title" => 'Administration',
                                 "icon" => 'dashboard',
                                 "active" => false

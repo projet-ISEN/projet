@@ -29,8 +29,12 @@ class User {
         $this->user_firstname   = $cas_data['FirstName'];
         $this->user_name        = $cas_data['LastName'];
         $this->user_mail        = $cas_data['Mail'];
-        $this->is_administrator = 0;//TODO... ???
+        $this->is_administrator = 0;
         $this->phone            = $cas_data['Telephone'];
+
+        if($cas_data["gidNumber"] == "1000") $this->school_staff     = 1;
+        else $this->school_staff     = 0;
+
 
     }
 

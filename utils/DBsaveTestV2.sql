@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 05 Mai 2016 à 17:19
+-- Généré le :  Sam 07 Mai 2016 à 20:55
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -43,6 +43,9 @@ INSERT INTO `choice` (`login`, `club_id`, `choice_number`) VALUES
 ('baboli17', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 2),
 ('baboli17', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
 ('baboli17', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 1),
+('pverba17', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 2),
+('pverba17', '7cbed590-0df3-11e6-9aa9-448a5b42bfcd', 1),
+('pverba17', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 3),
 ('qduche17', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1),
 ('qduche17', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3),
 ('qduche17', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 2);
@@ -101,7 +104,12 @@ INSERT INTO `club` (`club_id`, `login`, `club_name`, `club_description`, `club_m
 ('7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Pon Pon Nippon', '', '', 1, NULL),
 ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien ISEN', '', '', 1, NULL),
 ('7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau de l''international', '', '', 1, NULL),
-('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Clubs externes', '', '', 1, NULL);
+('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Clubs externes', '', '', 1, NULL),
+('a0fcd6fc-1476-11e6-8e98-0a0027000000', 'rcolli17', 'RIOUALLON', '', 'riouallonvincent@gmail.com', 1, ''),
+('b14fea22-1476-11e6-8e98-0a0027000000', 'rcolli17', 'Vincent Riouallon', '', 'riouallonvincent@gmail.com', 1, ''),
+('c210f3ae-1476-11e6-8e98-0a0027000000', 'rcolli17', 'Vincent Riouallon', '', 'riouallonvincent@gmail.com', 1, ''),
+('cd0fadac-1476-11e6-8e98-0a0027000000', 'rcolli17', 'RIOUALLON', '', '', 1, ''),
+('e6b5f48e-1476-11e6-8e98-0a0027000000', 'rcolli17', 'RIOUALLON', '', 'riouallonvincent@gmail.com', 1, '');
 
 -- --------------------------------------------------------
 
@@ -206,6 +214,18 @@ CREATE TABLE IF NOT EXISTS `log` (
   PRIMARY KEY (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `log`
+--
+
+INSERT INTO `log` (`timestamp`, `type`, `content`) VALUES
+(1462649872816, 'info', 'rcolli17 vient de se connecter '),
+(1462649872840, 'info', 'rcolli17 vient de se connecter '),
+(1462650457615, 'info', 'rcolli17 vient de se connecter '),
+(1462650513305, 'info', 'rcolli17 vient de se connecter '),
+(1462650513336, 'info', 'rcolli17 vient de se connecter '),
+(1462650513393, 'info', 'rcolli17 vient de se connecter ');
+
 -- --------------------------------------------------------
 
 --
@@ -217,6 +237,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `club_id` char(36) NOT NULL,
   `login` char(8) NOT NULL,
   `school_year` int(11) NOT NULL,
+  `pro_club_id` char(36) DEFAULT NULL,
   `id_projet_club` char(36) DEFAULT NULL,
   `project_id` char(36) NOT NULL,
   `main_club` tinyint(1) NOT NULL,
@@ -226,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `project_validation` tinyint(1) DEFAULT NULL,
   `member_comment` text,
   PRIMARY KEY (`club_id`,`login`,`school_year`),
-  KEY `fk_affecte` (`id_projet_club`),
+  KEY `fk_affecte` (`pro_club_id`,`id_projet_club`),
   KEY `fk_association_10` (`login`),
   KEY `fk_association_11` (`school_year`),
   KEY `fk_association_12` (`project_id`)
@@ -236,17 +257,17 @@ CREATE TABLE IF NOT EXISTS `member` (
 -- Contenu de la table `member`
 --
 
-INSERT INTO `member` (`club_id`, `login`, `school_year`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'gymorv17', 2016, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
-('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
-('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `member` (`club_id`, `login`, `school_year`, `pro_club_id`, `id_projet_club`, `project_id`, `main_club`, `member_mark`, `ex_member_not_wanted`, `recommandation`, `project_validation`, `member_comment`) VALUES
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, NULL, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'gymorv17', 2016, NULL, NULL, '7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 0, NULL, NULL, NULL, NULL, NULL),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, NULL, NULL, '7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, NULL, NULL, '7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -315,10 +336,10 @@ CREATE TABLE IF NOT EXISTS `projet` (
 --
 
 INSERT INTO `projet` (`project_id`, `project_type`, `project_description`) VALUES
-('7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 'PR+', '{ "title": "Projet à responsabilité +",\n                      "objectif": "Transmettre son savoir-faire, son expérience",\n                      "exemple": "Poursuivre son ancien PR avec le nouveau responsable",\n                      "quota": "60",\n                      "eval": "Le responsable du club valide ou non un crédit ECTS"}'),
-('7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 'PR', '{   "title": "Projet à responsabilité",\n                      "objectif": "Prendre des responsabilités, assurer l''encadrement et la prise de décision dans les activités d''un groupe ou d''une association",\n                      "exemple": "(Co-)Présider un club, organiser le SKISEN, animer l''une des principales actions de son club, entrainer une équipe sportive",\n                      "quota": "60",\n                      "eval": "Note (orale et dossier), compte dans la moyenne de l''année. La validation est obligatoire pour l''obtention du diplôme"}'),
-('7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 'PA', '{   "title": "Projet d''accompagnement",\n                      "objectif": "Appuyer l''action d''un PR sur des tâches semi-complexes en relative autonomie",\n                      "exemple": "s''occuper d''une exposition du BDA, participation active à un club",\n                      "quota": "50",\n                      "eval": "Validation ou non validation"}'),
-('7cbd3295-0df3-11e6-9aa9-448a5b42bfcd', 'PI', '{ "title": "Projet d''intégration à lISEN",\n                      "objectif": "Se mettre au service ponctuellement d''un groupe ou d''une association",\n                      "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l''équipe du Gala",\n                      "quota": "15",\n                      "eval": "Note de groupe comprise dans la moyenne de l''année"}');
+('7cbd1a4b-0df3-11e6-9aa9-448a5b42bfcd', 'PR+', '{ "title": "Projet à responsabilité +",\n                      "objectif": "Transmettre son savoir-faire, son expérience",\n                      "exemple": "Suivre son ancien PR avec le nouveau responsable",\n                      "quota": "60 h",\n                      "eval": "Le responsabel du club valide ou non un crédit ECTS"}'),
+('7cbd3129-0df3-11e6-9aa9-448a5b42bfcd', 'PR', '{   "title": "Projet à responsabilité",\n                      "objectif": "Prendre des responsabilités, assurer l''encadrement et la prise de décision dans les activités d''un groupe ou d''une association",\n                      "exemple": "(Co-)Présider un club, organiser le SKISEN, animer l''une des principales actions de son club, entrainer une équipe sportive",\n                      "quota": "60 h",\n                      "eval": "Note (orale et dossier), compte dans le moyenne de l''année. La validation est obligatoire pour l''obtention du diplome"}'),
+('7cbd322e-0df3-11e6-9aa9-448a5b42bfcd', 'PA', '{   "title": "Projet d''accompagnement",\n                      "objectif": "Appuyer l''action d''un PR sur des tâches semi-complexes en relative autonomie",\n                      "exemple": "s''occuper d''une exposition du BDA, participation active à un club",\n                      "quota": "50 h",\n                      "eval": "Validation ou non validation"}'),
+('7cbd3295-0df3-11e6-9aa9-448a5b42bfcd', 'PI', '{ title: "Projet d''intégration (à lISEN",\n                      "objectif": "Se mettre au service ponctuellement d''un groupe ou d''une association",\n                      "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l''équipe du Gala",\n                      "quota": "15 h",\n                      "eval": "Note de groupe comprise dans la moyenne de l''année"}');
 
 -- --------------------------------------------------------
 
@@ -417,7 +438,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` char(20) DEFAULT NULL,
   `user_mail` char(50) NOT NULL,
   `is_administrator` tinyint(1) DEFAULT NULL,
-  `school_staff` tinyint(1) DEFAULT NULL,
   `phone` char(12) DEFAULT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -426,19 +446,19 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `school_staff`, `phone`) VALUES
-('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, 0, NULL),
-('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, 0, NULL),
-('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, 0, NULL),
-('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, 0, NULL),
-('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, 0, NULL),
-('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, 0, NULL),
-('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, 0, NULL),
-('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@isen-bretagne.fr', 0, 0, NULL),
-('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, 0, NULL),
-('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, 1, NULL),
-('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, 0, NULL),
-('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, 1, NULL);
+INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_administrator`, `phone`) VALUES
+('baboli17', 'brendan', 'abolivier', 'brendan.abolivier@isen-bretagne.fr', 0, NULL),
+('ejoly017', 'erwan', 'joly', 'erwan.joly@isen-bretagne.fr', 0, NULL),
+('fduboi17', 'florentin', 'dubois', 'florentin.dubois@isen-bretagne.fr', 0, NULL),
+('ftoque17', 'françois', 'toquer', 'françois.toquer@isen-bretagne.fr', 0, NULL),
+('gbiann17', 'gilles', 'biannic', 'gilles.biannic@isen-bretagne.fr', 0, NULL),
+('gymorv17', 'guy-yann', 'morvan', 'guy-yann.morvan@isen-bretagne.fr', 0, NULL),
+('mgoanv17', 'maxime', 'goanvic', 'maxime.goanvic@isen-bretagne.fr', 0, NULL),
+('pverba17', 'pierre', 'verbaere', 'pierre.verbaere@ne.fr', 0, '0658177029'),
+('qduche17', 'quentin', 'ducher', 'quentin.ducher@isen-bretagne.fr', 0, NULL),
+('rcolli17', 'rémi', 'collignon', 'remi.collignon@isen-bretagne.fr', 1, NULL),
+('tcouss17', 'thomas', 'coussot', 'thomas.coussot@isen-bretagne.fr', 0, NULL),
+('vrioua17', 'vincent', 'riouallon', 'vincent.riouallon@isen-bretagne.fr', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -493,6 +513,7 @@ ALTER TABLE `event`
 -- Contraintes pour la table `member`
 --
 ALTER TABLE `member`
+  ADD CONSTRAINT `fk_affecte` FOREIGN KEY (`pro_club_id`,`id_projet_club`) REFERENCES `project_club` (`club_id`, `id_projet_club`),
   ADD CONSTRAINT `fk_association_10` FOREIGN KEY (`login`) REFERENCES `users` (`login`),
   ADD CONSTRAINT `fk_association_11` FOREIGN KEY (`school_year`) REFERENCES `year` (`school_year`),
   ADD CONSTRAINT `fk_association_12` FOREIGN KEY (`project_id`) REFERENCES `projet` (`project_id`),

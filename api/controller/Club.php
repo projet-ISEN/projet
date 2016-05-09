@@ -76,10 +76,11 @@ class Club
         $club->club_name        = $post['club_name'];
         $club->club_description = empty($post['club_description']) ? '' : $post['club_description'];
         $club->club_mail        = empty($post['club_mail'])        ? '' : $post['club_mail'] ;
-        $club->login            = $_SESSION['user']->login;
+        $club->login            = empty($post['login_evaluator'])  ? $_SESSION['user']->login : $post['login_evaluator'];
         $club->actif            = 1;
+
         if( $club->save() ) {
-            echo json_encode($club);
+            echo json_encode(['err' => null] );
         }
         else {
             echo json_encode( array(
