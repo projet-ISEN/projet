@@ -152,6 +152,5 @@ if (date("n")>7) $myYear++;
 
     //\Controllers\Logger::info( $_SESSION['user']->login . ' vient de se connecter ' );
 
-    header('Content-Type: application/json');
-    header('Content-Type: text/html; charset=utf-8');
+    header('Content-Type: application/json; charset=utf-8');
     $router->run();
