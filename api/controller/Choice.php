@@ -76,7 +76,7 @@ class Choice
         if( empty($put['choices']) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçue'
+                'err' => 'Aucune données reçues'
             ]);
         }
         else {
