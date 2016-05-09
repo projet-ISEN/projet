@@ -150,7 +150,7 @@ if (date("n")>7) $myYear++;
 
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
 
-    \Controllers\Logger::info( $_SESSION['user']->login . ' vient de se connecter ' );
+    //\Controllers\Logger::info( $_SESSION['user']->login . ' vient de se connecter ' );
 
     header('Content-Type: application/json');
     header('Content-Type: text/html; charset=utf-8');

@@ -16,6 +16,7 @@ class User {
     public $user_mail;
     public $is_administrator;
     public $phone;
+    public $school_staff;
 
     /**
      * User constructor.
@@ -30,7 +31,7 @@ class User {
         $this->user_name        = $cas_data['LastName'];
         $this->user_mail        = $cas_data['Mail'];
         $this->is_administrator = 0;
-        $this->phone            = $cas_data['Telephone'];
+        $this->phone            = empty($cas_data['Telephone'])? null : $cas_data['Telephone'];
 
         if($cas_data["gidNumber"] == "1000") $this->school_staff     = 1;
         else $this->school_staff     = 0;
@@ -98,8 +99,8 @@ class User {
         if( !$this->exist() ) {
 
             $req = Database::getInstance()->PDOInstance->prepare(
-                "INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, phone) ".
-                "VALUES (:login, :user_firstname, :user_name, :user_mail, :is_administrator, :phone)"
+                "INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, phone, school_staff) ".
+                "VALUES (:login, :user_firstname, :user_name, :user_mail, :is_administrator, :phone, :school_staff)"
             );
 
             return $req->execute($values);
