@@ -112,6 +112,7 @@ if (date("n")>7) $myYear++;
 
 
         $router->post(      '/projects',       'Project.create');
+        $router->put(      '/projects',       'Project.update');
 
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
