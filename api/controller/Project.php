@@ -45,4 +45,23 @@ class Project
         $projects->project_description  = $post['project_description'] ;
         echo json_encode( $projects -> create() );
     }
+
+    public static function update() {
+
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty($put) ) {
+
+            echo json_encode([
+                'err' => 'Aucune données reçues'
+            ]);
+        }
+        else {
+            $projects = new \Models\Project();
+            $projects->project_id           = $put['project_id'];
+            $projects->project_type         = $put['project_type'];
+            $projects->project_description  = $put['project_description'] ;
+            echo json_encode( $projects->update() );
+        }
+    }
+
 }
