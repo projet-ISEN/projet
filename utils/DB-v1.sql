@@ -365,6 +365,7 @@ CREATE TABLE IF NOT EXISTS `role_link` (
   KEY `fk_role_link2` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 --
 -- Contenu de la table `role_link`
 --
@@ -386,6 +387,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `phone` char(12) DEFAULT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 
