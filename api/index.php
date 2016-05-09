@@ -115,9 +115,6 @@ if (date("n")>7) $myYear++;
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
-        $router->get(       '/effectifs',        'Effectif.getAll');
-        $router->get(       '/effectifs/:id',    'Effectif.getOne');
-
         $router->get(       '/projects/:id',     'Project.getOne');
 
     }elseif(!$_SESSION['user']->is_administrator){
@@ -135,10 +132,16 @@ if (date("n")>7) $myYear++;
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
 
+    $router->get(       '/effectifs',        'Effectif.getAll');
+    $router->get(       '/effectifs/:id',    'Effectif.getOne');
 
     $router->get(       '/log',                 'Logger.getLastLogs');
     $router->get(       '/log/:number',         'Logger.getLastLogs');
     $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
+
+    $router->get(       '/notes',            'NotationProf.allNotes');
+    $router->get(       '/notes/:id',        'NotationProf.allNotes');
+    $router->post(      '/notes/:id',        'NotationProf.setNote');
 
 
 /*    $router->get(       '/choice',   function(){
