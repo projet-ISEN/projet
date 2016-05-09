@@ -23,7 +23,16 @@ class Conf{
 
 	public static function isDebug() {
 
-		if( empty($_ENV['DEBUG']) ) return false;
-		else return $_ENV['DEBUG'];
+		$whitelist = array(
+			'127.0.0.1',
+			'::1',
+			'localhost'
+		);
+
+		if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+			// not valid
+			return false;
+		}
+		return true;
 	}
 }
