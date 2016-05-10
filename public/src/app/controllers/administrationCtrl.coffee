@@ -271,7 +271,7 @@ angular.module 'app'
                     'Content-Type': 'application/json'
 
             .then (res)->
-                if res.data
+                if res.data && !res.data.err
                     $mdToast.show(
                         $mdToast.simple 'Le role a été supprimé'
                         .position 'bottom right'
@@ -282,10 +282,16 @@ angular.module 'app'
                     $scope.clearValue_roleModifiedForm()
 
                 else
-                    $mdToast.show(
-                        $mdToast.simple "Une erreur est survenue, le poste n'a pas pu être suppimé"
-                        .position 'bottom right'
-                    )
+                    if res.data.err
+                        $mdToast.show(
+                            $mdToast.simple "Le rôle n'a pas pu être supprimé car il a déjà été occupé"
+                            .position 'bottom right'
+                        )
+                    else
+                        $mdToast.show(
+                            $mdToast.simple "Une erreur est survenue, le role n'a pas pu être suppimé"
+                            .position 'bottom right'
+                        )
 
 
             , (err)->

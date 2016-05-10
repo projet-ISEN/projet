@@ -85,6 +85,7 @@ class Role {
         public function update() {
         //création d'une variable locale _PUT
 
+
         $req = Database::getInstance()->PDOInstance->prepare("UPDATE role SET  role = :role WHERE id_role = :id_role ");
 
         $status = true;
@@ -107,8 +108,15 @@ class Role {
      */
     public function remove() {
 
-        $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM role WHERE id_role=:id_role");
-        return $req->execute(array('id_role'=> $this->role_id));
+
+        $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM role WHERE id_role='" . $this->role_id . "'")
+            ->fetchAll(\PDO::FETCH_NUM)[0][0];
+
+        if(!$res){
+            $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM role WHERE id_role=:id_role");
+            return $req->execute(array('id_role'=> $this->role_id));
+        }else
+            return array('err'=> "Role déjà endossé");
     }
 
 
