@@ -14,7 +14,8 @@ md-content.md-padding( layout-xs="column" layout="row" )
         label Recherche de club
         input( type='text' ng-model='search')
 
-    md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
+    div(layout="column")
+        md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
 
 md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
 

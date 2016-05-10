@@ -103,6 +103,12 @@ if (date("n")>7) $myYear++;
 
         $router->get(       '/projects/:id',   'Project.getOne');
         $router->post(      '/projects',       'Project.create');
+        $router->put(       '/projects',       'Project.update');
+        $router->delete(    '/projects/:id',       'Project.delete');
+
+        $router->post(      '/role',       'Role.add');
+        $router->put(       '/role',       'Role.update');
+        $router->delete(    '/role/:id',       'Role.delete');
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
@@ -137,6 +143,18 @@ if (date("n")>7) $myYear++;
     $router->get(       '/notes/:id',        'NotationProf.allNotes');
     $router->post(      '/notes/:id',        'NotationProf.setNote');
 
+<<<<<<< HEAD
+=======
+
+    $router->get(       '/role',   'Role.getAll');
+
+
+
+
+
+
+
+>>>>>>> 1f358c33db733afdf372b5dd70ebcace45f48ff7
 /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
         $choice -> alreadyChoose();

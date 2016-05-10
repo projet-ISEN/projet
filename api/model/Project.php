@@ -65,5 +65,35 @@ class Project
             }
     }
 
+    public function update() {
+        //création d'une variable locale _PUT
+
+        $req = Database::getInstance()->PDOInstance->prepare("UPDATE projet SET  project_type = :project_type, project_description = :project_description WHERE project_id = :project_id ");
+
+        $status = true;
+        if( !$req->execute( [
+                ':project_id' => $this->project_id,
+                ':project_type' => $this->project_type,
+                ':project_description' => $this->project_description
+            ])) {
+                $status = false;
+            }
+
+        if( $status ) {
+            return array( 'err' => null );
+        }
+        return array( 'err' => 'Impossible de sauvegarder votre choix' );
+    }
+
+    /**
+     * delete the project
+     * @return bool
+     */
+    public function delete() {
+
+        $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM projet WHERE project_id=:project_id");
+        return $req->execute(array('project_id'=> $this->project_id));
+    }
+
 
 }
