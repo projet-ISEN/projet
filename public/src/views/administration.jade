@@ -1,13 +1,13 @@
-div( layout='row' layout-xs='column' flex-xs='100' ng-cloak)
 
-    md-content(flex="100" layout='row' layout-align='center center')
-        md-card( flex='75' flex-sm='100' )
-            md-card-title
-                md-card-title-text
-                    span.md-headline Ajout d'un type de projet
+
+md-content(flex="100" layout='row' layout-align='center center')
+    md-card( flex='75' flex-sm='100' )
+        md-card-title
+            md-card-title-text
+                span.md-headline Ajout d'un type de projet
 
             //md-divider( layout-padding )
-
+        md-card-content
             form( name='projectForm' ng-submit='saveProject()' layout-padding )
                 div(layout="row")
                     md-input-container.md-icon-float( flex='25' flex-xs='100' )
@@ -118,12 +118,79 @@ div( layout='row' layout-xs='column' flex-xs='100' ng-cloak)
 
                 div(layout='row' layout-align='center center')
                     md-button.md-primary.md-raised(
-                        type='submit'
-                        ng-disabled="false") Sauvegarder
+                        type='updateProject'
+                        ng-disabled="updateProject.projectChoice == null") Mettre à jour
                     md-button.md-warn.md-raised(
-                        ng-click='suppressProject()'
+                        ng-click='suppressDiag()'
                         layout=''
+                        ng-disabled="updateProject.projectChoice == null"
                         layout-align='center end') Supprimer
 
 
+
+
+md-content(flex="100" layout='row' layout-align='center center')
+    md-card( flex='75' flex-sm='100' )
+        md-card-title
+            md-card-title-text
+                span.md-headline Ajout d'un type de poste (Président, Trésorier, ...)
+
+            //md-divider( layout-padding )
+        md-card-content
+            form( name='roleaddForm' ng-submit='post_add_role()' layout-padding)
+                div(layout="row" layout-align='')
+                    md-input-container.md-icon-float( flex='100' flex-xs='100' )
+                        label Nom du poste
+                        input(  md-maxlength="40" ng-model="addRole.name" name="name" required="")
+                        div(ng-messages="roleaddForm.name.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+
+
+                div(layout='row' layout-align='center center')
+                    md-button.md-primary.md-raised(
+                        type='submit'
+                        ng-disabled="addRole.name == null") Ajouter
+
+         md-divider( layout-padding )
+
+
+
+        md-card-title
+            md-card-title-text
+                span.md-headline Mise à jour/Suppression de nom de postes
+
+        md-card-content
+            form( name='roleaModifiedForm' ng-submit='put_update_role()' layout-padding)
+
+                md-input-container.md-block
+                    label Nom du poste à modifier
+                    md-select(
+                        name="rolechoice"
+                        ng-disabled="!roles"
+                        ng-model="roleModifiedForm.rolechoice"
+                        md-on-close = "loadRole()"
+                        required="")
+                        md-option(
+                            ng-repeat="val in roles | orderBy: 'role'"
+                            ng-value="val" ) {{val.role | firstLetterUppercase}}
+                    div( ng-messages="roleaModifiedForm.rolechoice.$error" )
+                        div( ng-message="required" role="alert" class="my-message") Requis
+
+                div(layout="row")
+                    md-input-container.md-icon-float( flex='100' flex-xs='100'  ng-show="roleModifiedForm.rolechoice != null")
+                        label Nom du poste
+                        input( md-maxlength="40"  ng-model="updateRole.name" name="name" required="")
+                        div(ng-messages="roleaModifiedForm.name.$error")
+                            div.my-message( ng-message="required" role="alert") Le nom du role est requis
+
+
+                div(layout='row' layout-align='center center')
+                    md-button.md-primary.md-raised(
+                        type='submit'
+                        ng-disabled="roleModifiedForm.rolechoice == null") Mettre à jour
+                    md-button.md-warn.md-raised(
+                        ng-click='suppressRole()'
+                        layout=''
+                        ng-disabled="roleModifiedForm.rolechoice == null"
+                        layout-align='center end') Supprimer
 
