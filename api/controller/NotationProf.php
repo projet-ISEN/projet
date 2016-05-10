@@ -102,4 +102,26 @@ class NotationProf
         }
         return;
     }
+
+    /**
+     * Retourne toutes les notes des élèves d'un évaluateur sous forme de fichier Excel
+     */
+    public function toXlsx() {
+
+
+        $members = [];
+        foreach( \Models\Club::getMyClubsForEvaluator() as $club )
+        {
+            $members = array_merge( $members, $club->getMembers() );
+        }
+
+        /*foreach ($members as $member)
+        {
+            $member->load();
+            $user = new \Models\User( $member->login );
+            $user->load();
+        }*/
+
+        $E = new \API\Excel( 'Notes clubs ' . $_SESSION['year'] );
+    }
 }
