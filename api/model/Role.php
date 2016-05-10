@@ -19,13 +19,15 @@ class Role {
     // Tout les attributs doivent correspondre à la table correspondante
 
 
-
+ public $role_name;
+ public $role_id;
 
     /**
      * Role constructor.
      */
     public function __construct( ) {
-
+        $this->role_name           = "";
+        $this->role_id           = "";
     }
 
 
@@ -50,6 +52,65 @@ class Role {
 
         return (isset($role[0]->role))? $role[0]->role : false;
     }
+
+     public static function getAll()
+    {
+        return  Database::Select("SELECT * FROM role");
+    }
+
+
+
+    public function add()
+    {
+
+
+        $values['id_role'] =  Database::getUID();
+        $values['role'] = $this->role_name ;
+
+        $req = Database::getInstance()->PDOInstance->prepare(
+                "INSERT INTO `role`(`id_role`, `role`)"
+                ."VALUES (:id_role, :role)"
+            );
+
+
+            if( $req->execute($values) ) {
+                return ['err' => null];
+            }
+            else {
+                return ['err' => 'Impossible de d\'enregistrer le nouveau club'];
+            }
+
+    }
+
+        public function update() {
+        //création d'une variable locale _PUT
+
+        $req = Database::getInstance()->PDOInstance->prepare("UPDATE role SET  role = :role WHERE id_role = :id_role ");
+
+        $status = true;
+        if( !$req->execute( [
+                ':id_role' => $this->role_id,
+                ':role' => $this->role_name,
+            ])) {
+                $status = false;
+            }
+
+        if( $status ) {
+            return array( 'err' => null );
+        }
+        return array( 'err' => 'Impossible de sauvegarder votre choix' );
+    }
+
+    /**
+     * delete the project
+     * @return bool
+     */
+    public function remove() {
+
+        $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM role WHERE id_role=:id_role");
+        return $req->execute(array('id_role'=> $this->role_id));
+    }
+
 
 
 
