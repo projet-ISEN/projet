@@ -111,7 +111,12 @@ if (date("n")>7) $myYear++;
 
 
         $router->post(      '/projects',       'Project.create');
-        $router->put(      '/projects',       'Project.update');
+        $router->put(       '/projects',       'Project.update');
+        $router->delete(    '/projects/:id',       'Project.delete');
+
+        $router->post(      '/role',       'Role.add');
+        $router->put(       '/role',       'Role.update');
+        $router->delete(    '/role/:id',       'Role.delete');
 
 
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
@@ -140,6 +145,14 @@ if (date("n")>7) $myYear++;
     $router->get(       '/log',                 'Logger.getLastLogs');
     $router->get(       '/log/:number',         'Logger.getLastLogs');
     $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
+
+
+    $router->get(       '/role',   'Role.getAll');
+
+
+
+
+
 
 
 /*    $router->get(       '/choice',   function(){
