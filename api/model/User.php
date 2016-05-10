@@ -25,18 +25,22 @@ class User {
      */
     public function __construct( $cas_data ) {
 
-        // Database fields
-        $this->login            = $cas_data['Login'];
-        $this->user_firstname   = $cas_data['FirstName'];
-        $this->user_name        = $cas_data['LastName'];
-        $this->user_mail        = $cas_data['Mail'];
-        $this->is_administrator = 0;
-        $this->phone            = empty($cas_data['Telephone'])? null : $cas_data['Telephone'];
+        // Si on essage de construire un user avec son login
+        if( is_string($cas_data) ) {
+            $this->login = $cas_data;
+        }
+        else {
+            // Database fields
+            $this->login            = $cas_data['Login'];
+            $this->user_firstname   = $cas_data['FirstName'];
+            $this->user_name        = $cas_data['LastName'];
+            $this->user_mail        = $cas_data['Mail'];
+            $this->is_administrator = 0;
+            $this->phone            = empty($cas_data['Telephone'])? null : $cas_data['Telephone'];
 
-        if($cas_data["gidNumber"] == "1000") $this->school_staff     = 1;
-        else $this->school_staff     = 0;
-
-
+            if($cas_data["gidNumber"] == "1000") $this->school_staff     = 1;
+            else $this->school_staff     = 0;
+        }
     }
 
     /**
@@ -68,7 +72,7 @@ class User {
 
     }
 
-        public function load() {
+    public function load() {
 
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM users WHERE login='" . $this->login . "'" )
             ->fetchAll( \PDO::FETCH_ASSOC )[0];

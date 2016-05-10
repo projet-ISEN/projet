@@ -128,7 +128,7 @@ class Club {
     public function getMembers()
     {
         $members = [];
-        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $this->club_id . "'");
+        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $this->club_id . "' AND main_club=1");
         foreach ($req as $member) {
             array_push($members, new \Models\Member( $this->club_id, $member->login ) );
         }

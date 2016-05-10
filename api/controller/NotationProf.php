@@ -108,20 +108,24 @@ class NotationProf
      */
     public function toXlsx() {
 
-
+        notes = [];
         $members = [];
+        /**
+         * Récupère tous les membres qui dépendent d'un evaluateur
+         * @var  $club */
         foreach( \Models\Club::getMyClubsForEvaluator() as $club )
         {
             $members = array_merge( $members, $club->getMembers() );
         }
-
-        /*foreach ($members as $member)
+        foreach ($members as $member)
         {
             $member->load();
             $user = new \Models\User( $member->login );
             $user->load();
-        }*/
-
+            
+            $notes[]
+            
+        }
         $E = new \API\Excel( 'Notes clubs ' . $_SESSION['year'] );
     }
 }
