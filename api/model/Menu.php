@@ -221,7 +221,7 @@ class Menu {
                                 "active" => false
                             ],
                             [
-                                "link" => '',
+                                "link" => '#/manage',
                                 "title" => 'Gestions des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false

@@ -9,8 +9,9 @@
     namespace API;
 
     use \PDOException;
-    use \API\Conf;
     use \PDO;
+    use \API\Conf;
+    use \Controllers\Logger;
 
     /**
      * Fournit une connexion à la base de donnée
@@ -35,7 +36,7 @@
             $dsn        = 'mysql:dbname='. $name .';host=' . $host . ';charset=utf8';
 
             $options    = array(
-                PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
             );
 
             try {
@@ -43,9 +44,8 @@
                 $this->PDOInstance = new PDO( $dsn, $user, $pass, $options );
             }
             catch( PDOException $e ) {
-                echo json_encode([
-                    'err' => $e->getMessage()
-                ]);
+
+                Logger::error( 'PDO: ' . $e->getMessage() );
                 die();
             }
         }

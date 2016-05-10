@@ -28,7 +28,7 @@ class Log
     {
         $req = Database::getInstance()->PDOInstance->prepare(
             "INSERT INTO log (timestamp, type, content) VALUES ".
-            "( FLOOR(UNIX_TIMESTAMP(CURRENT_TIMESTAMP(3)) * 1000), :type, :content )"
+            "( " . (microtime(true) * 10000) . ", :type, :content )"
         );
 
         if( $req->execute([
