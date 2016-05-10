@@ -18,6 +18,12 @@ md-content.md-padding( layout-xs="column" layout="row" )
         md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
 
 md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
+
+    md-card( ng-if="!clubs" )
+        p
+            | Rien ne s'affiche? Avez-vous penser à vous connecter sur l'
+            a( href="https://web.isen-bretagne.fr" ) ENT
+            | ?
     club-card(
         flex="30"
         flex-xs="100"

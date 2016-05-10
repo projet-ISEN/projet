@@ -81,35 +81,24 @@ if (date("n")>7) $myYear++;
         $_SESSION['user']->save();
     }
 
-/*    $router->get(       '/year',        function() {
-         echo json_encode(array(
-            'currentYear' => $_SESSION['year']
-         ));
-    });*/
-
 /*================================================================
                             ROUTES
  ================================================================*/
 
     $router = new API\Router( $_GET['url'] );
 
-
-
-
-
     // Use controller user and method one
 
     if($_SESSION['user']->is_administrator){
 
         $router->get(       '/users/:id',   'User.get');
+
         $router->post(      '/clubs',       'Club.create');
         $router->get(       '/clubs/:id',   'Club.getOne');
         $router->put(       '/club/:id',    'Club.update');
         $router->delete(    '/club/:id',    'Club.delete');
 
-
-
-
+        $router->get(       '/projects/:id',   'Project.getOne');
         $router->post(      '/projects',       'Project.create');
         $router->put(       '/projects',       'Project.update');
         $router->delete(    '/projects/:id',       'Project.delete');
@@ -118,15 +107,14 @@ if (date("n")>7) $myYear++;
         $router->put(       '/role',       'Role.update');
         $router->delete(    '/role/:id',       'Role.delete');
 
-
         $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
-        $router->get(       '/effectifs',        'Effectif.getAll');
-        $router->get(       '/effectifs/:id',    'Effectif.getOne');
+        $router->get(       '/log',                 'Logger.getLastLogs');
+        $router->get(       '/log/:number',         'Logger.getLastLogs');
+        $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
 
-        $router->get(       '/projects/:id',     'Project.getOne');
-
-    }elseif(!$_SESSION['user']->is_administrator){
+    } elseif(!$_SESSION['user']->is_administrator)
+    {
         $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
         $router->get(       '/choices',     'Choice.getChoiceAll'    );
         $router->post(      '/choices',     'Choice.create' );
@@ -135,16 +123,21 @@ if (date("n")>7) $myYear++;
     }
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
+
     $router->get(       '/me', 'User.getMe');
     $router->put(       '/me', 'User.updateMe');
+
     $router->get(       '/projects',         'Project.getAll');
+
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
 
+    $router->get(       '/effectifs',        'Effectif.getAll');
+    $router->get(       '/effectifs/:id',    'Effectif.getOne');
 
-    $router->get(       '/log',                 'Logger.getLastLogs');
-    $router->get(       '/log/:number',         'Logger.getLastLogs');
-    $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
+    $router->get(       '/notes',            'NotationProf.allNotes');
+    $router->get(       '/notes/:id',        'NotationProf.allNotes');
+    $router->post(      '/notes/:id',        'NotationProf.setNote');
 
 
     $router->get(       '/role',   'Role.getAll');
@@ -163,8 +156,6 @@ if (date("n")>7) $myYear++;
     /*$router->get('club/:id-:nom', function($id, $nom) {
 
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
-
-    //\Controllers\Logger::info( $_SESSION['user']->login . ' vient de se connecter ' );
 
     header('Content-Type: application/json; charset=utf-8');
     $router->run();

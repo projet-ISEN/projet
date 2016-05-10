@@ -45,6 +45,11 @@ angular.module('app')
             controller: 'myInformationsCtrl'
             name: "Mes informations"
 
+        .when '/manage',
+            templateUrl: 'views/evaluator_manageClubs.html'
+            controller: 'evaluator_manegeClubsCtrl'
+            name: "Mes clubs"
+
         .otherwise
             redirectTo:'/accueil'
 
