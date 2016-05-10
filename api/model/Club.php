@@ -103,7 +103,13 @@ class Club {
 
     }
 
-    public function MemberDetails( $year = null ) {
+    /**
+     * Return type of project and number of it in array
+     * @param null $year
+     *
+     * @return array
+     */
+    public function memberDetails($year = null ) {
         if( !$year) $year = $_SESSION['year'];
 
         $res = Database::getInstance()->PDOInstance->query(
@@ -114,6 +120,19 @@ class Club {
             " GROUP BY p.project_type");
         return $res->fetchAll();
 
+    }
+
+    /**
+     * Renvoi un tableau d'objet Member appartenant au club
+     */
+    public function getMembers()
+    {
+        $members = [];
+        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $this->club_id . "' AND main_club=1");
+        foreach ($req as $member) {
+            array_push($members, new \Models\Member( $this->club_id, $member->login ) );
+        }
+        return $members;
     }
 
     /**

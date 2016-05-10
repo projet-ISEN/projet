@@ -2,11 +2,14 @@
     session_start();
 
     // Permet de faire un require_once de tous les fichier php sauf index.php
-
     $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('./'), RecursiveIteratorIterator::SELF_FIRST);
     foreach($objects as $name => $object){
 
-        if(is_file($name) && $name != '.' && $name[2] != '.' && (strpos($name, 'index.php') == false) ) {
+        if(is_file($name)
+            && $name != '.'
+            && $name[2] != '.'
+            && (strpos($name, 'index.php') == false)
+             ) {
             require_once($name);
         }
     }
@@ -136,19 +139,14 @@ if (date("n")>7) $myYear++;
     $router->get(       '/effectifs/:id',    'Effectif.getOne');
 
     $router->get(       '/notes',            'NotationProf.allNotes');
+    $router->get(       '/notes/xlsx',       'NotationProf.toXlsx');
     $router->get(       '/notes/:id',        'NotationProf.allNotes');
     $router->post(      '/notes/:id',        'NotationProf.setNote');
 
 
     $router->get(       '/role',   'Role.getAll');
 
-
-
-
-
-
-
-/*    $router->get(       '/choice',   function(){
+    /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
         $choice -> alreadyChoose();
     });*/
@@ -157,5 +155,5 @@ if (date("n")>7) $myYear++;
 
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
 
-    header('Content-Type: application/json; charset=utf-8');
+    //header('Content-Type: application/json; charset=utf-8');
     $router->run();
