@@ -108,7 +108,7 @@ class NotationProf
      */
     public function toXlsx() {
 
-        notes = [];
+        $notes = [];
         $members = [];
         /**
          * Récupère tous les membres qui dépendent d'un evaluateur
@@ -123,7 +123,7 @@ class NotationProf
             $user = new \Models\User( $member->login );
             $user->load();
             
-            $notes[]
+            //$notes[]
             
         }
         $E = new \API\Excel( 'Notes clubs ' . $_SESSION['year'] );
