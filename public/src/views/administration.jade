@@ -2,33 +2,20 @@
 div( layout='row' layout-xs='column' layout-padding layout-align='center center')
         md-card
             md-card-content
-                p Cette page va permettre de
-                p Concernant votre nom, prénom, adresse e-mail et numéro de téléphone :
+                p Cette page permet de :
                 ul
-                    li Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter.
-                    li Ces informations seront accessible à toute personne membre d'un club
-                        | dans lequel vous avez occupé une place.
+                    li Créer, modifier et supprimer des types de projets (PA, PR, ...)
+                    li Créer, modifier et supprimer des types de rôles dans un club (Président, ...), afin de garder un traçabilité des postes occupés, un rôle qui a déjà été utilisé par un personne une année ne sera pas supprimable
 
 
 
 md-content(flex="100" layout='row' layout-align='center center')
-    div(layout='row' layout-align='center center')
-                        md-button.md-primary.md-raised(
-                            slide-toggle="#projet") Projet
-                        md-button.md-warn.md-raised(
-                            slide-toggle="#role"
-                            layout-align='center end') Role
-
-
-
-
-
-
-md-content(flex="100" layout='row' layout-align='center center')
-    md-card.slideable( id="projet"  flex='75' flex-sm='100' )
+    md-card( id="projet"  flex='75' flex-sm='100' )
         md-card-title
             md-card-title-text
-                span.md-headline Ajout d'un type de projet
+                span.md-headline Gestion des projets
+                span.md-subhead Ajout d'un type de projet
+
 
             //md-divider( layout-padding )
         md-card-content
@@ -84,7 +71,7 @@ md-content(flex="100" layout='row' layout-align='center center')
 
             md-card-title
                 md-card-title-text
-                    span.md-headline Mise à jour/Suppression de types de projets
+                    span.md-subhead Mise à jour/Suppression de types de projets
 
 
             form( name='updateForm' ng-submit='updateProject()' layout-padding )
@@ -154,10 +141,11 @@ md-content(flex="100" layout='row' layout-align='center center')
 
 
 md-content(flex="100" layout='row' layout-align='center center')
-    md-card.slideable(id="role"  flex='75' flex-sm='100' )
+    md-card(id="role"  flex='75' flex-sm='100' )
         md-card-title
             md-card-title-text
-                span.md-headline Ajout d'un type de poste (Président, Trésorier, ...)
+                span.md-headline Gestion des rôles
+                span.md-subhead Ajout d'un type de poste (Président, Trésorier, ...)
 
             //md-divider( layout-padding )
         md-card-content
@@ -181,7 +169,7 @@ md-content(flex="100" layout='row' layout-align='center center')
 
         md-card-title
             md-card-title-text
-                span.md-headline Mise à jour/Suppression de nom de postes
+                span.md-subhead Mise à jour/Suppression de nom de postes
 
         md-card-content
             form( name='roleaModifiedForm' ng-submit='put_update_role()' layout-padding)
