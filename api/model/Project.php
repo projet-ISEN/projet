@@ -85,5 +85,15 @@ class Project
         return array( 'err' => 'Impossible de sauvegarder votre choix' );
     }
 
+    /**
+     * delete the project
+     * @return bool
+     */
+    public function delete() {
+
+        $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM projet WHERE project_id=:project_id");
+        return $req->execute(array('project_id'=> $this->project_id));
+    }
+
 
 }

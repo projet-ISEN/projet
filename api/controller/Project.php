@@ -64,4 +64,15 @@ class Project
         }
     }
 
+    /**
+     * delete the project
+     * @param $id
+     */
+    public static function delete( $project_id ) {
+
+        $projects = new \Models\Project();
+        $projects->project_id = $project_id;
+        echo json_encode( $projects->delete() );
+    }
+
 }
