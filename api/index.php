@@ -94,7 +94,6 @@ if (date("n")>7) $myYear++;
 
     if($_SESSION['user']->is_administrator){
 
-        $router->get(       '/users/:id',   'User.get');
 
         $router->post(      '/clubs',       'Club.create');
         $router->put(       '/club/:id',    'Club.update');
@@ -109,7 +108,6 @@ if (date("n")>7) $myYear++;
         $router->put(       '/role',       'Role.update');
         $router->delete(    '/role/:id',       'Role.delete');
 
-        $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
         $router->get(       '/log',                 'Logger.getLastLogs');
         $router->get(       '/log/:number',         'Logger.getLastLogs');
@@ -127,9 +125,17 @@ if (date("n")>7) $myYear++;
     if($_SESSION['user']->school_staff){
         $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
         $router->get(       '/clubs/:id',   'Club.getOne');
+        $router->get(       '/members/:id',   'Club.getMembersCurrent');
+        $router->get(       '/users/:id',   'User.get');
+
+        $router->post(      '/pushPrez',   'Role.pushPrez');
+        //$router->get(      '/IDPrez',   'Role.IDPrez');
+        $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
+
 
 
     }
+    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
@@ -152,6 +158,8 @@ if (date("n")>7) $myYear++;
 
 
     $router->get(       '/role',   'Role.getAll');
+
+
 
     /*    $router->get(       '/choice',   function(){
         $choice = new \Models\Choice();
