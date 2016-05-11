@@ -146,7 +146,7 @@ class Club {
     }
 
     /**
-     * Renvoi un tableau d'objet Member appartenant au club
+     * Renvoi un tableau d'objet Member appartenant au club avec seulement login et clubId
      */
     public function getMembers()
     {
@@ -155,8 +155,11 @@ class Club {
         foreach ($req as $member) {
             array_push($members, new \Models\Member( $this->club_id, $member->login ) );
         }
+
         return $members;
     }
+
+
 
     /**
      * Charge toutes les données du club portant l'ID de l'objet courant

@@ -1,0 +1,15 @@
+md-dialog
+    md-content( flex="100" layout-padding )
+        h3.
+            Fonctionnement de la notation d'un club
+        p.
+            La notation d'un club ce fait en 5 temps:
+        md-list
+            md-list-item  Le président du club va annoncer qui, celon lui, a validé ou non son projet
+            md-list-item Vous allez pouvoir modifie ces choix s'ils ne vous conviennent pas puis les verrouiller afin qu'ils ne puissent plus être changé
+            md-list-item Vous allez également donner une note au club
+            md-list-item Le président va pouvoir redistribuer les points aux membres du club
+            md-list-item Vous allez ensuite pouvoir modifier ces notes si elles ne vous semble pas justifiées, vous pouvez aussi les verrouiller de suite après avoir donné une note au club afin que tout le monde ai la même note
+
+    md-dialog-actions(layout='row')
+        md-button(ng-click="closeDialog()") J'ai compris

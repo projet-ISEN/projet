@@ -55,6 +55,10 @@ class Member
         echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
 
     }
+    public static function getMembersOfClub($club_id){
+        echo json_encode(\Models\Member::getMembersOfClub($club_id));
+
+    }
 
 
 }

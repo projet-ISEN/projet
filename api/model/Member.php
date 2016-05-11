@@ -123,6 +123,18 @@ class Member {
     }
 
     /**
+     * Renvoi un tableau d'objet Member appartenant au club avec seulement login et clubId
+     */
+    public static function getMembersOfClub($club_id)
+    {
+        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1");
+
+
+        return $req;
+    }
+
+
+    /**
      * Charge toutes les données d'un membre portant le login de l'objet courant
      */
     public function load() {

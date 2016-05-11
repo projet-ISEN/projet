@@ -125,7 +125,7 @@ if (date("n")>7) $myYear++;
     if($_SESSION['user']->school_staff){
         $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
         $router->get(       '/clubs/:id',   'Club.getOne');
-        $router->get(       '/members/:id',   'Club.getMembersCurrent');
+        $router->get(       '/members/:id',   'Member.getMembersOfClub');
         $router->get(       '/users/:id',   'User.get');
 
         $router->post(      '/pushPrez',   'Role.pushPrez');
