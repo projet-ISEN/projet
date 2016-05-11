@@ -68,8 +68,10 @@ angular.module('app')
 
 ]
 
-
-.factory 'breadcrumbsService', [
+#------------------------------------------------------------------------------
+#           BREADCRUMBS SERVICE
+#------------------------------------------------------------------------------
+.service 'breadcrumbsService', [
     '$rootScope'
     '$location'
     ($rootScope, $location)->
@@ -77,9 +79,24 @@ angular.module('app')
         breadcrumbs         = []
         breadcrumbsService  = {}
         observerCallbacks   = []
+
+        @getAll = ->
+            return breadcrumbs
+
+        @getFirst = ->
+            return breadcrumbs[0] or {}
+
+        @registerObserverCallback = (callback)->
+            observerCallbacks.push callback
+
+        @notifyObservers = ->
+            angular.forEach observerCallbacks, (callback)->
+                callback()
+
+
         #we want to update breadcrumbs only when a route is actually changed
         #as $location.path() will get updated imediatelly (even if route change fails!)
-        $rootScope.$on '$routeChangeSuccess', (event, current) ->
+        $rootScope.$on '$routeChangeSuccess', (event, current) =>
             pathElements = $location.path().split('/')
             result = []
             breadcrumbs = []
@@ -96,21 +113,8 @@ angular.module('app')
                     path: breadcrumbPath(i)
                 i++
             breadcrumbs = result
-            breadcrumbsService.notifyObservers()
+            @notifyObservers()
             return
 
-        breadcrumbsService.getAll = ->
-            return breadcrumbs
-
-        breadcrumbsService.getFirst = ->
-            return breadcrumbs[0] or {}
-
-        breadcrumbsService.registerObserverCallback = (callback)->
-            observerCallbacks.push callback
-
-        breadcrumbsService.notifyObservers = ->
-            angular.forEach observerCallbacks, (callback)->
-                callback()
-
-        return breadcrumbsService
+        return @
 ]

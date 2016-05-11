@@ -89,6 +89,7 @@ class Club {
             $myClubs = Database::Select("SELECT club_id FROM club WHERE login='". $_SESSION['user']->login ."'");
         }
 
+
         $myClubsObj = [];
 
         foreach ($myClubs as $club) {

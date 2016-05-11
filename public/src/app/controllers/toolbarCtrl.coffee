@@ -9,8 +9,10 @@ angular.module "app"
         $scope.toggleSidenav = (menuId) ->
             $mdSidenav(menuId).toggle()
 
+        # Init
         $scope.crumbs = breadcrumbsService.getAll()
 
+        # On change
         breadcrumbsService.registerObserverCallback ->
 
             $scope.crumbs = breadcrumbsService.getAll()
