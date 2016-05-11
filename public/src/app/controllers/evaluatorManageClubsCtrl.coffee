@@ -48,8 +48,10 @@ angular.module 'app'
             $scope.changeClub = obj
 
             $role.whoPrez obj.club_id, (val)->
-                $scope.prez = val[0].login
-            console.log $scope.prez
+                if val.length
+                    $scope.prez = val[0].login
+                else
+                    $scope.prez = false
 
 
             $club.getMembers obj.club_id, (members)->
