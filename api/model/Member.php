@@ -143,7 +143,6 @@ class Member {
         foreach( $res as $key => $val ) {
             $this->$key = $val;
         }
-
     }
 }
 ?>

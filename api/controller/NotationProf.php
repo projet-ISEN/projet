@@ -8,6 +8,7 @@
 
 namespace Controllers;
 
+use \API\Excel;
 
 class NotationProf
 {
@@ -108,8 +109,8 @@ class NotationProf
      */
     public function toXlsx() {
 
-        $notes = [];
-        $members = [];
+        $notes      = [];
+        $members    = [];
         /**
          * Récupère tous les membres qui dépendent d'un evaluateur
          * @var  $club */
@@ -120,12 +121,43 @@ class NotationProf
         foreach ($members as $member)
         {
             $member->load();
-            $user = new \Models\User( $member->login );
+            $user   = new \Models\User(     $member->login );
+            $classe = new \Models\Classe(   $member->login);
             $user->load();
-            
-            //$notes[]
-            
+            $classe->load();
+
+            $notes[ $classe->classe_name ][ $user->login ] = [
+                'prenom'    => $user->user_firstname,
+                'nom'       => $user->user_name,
+                'note'      => $member->member_mark
+            ];
         }
-        $E = new \API\Excel( 'Notes clubs ' . $_SESSION['year'] );
+        //var_dump( $notes );
+        $E = new Excel( 'Notes clubs ' . $_SESSION['year'] );
+
+        $i=0;
+        foreach( $notes as $classeName => $eleves )
+        {
+            $sheet = $E->file->createSheet($i);
+            $sheet->setTitle( $classeName );
+            $sheet->SetCellValue('A1', 'NOM' );
+            $sheet->SetCellValue('B1', 'PRENOM' );
+            $sheet->SetCellValue('C1', 'NOTE' );
+            $sheet->getStyle('A1:C1')->getFont()->setBold(true);
+            $sheet->getStyle('A1:C1')->getBorders()->getAllBorders()->setBorderStyle('medium');
+            $sheet->getStyle('A2:C200')->getBorders()->getAllBorders()->setBorderStyle('thin');
+            $sheet->setAutoFilter('A1:C200');
+
+            $j = 2;
+            foreach( $eleves  as $eleve ) {
+
+                $sheet->SetCellValue('A' . $j , $eleve['nom']);
+                $sheet->SetCellValue('B' . $j , $eleve['prenom']);
+                $sheet->SetCellValue('C' . $j , $eleve['note']);
+                $j++;
+            }
+            $i++;
+        }
+        $E->send();
     }
 }
