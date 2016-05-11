@@ -10,49 +10,58 @@ angular.module('app')
 
 
         $routeProvider
-        .when '/accueil',
+        .when '/',
             templateUrl: 'views/home.html'
             controller:  'homeCtrl'
-            name: "Informations Globales"
+            label: ""
 
-        .when '/candidature',
-            templateUrl: 'views/candidature.html'
-            controller:  'candidatureCtrl'
-            name: "Candidature"
+        .when '/clubs',
+            templateUrl: 'views/home.html'
+            controller:  'homeCtrl'
+            label: "Liste des clubs"
+
+        .when '/clubs/addclub',
+            templateUrl: 'views/addClub.html'
+            controller: 'addClubCtrl'
+            label: "Ajout de clubs"
 
         .when '/clubs/:club_id',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
-            name: "Liste des clubs"
+            label: "Ce club"
 
-        .when '/contact/:club_id',
+        .when '/clubs/:club_id/contact',
             templateUrl: 'views/contactInClub.html'
             controller: 'contactInClubCtrl'
-            name: "Contact ?????????"
+            label: "Contacts"
 
-        .when '/addclub',
-            templateUrl: 'views/addClub.html'
-            controller: 'addClubCtrl'
-            name: "Ajout de clubs"
+        .when '/candidature/',
+            templateUrl: 'views/candidature.html'
+            controller:  'candidatureCtrl'
+            label: "Candidature"
 
         .when '/administration',
             templateUrl: 'views/administration.html'
             controller: 'administrationCtrl'
-            name: "Ajout de clubs"
+            label: "Administration"
 
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
-            name: "Mes informations"
+            label: "Mes informations"
 
         .when '/manage',
             templateUrl: 'views/evaluatorManageClubs.html'
             controller: 'evaluatorManageClubsCtrl'
-            name: "Mes clubs"
+            label: "Gestion des clubs"
 
+        .when '/manage/:club_id',
+            templateUrl: 'views/manageClub.html'
+            controller: 'manageClubCtrl'
+            label: "Gestion du club"
 
         .otherwise
-            redirectTo:'/accueil'
+            redirectTo:'/'
 
 
         customTheme = $mdThemingProvider.extendPalette 'blue-grey',
@@ -67,11 +76,10 @@ angular.module('app')
 
 
 ]
-
 #------------------------------------------------------------------------------
 #           BREADCRUMBS SERVICE
 #------------------------------------------------------------------------------
-.service 'breadcrumbsService', [
+###.service 'breadcrumbsService', [
     '$rootScope'
     '$location'
     ($rootScope, $location)->
@@ -118,3 +126,6 @@ angular.module('app')
 
         return @
 ]
+
+###
+

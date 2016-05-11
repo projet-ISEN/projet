@@ -4,8 +4,8 @@ md-toolbar.md-hue-2.headToolbar.md-whiteframe-glow-z1(ng-controller="toolbarCtrl
       md-icon.darker( aria-label="Menu" class="material-icons") menu
     h2
       //span my Page Title
-      span( ng-repeat='crumb in crumbs' )
-        a( ng-href="#{{crumb.path}}" ) {{crumb.name}}
+      span( ng-repeat='crumb in crumbles' )
+        a( ng-href="#{{crumb.path}}" ) {{crumb.label}}
         md-icon.material-icons( ng-if="!$last" ) play_arrow
 
 
