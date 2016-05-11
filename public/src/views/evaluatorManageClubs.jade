@@ -66,8 +66,14 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
                         ng-disabled="updatePrezChoice == null") Ajouter
         md-divider
         h4 Noter les clubs
-        md-list
-            md-list-item
-                md-icon settings
-                p test
-                md-switch.md-secondary
+        form( name='choiceprez' ng-submit='updatePrez()' layout-padding)
+            div(ng-repeat="user in changeClub.member | orderBy: ''"  layout="row")
+                md-list(flex="75")
+                    md-list-item
+                        //md-icon settings
+                        md-switch
+
+                        p {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
+                md-input-container(flex="25")
+                    label Note
+                    input( ng-model="note" name="note" required="")
