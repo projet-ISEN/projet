@@ -5,13 +5,19 @@ angular.module 'app'
     '$effectif'
     '$project'
     '$routeParams'
-    ($scope, $club, $effectif, $project, $routeParams)->
+    'crumble'
+    ($scope, $club, $effectif, $project, $routeParams, crumble)->
 
         $scope.club = {}
 
 
         $club.one $routeParams.club_id, (club) ->
             $scope.club = club
+
+            crumble.update
+                clubName: club.club_name
+
+
 
             $club.stat club.club_id, (stat) ->
                 $scope.club.stat = stat

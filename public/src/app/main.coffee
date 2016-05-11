@@ -5,4 +5,5 @@ app = angular.module 'app', [
     'ngMdIcons'
     'ngMessages'
     'ngSanitize'
+    'crumble'
 ]

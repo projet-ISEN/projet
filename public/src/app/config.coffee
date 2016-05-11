@@ -10,53 +10,58 @@ angular.module('app')
 
 
         $routeProvider
-        .when '/accueil',
+        .when '/',
             templateUrl: 'views/home.html'
             controller:  'homeCtrl'
-            name: "Informations Globales"
+            label: "Informations Globales"
 
-        .when '/candidature',
+        .when '/candidature/',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
-            name: "Candidature"
+            label: "Candidature"
+
+        .when '/clubs',
+            templateUrl: 'views/home.html'
+            controller:  'homeCtrl'
+            label: "Clubs"
 
         .when '/clubs/:club_id',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
-            name: "Liste des clubs"
+            label: "Club {{clubName}}"
 
         .when '/contact/:club_id',
             templateUrl: 'views/contactInClub.html'
             controller: 'contactInClubCtrl'
-            name: "Contact ?????????"
+            label: "Contacts de {{club_name}}"
 
         .when '/addclub',
             templateUrl: 'views/addClub.html'
             controller: 'addClubCtrl'
-            name: "Ajout de clubs"
+            label: "Ajout de clubs"
 
         .when '/administration',
             templateUrl: 'views/administration.html'
             controller: 'administrationCtrl'
-            name: "Ajout de clubs"
+            label: "Ajout de clubs"
 
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
-            name: "Mes informations"
+            label: "Moi"
 
         .when '/manage',
             templateUrl: 'views/evaluatorManageClubs.html'
             controller: 'evaluatorManageClubsCtrl'
-            name: "Mes clubs"
+            label: "Mes clubs"
 
         .when '/manage/:club_id',
             templateUrl: 'views/manageClub.html'
             controller: 'manageClubCtrl'
-            name: "Gestion du club"
+            label: "Gestion du club"
 
         .otherwise
-            redirectTo:'/accueil'
+            redirectTo:'/'
 
 
         customTheme = $mdThemingProvider.extendPalette 'blue-grey',
@@ -75,7 +80,7 @@ angular.module('app')
 #------------------------------------------------------------------------------
 #           BREADCRUMBS SERVICE
 #------------------------------------------------------------------------------
-.service 'breadcrumbsService', [
+###.service 'breadcrumbsService', [
     '$rootScope'
     '$location'
     ($rootScope, $location)->
@@ -122,3 +127,5 @@ angular.module('app')
 
         return @
 ]
+
+###
