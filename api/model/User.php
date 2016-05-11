@@ -25,7 +25,7 @@ class User {
      */
     public function __construct( $cas_data ) {
 
-        // Si on essage de construire un user avec son login
+        // Si on essaye de construire un user avec son login
         if( is_string($cas_data) ) {
             $this->login = $cas_data;
         }
@@ -40,6 +40,14 @@ class User {
 
             if($cas_data["gidNumber"] == "1000") $this->school_staff     = 1;
             else $this->school_staff     = 0;
+
+            $classe = new \Models\Classe( $this->login );
+            // S'il n'a pas de classe
+            if( !$classe->haveClasse() )
+            {
+                $classe->classe_name = \Models\Classe::gidToClasse( $cas_data['gidNumber'] );
+                $classe->save();
+            }
         }
     }
 
@@ -118,5 +126,4 @@ class User {
             return $req->execute($values);
         }
     }
-
 }

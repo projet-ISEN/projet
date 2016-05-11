@@ -27,7 +27,6 @@ class Excel
         $this->file = new PHPExcel();
         $this->file->getProperties()->setCreator( $_SESSION['user']->user_name . ' ' . $_SESSION['user']->user_firstname );
         $this->file->getProperties()->setTitle( $name );
-        $this->file->getActiveSheet()->setTitle( 'Simple' );
     }
 
     public function send()
