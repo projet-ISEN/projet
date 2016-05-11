@@ -53,7 +53,7 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
-
+    ###send back the member of a club###
     @getMembers = (id, cb)->
         $http(
             method: 'GET'
