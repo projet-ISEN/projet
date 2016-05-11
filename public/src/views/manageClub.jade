@@ -1,0 +1,11 @@
+md-card
+    md-content( style="margin: auto" )
+        img.md-card-image.imageInCard(
+            ng-src="images/{{club.club_id}}.jpg"
+            alt="logo club"
+            onerror="this.src='images/blank.jpg'")
+
+    md-card-title
+        md-card-title-text
+            span.md-headline {{club.club_name}}
+
