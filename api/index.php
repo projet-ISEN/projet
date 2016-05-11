@@ -34,8 +34,8 @@
 
         //test variable
 
-        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        // $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+         $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         // $userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -56,7 +56,7 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        //$userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
     }
 
 /*================================================================
@@ -97,7 +97,6 @@ if (date("n")>7) $myYear++;
         $router->get(       '/users/:id',   'User.get');
 
         $router->post(      '/clubs',       'Club.create');
-        $router->get(       '/clubs/:id',   'Club.getOne');
         $router->put(       '/club/:id',    'Club.update');
         $router->delete(    '/club/:id',    'Club.delete');
 
@@ -124,6 +123,14 @@ if (date("n")>7) $myYear++;
         $router->put(       '/choices',     'Choice.update' );
         $router->delete(    '/choices',     'Choice.deleteAll' );
     }
+
+    if($_SESSION['user']->school_staff){
+        $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
+        $router->get(       '/clubs/:id',   'Club.getOne');
+
+
+    }
+
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
 
