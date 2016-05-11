@@ -41,14 +41,33 @@ md-content
 
 
 
-md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(layout='column'  md-component-id='changeClub')
-    img.imageInCard(ng-src="images/{{changeClub.club_id}}.jpg"
-        onerror="this.src='images/blank.jpg'"
-        alt='logo du club' class="md-avatar"
-        layout-align="center center")
-    md-content()
-        form
-            md-input-container
-                label(for='testInput') Test input
-                input#testInput(type='text', ng-model='data', md-autofocus='')
+md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='changeClub')
 
+    md-content(layout='column')
+        h3 {{changeClub.club_name}}
+        h4 Nommer un président
+        form( name='choiceprez' ng-submit='updatePrez()' layout-padding )
+            md-input-container.md-block
+                    label Abréviation du projet
+                    md-select(
+                        name="presidentChoice"
+                        ng-disabled="!changeClub.member"
+                        ng-model="updatePrezChoice"
+                        required="")
+                        md-option(
+                            ng-repeat="user in changeClub.member | orderBy: ''"
+                            ng-value="user"
+                            ng-selected="user.login == prez" ) {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
+                    div( ng-messages="choiceprez.presidentChoice.$error" )
+                        div( ng-message="required" role="alert" class="my-message") Requis
+             div(layout='row' layout-align='center center')
+                    md-button.md-primary.md-raised(
+                        type='submit'
+                        ng-disabled="updatePrezChoice == null") Ajouter
+        md-divider
+        h4 Noter les clubs
+        md-list
+            md-list-item
+                md-icon settings
+                p test
+                md-switch.md-secondary
