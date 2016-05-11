@@ -50,10 +50,6 @@ angular.module('app')
             controller: 'evaluatorManageClubsCtrl'
             name: "Mes clubs"
 
-        .when '/manage/:club_id',
-            templateUrl: 'views/manageClub.html'
-            controller: 'manageClubCtrl'
-            name: "Gestion du club"
 
         .otherwise
             redirectTo:'/accueil'
