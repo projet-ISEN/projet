@@ -25,19 +25,10 @@ angular.module("app").controller 'sidenavCtrl', [
             value.expanded = false if i!=$index and i!=0 and !activeInIt
             i++
 
-        #console.log($location.path())
-
-
-
     $rootScope.$on '$routeChangeSuccess', (event, current) ->
         $scope.findActive()
 
-
-
-
-
      $scope.findActive = ->
-        #console.log($location.path())
         i = 0
         angular.forEach $scope.menu, (value, key) ->
             value.expanded = false if i!=0
@@ -45,10 +36,16 @@ angular.module("app").controller 'sidenavCtrl', [
             angular.forEach value.values, (item, key) ->
 
                 if item.link.indexOf($location.path()) isnt -1
+
+                    console.log $location.path() + ' ' + item.link
+
                     item.active = true
                     value.expanded = true
+
+                    # Exception for just / url
+                    if $location.path() == '/' and item.link != '#/'
+                        item.active = false
                 else
-                    #console.log(item.title + " " + item.active)
                     item.active = false
 ]
 

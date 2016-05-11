@@ -38,7 +38,7 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
-                                "link" => '#/accueil',
+                                "link" => '#/',
                                 "title" => 'Informations Globales',
                                 "icon" => 'dashboard',
                                 "active" => false
@@ -87,7 +87,7 @@ class Menu {
                             ,
 
                             [
-                                "link" => '#/contact/'.$club_id,
+                                "link" => '#/clubs/'.$club_id.'/contact/',
                                 "title" => 'Contact',
                                 "icon" => 'dashboard',
                                 "active" => false
@@ -208,7 +208,7 @@ class Menu {
                     'expanded' => true,
                     'values' => [
                             [
-                                "link" => '#/accueil',
+                                "link" => '#/',
                                 "title" => 'Informations Globales',
                                 "icon" => 'dashboard',
                                 "active" => false
@@ -252,7 +252,7 @@ class Menu {
                     'expanded' => false,
                     'values' => [
                             [
-                                "link" => '#/addclub',
+                                "link" => '#/clubs/addclub',
                                 "title" => 'Création de club',
                                 "icon" => 'dashboard',
                                 "active" => false
