@@ -22,8 +22,35 @@ class Role
      */
     public static function getAll()
     {
+
         $role = new \Models\Role();
         echo json_encode( $role->getAll() );
+        return;
+    }
+
+    public static function Role2ID($roleName){
+       $role = new \Models\Role();
+       echo $role -> Role2ID($roleName);
+    }
+
+    public static function IDPrez(){
+        $role = new \Models\Role();
+       return $role -> Role2ID($_SESSION['president']);
+    }
+
+    public static function whoPrez($clubId){
+        $role = new \Models\Role();
+       echo json_encode($role -> ClubRole2Login($clubId, self::IDPrez()));
+
+    }
+
+
+    public static function pushPrez()
+    {
+
+        $post = json_decode( file_get_contents("php://input"), true);
+        $role = new \Models\Role();
+        echo json_encode( $role->pushPrez($post['login'],$post['clubId']) );
         return;
     }
 

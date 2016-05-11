@@ -42,6 +42,63 @@ class Role {
 
     }
 
+    //renvoie le login des role dans un club l'année courante
+    public static function ClubRole2Login($clubId, $idPrez){
+
+        $year = "2016";
+
+
+        $role = Database::Select("SELECT login FROM role_link WHERE club_id='".$clubId."' AND id_role = '".$idPrez."' AND school_year='".$year."'");
+
+        return $role;
+
+    }
+
+
+     /**
+     * Make someone the president for the year not marked
+     * @return string
+     */
+    public static function pushPrez($login,$club_id){
+
+        $year = "2016";
+
+        $rolePrezId = self::Role2ID($_SESSION['president']);
+        $role = Database::Select("SELECT count(*) AS Nb FROM role_link WHERE club_id = '".$club_id."' AND school_year='".$year."' AND id_role='".$rolePrezId."'");
+        /*var_dump($role[0]->Nb == 0);*/
+        /*$role[0]->Nb*/
+            /*->fetchAll(\PDO::FETCH_NUM)[0];*/
+
+        if($role[0]->Nb != "0"){
+            /*var_dump("update");*/
+            $req = Database::getInstance()->PDOInstance->exec("UPDATE role_link SET login='".$login."' WHERE club_id = '".$club_id."' AND school_year='".$year."' AND id_role='".$rolePrezId."'");
+            return $req;
+        }
+        else{
+
+            $values['login'] =  $login;
+            $values['club_id'] = $club_id ;
+            $values['school_year'] = $year ;
+            $values['id_role'] = $rolePrezId ;
+
+            $req = Database::getInstance()->PDOInstance->prepare(
+                    "INSERT INTO `role_link`(`club_id`, `login`, `school_year`, `id_role`)"
+                    ."VALUES (:club_id, :login, :school_year, :id_role)"
+                );
+
+            return  $req->execute($values);
+
+        }
+
+
+
+    }
+
+    public static function Role2ID($roleName){
+        $role = Database::Select("SELECT id_role FROM role WHERE role = '".$roleName."'");
+        return (isset($role[0]->id_role))? $role[0]->id_role : false;
+    }
+
     /**
      * Return name of the role
      * @return string

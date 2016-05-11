@@ -32,5 +32,20 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @login2name = (login, cb)->
+
+        $http(
+            method: 'GET'
+            url: "../../api/users/"+login
+            headers:
+                'Content-Type': 'application/json'
+
+
+        ).then (res)->
+            cb res.data
+        , (err)->
+            console.log err if err?
+            cb null
+
     return @
 ]

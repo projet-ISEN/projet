@@ -141,4 +141,14 @@ class Club
         $club = new \Models\Club();
          echo json_encode ($club -> getMyClubsIntelsEvaluator($login));
     }
+
+    /**
+     * Renvoi les clubs qu'un Evaluateur peut administrer
+     */
+    public static function getMembersCurrent($id)
+    {
+        $club = new \Models\Club();
+        $club -> club_id = $id;
+         echo json_encode ($club -> getMembers());
+    }
 }
