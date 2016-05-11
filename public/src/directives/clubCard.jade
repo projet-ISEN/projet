@@ -5,7 +5,7 @@ md-card
           span.md-subhead {{ club.stats.members }} membre
             span( ng-if="club.stats.members >=2" ) s
 
-    a( ng-href='#/clubs/{{club.club_name}}' )
+    a( ng-href='#/clubs/{{club.club_id}}' )
         img.md-card-image(
             ng-src="images/{{club.club_id}}.jpg"
             onerror="this.src='images/blank.jpg'"
