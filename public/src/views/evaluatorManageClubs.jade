@@ -8,7 +8,7 @@ div( flex ="66" flex-xs = "100" layout='row' layout-xs='column' layout-padding l
                     li Valider ou non les projets (PR, ...)
                     li Rendre les clubs actifs ou non (sélectionnable pour l'année suivante)
                     li Noter les clubs et les élèves
-
+                md-switch.md-warm( ng-model="data.cb1" aria-label="Switch 1")
 
 md-content
     md-list
@@ -69,7 +69,7 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
         form( name='choiceprez' ng-submit='updatePrez()' layout-padding)
             div(ng-repeat="user in changeClub.member | orderBy: ''"  layout="row")
                 md-list(flex="75")
-                    md-list-item
+                    md-list-item.inset
                         //md-icon settings
                         md-switch
 
