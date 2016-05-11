@@ -3,12 +3,17 @@ angular.module 'app'
     '$mdToast'
     '$scope'
     '$club'
+    '$user'
+    '$role'
     '$http'
     '$mdSidenav'
-    ($mdToast, $scope, $club, $http, $mdSidenav)->
+    ($mdToast, $scope, $club, $user, $role, $http, $mdSidenav)->
 
 
-        #répétition de code mais fonctionnel
+
+
+
+
         $scope.intelsClub = ->
             $club.evaluatorClub (clubs)->
 
@@ -26,13 +31,37 @@ angular.module 'app'
                 angular.forEach $scope.clubsInactive, (value, key) ->
                     $club.stat $scope.clubsInactive[key].club_id, (stats)->
                         $scope.clubsInactive[key].nbMember = stats.members
+
         $scope.intelsClub()
 
 
 
-        $scope.toggleMenu = (obj) ->
-            $scope.changeClub = obj
-            $mdSidenav("changeClub").toggle()
+        $scope.updatePrez = ->
+            console.log $scope.updatePrezChoice
+            $role.pushPrez $scope.updatePrezChoice.login, $scope.changeClub.club_id, (bool)->
+                console.log "retour de la fonction de changement de président: " + bool
+            return
 
+
+        $scope.toggleMenu = (obj) ->
+
+            $scope.changeClub = obj
+
+            $role.whoPrez obj.club_id, (val)->
+                $scope.prez = val[0].login
+            console.log $scope.prez
+
+
+            $club.getMembers obj.club_id, (members)->
+                $scope.changeClub.member = members
+                angular.forEach $scope.changeClub.member, (value, key) ->
+                    $user.login2name value.login, (info)->
+                        value.user_firstname = info.user_firstname
+                        value.user_name = info.user_name
+
+            console.log $scope.changeClub.member
+
+
+            $mdSidenav("changeClub").toggle()
 
 ]
