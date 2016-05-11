@@ -14,6 +14,17 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @evaluatorClub = ( cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/clubEvaluator"
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
     @one = (id, cb)->
         $http(
             method: 'GET'
@@ -31,7 +42,6 @@ angular.module('app')
                 if club.club_name == name
                     return cb club
             cb null
-
 
     @stat = (id, cb)->
         $http(
