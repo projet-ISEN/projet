@@ -10,7 +10,7 @@ angular.module 'app'
         $scope.club = {}
 
 
-        $club.getByName $routeParams.club_name, (club) ->
+        $club.one $routeParams.club_id, (club) ->
             $scope.club = club
 
             $club.stat club.club_id, (stat) ->
