@@ -1,6 +1,6 @@
 md-dialog
     md-content( flex="100" layout-padding )
-        p.
+        h3.
             Capisen effectue un recrutement qui lui est
             spécifique.
         p.
@@ -12,16 +12,24 @@ md-dialog
             de communication ou lors du passage annuel dans les classes.
         p
             | Pour plus d’informations n’hésites pas à nous contacter
-            | à l’adresse mail
+
+            // &#129; Permet d'avoir un espace avant l'adresse E-mail
+            | à l’adresse mail &#129;
             a(href="mailto:contact@capisen.fr") contact@capisen.fr
+
             | , via Facebook ou Twitter.
             | Enfin n’hésites pas à venir nous voir au local
             | (porte bleue dans l’aile des clubs), une permanence y est
             |effectuée chaque midi.
         p En espérant te retrouver bientôt pour le recrutement !
+
+        p.red-box
+            | Si vous étiez déja à Capisen cette année, et souhaitez poursuivre sur un PR+ par exemple,
+            | veuillez indiquer Capisen en premier choix.
+
         img(
             ng-src="images/7cbed24e-0df3-11e6-9aa9-448a5b42bfcd.jpg"
             onerror = "this.src='images/blank.jpg'"
-            flex="30")
+            flex="30" flex-offset="35")
     md-dialog-actions(layout='row')
         md-button(ng-click="closeDialog()") OK

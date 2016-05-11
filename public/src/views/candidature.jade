@@ -81,8 +81,9 @@ div(
             md-card-title
                 md-card-title-text
                     span( class="md-headline" ) Capisen
-            md-card-content( layout="row" layout-align="space-between" )
-                | Vous souhaitez postuler pour Capisen ?
+            md-card-content( layout="column" layout-align="space-between" )
+                p Vous souhaitez postuler pour Capisen ?
+                p Vous étiez à Capisen cette année et souhaitez poursuivre l'année prochaine?
             md-card-actions( layout="row" layout-align="start center" )
-                md-button.md-raised.md-primary( ng-click="goCapisen()" ) Signaler ma demande à Capisen
+                md-button.md-raised.md-primary( ng-click="goCapisen()" ) Comment signaler ma demande à Capisen
 

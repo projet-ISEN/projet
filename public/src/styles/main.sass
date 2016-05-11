@@ -38,19 +38,15 @@ $activeLink:      #c02d2e
             cursor: pointer !important
 
         header img
-          width: 100%
-          padding: 0
-          //padding: 0 20% 0 20%
+            width: 100%
+            padding: 0
+            //padding: 0 20% 0 20%
 
-    md-sidenav > md-list
-        overflow: auto
+        & > md-list
+            overflow: auto
 
     md-list
         padding: 0
-
-
-
-
 
 
     .openList > md-list-item
@@ -132,6 +128,11 @@ $activeLink:      #c02d2e
 
 .pull-right
   float: right
+
+.red-box
+    background-color: $activeLink
+    box-shadow: 0px 1px 3px 0px $activeLink;
+    color: white;
 
 //////////////////////////////////////////////////////////
 //                      In dev                          //
