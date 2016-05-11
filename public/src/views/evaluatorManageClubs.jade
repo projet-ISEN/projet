@@ -1,0 +1,50 @@
+
+div( flex ="66" flex-xs = "100" layout='row' layout-xs='column' layout-padding layout-align='center center')
+        md-card
+            md-card-content
+                p Cette page permet de :
+                ul
+                    li Nommer un président dans un club
+                    li Valider ou non les projets (PR, ...)
+                    li Rendre les clubs actifs ou non (sélectionnable pour l'année suivante)
+                    li Noter les clubs et les élèves
+
+
+md-content
+    md-list
+        md-subheader(ng-if="clubsActif != ''") Mes clubs actifs
+        md-list-item.md-2-line(ng-repeat="club in clubsActif | orderBy: 'club_name'" ng-click="showDetails = ! showDetails")
+                img(ng-src="images/{{club.club_id}}.jpg"
+                    onerror="this.src='images/blank.jpg'"
+                    alt='logo du club' class="md-avatar")
+                div.md-list-item-text( layout="column" )
+                    h3 {{club.club_name}}
+                    h4 {{club.stats}} membre(s)
+                md-divider( md-inset ng-if="!$last")
+
+            md-divider(ng-if="clubsInactive != ''")
+
+        md-card(ng-show="true")
+            md-content( style="margin: auto" )
+                img.md-card-image.imageInCard(
+                    ng-src="images/{{club.club_id}}.jpg"
+                    alt="logo club"
+                    onerror="this.src='images/blank.jpg'")
+
+            md-card-title
+                md-card-title-text
+                    span.md-headline {{club.club_name}}
+
+
+
+        md-subheader(ng-if="clubsInactive != ''") Mes clubs Inactifs
+        md-list-item.md-2-line(ng-if="clubsInactive != ''" ng-repeat="club in clubsInactive | orderBy: 'club_name'"  ng-href="#/manage/{{club.club_id}}")
+            img(ng-src="images/{{club.club_id}}.jpg"
+                onerror="this.src='images/blank.jpg'"
+                alt='logo du club' class="md-avatar")
+            div.md-list-item-text( layout="column" )
+                h3 {{club.club_name}}
+                h4 {{club.stats}} membre(s)
+
+             md-divider( md-inset ng-if="!$last")
+
