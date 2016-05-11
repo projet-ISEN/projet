@@ -72,7 +72,7 @@ angular.module('app')
         $mdThemingProvider.theme('default')
                 .primaryPalette('custom')
                 .accentPalette('blue-grey')
-                .warnPalette('blue-grey')
+                #.warnPalette('blue-grey')
 
 
 ]

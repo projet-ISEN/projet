@@ -37,8 +37,6 @@ angular.module("app").controller 'sidenavCtrl', [
 
                 if item.link.indexOf($location.path()) isnt -1
 
-                    console.log $location.path() + ' ' + item.link
-
                     item.active = true
                     value.expanded = true
 
