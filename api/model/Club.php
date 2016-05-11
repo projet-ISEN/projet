@@ -74,17 +74,31 @@ class Club {
         }
 
     /**
-     * Renvoi les clubs qu'un Evaluateur peut administrer
+     * Renvoi les clubs (objets avec seulement id) qu'un Evaluateur peut administrer
      */
-    public static function getMyClubsForEvaluator()
+    public static function getMyClubsForEvaluator($login = null)
     {
-        $myClubs = Database::Select("SELECT club_id FROM club WHERE login='". $_SESSION['user']->login ."'");
+
+        if(empty($login)) $login = $_SESSION['user']->login;
+        $myClubs = Database::Select("SELECT club_id FROM club WHERE login='". $login ."'");
         $myClubsObj = [];
 
         foreach ($myClubs as $club) {
             array_push( $myClubsObj, new self( $club->club_id) );
         }
         return $myClubsObj;
+    }
+
+    /**
+     * Rnvoie un tableau avec tous les info du clubs de l'évaluateur
+     */
+    public static function getMyClubsIntelsEvaluator($login = null)
+    {
+
+        if(empty($login)) $login = $_SESSION['user']->login;
+        $myClubs = Database::Select("SELECT * FROM club WHERE login='". $login ."'");
+
+        return $myClubs;
     }
 
     /**

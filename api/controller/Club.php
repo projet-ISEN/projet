@@ -132,4 +132,13 @@ class Club
         }
 
     }
+
+        /**
+     * Renvoi les clubs qu'un Evaluateur peut administrer
+     */
+    public static function ClubsIntelsEvaluator($login = null)
+    {
+        $club = new \Models\Club();
+         echo json_encode ($club -> getMyClubsIntelsEvaluator($login));
+    }
 }
