@@ -20,7 +20,7 @@ angular.module('app')
             controller:  'candidatureCtrl'
             name: "Candidature"
 
-        .when '/clubs/:club_name',
+        .when '/clubs/:club_id',
             templateUrl: 'views/club.html'
             controller: 'clubCtrl'
             name: "Liste des clubs"
@@ -46,9 +46,14 @@ angular.module('app')
             name: "Mes informations"
 
         .when '/manage',
-            templateUrl: 'views/evaluator_manageClubs.html'
-            controller: 'evaluator_manegeClubsCtrl'
+            templateUrl: 'views/evaluatorManageClubs.html'
+            controller: 'evaluatorManageClubsCtrl'
             name: "Mes clubs"
+
+        .when '/manage/:club_id',
+            templateUrl: 'views/manageClub.html'
+            controller: 'manageClubCtrl'
+            name: "Gestion du club"
 
         .otherwise
             redirectTo:'/accueil'
