@@ -54,5 +54,16 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @getMembers = (id, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/members/" + id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
     return @
 ]
