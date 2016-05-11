@@ -19,7 +19,13 @@ $activeLink:      #c02d2e
             padding: .6rem
             color: $activeLink
 
-    md-sidenav
+    md-sidenav.changeClub
+        width: 550px
+    @media screen and (min-width: 600px)
+        md-sidenav
+            max-width: 80%
+
+    md-sidenav.navig
         background-color: $menu-bg
         color: $menu-text
         transition: all 0.2s
@@ -103,10 +109,12 @@ $activeLink:      #c02d2e
 
     club-card
         min-width: 20rem
-    md-card
-        .imageInCard
-            max-height: 13rem;
-            width: auto
+
+    .imageInCard
+        max-height: 13rem
+        max-width: 80%
+        width: auto
+
 
 
     .rotateP180

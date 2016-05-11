@@ -78,13 +78,18 @@ class Club {
      */
     public static function getMyClubsForEvaluator($login = null)
     {
+
+        if(empty($login)) $login = $_SESSION['user']->login;
+        $myClubs = Database::Select("SELECT club_id FROM club WHERE login='". $login ."'");
+
         if( $_SESSION['user']->is_administrator ){
             $myClubs = Database::Select("SELECT club_id FROM club");
         }
         else {
             $myClubs = Database::Select("SELECT club_id FROM club WHERE login='". $_SESSION['user']->login ."'");
         }
-        
+
+
         $myClubsObj = [];
 
         foreach ($myClubs as $club) {
