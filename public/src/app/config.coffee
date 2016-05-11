@@ -13,47 +13,47 @@ angular.module('app')
         .when '/',
             templateUrl: 'views/home.html'
             controller:  'homeCtrl'
-            label: "Informations Globales"
+            label: ""
+
+        .when '/clubs',
+            templateUrl: 'views/home.html'
+            controller:  'homeCtrl'
+            label: "Liste des clubs"
+
+        .when '/clubs/addclub',
+            templateUrl: 'views/addClub.html'
+            controller: 'addClubCtrl'
+            label: "Ajout de clubs"
+
+        .when '/clubs/:club_id',
+            templateUrl: 'views/club.html'
+            controller: 'clubCtrl'
+            label: "Ce club"
+
+        .when '/clubs/:club_id/contact',
+            templateUrl: 'views/contactInClub.html'
+            controller: 'contactInClubCtrl'
+            label: "Contacts"
 
         .when '/candidature/',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
             label: "Candidature"
 
-        .when '/clubs',
-            templateUrl: 'views/home.html'
-            controller:  'homeCtrl'
-            label: "Clubs"
-
-        .when '/clubs/:club_id',
-            templateUrl: 'views/club.html'
-            controller: 'clubCtrl'
-            label: "Club {{clubName}}"
-
-        .when '/contact/:club_id',
-            templateUrl: 'views/contactInClub.html'
-            controller: 'contactInClubCtrl'
-            label: "Contacts de {{club_name}}"
-
-        .when '/addclub',
-            templateUrl: 'views/addClub.html'
-            controller: 'addClubCtrl'
-            label: "Ajout de clubs"
-
         .when '/administration',
             templateUrl: 'views/administration.html'
             controller: 'administrationCtrl'
-            label: "Ajout de clubs"
+            label: "Administration"
 
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
-            label: "Moi"
+            label: "Mes informations"
 
         .when '/manage',
             templateUrl: 'views/evaluatorManageClubs.html'
             controller: 'evaluatorManageClubsCtrl'
-            label: "Mes clubs"
+            label: "Gestion des clubs"
 
         .when '/manage/:club_id',
             templateUrl: 'views/manageClub.html'
@@ -76,7 +76,6 @@ angular.module('app')
 
 
 ]
-
 #------------------------------------------------------------------------------
 #           BREADCRUMBS SERVICE
 #------------------------------------------------------------------------------
