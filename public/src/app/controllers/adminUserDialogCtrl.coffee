@@ -5,9 +5,10 @@ angular.module 'app'
     '$scope'
     '$club'
     '$project'
+    '$member'
     'user'
     '$http'
-    ($mdDialog, $mdToast, $scope, $club, $project, user, $http)->
+    ($mdDialog, $mdToast, $scope, $club, $project, $member,user)->
 
         $scope.user = user
 
@@ -17,37 +18,19 @@ angular.module 'app'
 
         $scope.addClub = ->
 
-            $http(
-                method: 'PUT'
-                url: "../../api/users/" + user.login
-                data:
-                    club_id:    $scope.chooseClub.club_id
-                    project_id: $scope.chooseProject.project_id
-
-            ).then (res)->          # On success
-                if res.data.err?
-                    $mdToast.showSimple 'Une erreur est survenue : ' + res.data.err
+            $member.set user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, (res)->
+                if res.err?
+                    $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                 else
                     $mdToast.showSimple 'Membre enregistré!'
 
-            , (err)->              # On error
-                console.log err if err?
 
-
-        $http(
-            method: 'GET'
-            url: "../../api/members/" + user.login
-
-        ).then (res)->          # On success
-            $scope.userClubs = res.data
-            console.log res.data
-        , (err)->              # On error
-            console.log err if err?
-
+        $member.one user.login, (clubs)->
+            $scope.userClubs = clubs
+            
         $club.all (clubs)->
             $scope.allClubs = clubs
 
         $project.all (projects)->
             $scope.allProjects = projects
-            console.log projects
 ]
