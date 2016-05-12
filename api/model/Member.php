@@ -178,11 +178,24 @@ class Member {
         $prevalidProject = Database::Select("SELECT project_validation FROM member WHERE club_id='" . $member['club_id'] . "' AND school_year='".$year."' AND login='".$member['login']."'");
         if(isset($prevalidProject[0]))$prevalidProject = $prevalidProject[0]->project_validation;
         else $prevalidProject = "";
+/*      var_dump($member);
+        var_dump($prevalidProject);
+        var_dump($member['project_validation'] != $prevalidProject);*/
 
-        if($member['project_validation'] != $prevalidProject){
-            $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET project_validation='".$member['project_validation']."' WHERE club_id = '".$member['club_id']."' AND school_year='".$year."' AND login='".$member['login']."'");
+        $temp = "false";
+        if($member['project_validation']) $temp = "true";
+
+        /*var_dump($temp);
+
+
+        var_dump("UPDATE member SET project_validation='".$temp."' WHERE club_id = '".$member['club_id']."' AND school_year='".$year."' AND login='".$member['login']."'");*/
+
+        if($member['project_validation'] != $prevalidProject || $prevalidProject == null){
+            $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET project_validation=".$temp." WHERE club_id = '".$member['club_id']."' AND school_year='".$year."' AND login='".$member['login']."'");
+
             return $req;
         }else return 1;
+
 
     }
 

@@ -43,6 +43,20 @@ angular.module('app')
             cb null
         return
 
+    @validateProjectStudent = (member, cb)->
+        $http(
+            method: 'POST'
+            url: "../../api/validateProjectStudent"
+            data:
+                member:member
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
     @isLock = (id, cb)->
         $http(
             method: 'GET'
