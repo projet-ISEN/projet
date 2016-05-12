@@ -136,7 +136,7 @@ create table member
   member_mark          float,
   ex_member_not_wanted bool,
   recommandation       bool,
-  project_validation   bool,
+  project_validation   bool default 1,
   member_comment       text,
   primary key (club_id, login, school_year)
 )
@@ -152,8 +152,8 @@ create table note_club
   note_club            float not null,
   procurement_file     char(250),
   budget               float,
-  lock_member_mark     bool,
-  lock_member_project_validation bool,
+  lock_member_mark     bool default 0,
+  lock_member_project_validation bool default 0,
   primary key (club_id, school_year)
 )
   engine = innodb;
@@ -360,22 +360,22 @@ INSERT INTO role (id_role, role) VALUES
 
 
 INSERT INTO projet (project_id, project_type, project_description) VALUES
-  (UUID(), 'PR+', '{ "title": "Projet à responsabilité +",
+  ('d6b37f9f-1818-11e6-8166-d850e61e53c9', 'PR+', '{ "title": "Projet à responsabilité +",
                       "objectif": "Transmettre son savoir-faire, son expérience",
                       "exemple": "Suivre son ancien PR avec le nouveau responsable",
                       "quota": "60 h",
                       "eval": "Le responsabel du club valide ou non un crédit ECTS"}'),
-  (UUID(), 'PR', '{   "title": "Projet à responsabilité",
+  ('d6b8f8d7-1818-11e6-8166-d850e61e53c9', 'PR', '{   "title": "Projet à responsabilité",
                       "objectif": "Prendre des responsabilités, assurer l\'encadrement et la prise de décision dans les activités d\'un groupe ou d\'une association",
                       "exemple": "(Co-)Présider un club, organiser le SKISEN, animer l\'une des principales actions de son club, entrainer une équipe sportive",
                       "quota": "60 h",
                       "eval": "Note (orale et dossier), compte dans le moyenne de l\'année. La validation est obligatoire pour l\'obtention du diplome"}'),
-  (UUID(), 'PA', '{   "title": "Projet d\'accompagnement",
+  ('d6b8fa87-1818-11e6-8166-d850e61e53c9', 'PA', '{   "title": "Projet d\'accompagnement",
                       "objectif": "Appuyer l\'action d\'un PR sur des tâches semi-complexes en relative autonomie",
                       "exemple": "s\'occuper d\'une exposition du BDA, participation active à un club",
                       "quota": "50 h",
                       "eval": "Validation ou non validation"}'),
-  (UUID(), 'PI', '{ title: "Projet d\'intégration (à l\ISEN",
+  ('d6b8fac7-1818-11e6-8166-d850e61e53c9', 'PI', '{ title: "Projet d\'intégration (à l\ISEN",
                       "objectif": "Se mettre au service ponctuellement d\'un groupe ou d\'une association",
                       "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l\'équipe du Gala",
                       "quota": "15 h",
@@ -680,3 +680,46 @@ INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
             (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2)
 ;
 
+
+INSERT INTO projetm1.member (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'ablond19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'aclave19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'afouca19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'apreme19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'bflury19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'bflury19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'cvanco19', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 'dcrenn19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'ejoly017', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'elefau19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'fcheva19', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'fduboi17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'flucas19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'flucas19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'ftoque17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'gbiann17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'gbreto19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'gbreto19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'gletro19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'glibou19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'jdiver19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'ldemeo19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'ldemeo19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'mderri19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mgoanv17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'mlariv19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'nbaron19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'nbaron19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'nkorpe19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 'oburti19', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'pleple19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'pverba17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'qduche17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss17', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'tlefla19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'tmal0019', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'vgauth19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 2016, null, 'd6b37f9f-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
+('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'vsilva19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null);

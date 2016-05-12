@@ -35,6 +35,19 @@ class User {
         $user = new \Models\User( $id );
         $user->load();
         echo json_encode($user);
+        return;
+    }
+
+    /**
+     * Renvoie tous les utilisateurs
+     */
+    public static function getAll() {
+        $users = \Models\User::getAll();
+        foreach ($users as $user) {
+            $user->load();
+        }
+        echo json_encode( $users );
+        return;
     }
 
     public static function getMe() {
@@ -67,7 +80,7 @@ class User {
         return;
     }
 
-    public static function setClub( $user_login, $year=null, $main_club=1 )
+    public static function addClub( $user_login, $year=null, $main_club=1 )
     {
         if( empty($year) ) $year = $_SESSION['year'];
 
@@ -93,7 +106,7 @@ class User {
         if( $member->save() )
         {
             echo json_encode([
-                'err' => 'null'
+                'err' => null
             ]);
         }
         else{

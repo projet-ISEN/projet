@@ -113,7 +113,10 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:number',         'Logger.getLastLogs');
         $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
 
-        $router->put(      '/users/:user_login',       'User.setClub');
+        $router->get(      '/users',                   'User.getAll');
+        $router->put(      '/users/:user_login',       'User.addClub');
+
+        $router->get(       '/members/:user_id',       'Member.clubOfMember');
 
     // ONLY NOT ADMINISTRATOR
     } elseif(!$_SESSION['user']->is_administrator)
@@ -139,7 +142,6 @@ if (date("n")>7) $myYear++;
         $router->post(      '/pushPrez',   'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
         $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
-
 
         $router->post(      '/noteStudent',   'Member.noteStudent');
 

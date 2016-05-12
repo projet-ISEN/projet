@@ -16,6 +16,17 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @all = (cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/users"
+
+        ).then (res)->
+            cb res.data
+        , (err)->
+            console.log err if err?
+            cb null
+
     @save = (user, cb)->
 
         $http(
