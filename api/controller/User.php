@@ -66,4 +66,41 @@ class User {
         }
         return;
     }
+
+    public static function setClub( $user_login, $year=null, $main_club=1 )
+    {
+        if( empty($year) ) $year = $_SESSION['year'];
+
+        $user = new \Models\User($user_login);
+        if( !$user->exist() )
+        {
+            return json_encode([
+                'err' => "Cet utilisateur n'éxiste pas."
+            ]);
+        }
+
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty( $put['club_id'] ) || empty( $put['project_id'] ) ) {
+            return json_encode([
+                'err' => 'Dans quel club doit on mettre cet user?'
+            ]);
+        }
+
+        $member = new \Models\Member($put['club_id'], $user_login, $year );
+        $member->project_id = $put['project_id'];
+        $member->main_club = $main_club;
+
+        if( $member->save() )
+        {
+            echo json_encode([
+                'err' => 'null'
+            ]);
+        }
+        else{
+            echo json_encode([
+                'err' => 'Impossible de mettre ce menbre dans ce club'
+            ]);
+        }
+        return;
+    }
 }

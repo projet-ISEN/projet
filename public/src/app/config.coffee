@@ -45,6 +45,11 @@ angular.module('app')
             controller: 'administrationCtrl'
             label: "Administration"
 
+        .when '/administration/users',
+            templateUrl: 'views/administrationUsers.html'
+            controller: 'administrationUsersCtrl'
+            label: "Administration des utilisateurs"
+
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'

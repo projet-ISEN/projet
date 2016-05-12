@@ -42,6 +42,7 @@ class Member {
         $this->login        = empty($login)? $_SESSION['user']->login : $login;
         $this->club_id      = $club_id;
         $this->school_year  = $year;
+        $this->main_club    = 1;
     }
 
     /**
@@ -154,6 +155,58 @@ class Member {
         // complète le this avec les valeurs récupérées
         foreach( $res as $key => $val ) {
             $this->$key = $val;
+        }
+    }
+
+    /**
+     * Fait un UPDATE ou un INSERT
+     * @return bool
+     */
+    public function save()
+    {
+
+        if( empty($this->login) || empty($this->school_year) || empty($this->club_id) )
+        {
+            return [
+                'err' => 'Que voulez vous sauvegarder?'
+            ];
+        }
+
+        $values = array();
+
+        // Récupère les attributs de classe
+        $props = (new ReflectionObject($this))->getProperties();
+        foreach ($props as $prop)
+        {
+            $k = $prop->name;
+            $values[$prop->name] = $this->$k;
+        }
+
+        $test = Database::Select("SELECT login FROM member WHERE login='". $this->login .
+            "' AND school_year='". $this->school_year ."' AND ".
+            "club_id='". $this->club_id . "'"
+        );
+
+        // Création
+        if( empty($test[0]->login) ){
+
+            $req = Database::getInstance()->PDOInstance->prepare(
+                "INSERT INTO member (club_id, login, school_year, id_projet_club, project_id, main_club, ".
+                "member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) ".
+                "VALUES (:club_id, :login, :school_year, :id_projet_club, :project_id, :main_club, ".
+                ":member_mark, :ex_member_not_wanted, :recommandation, :project_validation, :member_comment)"
+            );
+            return $req->execute($values);
+        }
+        // Mise à jour
+        else {
+            $req = Database::getInstance()->PDOInstance->prepare(
+                "UPDATE member SET id_projet_club=:id_projet_club, project_id=:project_id, main_club=:main_club, member_mark=:member_mark, ".
+                "ex_member_not_wanted=:ex_member_not_wanted, recommandation=:recommandation, project_validation=:project_validation, ".
+                "member_comment=:member_comment ".
+                "WHERE login=:login AND school_year=:school_year AND club_id=:club_id"
+            );
+            return $req->execute($values);
         }
     }
 }
