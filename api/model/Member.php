@@ -133,6 +133,26 @@ class Member {
         return $req;
     }
 
+    /**
+     * donne une note
+     */
+    public static function noteStudent($member)
+    {
+        $year =$_SESSION['year'];
+
+        $preMark = Database::Select("SELECT member_mark FROM member WHERE club_id='" . $member['club_id'] . "' AND school_year='".$year."' AND login='".$member['login']."'");
+
+        if(isset($preMark[0]))$preMark = $preMark[0]->member_mark;
+        else $preMark = "";
+        //var_dump($member['member_mark'] != $preMark);
+
+        if($member['member_mark'] != $preMark){
+            $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET member_mark='".$member['member_mark']."' WHERE club_id = '".$member['club_id']."' AND school_year='".$year."' AND login='".$member['login']."'");
+            return $req;
+        }
+        else return 1;
+
+    }
 
     /**
      * Charge toutes les données d'un membre portant le login de l'objet courant

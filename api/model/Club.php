@@ -159,6 +159,64 @@ class Club {
         return $members;
     }
 
+    /**
+     * Note Club
+     */
+    public static function giveClubMark($club_id, $note)
+    {
+        $year = $_SESSION['year'];
+        $res = Database::Select(
+            "SELECT count(*) AS Nb FROM note_club WHERE club_id='".
+            $club_id ."' AND school_year='".$year."'");
+
+        $preMark = Database::Select("SELECT note_club FROM note_club WHERE club_id='".
+            $club_id ."' AND school_year='".$year."'");
+
+        if(isset($preMark[0]))$preMark = $preMark[0]->note_club;
+        else $preMark = "";
+
+        if($preMark != $note){
+
+
+            if($res[0]->Nb != 0){
+                /*var_dump("update");*/
+                $req = Database::getInstance()->PDOInstance->exec("UPDATE note_club SET note_club='".$note."' WHERE club_id = '".$club_id."' AND school_year='".$year."'");
+                return $req;
+            }
+            else{
+
+                $values['club_id'] = $club_id ;
+                $values['school_year'] = $year ;
+                $values['note_club'] = $note ;
+
+
+                $req = Database::getInstance()->PDOInstance->prepare(
+                        "INSERT INTO `note_club`(`club_id`, `school_year`, `note_club`)"
+                        ."VALUES (:club_id, :school_year, :note_club)"
+                    );
+
+                return  $req->execute($values);
+
+            }
+        }else return 1;
+    }
+
+
+    /**
+     * Note Club
+     */
+    public static function markClub($club_id)
+    {
+        $year = $_SESSION['year'];
+        $res = Database::Select(
+            "SELECT note_club FROM note_club WHERE club_id='".
+            $club_id ."' AND school_year='".$year."'");
+        if(isset($res[0]))$res = $res[0];
+        else $res = null;
+        return $res;
+
+    }
+
 
 
     /**
