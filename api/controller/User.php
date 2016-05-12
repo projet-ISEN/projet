@@ -80,7 +80,7 @@ class User {
         return;
     }
 
-    public static function setClub( $user_login, $year=null, $main_club=1 )
+    public static function addClub( $user_login, $year=null, $main_club=1 )
     {
         if( empty($year) ) $year = $_SESSION['year'];
 
@@ -106,7 +106,7 @@ class User {
         if( $member->save() )
         {
             echo json_encode([
-                'err' => 'null'
+                'err' => null
             ]);
         }
         else{

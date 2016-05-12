@@ -184,7 +184,6 @@ class Member {
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM member WHERE club_id='". $this->club_id .
             "' AND login='" . $this->login . "' AND school_year='" . $this->school_year . "'")
             ->fetchAll( \PDO::FETCH_ASSOC )[0];
-
         // complète le this avec les valeurs récupérées
         foreach( $res as $key => $val ) {
             $this->$key = $val;
@@ -216,8 +215,7 @@ class Member {
         }
 
         $test = Database::Select("SELECT login FROM member WHERE login='". $this->login .
-            "' AND school_year='". $this->school_year ."' AND ".
-            "club_id='". $this->club_id . "'"
+            "' AND school_year='". $this->school_year ."' AND club_id='". $this->club_id . "'"
         );
 
         // Création

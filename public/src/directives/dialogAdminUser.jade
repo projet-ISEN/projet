@@ -1,7 +1,7 @@
 //
    Created by rcd18 on 12/05/2016.
 
-md-dialog(ng-cloak layout-padding)
+md-dialog(ng-cloak layout-padding flex="75")
 
     md-dialog-content
         h3 {{user.user_name}} {{user.user_firstname}}
@@ -10,19 +10,29 @@ md-dialog(ng-cloak layout-padding)
         md-list
             md-subheader.md-no-sticky Clubs de {{user.user_firstname}}
 
-            md-list-item.md-2-line.secondary-button-padding(
+            md-list-item.md-1-line.secondary-button-padding(
             ng-repeat='club in userClubs | orderBy : club_name')
                 p {{ club.club_name }}
+                md-divider
 
             md-list-item.md-2-line.secondary-button-padding
-                md-input-container
+
+                md-input-container( flex="50" )
                     label Club
-                    md-select( ng-model="c" )
-                md-input-container
+                    md-select( ng-model="chooseClub" )
+                        md-option(
+                            ng-repeat="club in allClubs"
+                            ng-value="club" ) {{club.club_name}}
+
+                md-input-container( flex="20" )
                     label Projet
-                    md-select( ng-model="p" )
+                    md-select( ng-model="chooseProject" )
+                        md-option(
+                            ng-repeat="projet in allProjects"
+                            ng-value="projet" ) {{projet.project_type}}
+
+                md-input-container( flex="20" )
+                    md-button.md-raised.md-primary( ng-click="addClub()" ) +
 
 
-    md-dialog-actions
-        md-button( ng-click="closeDialog(true)" class="md-primary" ) Enregistrer
-        md-button( ng-click="closeDialog(false)" class="md-primary" ) Annuler
+        md-button( ng-click="closeDialog(false)" class="md-primary" ) Fermer

@@ -114,7 +114,7 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
 
         $router->get(      '/users',                   'User.getAll');
-        $router->put(      '/users/:user_login',       'User.setClub');
+        $router->put(      '/users/:user_login',       'User.addClub');
 
         $router->get(       '/members/:user_id',       'Member.clubOfMember');
 

@@ -1,15 +1,38 @@
 angular.module 'app'
 .controller 'adminUserDialogCtrl', [
     '$mdDialog'
+    '$mdToast'
     '$scope'
+    '$club'
+    '$project'
     'user'
     '$http'
-    ($mdDialog, $scope, user, $http)->
+    ($mdDialog, $mdToast, $scope, $club, $project, user, $http)->
 
         $scope.user = user
 
-        $scope.closeDialog = (answer)->
-            $mdDialog.hide answer
+        $scope.closeDialog = ->
+
+            $mdDialog.hide()
+
+        $scope.addClub = ->
+
+            $http(
+                method: 'PUT'
+                url: "../../api/users/" + user.login
+                data:
+                    club_id:    $scope.chooseClub.club_id
+                    project_id: $scope.chooseProject.project_id
+
+            ).then (res)->          # On success
+                if res.data.err?
+                    $mdToast.showSimple 'Une erreur est survenue : ' + res.data.err
+                else
+                    $mdToast.showSimple 'Membre enregistré!'
+
+            , (err)->              # On error
+                console.log err if err?
+
 
         $http(
             method: 'GET'
@@ -21,4 +44,10 @@ angular.module 'app'
         , (err)->              # On error
             console.log err if err?
 
+        $club.all (clubs)->
+            $scope.allClubs = clubs
+
+        $project.all (projects)->
+            $scope.allProjects = projects
+            console.log projects
 ]
