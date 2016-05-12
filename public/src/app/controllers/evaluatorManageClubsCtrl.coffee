@@ -12,14 +12,27 @@ angular.module 'app'
     '$mdDialog'
     ($mdToast, $scope, $note, $club, $user, $role, $project, $http, $mdSidenav, $mdDialog)->
 
+        $scope.errorNote = true
 
         $project.all (projects)->
             $scope.projects = projects
 
         $scope.tot = ->
             $scope.totalMb = 0
+            temp = true
             angular.forEach $scope.changeClub.member, (value, key) ->
                 $scope.totalMb += value.member_mark
+                if value.project == "PR"
+                    if value.project_validation
+                        if value.member_mark < 10
+                            temp = false
+                    if !value.project_validation
+                        if value.member_mark >= 10
+                            temp = false
+
+            $scope.errorNote = temp
+            console.log "error on PR " + $scope.errorNote
+                #console.log $scope.changeClub.member
             $scope.changeClub.totalClub = $scope.changeClub.member.length * $scope.changeClub.mark
 
 
@@ -55,7 +68,11 @@ angular.module 'app'
             $note.clubmark $scope.changeClub.mark, $scope.changeClub.club_id, (bool)->
 
                 $note.validateProjectStudent $scope.changeClub.member, (projet) ->
-                    $note.noteStudent $scope.changeClub.member, (ret) ->
+
+                    giveNote = $scope.changeClub.member.filter (e) ->
+                        e.project != "PR+"
+
+                    $note.noteStudent giveNote, (ret) ->
                         if ret != "0" and bool != '0' and projet != '0'
                             $mdToast.show(
                                 $mdToast.simple 'Les données ont bien été enregistrées'
