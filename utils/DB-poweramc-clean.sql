@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  10/05/2016 16:28:53                      */
+/* Date de création :  12/05/2016 09:29:00                      */
 /*==============================================================*/
 
 
@@ -152,6 +152,8 @@ create table note_club
   note_club            float not null,
   procurement_file     char(250),
   budget               float,
+  lock_member_mark     bool,
+  lock_member_project_validation bool,
   primary key (club_id, school_year)
 )
   engine = innodb;
@@ -337,6 +339,7 @@ references member (club_id, login, school_year) on delete restrict on update res
 
 alter table role_link add constraint fk_role_link2 foreign key (id_role)
 references role (id_role) on delete restrict on update restrict;
+
 
 
 
