@@ -149,7 +149,7 @@ create table note_club
 (
   club_id              char(36) not null,
   school_year          int not null,
-  note_club            float not null,
+  note_club            float,
   procurement_file     char(250),
   budget               float,
   lock_member_mark     bool default 0,
@@ -460,7 +460,7 @@ INSERT INTO `club` (club_id, login, club_name, club_description, club_mail, acti
   ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Intégration', '', '', 1),
   ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Capisen', '', '', 1),
   ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Digital Design', '', '', 1),
-  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
+  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
   ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Web TV ISEN', '', '', 1),
   ('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
   ('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau du développement durable', '', '', 1),
