@@ -44,18 +44,29 @@ class Member
         echo json_encode(\Models\Member::ClubMembers($year));
 
     }
-    public static function clubOfMember( $login ) {
-        $clubs = \Models\Member::clubOfMember( $login );
-        foreach( $clubs as $club ) {
-            $club->load( $clubs );
+
+    /**
+     * Return all members object of an user
+     * @param $login
+     */
+    public static function get( $login ) {
+
+        $members = \Models\Member::clubOfMember( $login );
+        foreach( $members as $member ) {
+            $member->load();
         }
-        echo json_encode( $clubs );
+        echo json_encode( $members );
         return;
     }
 
-    public function membersInClub($club_id,$year = null){
+    /**
+     * Return login of user in the club
+     * @param      $club_id
+     * @param null $year
+     */
+    public function membersInClub( $club_id, $year = null )
+    {
         echo json_encode(\Models\Member::membersInClub($club_id,$year));
-
     }
 
 
@@ -67,6 +78,40 @@ class Member
         echo json_encode(\Models\Member::getMembersOfClub($club_id));
 
     }
+
+    /**
+     * Put the main_club field to 1 for this member
+     * @return mixed
+     */
+    public static function setActive( $login ) {
+
+        $put = json_decode( file_get_contents("php://input"), true);
+
+        if( empty($put['club_id']) ){
+            echo json_encode([
+                'err' => 'il manque l id de club'
+            ]);
+            return;
+        }
+        $members = \Models\Member::clubOfMember( $login );
+        foreach( $members as $member ) {
+            $member->load();
+            if( $member->club_id == $put['club_id'] ) {
+                $member->main_club = '1';
+            }
+            else {
+                $member->main_club = '0';
+            }
+            $member->save();
+        }
+
+        echo json_encode([
+            'err' => null
+        ]);
+        return;
+    }
+
+
     public static function noteStudent(){
 
         $post = json_decode( file_get_contents("php://input"), true);

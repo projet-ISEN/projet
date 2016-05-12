@@ -64,6 +64,5 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
-
     return @
 ]

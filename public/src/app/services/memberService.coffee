@@ -15,13 +15,26 @@ angular.module('app')
             console.log err if err?
             cb err
 
-    @set = (login, club, projet, cb)->
+    @add = (login, club, projet, cb)->
         $http(
             method: 'PUT'
             url: "../../api/users/" + login
             data:
                 club_id:    club
                 project_id: projet
+
+        ).then (res)->          # On success
+            cb res
+        , (err)->              # On error
+            console.log err
+            cb err
+
+    @setActif = (login, club, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/members/setActive/" + login
+            data:
+                club_id: club
 
         ).then (res)->          # On success
             cb res
