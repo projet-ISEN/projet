@@ -18,7 +18,7 @@ angular.module('app')
     @add = (login, club, projet, cb)->
         $http(
             method: 'PUT'
-            url: "../../api/users/" + login
+            url: "../../api/members/" + login
             data:
                 club_id:    club
                 project_id: projet
@@ -29,10 +29,23 @@ angular.module('app')
             console.log err
             cb err
 
-    @setActif = (login, club, cb)->
+    @setMain = (login, club, cb)->
         $http(
             method: 'PUT'
-            url: "../../api/members/setActive/" + login
+            url: "../../api/members/setMain/" + login
+            data:
+                club_id: club
+
+        ).then (res)->          # On success
+            cb res
+        , (err)->              # On error
+            console.log err
+            cb err
+
+    @delete = (login, club, cb)->
+        $http(
+            method: 'DELETE'
+            url: "../../api/members/" + login
             data:
                 club_id: club
 

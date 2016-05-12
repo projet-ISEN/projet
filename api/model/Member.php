@@ -271,5 +271,14 @@ class Member {
             return $req->execute($values);
         }
     }
+
+    public function delete()
+    {
+        return Database::getInstance()->PDOInstance->exec(
+            "DELETE FROM member WHERE club_id='". $this->club_id .
+            "' AND login='". $this->login .
+            "' AND member.school_year='". $this->school_year ."'"
+        );
+    }
 }
 ?>
