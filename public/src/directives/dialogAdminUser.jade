@@ -12,12 +12,15 @@ md-dialog(ng-cloak layout-padding flex="75")
 
             md-list-item.md-2-line.secondary-button-padding(
                 ng-repeat='member in userMembers | orderBy : club_name')
+
+                md-icon.md-warn.pointer( ng-click="delete(member)" ) delete
+
                 .md-list-item-text( layout='column' )
                     h3 {{member.club_name}}
                     h4 {{member.project_name}}
                     md-checkbox.md-secondary(
                         ng-checked="member.main_club == '1'"
-                        ng-click="switchActif($index)"
+                        ng-click="switchMain($index)"
                     )
 
                 md-divider

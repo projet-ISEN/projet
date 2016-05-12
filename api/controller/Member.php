@@ -26,6 +26,49 @@ class Member
         $this->params = $params;
     }
 
+    /**
+     * Ajoute un membre avec le login, annee, et club par default
+     * @param      $user_login
+     * @param null $year
+     * @param int  $main_club
+     */
+    public static function addClub( $user_login, $main_club=0, $year=null )
+    {
+        if( empty($year) ) $year = $_SESSION['year'];
+
+        $user = new \Models\User($user_login);
+        if( !$user->exist() )
+        {
+            return json_encode([
+                'err' => "Cet utilisateur n'éxiste pas."
+            ]);
+        }
+
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty( $put['club_id'] ) || empty( $put['project_id'] ) ) {
+            return json_encode([
+                'err' => 'Dans quel club doit on mettre cet user?'
+            ]);
+        }
+
+        $member = new \Models\Member($put['club_id'], $user_login, $year );
+        $member->project_id = $put['project_id'];
+        $member->main_club = $main_club;
+
+        if( $member->save() )
+        {
+            echo json_encode([
+                'err' => null
+            ]);
+        }
+        else{
+            echo json_encode([
+                'err' => 'Impossible de mettre ce menbre dans ce club'
+            ]);
+        }
+        return;
+    }
+
 
     /**
      *returns the number of clubs which the member belongs
@@ -59,6 +102,29 @@ class Member
         return;
     }
 
+    public static function delete( $login )
+    {
+        $delete = json_decode( file_get_contents("php://input"), true);
+        if( empty($delete['club_id']) ) {
+            echo json_encode([
+                'err' => "il manque quelque chose...."
+            ]);
+            return;
+        }
+        $tmp = new \Models\Member($delete['club_id'], $login);
+        if( $tmp->delete() ) {
+            echo json_encode([
+                'err' => "Membre du club supprimé"
+            ]);
+        }
+        else {
+            echo json_encode([
+                'err' => "Quelque chose c'est mal passé pendant la suppression"
+            ]);
+        }
+        return;
+    }
+
     /**
      * Return login of user in the club
      * @param      $club_id
@@ -83,7 +149,7 @@ class Member
      * Put the main_club field to 1 for this member
      * @return mixed
      */
-    public static function setActive( $login ) {
+    public static function setMain( $login ) {
 
         $put = json_decode( file_get_contents("php://input"), true);
 
@@ -102,7 +168,12 @@ class Member
             else {
                 $member->main_club = '0';
             }
-            $member->save();
+            if(!$member->save() ) {
+                echo json_encode([
+                    'err' => "Quelque chose c'est mal passé pendant la mise à jour"
+                ]);
+                return;
+            }
         }
 
         echo json_encode([
