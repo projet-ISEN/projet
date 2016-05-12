@@ -130,7 +130,7 @@ if (date("n")>7) $myYear++;
 
         $router->post(      '/pushPrez',   'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
-        $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
+        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
 
 

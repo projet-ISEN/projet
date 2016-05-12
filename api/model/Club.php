@@ -137,12 +137,11 @@ class Club {
 
         $res = Database::getInstance()->PDOInstance->query(
             "SELECT p.project_type, count(p.project_type) as number FROM member m, projet p ".
-            "WHERE club_id='" . $this->club_id .
-            "' AND school_year='" . $year . "' AND main_club='1' ".
-            "AND p.project_id=m.project_id".
-            " GROUP BY p.project_type");
+            "WHERE club_id='" . $this->club_id . "' ".
+            "AND school_year='" . $year . "' AND main_club='1' ".
+            "AND p.project_id=m.project_id ".
+            "GROUP BY p.project_type");
         return $res->fetchAll();
-
     }
 
     /**

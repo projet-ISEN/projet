@@ -67,12 +67,12 @@ angular.module('app')
         customTheme = $mdThemingProvider.extendPalette 'blue-grey',
             '500': '#2d323e'
 
-        $mdThemingProvider.definePalette('custom', customTheme);
+        $mdThemingProvider.definePalette 'custom', customTheme
 
-        $mdThemingProvider.theme('default')
-                .primaryPalette('custom')
-                .accentPalette('blue-grey')
-                #.warnPalette('blue-grey')
+        $mdThemingProvider.theme 'default'
+                .primaryPalette 'custom'
+                .accentPalette  'green'
+                .warnPalette    'red'
 
 
 ]
