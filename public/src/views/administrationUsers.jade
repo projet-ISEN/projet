@@ -13,7 +13,7 @@ md-content
                 onerror="this.src='images/blank-person.png'" )
 
             div.md-list-item-text( layout="column" )
-                h3 {{user.user_name}} {{user.user_firstname}}
+                h3 {{user.user_name | lowercase}} {{user.user_firstname}}
 
             md-button.md-raised.md-secondary( ng_click="showDialog(user)" ) Détails
             md-divider
