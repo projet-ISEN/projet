@@ -142,6 +142,12 @@ class Club
          echo json_encode ($club -> getMyClubsIntelsEvaluator($login));
     }
 
+    public static function isLock($id)
+    {
+        $club = new \Models\Club();
+         echo json_encode ($club -> isLock($id));
+    }
+
     /**
      * Renvoi les clubs qu'un Evaluateur peut administrer
      */
@@ -166,5 +172,17 @@ class Club
         $club = new \Models\Club();
         $club -> club_id = $id;
         echo json_encode ($club -> markClub($id));
+    }
+
+    public static function lockMark($id)
+    {
+        $club = new \Models\Club();
+        echo json_encode ($club -> lock($id, "lock_member_mark"));
+    }
+
+    public static function lockProject($id)
+    {
+        $club = new \Models\Club();
+        echo json_encode ($club -> lock($id, "lock_member_project_validation"));
     }
 }

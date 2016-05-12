@@ -74,7 +74,10 @@ class Member
             $total_member += $value['member_mark'];
         }
 
-        if($total_member == $total){
+        $lockmark = \Models\club::lockMark($id);
+
+
+        if($total_member == $total && !$lockmark){
 
             $i = 0;
             foreach ($post["member"] as $value){
@@ -86,8 +89,26 @@ class Member
             else echo 0;
          } else echo 0;
 
-        //echo json_encode(\Models\Member::noteStudent($club_id));
+    }
 
+    public static function projectValidationStudent(){
+
+        $post = json_decode( file_get_contents("php://input"), true);
+        $id =  ($post["member"][0]['club_id']);
+
+        $lockproject = \Models\club::lockProject($id);
+
+        if(!$lockproject){
+
+            $i = 0;
+            foreach ($post["member"] as $value){
+                $i += intval(\Models\Member::projectValidationStudent($value),10);
+            }
+
+            if(count($post["member"]) == $i)
+                echo 1;
+            else echo 0;
+         } else echo 0;
 
     }
 

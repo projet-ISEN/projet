@@ -23,6 +23,9 @@ angular.module 'app'
             $scope.changeClub.totalClub = $scope.changeClub.member.length * $scope.changeClub.mark
 
 
+        ###inverse  = ($val)->
+            if($val==0) then $val = 1
+            else $val = 0###
 
 
         $scope.intelsClub = ->
@@ -82,7 +85,37 @@ angular.module 'app'
                 clickOutsideToClose: true
                 controller: 'noteDialogCtrl'
 
+        $scope.toggle_lockProject = ->
+            $note.lockProject $scope.changeClub.club_id, (ret)->
+                if ret != "0"
+                    $mdToast.show(
+                        $mdToast.simple 'Le verrouillage de validation de projets a été modifié'
+                        .position 'bottom right'
+                    )
+                    $scope.changeClub.lock_member_project_validation = !$scope.changeClub.lock_member_project_validation
+                    console.log $scope.changeClub.lock_member_project_validation
 
+                else
+                    $mdToast.show(
+                        $mdToast.simple 'Un problème est survenue'
+                        .position 'bottom right'
+                    )
+
+        $scope.toggle_lockMark = ->
+            $note.lockMark $scope.changeClub.club_id, (ret)->
+                if ret != "0"
+                    $mdToast.show(
+                        $mdToast.simple 'Le verrouillage de notes a été modifié'
+                        .position 'bottom right'
+                    )
+                    $scope.changeClub.lock_member_mark = !$scope.changeClub.lock_member_mark
+                    console.log $scope.changeClub.lock_member_mark
+
+                else
+                    $mdToast.show(
+                        $mdToast.simple 'Un problème est survenue'
+                        .position 'bottom right'
+                    )
 
         $scope.updatePrez = ->
             console.log $scope.updatePrezChoice
@@ -98,7 +131,7 @@ angular.module 'app'
                         $mdToast.simple 'Un problème est survenue'
                         .position 'bottom right'
                     )
-            return
+
 
 
         $scope.toggleMenu = (obj) ->
@@ -113,6 +146,9 @@ angular.module 'app'
             $note.note obj.club_id, (ret) ->
                 $scope.changeClub.mark = parseInt(ret.note_club, 10)
 
+            $note.isLock obj.club_id, (ret) ->
+                $scope.changeClub.lock_member_mark = (ret.lock_member_mark == "0")
+                $scope.changeClub.lock_member_project_validation = (ret.lock_member_project_validation == "0")
 
             $club.getMembers obj.club_id, (members)->
                 $scope.changeClub.member = members
@@ -124,8 +160,8 @@ angular.module 'app'
                     angular.forEach $scope.projects, (item, key) ->
                         if item.project_id == value.project_id
                             value.project = item.project_type
+                console.log $scope.changeClub.member
 
-                console.log $scope.changeClub
 
 
             $mdSidenav("changeClub").toggle()

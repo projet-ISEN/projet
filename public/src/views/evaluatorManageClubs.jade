@@ -80,14 +80,14 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
                     md-list-item.inset
                         //md-icon settings
                         md-switch.md-warn(ng-model = "user.project_validation" ng-disabled="user.lock_member_project_validation")
-                        md-switch.md-accent.md-hue-3
+                        md-switch.md-accent.md-hue-3(ng-disabled="!changeClub.lock_member_mark")
 
                         p(layout="row")
                             span(flex="25") {{user.project}}
                             | {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
                 md-input-container(flex="25")
                     label Note
-                    input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="")
+                    input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="" ng-disabled = "changeClub.lock_member_project_validation")
             span.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève
             div(layout='row' layout-align='center center')
                 md-button.md-primary.md-raised(
@@ -96,15 +96,17 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
 
             div(layout='row' layout-align='center center')
                 md-button.md-primary.md-raised(
-                    ng-show="changeClub.lock_member_project_validation == null || !changeClub.lock_member_project_validation"
+                    ng-show="changeClub.lock_member_project_validation"
                     ng-click="toggle_lockProject()") Verrouiller les projets
                 md-button.md-primary.md-raised(
-                    ng-show="changeClub.lock_member_project_validation"
+                    ng-show="!changeClub.lock_member_project_validation"
                     ng-click="toggle_lockProject()") Déverrouiller les projets
                 md-button.md-primary.md-raised(
-                    ng-show="changeClub.lock_member_mark == null || !changeClub.lock_member_mark"
+                    ng-disabled = "changeClub.lock_member_project_validation"
+                    ng-show="changeClub.lock_member_mark"
                     ng-click="toggle_lockMark()") Verrouiller les notes
                 md-button.md-primary.md-raised(
-                    ng-show="changeClub.lock_member_mark"
+                    ng-disabled = "changeClub.lock_member_project_validation"
+                    ng-show="!changeClub.lock_member_mark"
                     ng-click="toggle_lockMark()") Déverrouiller les notes
 

@@ -156,6 +156,24 @@ class Member {
     }
 
     /**
+     * Valide ou non le projet
+     */
+    public static function projectValidationStudent($member)
+    {
+        $year =$_SESSION['year'];
+
+        $prevalidProject = Database::Select("SELECT project_validation FROM member WHERE club_id='" . $member['club_id'] . "' AND school_year='".$year."' AND login='".$member['login']."'");
+        if(isset($prevalidProject[0]))$prevalidProject = $prevalidProject[0]->project_validation;
+        else $prevalidProject = "";
+
+        if($member['project_validation'] != $prevalidProject){
+            $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET project_validation='".$member['project_validation']."' WHERE club_id = '".$member['club_id']."' AND school_year='".$year."' AND login='".$member['login']."'");
+            return $req;
+        }else return 1;
+
+    }
+
+    /**
      * Charge toutes les données d'un membre portant le login de l'objet courant
      */
     public function load() {

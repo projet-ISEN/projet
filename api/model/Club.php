@@ -110,6 +110,17 @@ class Club {
         return $myClubs;
     }
 
+
+    public static function isLock($id)
+    {
+        $year = $_SESSION['year'];
+        $lock = Database::Select("SELECT lock_member_mark, lock_member_project_validation FROM note_club WHERE club_id='". $id ."' AND school_year = '".$year."'");
+
+        if(isset($lock)) $lock = $lock[0];
+
+        return $lock;
+    }
+
     /**
      * Return the number of member in the club and
      *escape the member as second club
@@ -286,6 +297,24 @@ class Club {
 
         $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM club WHERE club_id=:club_id");
         return $req->execute(array('club_id'=> $this->club_id));
+    }
+
+    public static function lock($id, $case) {
+        $year = $_SESSION['year'];
+        $res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'")
+            ->fetchAll( \PDO::FETCH_ASSOC )[0];
+
+        $temp = "true";
+        if(!empty($res[$case])) $temp = "false";
+
+
+        $req = Database::getInstance()->PDOInstance->exec("UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
+        //var_dump( empty($res[$case]));
+        //var_dump( "UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
+
+        return $req;
+
+       /* */
     }
 }
 ?>
