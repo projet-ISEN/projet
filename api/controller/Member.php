@@ -40,9 +40,17 @@ class Member
      * Return the list of the club of the member
      * @return array
      */
-    public function ClubMembers($year = null){
+    public static function ClubMembers($year = null){
         echo json_encode(\Models\Member::ClubMembers($year));
 
+    }
+    public static function clubOfMember( $login ) {
+        $clubs = \Models\Member::clubOfMember( $login );
+        foreach( $clubs as $club ) {
+            $club->load( $clubs );
+        }
+        echo json_encode( $clubs );
+        return;
     }
 
     public function membersInClub($club_id,$year = null){

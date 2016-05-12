@@ -258,7 +258,7 @@ class Menu {
                                 "active" => false
                             ],
                             [
-                                "link" => '/administration/users',
+                                "link" => '#/administration/users',
                                 "title" => 'Gestion des utilisateurs',
                                 "icon" => 'dashboard',
                                 "active" => false

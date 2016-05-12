@@ -73,6 +73,19 @@ class Member {
     }
 
     /**
+     * Return list of clubs of A member, in obj
+     * @param $login
+     */
+    public static function clubOfMember( $login ){
+        $clubs = [];
+        $req = Database::Select("SELECT club_id FROM member WHERE login='". $login ."'");
+        foreach( $req as $club) {
+            array_push($clubs, new \Models\Club($club->club_id) );
+        }
+        return $clubs;
+    }
+
+    /**
      * Is this member is in the club?
      * @param      $club_id
      * @param null $year

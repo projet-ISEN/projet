@@ -136,7 +136,7 @@ create table member
   member_mark          float,
   ex_member_not_wanted bool,
   recommandation       bool,
-  project_validation   bool,
+  project_validation   bool default 1,
   member_comment       text,
   primary key (club_id, login, school_year)
 )
@@ -152,8 +152,8 @@ create table note_club
   note_club            float not null,
   procurement_file     char(250),
   budget               float,
-  lock_member_mark     bool,
-  lock_member_project_validation bool,
+  lock_member_mark     bool default 0,
+  lock_member_project_validation bool default 0,
   primary key (club_id, school_year)
 )
   engine = innodb;

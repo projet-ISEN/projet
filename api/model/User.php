@@ -80,6 +80,16 @@ class User {
 
     }
 
+    public static function getAll()
+    {
+        $objUsers = [];
+        $users = Database::Select("SELECT login FROM users");
+        foreach ($users as $user) {
+            array_push( $objUsers, new self($user->login) );
+        }
+        return $objUsers;
+    }
+
     public function load() {
 
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM users WHERE login='" . $this->login . "'" )

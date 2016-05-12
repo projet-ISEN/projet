@@ -1,4 +1,19 @@
 //
    Created by rcd18 on 12/05/2016.
 
-h1 test
+md-content
+    md-list
+        md-subheader.md-no-sticky 3 line item
+
+        md-list-item.md-2-line.secondary-button-padding(
+            ng-repeat='user in users | orderBy : user_name')
+
+            img.md-avatar(
+                src='images/profiles/{{user.login}}'
+                onerror="this.src='images/blank-person.png'" )
+
+            div.md-list-item-text( layout="column" )
+                h3 {{user.user_name}} {{user.user_firstname}}
+
+            md-button.md-raised.md-secondary( ng_click="showDialog(user)" ) Détails
+            md-divider

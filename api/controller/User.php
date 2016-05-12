@@ -35,6 +35,19 @@ class User {
         $user = new \Models\User( $id );
         $user->load();
         echo json_encode($user);
+        return;
+    }
+
+    /**
+     * Renvoie tous les utilisateurs
+     */
+    public static function getAll() {
+        $users = \Models\User::getAll();
+        foreach ($users as $user) {
+            $user->load();
+        }
+        echo json_encode( $users );
+        return;
     }
 
     public static function getMe() {

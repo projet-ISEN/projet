@@ -1,0 +1,28 @@
+//
+   Created by rcd18 on 12/05/2016.
+
+md-dialog(ng-cloak layout-padding)
+
+    md-dialog-content
+        h3 {{user.user_name}} {{user.user_firstname}}
+
+
+        md-list
+            md-subheader.md-no-sticky Clubs de {{user.user_firstname}}
+
+            md-list-item.md-2-line.secondary-button-padding(
+            ng-repeat='club in userClubs | orderBy : club_name')
+                p {{ club.club_name }}
+
+            md-list-item.md-2-line.secondary-button-padding
+                md-input-container
+                    label Club
+                    md-select( ng-model="c" )
+                md-input-container
+                    label Projet
+                    md-select( ng-model="p" )
+
+
+    md-dialog-actions
+        md-button( ng-click="closeDialog(true)" class="md-primary" ) Enregistrer
+        md-button( ng-click="closeDialog(false)" class="md-primary" ) Annuler
