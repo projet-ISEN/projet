@@ -2,6 +2,7 @@ angular.module 'app'
 .controller 'evaluatorManageClubsCtrl', [
     '$mdToast'
     '$scope'
+    '$note'
     '$club'
     '$user'
     '$role'
@@ -9,11 +10,18 @@ angular.module 'app'
     '$http'
     '$mdSidenav'
     '$mdDialog'
-    ($mdToast, $scope, $club, $user, $role, $project, $http, $mdSidenav, $mdDialog)->
+    ($mdToast, $scope, $note, $club, $user, $role, $project, $http, $mdSidenav, $mdDialog)->
 
 
         $project.all (projects)->
             $scope.projects = projects
+
+        $scope.tot = ->
+            $scope.totalMb = 0
+            angular.forEach $scope.changeClub.member, (value, key) ->
+                $scope.totalMb += value.member_mark
+            $scope.changeClub.totalClub = $scope.changeClub.member.length * $scope.changeClub.mark
+
 
 
 
@@ -40,6 +48,32 @@ angular.module 'app'
 
 
         $scope.giveMark = ->
+            #console.log $scope.changeClub.mark
+            $note.clubmark $scope.changeClub.mark, $scope.changeClub.club_id, (bool)->
+
+                $note.noteStudent $scope.changeClub.member, (ret) ->
+                    if ret != "0" and bool != '0'
+                        $mdToast.show(
+                            $mdToast.simple 'Les notes ont bien été enregistrées'
+                            .position 'bottom right'
+                        )
+                    else
+                        $mdToast.show(
+                            $mdToast.simple 'Un problème est survenue'
+                            .position 'bottom right'
+                        )
+
+            #angular.forEach $scope.changeClub.member, (value, key) ->
+                #console.log value.member_mark
+
+
+
+        $scope.Club2student = ->
+            angular.forEach $scope.changeClub.member, (value, key) ->
+                value.member_mark = $scope.changeClub.mark
+            $scope.tot()
+
+
 
 
         $scope.infoNote = ->
@@ -76,11 +110,14 @@ angular.module 'app'
                     $scope.prez = val[0].login
                 else
                     $scope.prez = false
+            $note.note obj.club_id, (ret) ->
+                $scope.changeClub.mark = parseInt(ret.note_club, 10)
 
 
             $club.getMembers obj.club_id, (members)->
                 $scope.changeClub.member = members
                 angular.forEach $scope.changeClub.member, (value, key) ->
+                    value.member_mark = parseInt(value.member_mark,10)
                     $user.login2name value.login, (info)->
                         value.user_firstname = info.user_firstname
                         value.user_name = info.user_name
@@ -88,7 +125,7 @@ angular.module 'app'
                         if item.project_id == value.project_id
                             value.project = item.project_type
 
-                console.log $scope.changeClub.member
+                console.log $scope.changeClub
 
 
             $mdSidenav("changeClub").toggle()

@@ -45,7 +45,7 @@ class Role {
     //renvoie le login des role dans un club l'année courante
     public static function ClubRole2Login($clubId, $idPrez){
 
-        $year = "2016";
+        $year = $_SESSION['year'];
 
 
         $role = Database::Select("SELECT login FROM role_link WHERE club_id='".$clubId."' AND id_role = '".$idPrez."' AND school_year='".$year."'");
@@ -61,7 +61,7 @@ class Role {
      */
     public static function pushPrez($login,$club_id){
 
-        $year = "2016";
+        $year = $_SESSION['year'];
 
         $rolePrezId = self::Role2ID($_SESSION['president']);
         $role = Database::Select("SELECT count(*) AS Nb FROM role_link WHERE club_id = '".$club_id."' AND school_year='".$year."' AND id_role='".$rolePrezId."'");

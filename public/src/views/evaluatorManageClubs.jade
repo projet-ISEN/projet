@@ -70,15 +70,16 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
 
         form( name='choiceprez' ng-submit='giveMark()' layout-padding)
             div(layout="row")
-                span(flex="75")
+                span(flex="75") Validation des projets
                 md-input-container(flex="25" layout-align="center center")
                         label Note du Club
-                        input( ng-model="note" name="note" required="")
+                        input( ng-model="changeClub.mark" name="note" max="20" min="0" type="number" step="1"  ng-change="Club2student()" required="")
 
             div(ng-repeat="user in changeClub.member |orderBy:['project','user_name']:true"  layout="row")
                 md-list(flex="75")
                     md-list-item.inset
                         //md-icon settings
+                        md-switch.md-warn(ng-model = "user.project_validation" ng-disabled="user.lock_member_project_validation")
                         md-switch.md-accent.md-hue-3
 
                         p(layout="row")
@@ -86,8 +87,20 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
                             | {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
                 md-input-container(flex="25")
                     label Note
-                    input( value="{{member_mark}}" ng-model="user.member_mark" required="")
-             div(layout='row' layout-align='center center')
-                    md-button.md-primary.md-raised(
-                        type='submit'
-                        ng-disabled="") Ajouter
+                    input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="")
+            span.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève
+            div(layout='row' layout-align='center center')
+                md-button.md-primary.md-raised(
+                    type='submit'
+                    ng-disabled="changeClub.totalClub != totalMb") Sauvegarder
+
+            div(layout='row' layout-align='center center')
+                md-button.md-primary.md-raised(
+                    ng-disabled="") Verrouiller les projets
+                md-button.md-primary.md-raised(
+                    ng-disabled="") Verrouiller les notes
+                md-button.md-primary.md-raised(
+                    ng-disabled="") Déverrouiller les projets
+                md-button.md-primary.md-raised(
+                    ng-disabled="") Déverrouiller les notes
+

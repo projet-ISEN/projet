@@ -141,8 +141,26 @@ if (date("n")>7) $myYear++;
 
         $router->post(      '/pushPrez',   'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
+<<<<<<< HEAD
+        $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
+
+
+        $router->post(      '/noteStudent',   'Member.noteStudent');
+
+
+
+        $router->post( '/noteClub',   'Club.giveClubMark');
+
+
+
+    }
+    $router->get( '/noteClub/:id',   'Club.markClub');
+
+    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
+=======
         $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
     }
+>>>>>>> origin/master
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 

@@ -149,6 +149,22 @@ class Club
     {
         $club = new \Models\Club();
         $club -> club_id = $id;
-         echo json_encode ($club -> getMembers());
+        echo json_encode ($club -> getMembers());
+    }
+
+    public static function giveClubMark(){
+        $post = json_decode( file_get_contents("php://input"), true);
+        $club = new \Models\Club();
+        echo json_encode($club -> giveClubMark($post["club_id"], $post["note"]));
+    }
+
+    /**
+     * Renvoi les clubs qu'un Evaluateur peut administrer
+     */
+    public static function markClub($id)
+    {
+        $club = new \Models\Club();
+        $club -> club_id = $id;
+        echo json_encode ($club -> markClub($id));
     }
 }

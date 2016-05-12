@@ -67,6 +67,37 @@ class Member
         echo json_encode(\Models\Member::getMembersOfClub($club_id));
 
     }
+    public static function noteStudent(){
+
+        $post = json_decode( file_get_contents("php://input"), true);
+        $id =  ($post["member"][0]['club_id']);
+
+        $noteClub = \Models\Club::markClub($id)-> note_club;
+
+        //var_dump($noteClub);
+
+        $total = $noteClub * count($post["member"]);
+        $total_member = 0;
+        foreach ($post["member"] as $value){
+            $total_member += $value['member_mark'];
+        }
+
+        if($total_member == $total){
+
+            $i = 0;
+            foreach ($post["member"] as $value){
+                $i += intval(\Models\Member::noteStudent($value),10);
+            }
+
+            if(count($post["member"]) == $i)
+                echo 1;
+            else echo 0;
+         } else echo 0;
+
+        //echo json_encode(\Models\Member::noteStudent($club_id));
+
+
+    }
 
 
 }
