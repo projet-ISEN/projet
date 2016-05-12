@@ -137,7 +137,7 @@ if (date("n")>7) $myYear++;
 
         $router->get(       '/clubs/:id',   'Club.getOne');
 
-        $router->get(       '/members/:id',   'Member.getMembersOfClub');
+        $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
 
         $router->get(       '/users/:id',   'User.get');
 
@@ -146,6 +146,8 @@ if (date("n")>7) $myYear++;
         $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
 
         $router->post(      '/noteStudent',   'Member.noteStudent');
+
+        $router->post(      '/validateProjectStudent',   'Member.projectValidationStudent');
 
 
         $router->get(      '/isLock/:id',   'Club.isLock');

@@ -116,7 +116,11 @@ class Club {
         $year = $_SESSION['year'];
         $lock = Database::Select("SELECT lock_member_mark, lock_member_project_validation FROM note_club WHERE club_id='". $id ."' AND school_year = '".$year."'");
 
-        if(isset($lock)) $lock = $lock[0];
+        if(isset($lock[0])) $lock = $lock[0];
+        else $lock = [
+            'lock_member_mark'=>false, "lock_member_project_validation" => true
+        ];
+
 
         return $lock;
     }

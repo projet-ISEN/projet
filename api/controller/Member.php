@@ -198,7 +198,7 @@ class Member
             $total_member += $value['member_mark'];
         }
 
-        $lockmark = \Models\club::lockMark($id);
+        $lockmark = \Controllers\Club::lockMark($id);
 
 
         if($total_member == $total && !$lockmark){
@@ -220,9 +220,9 @@ class Member
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
 
-        $lockproject = \Models\club::lockProject($id);
+        $lockproject = \Controllers\Club::lockProject($id);
 
-        if(!$lockproject){
+        if(!$lockproject || $_SESSION["user"]->isEvaluator){
 
             $i = 0;
             foreach ($post["member"] as $value){
