@@ -45,6 +45,11 @@ angular.module('app')
             controller: 'administrationCtrl'
             label: "Administration"
 
+        .when '/administration/users',
+            templateUrl: 'views/administrationUsers.html'
+            controller: 'administrationUsersCtrl'
+            label: "Administration des utilisateurs"
+
         .when '/me',
             templateUrl: 'views/myInformations.html'
             controller: 'myInformationsCtrl'
@@ -67,12 +72,12 @@ angular.module('app')
         customTheme = $mdThemingProvider.extendPalette 'blue-grey',
             '500': '#2d323e'
 
-        $mdThemingProvider.definePalette('custom', customTheme);
+        $mdThemingProvider.definePalette 'custom', customTheme
 
-        $mdThemingProvider.theme('default')
-                .primaryPalette('custom')
-                .accentPalette('blue-grey')
-                #.warnPalette('blue-grey')
+        $mdThemingProvider.theme 'default'
+                .primaryPalette 'custom'
+                .accentPalette  'green'
+                .warnPalette    'red'
 
 
 ]

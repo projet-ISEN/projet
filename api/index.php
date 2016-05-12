@@ -34,8 +34,8 @@
 
         //test variable
 
-        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -56,7 +56,8 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        //$userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        //$userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
     }
 
 /*================================================================
@@ -90,8 +91,7 @@ if (date("n")>7) $myYear++;
 
     $router = new API\Router( $_GET['url'] );
 
-    // Use controller user and method one
-
+    // ONLY ADMINISTRATEUR
     if($_SESSION['user']->is_administrator){
 
 
@@ -113,6 +113,9 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:number',         'Logger.getLastLogs');
         $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
 
+        $router->put(      '/users/:user_login',       'User.setClub');
+
+    // ONLY NOT ADMINISTRATEUR
     } elseif(!$_SESSION['user']->is_administrator)
     {
         $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
@@ -122,14 +125,20 @@ if (date("n")>7) $myYear++;
         $router->delete(    '/choices',     'Choice.deleteAll' );
     }
 
-    if($_SESSION['user']->school_staff){
+    // ONLY EVALUATOR
+    if($_SESSION['user']->school_staff)
+    {
         $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
+
         $router->get(       '/clubs/:id',   'Club.getOne');
+
         $router->get(       '/members/:id',   'Member.getMembersOfClub');
+
         $router->get(       '/users/:id',   'User.get');
 
         $router->post(      '/pushPrez',   'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
+<<<<<<< HEAD
         $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
 
 
@@ -145,7 +154,12 @@ if (date("n")>7) $myYear++;
     $router->get( '/noteClub/:id',   'Club.markClub');
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
+=======
+        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
+    }
+>>>>>>> origin/master
 
+    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
 
@@ -164,7 +178,6 @@ if (date("n")>7) $myYear++;
     $router->get(       '/notes/xlsx',       'NotationProf.toXlsx');
     $router->get(       '/notes/:id',        'NotationProf.allNotes');
     $router->post(      '/notes/:id',        'NotationProf.setNote');
-
 
     $router->get(       '/role',   'Role.getAll');
 

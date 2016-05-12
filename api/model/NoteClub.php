@@ -22,6 +22,8 @@ class NoteClub
     public $note_club;
     public $procurement_file;
     public $budget;
+    public $lock_member_mark;
+    public $lock_member_project_validation;
 
     /**
      * NoteClub constructor.
@@ -48,7 +50,6 @@ class NoteClub
             // complète le this avec les valeurs récupérées
 
         if(!empty($res)) {
-            //var_dump($res);
             foreach ($res[0] as $key => $val) {
                 $this->$key = $val;
             }
