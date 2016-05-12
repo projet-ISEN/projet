@@ -73,16 +73,16 @@ class Member {
     }
 
     /**
-     * Return list of clubs of A member, in obj
+     * Return list all member of user, in obj
      * @param $login
      */
     public static function clubOfMember( $login ){
-        $clubs = [];
-        $req = Database::Select("SELECT club_id FROM member WHERE login='". $login ."'");
-        foreach( $req as $club) {
-            array_push($clubs, new \Models\Club($club->club_id) );
+        $members = [];
+        $req = Database::Select("SELECT club_id, login FROM member WHERE login='". $login ."'");
+        foreach( $req as $member) {
+            array_push( $members, new self($member->club_id, $member->login) );
         }
-        return $clubs;
+        return $members;
     }
 
     /**

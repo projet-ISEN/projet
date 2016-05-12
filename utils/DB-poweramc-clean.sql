@@ -432,7 +432,7 @@ INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_ad
   ('oburti19','Olivier','BURTIN','olivier.burtin@isen-bretagne.fr',0,0,NULL),
   ('panton20','Pierre','ANTONACCI','pierre.antonacci@isen-bretagne.fr',0,0,NULL),
   ('pleple19','Pierrick','LE PLENIER','pierrick.le-plenier@isen-bretagne.fr',0,0,NULL),
-  ('rcolli17','Rémi','COLLIGNON','remi.collignon@isen-bretagne.fr',1,0,'0647335579'),
+  ('rcolli17','Rémi','COLLIGNON','remi.collignon@isen-bretagne.fr',1,1,'0647335579'),
   ('rcroya20','Ryan','CROYAL','ryan.croyal@isen-bretagne.fr',0,0,NULL),
   ('sheng020','Sully','HENG','sully.heng@isen-bretagne.fr',0,0,NULL),
   ('tcones20','Thomas','CONESA','thomas.conesa@isen-bretagne.fr',0,0,NULL),
@@ -440,52 +440,53 @@ INSERT INTO `users` (`login`, `user_firstname`, `user_name`, `user_mail`, `is_ad
   ('tlelie20','Tristan','LELIEVRE-ROPERS','tristan.lelievre-ropers@isen-bretagne.fr',0,0,NULL),
   ('tmal0019','Thibault','MAL','thibault.mal@isen-bretagne.fr',0,0,NULL),
   ('vgauth19','Vincent','GAUTHIE','vincent.gauthie@isen-bretagne.fr',0,0,NULL),
-  ('vrioua17','Vincent','RIOUALLON','vincent.riouallon@isen-bretagne.fr',1,0,NULL),
+  ('vrioua17','Vincent','RIOUALLON','vincent.riouallon@isen-bretagne.fr',1,1,NULL),
   ('vsilva19','Virgile','SILVANT','virgile.silvant@isen-bretagne.fr',0,0,NULL),
   ('wbeaup20','William','BEAUPERIN','william.beauperin@isen-bretagne.fr',0,0,NULL);
 
 
 
-INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif) VALUES
-  ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Don du sang', '', '', 1),
-  ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien Harteloire', '', '', 1),
-  ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des Arts', '', '', 1),
-  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Tournée info', '', '', 1),
-  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Asso. sociale A.F.E.V.', '', '', 1),
-  ('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des sports', '', '', 1),
+INSERT INTO `club` (club_id, login, club_name, club_description, club_mail, actif) VALUES
+  ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Don du sang', '', '', 1),
+  ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Soutien Harteloire', '', '', 1),
+  ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des Arts', '', '', 1),
+  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Tournée info', '', '', 1),
+  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Asso. sociale A.F.E.V.', '', '', 1),
+  ('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des sports', '', '', 1),
   ('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Gala', '', '', 1),
-  ('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau des élèves', '', '', 1),
-  ('7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club foyer', '', '', 1),
+  ('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des élèves', '', '', 1),
+  ('7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Club foyer', '', '', 1),
   ('7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club musique', '', '', 1),
   ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Intégration', '', '', 1),
-  ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Capisen', '', '', 1),
+  ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Capisen', '', '', 1),
   ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Digital Design', '', '', 1),
   ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
-  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Web TV ISEN', '', '', 1),
+  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Web TV ISEN', '', '', 1),
   ('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
   ('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau du développement durable', '', '', 1),
   ('7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club glisse', '', '', 1),
   ('7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Kengred', '', '', 1),
   ('7cbed4ba-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', '4L Trophy', '', '', 1),
-  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Encadrement sport extérieur', '', '', 1),
+  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Encadrement sport extérieur', '', '', 1),
   ('7cbed548-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'AREI', '', '', 1),
   ('7cbed590-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Banque alimentaire', '', '', 1),
   ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Forums', '', '', 1),
   ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'ISEN Immo', '', '', 1),
-  ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Eva', '', '', 1),
+  ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Club Eva', '', '', 1),
   ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club international', '', '', 1),
   ('7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Pon Pon Nippon', '', '', 1),
   ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien ISEN', '', '', 1),
-  ('7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau de l\'international', '', '', 1),
+  ('7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau de l\'international', '', '', 1),
   ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Clubs externes', '', '', 1),
   ('ab0df152-15be-11e6-8c14-363366383662', 'rcolli17', 'Wiki-radio', '', '', 1),
   ('ab0df2e2-15be-11e6-8c14-363366383662', 'rcolli17', 'Culture celtique', '', '', 1),
-  ('ab0df318-15be-11e6-8c14-363366383662', 'rcolli17', 'What the flub', '', '', 1),
+  ('ab0df318-15be-11e6-8c14-363366383662', 'vrioua17', 'What the flub', '', '', 1),
   ('ab0df346-15be-11e6-8c14-363366383662', 'rcolli17', 'Association des rennais', '', '', 1)
 ;
 
 
-INSERT INTO `choice` VALUES ('ablond19','7cbed29b-0df3-11e6-9aa9-448a5b42bfcd',2),
+INSERT INTO `choice` VALUES
+  ('ablond19','7cbed29b-0df3-11e6-9aa9-448a5b42bfcd',2),
   ('ablond19','7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd',1),
   ('ablond19','7cbed429-0df3-11e6-9aa9-448a5b42bfcd',3),
   ('aclave19','7cbed29b-0df3-11e6-9aa9-448a5b42bfcd',1),
@@ -571,7 +572,7 @@ INSERT INTO `choice` VALUES ('ablond19','7cbed29b-0df3-11e6-9aa9-448a5b42bfcd',2
   ('wbeaup20','ab0df318-15be-11e6-8c14-363366383662',2);
 
 
-INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
+INSERT INTO `effectif` (club_id, project_id, nb_asked_min, nb_asked_max)
   VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
           ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
@@ -681,7 +682,7 @@ INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
 ;
 
 
-INSERT INTO projetm1.member (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
+INSERT INTO `member` (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
 ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'ablond19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'aclave19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'afouca19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),

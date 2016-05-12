@@ -116,7 +116,8 @@ if (date("n")>7) $myYear++;
         $router->get(      '/users',                   'User.getAll');
         $router->put(      '/users/:user_login',       'User.addClub');
 
-        $router->get(       '/members/:user_id',       'Member.clubOfMember');
+        $router->get(      '/members/:user_id',                 'Member.get');
+        $router->put(      '/members/setActive/:login',         'Member.setActive');
 
     // ONLY NOT ADMINISTRATEUR
     } elseif(!$_SESSION['user']->is_administrator)
