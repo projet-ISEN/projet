@@ -34,8 +34,8 @@
 
         //test variable
 
-        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -119,7 +119,7 @@ if (date("n")>7) $myYear++;
         $router->get(      '/members/:user_id',                 'Member.get');
         $router->put(      '/members/setActive/:login',         'Member.setActive');
 
-    // ONLY NOT ADMINISTRATEUR
+    // ONLY NOT ADMINISTRATOR
     } elseif(!$_SESSION['user']->is_administrator)
     {
         $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
@@ -146,6 +146,16 @@ if (date("n")>7) $myYear++;
 
         $router->post(      '/noteStudent',   'Member.noteStudent');
 
+
+        $router->get(      '/isLock/:id',   'Club.isLock');
+
+        $router->put(      '/lockMark/:id',   'Club.lockMark');
+
+        $router->put(      '/lockProject/:id',   'Club.lockProject');
+
+
+
+
         $router->post( '/noteClub',   'Club.giveClubMark');
 
 
@@ -154,6 +164,7 @@ if (date("n")>7) $myYear++;
     $router->get( '/noteClub/:id',   'Club.markClub');
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
+        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 

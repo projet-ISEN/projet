@@ -24,7 +24,6 @@ angular.module 'app'
                 else
                     $mdToast.showSimple 'Membre enregistré!'
 
-
         $scope.switchActif = (index)->
             newActif = $scope.userMembers[index]
             console.log newActif
@@ -49,5 +48,4 @@ angular.module 'app'
                     for member in members
                         if project.project_id == member.project_id
                             member.project_name = project.project_type
-
 ]

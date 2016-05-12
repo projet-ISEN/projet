@@ -7,7 +7,7 @@ angular.module 'app'
 
         $user.all (users) ->
             $scope.users = users
-    
+
 
 
         $scope.showDialog = ( user ) ->
