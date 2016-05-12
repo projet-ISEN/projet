@@ -96,11 +96,15 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
 
             div(layout='row' layout-align='center center')
                 md-button.md-primary.md-raised(
-                    ng-disabled="") Verrouiller les projets
+                    ng-show="changeClub.lock_member_project_validation == null || !changeClub.lock_member_project_validation"
+                    ng-click="toggle_lockProject()") Verrouiller les projets
                 md-button.md-primary.md-raised(
-                    ng-disabled="") Verrouiller les notes
+                    ng-show="changeClub.lock_member_project_validation"
+                    ng-click="toggle_lockProject()") Déverrouiller les projets
                 md-button.md-primary.md-raised(
-                    ng-disabled="") Déverrouiller les projets
+                    ng-show="changeClub.lock_member_mark == null || !changeClub.lock_member_mark"
+                    ng-click="toggle_lockMark()") Verrouiller les notes
                 md-button.md-primary.md-raised(
-                    ng-disabled="") Déverrouiller les notes
+                    ng-show="changeClub.lock_member_mark"
+                    ng-click="toggle_lockMark()") Déverrouiller les notes
 
