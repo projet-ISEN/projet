@@ -305,17 +305,34 @@ class Club {
 
     public static function lock($id, $case) {
         $year = $_SESSION['year'];
-        $res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'")
-            ->fetchAll( \PDO::FETCH_ASSOC )[0];
+        $res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'");
+
+        $values['club_id'] = $id;
+        $values['year'] = $year;
+
+        $insert = Database::getInstance()->PDOInstance->prepare("INSERT INTO `note_club`(`club_id`, `school_year`) VALUES (:club_id, :year)");
 
         $temp = "true";
-        if(!empty($res[$case])) $temp = "false";
+
+        $result = $res->fetchAll( \PDO::FETCH_ASSOC );
+        //var_dump($result);
+        $bool = empty($result);
+        //var_dump($bool);
+
+
+        if($bool){
+            $insert->execute($values);
+            $temp = "false";
+            if($case == "lock_member_mark") return 1;
+
+        }
+
+        elseif(!empty($result[0][$case])) $temp = "false";
 
 
         $req = Database::getInstance()->PDOInstance->exec("UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
         //var_dump( empty($res[$case]));
         //var_dump( "UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
-
         return $req;
 
        /* */
