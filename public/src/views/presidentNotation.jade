@@ -6,22 +6,22 @@ md-content( flex="75" )
     h4 Noter les membre du club
         md-icon(style="cursor:pointer " ng-click="infoNote()") info
 
-    div( layout='row' )
-        span( flex='30' ) Validation des projets
-        span( flex="70" ) Nombre de points a redistribuer
-        span( flex='30' ) Note du membre
+    div( layout='column' )
+        div( layout='row' )
+            span( flex='30' ) Validation des projets
+            span( flex="70" ) Nombre de points a redistribuer
+            span( flex='30' ) Note du membre
 
-        md-list( ng-repeat="member in members |orderBy: 'name'"  layout='column')
+        md-list( ng-repeat="member in members |orderBy: 'user_name'"  layout='column')
             md-list-item.inset
-                //md-icon settings
-                md-switch.md-warn( ng-model='user.project_validation' ng-disabled='changeClub.lock_member_project_validation' )
+                md-switch.md-warn( ng-model='member.project_validation'  )
 
                 p(layout="row")
-                    span(flex="25") {{user.project}}
-                    | {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
+                    span(flex="25") {{member.project}}
+                    | {{member.user_firstname | firstLetterUppercase}} {{member.user_name | firstLetterUppercase}}
         md-input-container(flex="25")
             label Note
-            input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="" ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark")
+            input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="member.member_mark" required="" ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark")
     span.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève
     div(layout='row' layout-align='center center')
         md-button.md-primary.md-raised(

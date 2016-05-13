@@ -375,7 +375,7 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
                       "exemple": "s\'occuper d\'une exposition du BDA, participation active à un club",
                       "quota": "50 h",
                       "eval": "Validation ou non validation"}'),
-  ('d6b8fac7-1818-11e6-8166-d850e61e53c9', 'PI', '{ title: "Projet d\'intégration (à l\'ISEN)",
+  ('d6b8fac7-1818-11e6-8166-d850e61e53c9', 'PI', '{ "title": "Projet d\'intégration (à l\'ISEN)",
                       "objectif": "Se mettre au service ponctuellement d\'un groupe ou d\'une association",
                       "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l\'équipe du Gala",
                       "quota": "15 h",
