@@ -1,29 +1,32 @@
 //
    Created by rcd18 on 12/05/2016.
+md-tabs( md-dynamic-height md-border-bottom )
+    md-tab.md-warn( label="Réaffectation d'élèves" )
+        md-content(
+        layout-align='center center'
+            flex-gt-sm='50'
+            flex='100'
+            flex-offset='0'
+            flex-offset-gt-sm='25' )
 
-md-content(
-layout-align="center center"
-    flex-gt-sm="50"
-    flex="100"
-    flex-offset="0"
-    flex-offset-gt-sm="25")
+            md-input-container
+                label Recherche d'un élève
+                input( type='text' ng-model='search')
 
-    md-input-container
-        label Recherche d'un élève
-        input( type='text' ng-model='search')
+            md-list
+                md-subheader.md-no-sticky {{users.length}} Utilisateurs
 
-    md-list
-        md-subheader.md-no-sticky {{users.length}} Utilisateurs
+                md-list-item.md-2-line.secondary-button-padding(
+                    ng-repeat="user in users | orderBy : 'user_name' | filter: search")
 
-        md-list-item.md-2-line.secondary-button-padding(
-            ng-repeat="user in users | orderBy : 'user_name' | filter: search")
+                    img.md-avatar(
+                        src='images/profiles/{{user.login}}'
+                        onerror="this.src='images/blank-person.png'" )
 
-            img.md-avatar(
-                src='images/profiles/{{user.login}}'
-                onerror="this.src='images/blank-person.png'" )
+                    div.md-list-item-text( layout='column' )
+                        h3 {{user.user_name | firstLetterUppercase}} {{user.user_firstname | firstLetterUppercase}}
 
-            div.md-list-item-text( layout="column" )
-                h3 {{user.user_name | firstLetterUppercase}} {{user.user_firstname | firstLetterUppercase}}
+                    md-button.md-raised.md-secondary( ng_click='showDialog(user)' ) Détails
+                    md-divider
 
-            md-button.md-raised.md-secondary( ng_click="showDialog(user)" ) Détails
-            md-divider
+    md-tab( label='' )

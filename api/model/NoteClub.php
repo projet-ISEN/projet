@@ -35,8 +35,10 @@ class NoteClub
     {
         if( empty($school_year) ) $school_year = $_SESSION['year'];
 
-        $this->club_id      = $club_id;
-        $this->school_year  = $school_year;
+        $this->club_id                          = $club_id;
+        $this->school_year                      = $school_year;
+        $this->lock_member_mark                 = 1;
+        $this->lock_member_project_validation   = 0;
     }
 
     /**
