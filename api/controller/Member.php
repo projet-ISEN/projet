@@ -207,9 +207,10 @@ class Member
         }
         //$lockmark = \Controllers\Club::lockMark($id);
         //$lockmark = \Controllers\Club::lockMark($id);
-        $lockmark = \Models\Club::lock($id, "lock_member_mark");
-        var_dump($lockmark);
-        var_dump(\Controllers\Club::lockMark($id));
+        $lockmark = \Models\Club::isLock($id);
+        $lockmark = $lockmark['lock_member_mark'];
+        //var_dump($lockmark);
+        //var_dump(\Controllers\Club::lockMark($id));
 
         if($total_member == $total && !$lockmark && $tempPR){
             $i = 0;

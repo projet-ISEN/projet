@@ -124,6 +124,9 @@ angular.module 'app'
 
 
             $note.lockProject $scope.changeClub.club_id, (ret)->
+                console.log "lockProject " +ret
+                $note.validateProjectStudent $scope.changeClub.member, (projet) ->
+                    console.log projet
                 if(!$scope.changeClub.lock_member_project_validation) then $scope.tot()
                 if ret != "0"
                     $mdToast.show(
