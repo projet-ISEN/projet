@@ -191,17 +191,25 @@ class Member
         $noteClub = \Models\Club::markClub($id)-> note_club;
 
         //var_dump($noteClub);
-
+        $tempPR = true;
+        //var_dump($post["member"]);
         $total = $noteClub * count($post["member"]);
         $total_member = 0;
         foreach ($post["member"] as $value){
             $total_member += $value['member_mark'];
+            if($value["project"] == "PR"){
+                if($value["project_validation"])
+                    if($value["member_mark"] < 10) $tempPR = false;
+                else{
+                    if($value["member_mark"] >= 10) $tempPR = false;
+                }
+            }
         }
 
         $lockmark = \Controllers\Club::lockMark($id);
 
 
-        if($total_member == $total && !$lockmark){
+        if($total_member == $total && !$lockmark && $tempPR){
 
             $i = 0;
             foreach ($post["member"] as $value){
