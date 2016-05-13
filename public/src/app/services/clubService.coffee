@@ -53,11 +53,35 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
-    ###send back the member of a club###
+    ###send back the member of a club of the current year###
     @getMembers = (id, cb)->
         $http(
             method: 'GET'
             url: "../../api/members/club/" + id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
+        ###send back the member of a club of a specific year###
+
+    @getMembersYear = (id, year, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/members/club/" + id + "/" +year
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
+    @junior = (cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/clubs/junior"
 
         ).then (res)->          # On success
             cb res.data
