@@ -52,11 +52,12 @@ angular.module 'app'
             $note.note $routeParams.club_id, (ret) ->
                 if ret.err != null && ret.note_club != null
                     $scope.clubMark = ret
+                console.log $scope.clubMark
 
             $note.isLock $routeParams.club_id, (ret) ->
-                console.log $scope.clubMark
+
                 $scope.clubMark.locks.lock_member_mark = (ret.lock_member_mark == '1')
                 $scope.clubMark.locks.lock_member_project_validation = (ret.lock_member_project_validation == '1')
-                console.log $scope.clubMark.locks
+
                 $scope.testMark()
 ]
