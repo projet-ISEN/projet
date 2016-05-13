@@ -480,7 +480,7 @@ INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator
 
 
 
-INSERT INTO `club` (club_id, login, club_name, club_description, club_mail, actif) VALUES
+INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif) VALUES
   ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Don du sang', '', '', 1),
   ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Soutien Harteloire', '', '', 1),
   ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des Arts', '', '', 1),
@@ -649,7 +649,7 @@ INSERT INTO choice (login, club_id, choice_number) VALUES
   ('mlariv19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2),
   ('mlariv19', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 3),
   ('mlariv19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1),
-  ('mlegal19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3);
+  ('mlegal19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3),
   ('mlegal19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 2),
   ('mlegal19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 1),
   ('nbaron19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 1),
@@ -714,7 +714,7 @@ INSERT INTO choice (login, club_id, choice_number) VALUES
   ('yleflo20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
 
 
-INSERT INTO `effectif` (club_id, project_id, nb_asked_min, nb_asked_max)
+INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
   VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
             (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
           ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
@@ -824,12 +824,11 @@ INSERT INTO `effectif` (club_id, project_id, nb_asked_min, nb_asked_max)
 ;
 
 
-INSERT INTO `member` (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
+INSERT INTO member (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
 ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'ablond19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'aclave19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'afouca19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'apreme19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
-('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'baboli17', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'bflury19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'bflury19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
 ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'cvanco19', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, null, null),
