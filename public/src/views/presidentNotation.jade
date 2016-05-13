@@ -26,9 +26,9 @@ md-content( flex="75" layout='column' )
 
                 md-switch.md-warn(
                     ng-model='member.project_validation_bool'
-                    ng-disabled="locks.lock_member_project_validation || member.project_type == 'PA'" )
+                    ng-disabled="locks.lock_member_project_validation || member.project == 'PA'" )
 
-                p {{member.project_type}}
+                p {{member.project}}
 
                 p( layout="row" )
                     span( flex="25" ) {{member.project}}

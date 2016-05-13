@@ -37,14 +37,14 @@ angular.module 'app'
 
                 # Trasuis le project_id en projet et le colle au membre
                 $project.idToType member.project_id, (res)->
-                    member.project_type = res
+                    member.project = res
 
                     # Un PA statisfait toujours @Delaleau
-                    if member.project_type == 'PA'
+                    if member.project == 'PA'
                         member.project_validation_bool = true
 
                     # Note min et Max pour un PR validé ou non
-                    if member.project_type == 'PR'
+                    if member.project == 'PR'
                         if member.project_validation_bool
                             member.minMark = 10
                         else
@@ -71,8 +71,8 @@ angular.module 'app'
 
         # Lors de la sauvegarde des notes
         $scope.send = ->
-            # Si les notes sont locks
-            if $scope.locks.lock_member_mark
+            # Si les projets sont pas locks
+            if !$scope.locks.lock_member_project_validation
                 # On balance les projets
                 for member in $scope.members
                     if member.project_validation_bool
@@ -92,8 +92,10 @@ angular.module 'app'
                 # On balance les notes
                 for member in $scope.members
                     if member.member_mark == null
+
                         return $mdToast.showSimple "Tous les membres n'ont pas de note"
-                $note.validateProjectStudent $scope.members, (projet) ->
+                    console.log $scope.members
+                $note.noteStudent $scope.members, (projet) ->
                     console.log projet
 
 ]

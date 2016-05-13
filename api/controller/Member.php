@@ -183,8 +183,8 @@ class Member
     }
 
 
-    public static function noteStudent(){
-
+    public static function noteStudent()
+    {
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
 
@@ -205,22 +205,21 @@ class Member
                 }
             }
         }
-
-        $lockmark = \Controllers\Club::lockMark($id);
-
+        //$lockmark = \Controllers\Club::lockMark($id);
+        //$lockmark = \Controllers\Club::lockMark($id);
+        $lockmark = \Models\Club::lock($id, "lock_member_mark");
+        var_dump($lockmark);
+        var_dump(\Controllers\Club::lockMark($id));
 
         if($total_member == $total && !$lockmark && $tempPR){
-
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::noteStudent($value),10);
             }
-
             if(count($post["member"]) == $i)
                 echo 1;
             else echo 0;
          } else echo 0;
-
     }
 
     public static function projectValidationStudent()
