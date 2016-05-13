@@ -139,9 +139,10 @@ class Member {
     /**
      * Renvoi un tableau d'objet Member appartenant au club avec seulement login et clubId
      */
-    public static function getMembersOfClub($club_id)
+    public static function getMembersOfClub($club_id, $year = null)
     {
-        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1");
+        if(!isset($year)) $year =$_SESSION['year'];
+        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1 AND school_year='".$year."'");
 
 
         return $req;
@@ -199,6 +200,37 @@ class Member {
 
     }
 
+    //callback a list with the the people who asked Capisen in first choice
+    public static function juniorCandidate()
+    {
+        $idJunior = \Models\Club::juniorEntrepriseID();
+
+        $listMember = Database::Select("SELECT login FROM `choice` WHERE choice_number='1' AND club_id='". $idJunior . "'");
+
+
+        $tableCandidateInfo = [];
+        if(!empty($listMember)){
+            foreach( $listMember as $value ) {
+                //var_dump($value->login);
+
+                $info =new \Models\User($value->login);
+                $info->load();
+                array_push ( $tableCandidateInfo , $info );
+                //var_dump($info);
+            }
+            //var_dump($tableCandidateInfo);
+            return $tableCandidateInfo;
+        }else return null;
+
+
+ /*   foreach( $res as $key => $val ) {
+        $this->$key = $val;
+    }*/
+
+
+
+    }
+
     /**
      * Charge toutes les données d'un membre portant le login de l'objet courant
      */
@@ -220,6 +252,15 @@ class Member {
             $this->$key = $val;
         }
     }
+
+
+    public static function juniorMember($year){
+        $club_id = \Models\Club::juniorEntrepriseID();
+        $res = Database::Select("SELECT COUNT(*) AS nb FROM member WHERE club_id='". $club_id ."' AND school_year='" . $year . "'");
+        return $res[0] -> nb;
+
+    }
+
 
     /**
      * Fait un UPDATE ou un INSERT

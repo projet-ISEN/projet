@@ -26,6 +26,9 @@ class Member
         $this->params = $params;
     }
 
+
+
+
     /**
      * Ajoute un membre avec le login, annee, et club par default
      * @param      $user_login
@@ -40,12 +43,12 @@ class Member
         if( !$user->exist() )
         {
             return json_encode([
-                'err' => "Cet utilisateur n'éxiste pas."
+                'err' => "Cet utilisateur n'existe pas."
             ]);
         }
 
         $put = json_decode( file_get_contents("php://input"), true);
-        if( empty( $put['club_id'] ) || empty( $put['project_id'] ) ) {
+        if( empty( $put['club_id'] ) ) {
             return json_encode([
                 'err' => 'Dans quel club doit on mettre cet user?'
             ]);
@@ -102,6 +105,18 @@ class Member
         return;
     }
 
+    //callback a list with the the people who asked Capisen in first choice
+    public static function juniorCandidate() {
+
+        echo json_encode(\Models\Member::juniorCandidate( ));
+
+        //echo json_encode( $members );
+        //var_dump($idJunior);
+
+    }
+
+
+
     public static function delete( $login )
     {
         $delete = json_decode( file_get_contents("php://input"), true);
@@ -140,10 +155,30 @@ class Member
         echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
 
     }
-    public static function getMembersOfClub($club_id){
-        echo json_encode(\Models\Member::getMembersOfClub($club_id));
+    public static function getMembersOfClub($club_id, $year=null){
+        echo json_encode(\Models\Member::getMembersOfClub($club_id, $year));
 
     }
+
+
+    public static function getMemberAndIntels($club_id, $year){
+        //echo json_encode(\Models\Member::getMembersOfClub($club_id, $year));
+        $members = \Models\Member::getMembersOfClub($club_id, $year);
+        //var_dump($members);
+        foreach( $members as $value ) {
+            $user = new \Models\User( $value->login );
+            $user->load();
+            $value -> user_firstname = $user -> user_firstname;
+            $value -> user_name = $user -> user_name;
+
+            $value -> phone = $user -> phone;
+            $value -> user_mail = $user -> user_mail;
+            //var_dump($user);
+        }
+        echo json_encode($members);
+
+    }
+
 
     /**
      * Put the main_club field to 1 for this member
@@ -183,12 +218,17 @@ class Member
     }
 
 
+    public static function juniorMember($year){
+       echo \Models\Member::juniorMember($year);
+    }
+
+
     public static function noteStudent(){
 
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
 
-        $noteClub = \Models\Club::markClub($id)-> note_club;
+        $noteClub = \Models\Member::markClub($id)-> note_club;
 
         //var_dump($noteClub);
         $tempPR = true;
