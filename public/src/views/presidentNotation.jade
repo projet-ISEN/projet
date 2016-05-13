@@ -31,7 +31,6 @@ md-content( flex="75" layout='column' )
                 p {{member.project}}
 
                 p( layout="row" )
-                    span( flex="25" ) {{member.project}}
                     | {{member.user.user_firstname | firstLetterUppercase}} {{member.user.user_name | firstLetterUppercase}}
             md-input-container( flex='30' )
                 label Note

@@ -64,8 +64,8 @@ angular.module 'app'
             # Récupère les locks
             $note.isLock $routeParams.club_id, (ret) ->
 
-                $scope.locks.lock_member_mark = (ret.lock_member_mark == '1')
-                $scope.locks.lock_member_project_validation = (ret.lock_member_project_validation == '1')
+                $scope.locks.lock_member_mark = (ret.lock_member_mark == '0')
+                $scope.locks.lock_member_project_validation = (ret.lock_member_project_validation == '0')
 
                 $scope.testMark()
 

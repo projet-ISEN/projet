@@ -275,14 +275,12 @@ class Member
 
         }
 
-
-        if( (!$locks['lock_member_project_validation']  && $is_pres ) || $_SESSION['user']->isEvaluator() )
+        if( ($locks['lock_member_project_validation']  && $is_pres ) || $_SESSION['user']->isEvaluator() )
         {
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::projectValidationStudent($value),10);
             }
-
             if(count($post["member"]) == $i) echo 1;
             else echo 0;
          }
