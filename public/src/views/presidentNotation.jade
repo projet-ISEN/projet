@@ -1,29 +1,47 @@
 //
    Created by rcd18 on 12/05/2016.
 
-md-content( flex="75" )
+md-content( flex="75" layout='column' )
 
     h4 Noter les membre du club
         md-icon(style="cursor:pointer " ng-click="infoNote()") info
 
-    div( layout='column' )
-        div( layout='row' )
-            span( flex='30' ) Validation des projets
-            span( flex="70" ) Nombre de points a redistribuer
-            span( flex='30' ) Note du membre
+    h4( ng-if="clubMark" ) Note attribuée : {{clubMark.note_club}}
 
-        md-list( ng-repeat="member in members |orderBy: 'user_name'"  layout='column')
-            md-list-item.inset
-                md-switch.md-warn( ng-model='member.project_validation'  )
+    div( layout='row' )
+        span( flex='30' ) Validation des projets
+        span( flex="70" ) Nombre de points a redistribuer
+        span( flex='30' ) Note du membre
 
-                p(layout="row")
-                    span(flex="25") {{member.project}}
-                    | {{member.user_firstname | firstLetterUppercase}} {{member.user_name | firstLetterUppercase}}
-        md-input-container(flex="25")
-            label Note
-            input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="member.member_mark" required="" ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark")
-    span.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève
-    div(layout='row' layout-align='center center')
+    md-list(
+        ng-repeat="member in members |orderBy: 'user.user_name'"
+        layout='column')
+
+        md-list-item.inset
+            md-switch.md-primary(
+                ng-model='member.project_validation_bool'
+                ng-disabled="clubMark.locks.lock_member_project_validation" )
+
+            p( layout="row" )
+                span( flex="25" ) {{member.project}}
+                | {{member.user.user_firstname | firstLetterUppercase}} {{member.user.user_name | firstLetterUppercase}}
+            md-input-container
+                label Note
+                input(
+                    max="20"
+                    min="0"
+                    type="number"
+                    ng-model="member.member_mark"
+                    ng-disabled="clubMark.locks.lock_member_mark"
+                    ng-change="testMark()"
+                    required="" )
+                span( ng-if="member.member_mark < member.minMark" ) ERROR
+
+    span.red(
+        ng-show='errorMark')
+        | La somme des points de chaque membres doit être égal à la note du club x le nombre d'élève
+
+    div( layout='row' layout-align='center center' )
         md-button.md-primary.md-raised(
-        type='submit'
-        ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark || changeClub.totalClub != totalMb") Sauvegarder
+            type='submit'
+            ng-disabled='errorMark') Sauvegarder
