@@ -368,8 +368,7 @@ INSERT INTO role (id_role, role) VALUES
   (UUID(), 'président'),
   (UUID(), 'vice-président'),
   (UUID(), 'trésorier'),
-  (UUID(), 'secrétaire'),
-  (UUID(), 'membre')
+  (UUID(), 'secrétaire')
 ;
 
 
