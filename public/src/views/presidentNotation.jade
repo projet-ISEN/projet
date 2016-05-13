@@ -6,21 +6,29 @@ md-content( flex="75" layout='column' )
     h4 Noter les membre du club
         md-icon(style="cursor:pointer " ng-click="infoNote()") info
 
-    h4( ng-if="clubMark" ) Note attribuée : {{clubMark.note_club}}
+    h4( ng-if="clubMark" )        Note attribuée : {{clubMark}}
+    h4.red( ng-if="!clubMark" )   Vous n'avez pas encore de note, attendez l'évaluation par le professeur
 
     div( layout='row' )
         span( flex='30' ) Validation des projets
-        span( flex="40" ) Nombre de points a redistribuer {{restPoint}}
+        span( flex="40" ) Nombre de points a redistribuer {{restPoint || 0}}
         span( flex='30' ) Note du membre
 
-    md-list( flex="100" layout='column')
+    md-list(
+        flex="100"
+        layout='row'
+        ng-repeat="member in members |orderBy: 'user.user_name'" )
 
-        div( ng-repeat="member in members |orderBy: 'user.user_name'" layout='row')
-            md-list-item.inset( felx='70' )
-                div
-                    md-switch.md-primary(
-                        ng-model='member.project_validation_bool'
-                        ng-disabled="clubMark.locks.lock_member_project_validation" )
+
+            md-list-item( flex='70'
+                style="overflow: visible"
+                layout='row')
+
+                md-switch.md-warn(
+                    ng-model='member.project_validation_bool'
+                    ng-disabled="locks.lock_member_project_validation || member.project == 'PA'" )
+
+                p {{member.project}}
 
                 p( layout="row" )
                     span( flex="25" ) {{member.project}}
@@ -32,17 +40,22 @@ md-content( flex="75" layout='column' )
                     min="0"
                     type="number"
                     ng-model="member.member_mark"
-                    ng-disabled="clubMark.locks.lock_member_mark"
+                    ng-disabled="locks.lock_member_mark"
                     ng-change="testMark()"
                     required="" )
                 span.red( ng-if="member.member_mark < member.minMark" ) Min 10 pour un PR validé
                 span.red( ng-if="member.member_mark > member.maxMark" ) Max 9 pour un PR non validé
 
     span.red(
-        ng-show='errorMark')
+        ng-show='errorMark && !locks.lock_member_mark')
         | La somme des points de chaque membres doit être égal à la note du club x le nombre d'élève
 
     div( layout='row' layout-align='center center' )
         md-button.md-primary.md-raised(
+            ng-if='locks.lock_member_mark'
             ng-click='send()'
-            ng-disabled='errorMark') Sauvegarder
+            ng-disabled='!locks.lock_member_mark') Sauvegarder la validation des projets
+        md-button.md-primary.md-raised(
+            ng-if='locks.lock_member_project_validation'
+            ng-click='send()'
+            ng-disabled='errorMark') Sauvegarder les notes

@@ -38,8 +38,8 @@
         //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
-        $userData["Login"]      = 'mgoanv17'; //Capisen Prez
-        //$userData["Login"]      = 'tcouss17'; //Prez club
+        //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
+        $userData["Login"]      = 'tcouss17'; //Prez club
         //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
@@ -140,10 +140,6 @@ if (date("n")>7) $myYear++;
         //$router->get(      '/IDPrez',   'Role.IDPrez');
         $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
-        $router->post(      '/noteStudent',   'Member.noteStudent');
-
-        $router->post(      '/validateProjectStudent',   'Member.projectValidationStudent');
-
         $router->put(      '/lockMark/:id',   'Club.lockMark');
 
         $router->put(      '/lockProject/:id',   'Club.lockProject');
@@ -156,6 +152,7 @@ if (date("n")>7) $myYear++;
     $router->get(       '/users/:id',   'User.get');
 
     $router->get(       '/noteClub/:id',   'Club.markClub');
+    $router->post(      '/noteStudent',    'Member.noteStudent');
 
     $router->get(      '/isLock/:id',   'Club.isLock');
 
@@ -170,6 +167,7 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/projects',         'Project.getAll');
     $router->get(       '/projects/:id',   'Project.getOne');
+    $router->post(      '/validateProjectStudent',   'Member.projectValidationStudent');
 
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
