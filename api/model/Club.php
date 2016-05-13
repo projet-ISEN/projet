@@ -251,6 +251,14 @@ class Club {
     }
 
     /**
+     * Charge toutes les données du club portant l'ID de l'objet courant
+     */
+    public function juniorEntreprise() {
+
+
+    }
+
+    /**
      * Fait un UPDATE ou un INSERT en fonction du numero de club pour sauvegarder les modifications d'un club
      * @return bool
      */

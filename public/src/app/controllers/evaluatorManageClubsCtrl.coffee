@@ -31,11 +31,12 @@ angular.module 'app'
                             temp = false
 
             $scope.errorNote = temp
-            console.log "error on PR " + $scope.errorNote
-                #console.log $scope.changeClub.member
+            #console.log "error on PR " + $scope.errorNote
+            #console.log $scope.changeClub.member
             $scope.changeClub.totalClub = $scope.changeClub.member.length * $scope.changeClub.mark
-
-            $scope.changeClub.totalClub != $scope.totalMb && temp
+            #console.log "total club " + $scope.changeClub.totalClub
+            #console.log "total membre " + $scope.totalMb
+            $scope.changeClub.totalClub == $scope.totalMb && temp
 
 
 
@@ -69,7 +70,7 @@ angular.module 'app'
 
         $scope.giveMark = ->
             retourTot = $scope.tot()
-            console.log retourTot
+            console.log "retour tot  " +retourTot
             if !retourTot then errorOnMark()
             #console.log $scope.changeClub.mark
             else
