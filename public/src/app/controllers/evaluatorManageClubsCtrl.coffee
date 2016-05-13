@@ -213,6 +213,7 @@ angular.module 'app'
             $club.getMembers obj.club_id, (members)->
                 $scope.changeClub.member = members
 
+
                 angular.forEach $scope.changeClub.member, (value, key) ->
                     value.member_mark = parseInt(value.member_mark,10)
                     value.project_validation = (value.project_validation == null || value.project_validation == "1")
