@@ -220,9 +220,12 @@ class Member
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
 
-        $lockproject = \Controllers\Club::lockProject($id);
+        //$lockproject = \Controllers\Club::lockProject($id);
+        $club   = new \Models\Club();
+        $locks  = $club -> isLock($id);
+        var_dump($locks);
 
-        if(!$lockproject || $_SESSION["user"]->isEvaluator){
+        if(!$locks['lock_member_project_validation'] || $_SESSION["user"]->isEvaluator){
 
             $i = 0;
             foreach ($post["member"] as $value){

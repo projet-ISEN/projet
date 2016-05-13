@@ -118,7 +118,7 @@ class Club {
 
         if(isset($lock[0])) $lock = $lock[0];
         else $lock = [
-            'lock_member_mark'=>false, "lock_member_project_validation" => true
+            'lock_member_mark'=> '1', "lock_member_project_validation" => '0'
         ];
 
 
@@ -217,7 +217,7 @@ class Club {
 
 
     /**
-     * Note Club
+     * Récupère la note_club d'un Note Club
      */
     public static function markClub($club_id)
     {
@@ -226,9 +226,10 @@ class Club {
             "SELECT note_club FROM note_club WHERE club_id='".
             $club_id ."' AND school_year='".$year."'");
         if(isset($res[0]))$res = $res[0];
-        else $res = null;
+        else $res = [
+            'err' => null
+        ];
         return $res;
-
     }
 
 
@@ -303,6 +304,13 @@ class Club {
         return $req->execute(array('club_id'=> $this->club_id));
     }
 
+    /**
+     * Toggle state of lock case
+     * @param $id
+     * @param $case
+     *
+     * @return int
+     */
     public static function lock($id, $case) {
         $year = $_SESSION['year'];
         $res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'");

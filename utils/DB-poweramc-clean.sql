@@ -149,10 +149,10 @@ create table note_club
 (
   club_id              char(36) not null,
   school_year          int not null,
-  note_club            float,
+  note_club            float default null,
   procurement_file     char(250),
   budget               float,
-  lock_member_mark     bool default 0,
+  lock_member_mark     bool default 1,
   lock_member_project_validation bool default 0,
   primary key (club_id, school_year)
 )

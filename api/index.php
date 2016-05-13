@@ -56,8 +56,8 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
-        //$userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
+        //$userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        $userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
     }
 
 /*================================================================
@@ -138,7 +138,7 @@ if (date("n")>7) $myYear++;
 
         $router->post(      '/pushPrez',   'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
-        $router->get(      '/whoPrez/:clubId',   'Role.whoPrez');
+        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
         $router->post(      '/noteStudent',   'Member.noteStudent');
 
@@ -148,12 +148,7 @@ if (date("n")>7) $myYear++;
 
         $router->put(      '/lockProject/:id',   'Club.lockProject');
 
-
-
-
         $router->post( '/noteClub',   'Club.giveClubMark');
-
-
 
     }
     $router->get(       '/users/:id',   'User.get');

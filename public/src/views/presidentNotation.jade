@@ -10,22 +10,22 @@ md-content( flex="75" layout='column' )
 
     div( layout='row' )
         span( flex='30' ) Validation des projets
-        span( flex="70" ) Nombre de points a redistribuer {{restPoint}}
+        span( flex="40" ) Nombre de points a redistribuer {{restPoint}}
         span( flex='30' ) Note du membre
 
-    md-list(
-        ng-repeat="member in members |orderBy: 'user.user_name'"
-        layout='column')
+    md-list( flex="100" layout='column')
 
-        md-list-item.inset
-            md-switch.md-primary(
-                ng-model='member.project_validation_bool'
-                ng-disabled="clubMark.locks.lock_member_project_validation" )
+        div( ng-repeat="member in members |orderBy: 'user.user_name'" layout='row')
+            md-list-item.inset( felx='70' )
+                div
+                    md-switch.md-primary(
+                        ng-model='member.project_validation_bool'
+                        ng-disabled="clubMark.locks.lock_member_project_validation" )
 
-            p( layout="row" )
-                span( flex="25" ) {{member.project}}
-                | {{member.user.user_firstname | firstLetterUppercase}} {{member.user.user_name | firstLetterUppercase}}
-            md-input-container
+                p( layout="row" )
+                    span( flex="25" ) {{member.project}}
+                    | {{member.user.user_firstname | firstLetterUppercase}} {{member.user.user_name | firstLetterUppercase}}
+            md-input-container( flex='30' )
                 label Note
                 input(
                     max="20"
@@ -35,8 +35,8 @@ md-content( flex="75" layout='column' )
                     ng-disabled="clubMark.locks.lock_member_mark"
                     ng-change="testMark()"
                     required="" )
-                span( ng-if="member.member_mark < member.minMark" ) Min 10 pour un PR validé
-                span( ng-if="member.member_mark > member.maxMark" ) Max 9 pour un PR non validé
+                span.red( ng-if="member.member_mark < member.minMark" ) Min 10 pour un PR validé
+                span.red( ng-if="member.member_mark > member.maxMark" ) Max 9 pour un PR non validé
 
     span.red(
         ng-show='errorMark')
