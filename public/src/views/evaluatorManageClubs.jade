@@ -87,9 +87,9 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
                 md-input-container(flex="25" ng-hide="user.project == 'PR+'")
                     label Note
                     input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="" ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark")
-            p.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève
+            p.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève, nombre de points à distribuer: {{changeClub.totalClub - totalMb}}
 
-            p.red(ng-show="!errorNote") Un PR calidé doit avoir au minimum 10 et un invalidé ne peut pas avoir plus de 9
+            p.red(ng-show="!errorNote") Un PR validé doit avoir au minimum 10 et un invalidé ne peut pas avoir plus de 9
 
             div(layout='row' layout-align='center center')
                 md-button.md-primary.md-raised(

@@ -152,9 +152,9 @@ class Classe
 
         $test = Database::Select("SELECT classe_name FROM classe WHERE login='". $this->login .
                                 "' AND school_year='". $this->school_year ."'");
-
+        //var_dump($test[0]);
         // Création
-        if( empty($test[0]['login']) ){
+        if( empty($test[0]->classe_name) ){
 
             $req = Database::getInstance()->PDOInstance->prepare(
                 "INSERT INTO classe (school_year, login, classe_name) ".

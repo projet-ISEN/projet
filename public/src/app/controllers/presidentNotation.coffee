@@ -50,7 +50,6 @@ angular.module 'app'
                 member.project_validation_bool  = member.project_validation == '1' || member.project_validation == null
 
             $note.note $routeParams.club_id, (ret) ->
-                console.log ret
                 if ret.err != null && ret.note_club != null
                     $scope.clubMark = ret
 

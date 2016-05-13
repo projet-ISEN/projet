@@ -183,6 +183,7 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/role',   'Role.getAll');
 
+    $router->get(       '/year',   'Year.currentYear');
     $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
 
 

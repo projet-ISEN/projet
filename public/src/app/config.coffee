@@ -70,6 +70,11 @@ angular.module('app')
             controller: 'manageClubCtrl'
             label: "Gestion du club"
 
+        .when '/recruCapisen',
+            templateUrl: 'views/recruCapisen.html'
+            controller: 'recruCapisenCtrl'
+            label: "Recrutement"
+
         .otherwise
             redirectTo:'/'
 
