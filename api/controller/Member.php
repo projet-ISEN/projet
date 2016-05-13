@@ -226,7 +226,7 @@ class Member
     {
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
-        
+
         $club   = new \Models\Club();
         $locks  = $club -> isLock($id);
 

@@ -1,21 +1,42 @@
-md-card
-    md-card-content
-        p.
-            Vous allez pouvoir faire votre choix de recrutement pour l'année prochaine ({{year}}/{{year + 1}}).
-        p.
-            Cette validation ne sera possible qu'une seul fois. Pour toutemodification
-            ultérieur vous devrez vous référer à un administrateur (équipe FHS).
+md-content
+    md-card
+        md-card-content
+            p.
+                Vous allez pouvoir faire votre choix de recrutement pour l'année prochaine ({{year -1}}/{{year}}).
+            p.
+                Cette validation ne sera possible qu'une seul fois. Pour toutemodification
+                ultérieur vous devrez vous référer à un administrateur (équipe FHS).
 
-form( name='choiceprez' ng-submit='giveMark()' layout-padding)
-            div(layout="row")
-                span(flex="75") Personnes ayant demandé un recrutement
-                span.align-left(flex="25" layout-align="center center") Validation
+    div(layout-padding ng-hide="alreadyMembers")
+        div(layout="row")
+            span(flex="75") Personnes ayant demandé un recrutement
+            span.align-left(flex="25" layout-align="center center") Validation
 
-            div(  layout="row")
-                md-list(flex="100")
-                    md-list-item.inset
+        div(  layout="row")
+            md-list(flex="100")
+                md-list-item.inset(ng-repeat="user in candidates")
 
-                        img.md-avatar(src='1' onerror="this.src='images/blank-person.png'")
-                        p bullshit
+                    img.md-avatar(src='1' onerror="this.src='images/blank-person.png'")
+                    p {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
 
-                        md-switch.md-warn()
+                    md-switch.md-warn(ng-model = "user.select")
+        div(layout='row' layout-align='center center')
+            md-button.md-primary.md-raised(
+                ng-click='juniorChoice()'
+                ng-disabled = "") Sauvegarder
+
+    div(layout-padding ng-show="alreadyMembers")
+        div(layout="row")
+            h3 Personnes qui feront partie de Capisen pour l'année {{year -1}}/{{year}}
+
+        div(  layout="row")
+            md-list(flex="100")
+                md-list-item.inset.md-2-line(ng-repeat="user in members")
+
+                    img.md-avatar(src='1' onerror="this.src='images/blank-person.png'")
+                    div.md-list-item-text
+                        h3 {{user.user_firstname | firstLetterUppercase}} {{user.user_name | firstLetterUppercase}}
+                        p(layout="row")
+                            span(flex="70" ng-show="user.user_mail != null") Mail: {{user.user_mail }}
+                            span(flex="30" ng-show="user.phone != null") tel: {{user.phone}}
+

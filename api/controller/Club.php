@@ -45,6 +45,9 @@ class Club
         echo json_encode($club);
     }
 
+    public static function juniorEntrepriseID() {
+        echo \Models\Club::juniorEntrepriseID();
+    }
 
     public static function stat( $id_Club )
     {
@@ -116,10 +119,13 @@ class Club
 
     }
 
+
+
     /**
      * Supprime un club existant
      * @param $id
      */
+
     public static function delete( $id_Club ) {
 
         $club = new \Models\Club($id_Club);

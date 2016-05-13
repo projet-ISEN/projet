@@ -145,6 +145,8 @@ if (date("n")>7) $myYear++;
         $router->post( '/noteClub',   'Club.giveClubMark');
 
     }
+
+
     $router->get(       '/users/:id',   'User.get');
 
     $router->get(       '/noteClub/:id',   'Club.markClub');
@@ -155,7 +157,6 @@ if (date("n")>7) $myYear++;
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
     $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
-    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
     $router->get(       '/menu', 'Menu.jsonMenu'    );
 
@@ -168,6 +169,8 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/clubs',       'Club.getAll');
     $router->get(       '/clubs/:id/stat', 'Club.stat');
+    $router->get(       '/clubs/junior', 'Club.juniorEntrepriseID');
+    $router->get(       '/clubs/junior/candidate/:year', 'Member.juniorMember');
 
     $router->get(       '/effectifs',        'Effectif.getAll');
     $router->get(       '/effectifs/:id',    'Effectif.getOne');
@@ -181,6 +184,10 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/year',   'Year.currentYear');
     $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
+    $router->get(       '/members/club/:id/:year',   'Member.getMemberAndIntels');
+
+    $router->get(       '/capisen/candidate',   'Member.juniorCandidate');
+    $router->put(      '/members/:user_login/:main_club/:year',      'Member.addClub');
 
 
 

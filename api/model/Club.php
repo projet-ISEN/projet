@@ -255,11 +255,17 @@ class Club {
 
     }
 
-    /**
-     * Charge toutes les données du club portant l'ID de l'objet courant
-     */
-    public function juniorEntreprise() {
 
+    public static function juniorEntrepriseID() {
+
+        $res = Database::getInstance()->PDOInstance->query("SELECT club_id FROM club WHERE club_name='". $_SESSION['Capisen'] ."'")
+            ->fetchAll( \PDO::FETCH_ASSOC );
+        //var_dump($res);
+
+        if(!empty($res)){
+            return $res[0]["club_id"];
+        }
+        else return null;
 
     }
 
