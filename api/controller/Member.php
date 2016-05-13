@@ -213,7 +213,9 @@ class Member
         //var_dump($lockmark);
         //var_dump(\Controllers\Club::lockMark($id));
 
-        if($total_member == $total && !$lockmark && $tempPR){
+        //var_dump($total_member == $total && !$lockmark);
+
+        if($total_member == $total && $lockmark && $tempPR){
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::noteStudent($value),10);
