@@ -4,6 +4,7 @@
 angular.module('app')
 .service '$member', ['$http', ($http)->
 
+    # Les clubs d'un user
     @one = (login, cb)->
         $http(
             method: 'GET'
@@ -15,6 +16,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
+    # Ajoute un club à ce user avec ce projet
     @add = (login, club, projet, cb)->
         $http(
             method: 'PUT'
@@ -29,6 +31,7 @@ angular.module('app')
             console.log err
             cb err
 
+    # Change le club principale d'un membre
     @setMain = (login, club, cb)->
         $http(
             method: 'PUT'
@@ -42,6 +45,7 @@ angular.module('app')
             console.log err
             cb err
 
+    # Supprime un membre d'un club
     @delete = (login, club, cb)->
         $http(
             method: 'DELETE'
@@ -54,6 +58,5 @@ angular.module('app')
         , (err)->              # On error
             console.log err
             cb err
-
     return @
 ]

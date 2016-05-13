@@ -35,11 +35,11 @@
         //test variable
 
         //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
-        //$userData["Login"]      = 'tcouss17'; //Prez club
+        $userData["Login"]      = 'tcouss17'; //Prez club
         //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
@@ -56,8 +56,8 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
-        //$userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
+        //$userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        $userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
     }
 
 /*================================================================
@@ -115,7 +115,7 @@ if (date("n")>7) $myYear++;
 
         $router->get(      '/users',                   'User.getAll');
         
-        $router->put(      '/members/:user_login',     'Member.addClub');
+        $router->put(      '/members/:user_login',      'Member.addClub');
         $router->get(      '/members/:user_id',         'Member.get');
         $router->put(      '/members/setMain/:login',   'Member.setMain');
         $router->delete(   '/members/:login',           'Member.delete');
@@ -136,8 +136,6 @@ if (date("n")>7) $myYear++;
         $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
 
         $router->get(       '/clubs/:id',   'Club.getOne');
-
-        $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
 
         $router->get(       '/users/:id',   'User.get');
 
@@ -164,10 +162,10 @@ if (date("n")>7) $myYear++;
 
 
     }
-    $router->get( '/noteClub/:id',   'Club.markClub');
+    $router->get(       '/noteClub/:id',   'Club.markClub');
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
-        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
+    $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
 
     $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
 
@@ -190,6 +188,8 @@ if (date("n")>7) $myYear++;
     $router->post(      '/notes/:id',        'NotationProf.setNote');
 
     $router->get(       '/role',   'Role.getAll');
+
+    $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
 
 
 

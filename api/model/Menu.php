@@ -134,7 +134,7 @@ class Menu {
                             ],
 
                             [
-                                "link" => '',
+                                "link" => '#/clubs/'. $club_id . '/notation',
                                 "title" => 'Notation',
                                 "icon" => 'dashboard',
                                 "active" => false
