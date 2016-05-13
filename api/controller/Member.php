@@ -241,8 +241,6 @@ class Member
 
         }
 
-        var_dump($locks['lock_member_project_validation']);
-        var_dump($_SESSION['user']->isEvaluator());
         if( (!$locks['lock_member_project_validation']  && $is_pres ) || $_SESSION['user']->isEvaluator() )
         {
             $i = 0;
