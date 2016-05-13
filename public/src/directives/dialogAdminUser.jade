@@ -8,7 +8,10 @@ md-dialog(ng-cloak layout-padding flex="75")
 
 
         md-list
-            md-subheader.md-no-sticky Clubs de {{user.user_firstname}}
+            md-subheader.md-no-sticky
+                span Clubs de {{user.user_firstname}}
+                span.pull-right Club principal
+
 
             md-list-item.md-2-line.secondary-button-padding(
                 ng-repeat='member in userMembers | orderBy : club_name')

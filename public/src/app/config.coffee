@@ -35,6 +35,11 @@ angular.module('app')
             controller: 'contactInClubCtrl'
             label: "Contacts"
 
+        .when '/clubs/:club_id/notation',
+            templateUrl: 'views/presidentNotation.html'
+            controller:  'presidentNotation'
+            label:       'Evaluation'
+
         .when '/candidature/',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'

@@ -27,5 +27,5 @@ angular.module('app')
             cb null
         return
 
-    return this
+    return @
 ]
