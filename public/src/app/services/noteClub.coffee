@@ -16,7 +16,7 @@ angular.module('app')
         return
 
 
-
+    # Récupère la note d'un club
     @note = (id, cb)->
         $http(
             method: 'GET'
@@ -29,12 +29,12 @@ angular.module('app')
             cb null
         return
 
-    @noteStudent = (member, cb)->
+    @noteStudent = (members, cb)->
         $http(
             method: 'POST'
             url: "../../api/noteStudent"
             data:
-                member:member
+                member:members
 
         ).then (res)->          # On success
             cb res.data

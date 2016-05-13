@@ -6,8 +6,8 @@ md-content( flex="75" layout='column' )
     h4 Noter les membre du club
         md-icon(style="cursor:pointer " ng-click="infoNote()") info
 
-    h4( ng-if="clubMark.note_club" )        Note attribuée : {{clubMark.note_club}}
-    h4.red( ng-if="!clubMark.note_club" )   Vous n'avez pas encore de note, attendez l'évaluation par le professeur
+    h4( ng-if="clubMark" )        Note attribuée : {{clubMark}}
+    h4.red( ng-if="!clubMark" )   Vous n'avez pas encore de note, attendez l'évaluation par le professeur
 
     div( layout='row' )
         span( flex='30' ) Validation des projets
@@ -26,7 +26,9 @@ md-content( flex="75" layout='column' )
 
                 md-switch.md-warn(
                     ng-model='member.project_validation_bool'
-                    ng-disabled="clubMark.locks.lock_member_project_validation" )
+                    ng-disabled="locks.lock_member_project_validation || member.project_type == 'PA'" )
+
+                p {{member.project_type}}
 
                 p( layout="row" )
                     span( flex="25" ) {{member.project}}
@@ -38,17 +40,22 @@ md-content( flex="75" layout='column' )
                     min="0"
                     type="number"
                     ng-model="member.member_mark"
-                    ng-disabled="clubMark.locks.lock_member_mark"
+                    ng-disabled="locks.lock_member_mark"
                     ng-change="testMark()"
                     required="" )
                 span.red( ng-if="member.member_mark < member.minMark" ) Min 10 pour un PR validé
                 span.red( ng-if="member.member_mark > member.maxMark" ) Max 9 pour un PR non validé
 
     span.red(
-        ng-show='errorMark')
+        ng-show='errorMark && !locks.lock_member_mark')
         | La somme des points de chaque membres doit être égal à la note du club x le nombre d'élève
 
     div( layout='row' layout-align='center center' )
         md-button.md-primary.md-raised(
+            ng-if='locks.lock_member_mark'
             ng-click='send()'
-            ng-disabled='errorMark') Sauvegarder
+            ng-disabled='!locks.lock_member_mark') Sauvegarder la validation des projets
+        md-button.md-primary.md-raised(
+            ng-if='locks.lock_member_project_validation'
+            ng-click='send()'
+            ng-disabled='errorMark') Sauvegarder les notes

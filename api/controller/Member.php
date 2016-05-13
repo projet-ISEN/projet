@@ -223,28 +223,36 @@ class Member
 
     }
 
-    public static function projectValidationStudent(){
-
+    public static function projectValidationStudent()
+    {
         $post = json_decode( file_get_contents("php://input"), true);
         $id =  ($post["member"][0]['club_id']);
         
         $club   = new \Models\Club();
         $locks  = $club -> isLock($id);
-        var_dump($locks);
 
-        if(!$locks['lock_member_project_validation'] || $_SESSION["user"]->isEvaluator){
 
+        $role       = \Models\Role::whichRoleID( $_SESSION['year'], $id, $_SESSION['user']->login );
+        if( empty($role[0]->id_role) ) {
+            $is_pres = false;
+        }
+        else {
+            $is_pres = \Models\Role::ID2Role( $role[0]->id_role ) == $_SESSION['president'];
+
+        }
+
+        var_dump($locks['lock_member_project_validation']);
+        var_dump($_SESSION['user']->isEvaluator());
+        if( (!$locks['lock_member_project_validation']  && $is_pres ) || $_SESSION['user']->isEvaluator() )
+        {
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::projectValidationStudent($value),10);
             }
 
-            if(count($post["member"]) == $i)
-                echo 1;
+            if(count($post["member"]) == $i) echo 1;
             else echo 0;
-         } else echo 0;
-
+         }
+         else echo 0;
     }
-
-
 }

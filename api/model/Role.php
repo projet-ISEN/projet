@@ -19,14 +19,14 @@ class Role {
     // Tout les attributs doivent correspondre à la table correspondante
 
 
- public $role_name;
- public $role_id;
+     public $role_name;
+     public $role_id;
 
     /**
      * Role constructor.
      */
     public function __construct( ) {
-        $this->role_name           = "";
+        $this->role_name         = "";
         $this->role_id           = "";
     }
 
@@ -35,11 +35,10 @@ class Role {
      * Return an array of IDs of role or false
      * @return string
      */
-    public static function whichRoleID($year,$club_id,$login){
-
+    public static function whichRoleID($year,$club_id,$login)
+    {
         $role = Database::Select("SELECT id_role FROM role_link WHERE club_id='".$club_id."' AND login = '".$login."' AND school_year='".$year."'");
         return (isset($role[0]->id_role))? $role : false;
-
     }
 
     //renvoie le login des role dans un club l'année courante
