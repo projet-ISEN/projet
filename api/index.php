@@ -40,7 +40,7 @@
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         $userData["Login"]      = 'mgoanv17'; //Capisen Prez
         //$userData["Login"]      = 'tcouss17'; $userData["gidNumber"]  = '1102';//Prez club
-        //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
+        $userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
