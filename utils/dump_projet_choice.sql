@@ -1,195 +1,193 @@
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aauffr20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aauffr20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aauffr20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ablond19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ablond19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ablond19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('acariv20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('acariv20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('acariv20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aclave19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aclave19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aclave19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('afouca19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('afouca19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('afouca19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alegue19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alegue19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alegue19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alinig20', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alinig20', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alinig20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alucas20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alucas20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('alucas20', 'ab0df346-15be-11e6-8c14-363366383662', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('amarde20', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('amarde20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('amarde20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('apreme19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('apreme19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('apreme19', 'ab0df2e2-15be-11e6-8c14-363366383662', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aregna20', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aregna20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('aregna20', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cbaron19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cbaron19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cbaron19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cboyer19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cboyer19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cboyer19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgallo19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgallo19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgallo19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgroll19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgroll19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cgroll19', '7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cheuve19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cheuve19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cheuve19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cpoiss19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cpoiss19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('cpoiss19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('dcrenn19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('dcrenn19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('dcrenn19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('echeva19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('echeva19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('echeva19', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('elesao20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('elesao20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('elesao20', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('equill19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('equill19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('equill19', 'ab0df318-15be-11e6-8c14-363366383662', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('eroue020', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('eroue020', '7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('eroue020', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('erouza20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('erouza20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('erouza20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fcheva19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fcheva19', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fcheva19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('flucas19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('flucas19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('flucas19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ftanne19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ftanne19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ftanne19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fthiba20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fthiba20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('fthiba20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gedern19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gedern19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gedern19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gletro19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gletro19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gletro19', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('glibou19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('glibou19', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('glibou19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gmonne20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gmonne20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('gmonne20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jbenez19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jbenez19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jbenez19', 'ab0df318-15be-11e6-8c14-363366383662', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jboise20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jboise20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jboise20', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jdiver19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jdiver19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jdiver19', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jperra19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jperra19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('jperra19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lguegu20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lguegu20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lguegu20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemag19', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemag19', '7cbed4ba-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemag19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemeu20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemeu20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('llemeu20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lpouch20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lpouch20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('lpouch20', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mbouad20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mbouad20', 'ab0df152-15be-11e6-8c14-363366383662', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mbouad20', 'ab0df2e2-15be-11e6-8c14-363366383662', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mcabon', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mcabon', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mcabon', '7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mferra20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mferra20', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mferra20', 'ab0df2e2-15be-11e6-8c14-363366383662', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mgauth17', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mgauth17', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mgauth17', 'ab0df346-15be-11e6-8c14-363366383662', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlariv19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlariv19', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlariv19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlegal19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlegal19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('mlegal19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nbaron19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nbaron19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nbaron19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nkorpe19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nkorpe19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nkorpe19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nserio19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nserio19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('nserio19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('oburti19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('oburti19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('oburti19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('panton20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('panton20', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('panton20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('papich20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('papich20', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('papich20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pedieu20', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pedieu20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pedieu20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pleple19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pleple19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('pleple19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('qsolli20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('qsolli20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('qsolli20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('sheng020', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('sheng020', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('sheng020', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('slevro20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('slevro20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('slevro20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tbaron20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tbaron20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tbaron20', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tlelie20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tlelie20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tlelie20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tmal0019', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tmal0019', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tmal0019', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tpicar20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tpicar20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('tpicar20', '7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vprin020', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vprin020', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vprin020', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vsilva19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vsilva19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('vsilva19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('wbeaup20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('wbeaup20', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('wbeaup20', 'ab0df318-15be-11e6-8c14-363366383662', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ydumor20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ydumor20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('ydumor20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('yleflo20', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('yleflo20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2);
-INSERT INTO projet.choice (login, club_id, choice_number) VALUES ('yleflo20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
+INSERT INTO choice (login, club_id, choice_number) VALUES
+  ('aauffr20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('aauffr20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('aauffr20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('ablond19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('ablond19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('ablond19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('acariv20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('acariv20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('acariv20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('aclave19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('aclave19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('aclave19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('afouca19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('afouca19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('afouca19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('alegue19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('alegue19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('alegue19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('alinig20', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('alinig20', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('alinig20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('alucas20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('alucas20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('alucas20', 'ab0df346-15be-11e6-8c14-363366383662', 3),
+  ('amarde20', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('amarde20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('amarde20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('apreme19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('apreme19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('apreme19', 'ab0df2e2-15be-11e6-8c14-363366383662', 2),
+  ('aregna20', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('aregna20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('aregna20', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cbaron19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('cbaron19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cbaron19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cboyer19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cboyer19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cboyer19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('cgallo19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('cgallo19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cgallo19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cgroll19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cgroll19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cgroll19', '7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('cheuve19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cheuve19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cheuve19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('cpoiss19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('cpoiss19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('cpoiss19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('dcrenn19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('dcrenn19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('dcrenn19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('echeva19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('echeva19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('echeva19', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('elesao20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('elesao20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('elesao20', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('equill19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('equill19', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('equill19', 'ab0df318-15be-11e6-8c14-363366383662', 2),
+  ('eroue020', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('eroue020', '7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('eroue020', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('erouza20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('erouza20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('erouza20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('fcheva19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('fcheva19', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('fcheva19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('flucas19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('flucas19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('flucas19', '7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('ftanne19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('ftanne19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('ftanne19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('fthiba20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('fthiba20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('fthiba20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('gedern19', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('gedern19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('gedern19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('gletro19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('gletro19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('gletro19', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('glibou19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('glibou19', '7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('glibou19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('gmonne20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('gmonne20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('gmonne20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('jbenez19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('jbenez19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('jbenez19', 'ab0df318-15be-11e6-8c14-363366383662', 3),
+  ('jboise20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('jboise20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('jboise20', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('jdiver19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('jdiver19', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('jdiver19', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('jperra19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('jperra19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('jperra19', '7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('lguegu20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('lguegu20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('lguegu20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('llemag19', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('llemag19', '7cbed4ba-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('llemag19', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('llemeu20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('llemeu20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('llemeu20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('lpouch20', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('lpouch20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('lpouch20', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('mbouad20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('mbouad20', 'ab0df152-15be-11e6-8c14-363366383662', 3),
+  ('mbouad20', 'ab0df2e2-15be-11e6-8c14-363366383662', 2),
+  ('mferra20', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('mferra20', '7cbed778-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('mferra20', 'ab0df2e2-15be-11e6-8c14-363366383662', 3),
+  ('mgauth17', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('mgauth17', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('mgauth17', 'ab0df346-15be-11e6-8c14-363366383662', 2),
+  ('mlariv19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('mlariv19', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('mlariv19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('mlegal19', '7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 3);
+  ('mlegal19', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('mlegal19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('nbaron19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('nbaron19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('nbaron19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('nkorpe19', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('nkorpe19', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('nkorpe19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('nserio19', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('nserio19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('nserio19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('oburti19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('oburti19', '7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('oburti19', '7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('panton20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('panton20', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('panton20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('papich20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('papich20', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('papich20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('pedieu20', '7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('pedieu20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('pedieu20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('pleple19', '7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('pleple19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('pleple19', '7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('qsolli20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('qsolli20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('qsolli20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('sheng020', '7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('sheng020', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('sheng020', '7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('slevro20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('slevro20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('slevro20', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('tbaron20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('tbaron20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('tbaron20', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('tlelie20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('tlelie20', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('tlelie20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('tmal0019', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('tmal0019', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('tmal0019', '7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('tpicar20', '7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('tpicar20', '7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('tpicar20', '7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('vprin020', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('vprin020', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('vprin020', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('vsilva19', '7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('vsilva19', '7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('vsilva19', '7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('wbeaup20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('wbeaup20', '7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('wbeaup20', 'ab0df318-15be-11e6-8c14-363366383662', 2),
+  ('ydumor20', '7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 3),
+  ('ydumor20', '7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('ydumor20', '7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('yleflo20', '7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 1),
+  ('yleflo20', '7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 2),
+  ('yleflo20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
