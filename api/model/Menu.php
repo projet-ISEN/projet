@@ -168,11 +168,11 @@ class Menu {
     public static function addMenuCapisen() {
         return [
                     'Capisenadministration' => [
-                    'name' => 'Capisen',
+                    'name' => 'Capisen Recrutement',
                     'expanded' => false,
                     'values' => [
                             [
-                                "link" => '',
+                                "link" => '#/recruCapisen',
                                 "title" => 'Recrutement',
                                 "icon" => 'dashboard',
                                 "active" => false
