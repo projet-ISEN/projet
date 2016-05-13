@@ -222,6 +222,40 @@ class Member
             else echo 0;
          } else echo 0;
     }
+      //callback a list with the the people who asked Capisen in first choice
+    public static function juniorCandidate() {
+
+        echo json_encode(\Models\Member::juniorCandidate( ));
+
+        //echo json_encode( $members );
+        //var_dump($idJunior);
+
+    }
+
+    public static function getMemberAndIntels($club_id, $year){
+         //echo json_encode(\Models\Member::getMembersOfClub($club_id, $year));
+         $members = \Models\Member::getMembersOfClub($club_id, $year);
+         //var_dump($members);
+         foreach( $members as $value ) {
+             $user = new \Models\User( $value->login );
+             $user->load();
+             $value -> user_firstname = $user -> user_firstname;
+             $value -> user_name = $user -> user_name;
+
+             $value -> phone = $user -> phone;
+             $value -> user_mail = $user -> user_mail;
+             //var_dump($user);
+         }
+         echo json_encode($members);
+
+     }
+
+
+    public static function juniorMember($year){
+        echo \Models\Member::juniorMember($year);
+     }
+
+
 
     public static function projectValidationStudent()
     {
