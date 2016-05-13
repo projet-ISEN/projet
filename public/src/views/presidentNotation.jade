@@ -10,7 +10,7 @@ md-content( flex="75" layout='column' )
 
     div( layout='row' )
         span( flex='30' ) Validation des projets
-        span( flex="70" ) Nombre de points a redistribuer
+        span( flex="70" ) Nombre de points a redistribuer {{restPoint}}
         span( flex='30' ) Note du membre
 
     md-list(
@@ -35,7 +35,8 @@ md-content( flex="75" layout='column' )
                     ng-disabled="clubMark.locks.lock_member_mark"
                     ng-change="testMark()"
                     required="" )
-                span( ng-if="member.member_mark < member.minMark" ) ERROR
+                span( ng-if="member.member_mark < member.minMark" ) Min 10 pour un PR validé
+                span( ng-if="member.member_mark > member.maxMark" ) Max 9 pour un PR non validé
 
     span.red(
         ng-show='errorMark')
@@ -43,5 +44,5 @@ md-content( flex="75" layout='column' )
 
     div( layout='row' layout-align='center center' )
         md-button.md-primary.md-raised(
-            type='submit'
+            ng-click='send()'
             ng-disabled='errorMark') Sauvegarder
