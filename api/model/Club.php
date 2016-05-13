@@ -123,7 +123,7 @@ class Club {
             ];
         }
         else $lock = [
-            'lock_member_mark'=> '1', "lock_member_project_validation" => '0'
+            'lock_member_mark'=> '0', "lock_member_project_validation" => '1'
         ];
 
 
