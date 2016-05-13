@@ -5,7 +5,7 @@ angular.module("app").controller 'sidenavCtrl', [
   '$location'
   '$rootScope'
   ($scope, $mdSidenav, $menu, $location, $rootScope) ->
-    
+
 
     $scope.pageNumber = 0;
     $menu.myMenu().then (menu)->
@@ -41,8 +41,12 @@ angular.module("app").controller 'sidenavCtrl', [
                     value.expanded = true
 
                     # Exception for just / url
+                    console.log $location.path()
+                    console.log
                     if $location.path() == '/' and item.link != '#/'
-                        item.active = false
+                        item.active     = false
+                        if i != 1
+                            value.expanded = false
                 else
                     item.active = false
 ]

@@ -40,7 +40,7 @@ angular.module('app')
             controller:  'presidentNotation'
             label:       'Evaluation'
 
-        .when '/candidature/',
+        .when '/candidature',
             templateUrl: 'views/candidature.html'
             controller:  'candidatureCtrl'
             label: "Candidature"
@@ -50,7 +50,7 @@ angular.module('app')
             controller: 'administrationCtrl'
             label: "Administration"
 
-        .when '/administration/users',
+        .when '/adminUsers',
             templateUrl: 'views/administrationUsers.html'
             controller: 'administrationUsersCtrl'
             label: "Administration des utilisateurs"
