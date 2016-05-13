@@ -56,7 +56,7 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        $userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
+        //$userData["gidNumber"]  = '1000'; // numero de groupe (voir ci-dessous)
         //$userData["gidNumber"]  = '1102'; // numero de groupe (voir ci-dessous)
     }
 
@@ -190,6 +190,8 @@ if (date("n")>7) $myYear++;
     $router->post(      '/notes/:id',        'NotationProf.setNote');
 
     $router->get(       '/role',   'Role.getAll');
+
+    $router->get(       '/year',   'Year.currentYear');
 
 
 
