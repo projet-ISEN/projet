@@ -346,7 +346,22 @@ references role (id_role) on delete restrict on update restrict;
 
 
 
-INSERT INTO year (school_year) VALUES (2016);
+INSERT INTO year (school_year) VALUES
+    (2016),
+    (2017),
+    (2018),
+    (2019),
+    (2020),
+    (2021),
+    (2022),
+    (2023),
+    (2024),
+    (2025),
+    (2026),
+    (2027),
+    (2028),
+    (2029),
+    (2030);
 
 
 INSERT INTO role (id_role, role) VALUES

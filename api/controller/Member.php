@@ -37,15 +37,16 @@ class Member
         if( empty($year) ) $year = $_SESSION['year'];
 
         $user = new \Models\User($user_login);
-        if( !$user->exist() )
-        {
+        if( !$user->exist() ){
+
             return json_encode([
-                'err' => "Cet utilisateur n'éxiste pas."
+                'err' => "Cet utilisateur n'existe pas."
             ]);
         }
 
         $put = json_decode( file_get_contents("php://input"), true);
-        if( empty( $put['club_id'] ) || empty( $put['project_id'] ) ) {
+        if( empty( $put['club_id'] ) ) {  //empty( $put['project_id']) need to push without project
+
             return json_encode([
                 'err' => 'Dans quel club doit on mettre cet user?'
             ]);

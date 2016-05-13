@@ -38,7 +38,7 @@
         //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
-        //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
+        $userData["Login"]      = 'mgoanv17'; //Capisen Prez
         //$userData["Login"]      = 'tcouss17'; $userData["gidNumber"]  = '1102';//Prez club
         $userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
