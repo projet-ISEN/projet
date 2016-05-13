@@ -131,7 +131,7 @@ create table member
   login                char(8) not null,
   school_year          int not null,
   id_projet_club       char(36),
-  project_id           char(36) not null,
+  project_id           char(36),
   main_club            bool not null,
   member_mark          float,
   ex_member_not_wanted bool,

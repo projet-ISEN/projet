@@ -241,6 +241,7 @@ class Member
 
         }
 
+
         if( (!$locks['lock_member_project_validation']  && $is_pres ) || $_SESSION['user']->isEvaluator() )
         {
             $i = 0;

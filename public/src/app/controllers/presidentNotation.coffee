@@ -82,6 +82,11 @@ angular.module 'app'
                 # Envoi pour enregistrement
                 $note.validateProjectStudent $scope.members, (res) ->
                     console.log res
+                    if res == '1'
+                        $mdToast.showSimple "Enregistré !"
+                    else
+                        $mdToast.showSimple "Un problème est survenu !"
+
 
             else
                 # On balance les notes
