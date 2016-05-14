@@ -35,12 +35,12 @@
         //test variable
 
         //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
         //$userData["Login"]      = 'tcouss17'; //Prez club
-        $userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
+        //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
@@ -117,6 +117,10 @@ if (date("n")>7) $myYear++;
         $router->get(      '/members/:user_id',         'Member.get');
         $router->put(      '/members/setMain/:login',   'Member.setMain');
         $router->delete(   '/members/:login',           'Member.delete');
+
+
+
+        $router->get(   '/repartition/:year',           'Repartition.repartition');
 
     // ONLY NOT ADMINISTRATOR
     } elseif(!$_SESSION['user']->is_administrator)

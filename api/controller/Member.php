@@ -26,6 +26,9 @@ class Member
         $this->params = $params;
     }
 
+
+
+
     /**
      * Ajoute un membre avec le login, annee, et club par default
      * @param      $user_login
