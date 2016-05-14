@@ -62,13 +62,40 @@ class repartition
 
 
 
+    public static function mergeAObjectInArray($member, $choice){
+
+        $merge = [];
+
+           foreach($member as $valueA){
+               $temp = (object)[];
+               foreach($choice as $valueB){
+                   if($valueA -> login == $valueB -> login){
+                       $temp = $valueB;
+                       $temp -> project_id = $valueA -> project_id;
+                       break;
+                   }
+
+               }
+               array_push($merge, $temp);
+           }
+        return $merge;
+    }
+
+
+
     public static function score($findAClubFor, $i){
 
             $choice = self::whatTheChoices($i);
-            var_dump($choice[0]);
-           foreach($findAClubFor as $value){
 
-           }
+            $completeINfo = self::mergeAObjectInArray($findAClubFor,$choice);
+
+
+            var_dump($choice[0]);
+
+
+            var_dump($completeINfo[0]);
+
+
     }
 
 
