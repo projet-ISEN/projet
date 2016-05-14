@@ -188,7 +188,7 @@ if (date("n")>7) $myYear++;
     $router->get(       '/role',                'Role.getAll');
 
     $router->get(       '/year',                'Year.currentYear');
-    $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
+    $router->get(       '/members/club/:id',                'Member.getMembersOfClub');
     $router->get(       '/members/club/:id/:year',          'Member.getMemberAndIntels');
     $router->get(       '/members/recommended/:club_id',    'Member.recommended');
     $router->put(       '/members/unRecommend/:login',      'Member.unRecommend');
