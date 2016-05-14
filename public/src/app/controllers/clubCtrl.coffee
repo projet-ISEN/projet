@@ -14,8 +14,6 @@ angular.module 'app'
         $club.one $routeParams.club_id, (club) =>
             $scope.club = club
 
-
-
             $club.stat club.club_id, (stat) =>
                 $scope.club.stat = stat
 

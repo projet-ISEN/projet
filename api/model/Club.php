@@ -332,37 +332,53 @@ class Club {
      */
     public static function lock($id, $case) {
         $year = $_SESSION['year'];
-        $res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'");
+        //$res = Database::getInstance()->PDOInstance->query("SELECT ".$case." FROM note_club WHERE club_id='". $id ."' AND school_year='".$year."'");
 
         $values['club_id'] = $id;
         $values['year'] = $year;
 
-        $insert = Database::getInstance()->PDOInstance->prepare("INSERT INTO `note_club`(`club_id`, `school_year`) VALUES (:club_id, :year)");
+        //$insert = Database::getInstance()->PDOInstance->prepare("INSERT INTO `note_club`(`club_id`, `school_year`) VALUES (:club_id, :year)");
 
-        $temp = "true";
+        //$temp = "true";
 
-        $result = $res->fetchAll( \PDO::FETCH_ASSOC );
+        //$result = $res->fetchAll( \PDO::FETCH_ASSOC );
         //var_dump($result);
-        $bool = empty($result);
+        //$bool = empty($result);
         //var_dump($bool);
 
+        $note_club = new \Models\NoteClub($id);
+        $note_club->load();
+        $note_club->$case = 0;
+        if( $note_club->save() ) {
+            return 1;
+        }
+        else return 0;
 
-        if($bool){
+
+
+        /*if($bool){
             $insert->execute($values);
             $temp = "false";
             if($case == "lock_member_mark") return 1;
 
         }
+        elseif(!empty($result[0][$case])) $temp = "false";*/
 
-        elseif(!empty($result[0][$case])) $temp = "false";
 
-
-        $req = Database::getInstance()->PDOInstance->exec("UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
+        /*$req = Database::getInstance()->PDOInstance->exec("UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
         //var_dump( empty($res[$case]));
         //var_dump( "UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
-        return $req;
-
-       /* */
+        return $req;*/
+    }
+    public static function unLock($id, $case)
+    {
+        $note_club = new \Models\NoteClub($id);
+        $note_club->load();
+        $note_club->$case = 1;
+        if( $note_club->save() ) {
+            return 1;
+        }
+        else return 0;
     }
 }
 ?>

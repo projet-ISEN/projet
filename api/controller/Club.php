@@ -182,13 +182,20 @@ class Club
 
     public static function lockMark($id)
     {
-        $club = new \Models\Club();
-        echo json_encode ($club -> lock($id, "lock_member_mark"));
+        echo json_encode ( \Models\Club::lock($id, "lock_member_mark"));
     }
 
     public static function lockProject($id)
     {
-        $club = new \Models\Club();
-        echo json_encode ($club -> lock($id, "lock_member_project_validation"));
+        echo json_encode ( \Models\Club::lock($id, "lock_member_project_validation"));
+    }
+    public static function unLockMark($id)
+    {
+        echo json_encode ( \Models\Club::unLock($id, "lock_member_mark"));
+    }
+
+    public static function unLockProject($id)
+    {
+        echo json_encode ( \Models\Club::unLock($id, "lock_member_project_validation"));
     }
 }

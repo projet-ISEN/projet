@@ -66,8 +66,8 @@ class Member {
      * Return the list of clubs of the member
      * @return array
      */
-    public function ClubMembers($year = null){
-
+    public function ClubMembers($year = null)
+    {
         if(!isset($year)) $year =$_SESSION['year'];
         return Database::Select("SELECT club.club_name, club.club_id FROM club INNER JOIN member ON member.club_id = club.club_id WHERE member.login = '". $this->login."' AND school_year = '". $year."'");
     }
@@ -143,7 +143,6 @@ class Member {
     {
         if(!isset($year)) $year =$_SESSION['year'];
         $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1 AND school_year='".$year."'");
-
 
         return $req;
     }

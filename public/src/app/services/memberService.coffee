@@ -100,5 +100,42 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb err
+
+    @recommendedMember = (club_id, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/members/recommended/" + club_id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
+    @recommend = (clubId, login, cb)->
+        $http(
+            method: 'POST'
+            url: "../../api/members/recommend/" + login
+            data:
+                club_id: clubId
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
+    @unRecommend = (clubId, login, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/members/unRecommend/" + login
+            data:
+                club_id: clubId
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
     return @
 ]

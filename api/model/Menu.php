@@ -141,7 +141,7 @@ class Menu {
                             ],
 
                             [
-                                "link" => '',
+                                "link" => '#/nextyear/'.$club_id ,
                                 "title" => 'Année prospective',
                                 "icon" => 'dashboard',
                                 "active" => false

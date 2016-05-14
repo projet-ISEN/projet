@@ -92,6 +92,29 @@ angular.module('app')
             console.log err if err?
             cb null
         return
+    @unLockMark = (id, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/ulockMark/"+ id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
+    @unLockProject = (id, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/ulockProject/"+ id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
 
     return @
 ]

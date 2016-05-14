@@ -11,69 +11,74 @@ angular.module('app')
 
         $routeProvider
         .when '/',
-            templateUrl: 'views/home.html'
-            controller:  'homeCtrl'
-            label: ""
+            templateUrl:    'views/home.html'
+            controller:     'homeCtrl'
+            label:          ''
 
         .when '/clubs',
-            templateUrl: 'views/home.html'
-            controller:  'homeCtrl'
-            label: "Liste des clubs"
+            templateUrl:    'views/home.html'
+            controller:     'homeCtrl'
+            label:          'Liste des clubs'
 
         .when '/clubs/addclub',
-            templateUrl: 'views/addClub.html'
-            controller: 'addClubCtrl'
-            label: "Ajout de clubs"
+            templateUrl:    'views/addClub.html'
+            controller:     'addClubCtrl'
+            label:          'Ajout de clubs'
 
         .when '/clubs/:club_id',
-            templateUrl: 'views/club.html'
-            controller: 'clubCtrl'
-            label: "Ce club"
+            templateUrl:    'views/club.html'
+            controller:     'clubCtrl'
+            label:          'Ce club'
 
         .when '/clubs/:club_id/contact',
-            templateUrl: 'views/contactInClub.html'
-            controller: 'contactInClubCtrl'
-            label: "Contacts"
+            templateUrl:    'views/contactInClub.html'
+            controller:     'contactInClubCtrl'
+            label:          'Contacts'
 
         .when '/clubs/:club_id/notation',
-            templateUrl: 'views/presidentNotation.html'
-            controller:  'presidentNotation'
-            label:       'Evaluation'
+            templateUrl:    'views/presidentNotation.html'
+            controller:     'presidentNotation'
+            label:          'Evaluation'
 
         .when '/candidature',
-            templateUrl: 'views/candidature.html'
-            controller:  'candidatureCtrl'
-            label: "Candidature"
+            templateUrl:    'views/candidature.html'
+            controller:     'candidatureCtrl'
+            label:          'Candidature'
+
+        .when '/nextyear/:clubId',
+            templateUrl:    'views/nextYear.html'
+            controller:     'nextYearCtrl'
+            label:          'Année prospéctive'
 
         .when '/administration',
-            templateUrl: 'views/administration.html'
-            controller: 'administrationCtrl'
-            label: "Administration"
+            templateUrl:    'views/administration.html'
+            controller:     'administrationCtrl'
+            label:          'Administration'
 
         .when '/adminUsers',
-            templateUrl: 'views/administrationUsers.html'
-            controller: 'administrationUsersCtrl'
-            label: "Administration des utilisateurs"
+            templateUrl:    'views/administrationUsers.html'
+            controller:     'administrationUsersCtrl'
+            label:          'Administration des utilisateurs'
 
         .when '/me',
-            templateUrl: 'views/myInformations.html'
-            controller: 'myInformationsCtrl'
-            label: "Mes informations"
+            templateUrl:    'views/myInformations.html'
+            controller:     'myInformationsCtrl'
+            label:          'Mes informations'
 
         .when '/manage',
-            templateUrl: 'views/evaluatorManageClubs.html'
-            controller: 'evaluatorManageClubsCtrl'
-            label: "Gestion des clubs"
+            templateUrl:    'views/evaluatorManageClubs.html'
+            controller:     'evaluatorManageClubsCtrl'
+            label:          'Gestion des clubs'
 
         .when '/manage/:club_id',
-            templateUrl: 'views/manageClub.html'
-            controller: 'manageClubCtrl'
-            label: "Gestion du club"
+            templateUrl:    'views/manageClub.html'
+            controller:     'manageClubCtrl'
+            label:          'Gestion du club'
 
         .when '/recruCapisen',
-            templateUrl: 'views/recruCapisen.html'
-            controller: 'recruCapisenCtrl'
-            label: "Recrutement"
+            templateUrl:    'views/recruCapisen.html'
+            controller:     'recruCapisenCtrl'
+            label:          'Recrutement'
 
         .otherwise
             redirectTo:'/'
