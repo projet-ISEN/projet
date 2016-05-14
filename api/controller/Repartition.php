@@ -38,7 +38,7 @@ class repartition
             //var_dump($value -> login);
             array_push($findAClubFor,self::precedent_project_Validate($value -> login, $year));
         }//toutes les infos user pour la répârtition
-        //var_dump($findAClubFor);
+        var_dump($findAClubFor[0]);
 
 
 
@@ -49,9 +49,9 @@ class repartition
         //var_dump($ratio);
 
         //var_dump($findAClubFor);
-        for ($i = 1; $i <= 3; $i++) {
+/*        for ($i = 1; $i <= 3; $i++) {
             self::score($findAClubFor, $i);
-        }
+        }*/
             self::score($findAClubFor, 1);
         //$effectif = self::total_effectif( $effectif);
 
@@ -65,7 +65,7 @@ class repartition
     public static function score($findAClubFor, $i){
 
             $choice = self::whatTheChoices($i);
-            var_dump($choice);
+            var_dump($choice[0]);
            foreach($findAClubFor as $value){
 
            }
@@ -278,7 +278,7 @@ class repartition
     }
 
     public static function precedent_project_Validate($login, $year ){
-        $precedent = Database::Select("SELECT * FROM member WHERE main_club = 1 AND project_validation = 1 AND school_year <".$year." AND login = '".$login."' ORDER BY school_year DESC");
+        $precedent = Database::Select("SELECT login, project_id FROM member WHERE main_club = 1 AND project_validation = 1 AND school_year <".$year." AND login = '".$login."' ORDER BY school_year DESC");
 
         if(!empty($precedent)){
             return self::nextProject($precedent[0]);
