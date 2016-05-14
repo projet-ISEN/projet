@@ -73,6 +73,18 @@ class User {
         return ($res >= 1);
     }
 
+    public function isPresident()
+    {
+        $pres_id = \Models\Role::Role2ID( $_SESSION['president'] );
+        $res = Database::Select(
+            "Select login FROM role_link WHERE login='". $_SESSION['user']->login ."' AND id_role='". $pres_id ."'"
+        );
+        if( empty($res) ) {
+            return false;
+        }
+        return true;
+    }
+
 
     public static function Info($login) {
 

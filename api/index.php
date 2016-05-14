@@ -44,8 +44,8 @@
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        //$userData["Login"]      = 'mgoanv17';
+        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        $userData["Login"]      = 'mgoanv17';
 
 
 
@@ -112,12 +112,12 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:number',             'Logger.getLastLogs');
         $router->get(       '/log/:dateA/:dateB',       'Logger.getBetweenDate');
 
-        $router->get(      '/users',                    'User.getAll');
-        
         $router->put(      '/members/:user_login',      'Member.addClub');
         $router->get(      '/members/:user_id',         'Member.get');
         $router->put(      '/members/setMain/:login',   'Member.setMain');
         $router->delete(   '/members/:login',           'Member.delete');
+
+        $router->delete(    '/choices',                 'Choice.deleteAll' );
 
     // ONLY NOT ADMINISTRATOR
     } elseif(!$_SESSION['user']->is_administrator)
@@ -126,15 +126,12 @@ if (date("n")>7) $myYear++;
         $router->get(       '/choices',                 'Choice.getChoiceAll' );
         $router->post(      '/choices',                 'Choice.create' );
         $router->put(       '/choices',                 'Choice.update' );
-        $router->delete(    '/choices',                 'Choice.deleteAll' );
     }
 
     // ONLY EVALUATOR
     if($_SESSION['user']->school_staff)
     {
         $router->get(       '/clubEvaluator',       'Club.ClubsIntelsEvaluator' );
-
-        $router->get(       '/clubs/:id',           'Club.getOne');
 
         $router->post(      '/pushPrez',            'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
@@ -150,44 +147,49 @@ if (date("n")>7) $myYear++;
     }
 
 
-    $router->get(       '/users/:id',   'User.get');
+    $router->get(       '/users/:id',           'User.get');
+    $router->get(       '/users',                'User.getAll');
 
-    $router->get(       '/noteClub/:id',   'Club.markClub');
-    $router->post(      '/noteStudent',    'Member.noteStudent');
+    $router->get(       '/noteClub/:id',        'Club.markClub');
+    $router->post(      '/noteStudent',         'Member.noteStudent');
 
-    $router->get(      '/isLock/:id',   'Club.isLock');
+    $router->get(       '/isLock/:id',           'Club.isLock');
 
-    $router->get(       '/contact/:club_id', 'Member.membersIntelsInClub'    );
-    $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
+    $router->get(       '/contact/:club_id',    'Member.membersIntelsInClub'    );
+    $router->get(       '/whoPrez/:clubId',     'Role.whoPrez');
 
 
-    $router->get(       '/menu', 'Menu.jsonMenu'    );
+    $router->get(       '/menu',                'Menu.jsonMenu'    );
 
-    $router->get(       '/me', 'User.getMe');
-    $router->put(       '/me', 'User.updateMe');
+    $router->get(       '/me',                  'User.getMe');
+    $router->put(       '/me',                  'User.updateMe');
 
-    $router->get(       '/projects',         'Project.getAll');
-    $router->get(       '/projects/:id',   'Project.getOne');
+    $router->get(       '/projects',            'Project.getAll');
+    $router->get(       '/projects/:id',        'Project.getOne');
     $router->post(      '/validateProjectStudent',   'Member.projectValidationStudent');
 
-    $router->get(       '/clubs',       'Club.getAll');
-    $router->get(       '/clubs/:id/stat', 'Club.stat');
-    $router->get(       '/clubs/junior', 'Club.juniorEntrepriseID');
+    $router->get(       '/clubs',               'Club.getAll');
+    $router->get(       '/clubs/:id',           'Club.getOne');
+    $router->get(       '/clubs/:id/stat',      'Club.stat');
+    $router->get(       '/clubs/junior',        'Club.juniorEntrepriseID');
     $router->get(       '/clubs/junior/candidate/:year', 'Member.juniorMember');
 
-    $router->get(       '/effectifs',        'Effectif.getAll');
-    $router->get(       '/effectifs/:id',    'Effectif.getOne');
+    $router->get(       '/effectifs',           'Effectif.getAll');
+    $router->get(       '/effectifs/:id',       'Effectif.getOne');
 
-    $router->get(       '/notes',            'NotationProf.allNotes');
-    $router->get(       '/notes/xlsx',       'NotationProf.toXlsx');
-    $router->get(       '/notes/:id',        'NotationProf.allNotes');
-    $router->post(      '/notes/:id',        'NotationProf.setNote');
+    $router->get(       '/notes',               'NotationProf.allNotes');
+    $router->get(       '/notes/xlsx',          'NotationProf.toXlsx');
+    $router->get(       '/notes/:id',           'NotationProf.allNotes');
+    $router->post(      '/notes/:id',           'NotationProf.setNote');
 
-    $router->get(       '/role',   'Role.getAll');
+    $router->get(       '/role',                'Role.getAll');
 
-    $router->get(       '/year',   'Year.currentYear');
+    $router->get(       '/year',                'Year.currentYear');
     $router->get(       '/members/club/:id',   'Member.getMembersOfClub');
-    $router->get(       '/members/club/:id/:year',   'Member.getMemberAndIntels');
+    $router->get(       '/members/club/:id/:year',          'Member.getMemberAndIntels');
+    $router->get(       '/members/recommended/:club_id',    'Member.recommended');
+    $router->put(       '/members/unRecommend/:login',      'Member.unRecommend');
+    $router->post(      '/members/recommend/:login',        'Member.recommend');
 
     $router->get(       '/capisen/candidate',   'Member.juniorCandidate');
     $router->put(       '/members/:user_login/:main_club/:year',      'Member.addClub');

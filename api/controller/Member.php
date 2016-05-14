@@ -103,6 +103,10 @@ class Member
         return;
     }
 
+    /**
+     * Delete a member in a club
+     * @param $login
+     */
     public static function delete( $login )
     {
         $delete = json_decode( file_get_contents("php://input"), true);
@@ -137,13 +141,18 @@ class Member
     }
 
 
-    public function membersIntelsInClub($club_id,$year = null){
+    public function membersIntelsInClub($club_id,$year = null)
+    {
         echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
-
     }
-    public static function getMembersOfClub($club_id){
-        echo json_encode(\Models\Member::getMembersOfClub($club_id));
 
+    /**
+     * Return all members of a club
+     * @param $club_id
+     */
+    public static function getMembersOfClub($club_id)
+    {
+        echo json_encode(\Models\Member::getMembersOfClub($club_id));
     }
 
     /**
@@ -230,13 +239,15 @@ class Member
          } else echo 0;
     }
       //callback a list with the the people who asked Capisen in first choice
-    public static function juniorCandidate() {
 
+    /**
+     * Ajout des membres pour CAPISEN l'&année pro
+     */
+    public static function juniorCandidate()
+    {
         echo json_encode(\Models\Member::juniorCandidate( ));
-
         //echo json_encode( $members );
         //var_dump($idJunior);
-
     }
 
     public static function getMemberAndIntels($club_id, $year){
@@ -293,4 +304,72 @@ class Member
          }
          else echo 0;
     }
+
+    /**
+     * Retourne la liste des membres recommandées par un club
+     * @param $club_id
+     */
+    public static function recommended ($club_id)
+    {
+        $res = \Models\Member::getMembersOfClub($club_id, $_SESSION['year'] + 1 );
+        echo json_encode($res);
+        return;
+    }
+
+    public static function recommend( $login )
+    {
+        $post = json_decode( file_get_contents("php://input"), true);
+
+        if( empty($post['club_id']) )
+        {
+            echo json_encode([
+                'err' => 'Il manque quelque chose'
+            ]);
+            return;
+        }
+        $clubId = $post['club_id'];
+        $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
+        $member->recommandation = '1';
+        $member->project_validation = '0';
+
+        if( $member->save() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
+
+    public static function unRecommend( $login )
+    {
+        $put = json_decode( file_get_contents("php://input"), true);
+
+        if( empty($put['club_id']) )
+        {
+            echo json_encode([
+                'err' => 'Il manque quelque chose'
+            ]);
+            return;
+        }
+        $clubId = $put['club_id'];
+        $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
+        $member->recommandation = '0';
+        $member->project_validation = '0';
+
+        if( $member->save() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
+
 }

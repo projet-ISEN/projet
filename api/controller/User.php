@@ -41,12 +41,22 @@ class User {
     /**
      * Renvoie tous les utilisateurs
      */
-    public static function getAll() {
-        $users = \Models\User::getAll();
-        foreach ($users as $user) {
-            $user->load();
+    public static function getAll()
+    {
+        $testPres = $_SESSION['user']->isPresident();
+        if($_SESSION['user']->is_administrator || $_SESSION['user']->is_administrator || $testPres )
+        {
+            $users = \Models\User::getAll();
+            foreach ($users as $user)
+            {
+                $user->load();
+            }
+            echo json_encode( $users );
+            return;
         }
-        echo json_encode( $users );
+        echo json_encode([
+            'err' => "Vous n'avez pas le droit"
+        ]);
         return;
     }
 

@@ -21,7 +21,7 @@ md-card
         md-chips
             md-chip( ng-repeat="projet in club.stat.details" ) {{projet.project_type}} : {{projet.number}}
 
-        a.md-button.md-primary.md-raised.pull-right(ng-href="#/clubs/{{club.club_id}}/contact") Voir les membres
+        a.md-button.md-primary.md-raised.pull-right( ng-href="#/clubs/{{club.club_id}}/contact" ) Voir les membres
 
         p {{club.club_description}}
 

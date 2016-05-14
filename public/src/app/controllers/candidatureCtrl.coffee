@@ -1,12 +1,13 @@
 angular.module 'app'
 .controller 'candidatureCtrl', [
     '$user'
+    '$choice'
     '$mdDialog'
     '$club'
     '$mdToast'
     '$scope'
     '$http'
-    ($user, $mdDialog, $club, $mdToast, $scope, $http)->
+    ($user, $choice, $mdDialog, $club, $mdToast, $scope, $http)->
 
         # Tableau de choix
         $scope.choices = []
@@ -75,7 +76,7 @@ angular.module 'app'
 
         post = ->
 
-            $http
+            ###$http
                 method: 'POST'
                 url: "../../api/choices"
                 headers:
@@ -85,8 +86,11 @@ angular.module 'app'
                         "1": $scope.choices[0].club_id
                         "2": $scope.choices[1].club_id
                         "3": $scope.choices[2].club_id
-            .then (res)->
-                if res.data.err == null
+                .then (res)->
+            ###
+
+            $choice.set $scope.choices, (res)->
+                if res.err == null
                     $mdToast.show(
                         $mdToast.simple 'Vos choix ont été sauvegardés'
                         .position 'bottom right'
@@ -99,14 +103,15 @@ angular.module 'app'
                         .position 'bottom right'
                     )
 
-            , (err)->
+            ###, (err)->
                     console.log err
                     $mdToast.show(
                         $mdToast.simple "Impossible de contacter le serveur"
                         .position 'bottom right'
                     )
+            ###
         put = ->
-            $http
+            ###$http
                 method: 'PUT'
                 url: "../../api/choices"
                 headers:
@@ -117,7 +122,9 @@ angular.module 'app'
                         "2": $scope.choices[1].club_id
                         "3": $scope.choices[2].club_id
             .then (res)->
-                if res.data.err == null
+            ###
+            $choice.edit $scope.choices, (res)->
+                if res.err == null
                     $mdToast.show(
                         $mdToast.simple 'Vos choix ont été modifiés'
                         .position 'bottom right'
@@ -130,10 +137,11 @@ angular.module 'app'
                         .position 'bottom right'
                     )
 
-            , (err)->
+            ###, (err)->
                     console.log err
                     $mdToast.show(
                         $mdToast.simple "Impossible de contacter le serveur"
                         .position 'bottom right'
                     )
+            ###
 ]
