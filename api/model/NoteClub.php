@@ -86,19 +86,25 @@ class NoteClub
             $values[$prop->name] = $this->$k;
         }
 
+        $values['lock_member_mark']                 = (int) $values['lock_member_mark'];
+        $values['lock_member_project_validation']   = (int) $values['lock_member_project_validation'];
+
+
+
         // Creation
         if( !$this->exist() ) {
-
             $req = Database::getInstance()->PDOInstance->prepare(
-                "INSERT INTO note_club (club_id, school_year, note_club, procurement_file, budget) ".
-                "VALUES (:club_id, :school_year, :note_club, :procurement_file, :budget)"
+                "INSERT INTO note_club (club_id, school_year, note_club, procurement_file, budget, lock_member_mark, lock_member_project_validation) ".
+                "VALUES (:club_id, :school_year, :note_club, :procurement_file, :budget, :lock_member_mark, :lock_member_project_validation)"
             );
         }
         // Update
         else {
+            echo 'update';
+            var_dump($values);
             $req = Database::getInstance()->PDOInstance->prepare(
-                "UPDATE note_club SET note_club=:note_club, procurement_file=:procurement_file, ".
-                "budget=:budget WHERE club_id=:club_id AND school_year=:school_year"
+                "UPDATE note_club SET note_club=:note_club, procurement_file=:procurement_file, budget=:budget, lock_member_mark=:lock_member_mark, lock_member_project_validation=:lock_member_project_validation ".
+                "WHERE club_id=:club_id AND school_year=:school_year"
             );
 
         }

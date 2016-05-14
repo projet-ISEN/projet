@@ -84,9 +84,9 @@ class Member
      * Return the list of the club of the member
      * @return array
      */
-    public static function ClubMembers($year = null){
+    public static function ClubMembers($year = null)
+    {
         echo json_encode(\Models\Member::ClubMembers($year));
-
     }
 
     /**
@@ -191,27 +191,31 @@ class Member
 
         $noteClub = \Models\Club::markClub($id)-> note_club;
 
-        //var_dump($noteClub);
+        //var_dump($noteClub); // 20
         $tempPR = true;
         //var_dump($post["member"]);
-        $total = $noteClub * count($post["member"]);
         $total_member = 0;
-        foreach ($post["member"] as $value){
-            $total_member += $value['member_mark'];
-            if($value["project"] == "PR"){
-                if($value["project_validation"])
-                    if($value["member_mark"] < 10) $tempPR = false;
-                else{
-                    if($value["member_mark"] >= 10) $tempPR = false;
+        $count_member = 0;
+        foreach ($post["member"] as $value)
+        {
+            if( $value['project'] != 'PR+' )
+            {
+                $total_member += $value['member_mark'];
+                $count_member++;
+                if ($value["project"] == "PR")
+                {
+                    if ($value["project_validation"])
+                        if ($value["member_mark"] < 10) $tempPR = false;
+                        else {
+                            if ($value["member_mark"] >= 10) $tempPR = false;
+                        }
                 }
             }
         }
-        //$lockmark = \Controllers\Club::lockMark($id);
-        //$lockmark = \Controllers\Club::lockMark($id);
+        $total = $noteClub * $count_member;
+
         $lockmark = \Models\Club::isLock($id);
         $lockmark = $lockmark['lock_member_mark'];
-        //var_dump($lockmark);
-        //var_dump(\Controllers\Club::lockMark($id));
 
         //var_dump($total_member == $total && !$lockmark);
 

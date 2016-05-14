@@ -41,8 +41,6 @@ angular.module("app").controller 'sidenavCtrl', [
                     value.expanded = true
 
                     # Exception for just / url
-                    console.log $location.path()
-                    console.log
                     if $location.path() == '/' and item.link != '#/'
                         item.active     = false
                         if i != 1

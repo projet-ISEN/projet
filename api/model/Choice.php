@@ -103,6 +103,7 @@ class Choice {
 
             if($status) {
                 return [ 'err' => null ];
+                \Controllers\Logger::info( $_SESSION['user']->login . "made his choices");
             }
             else {
                 return [ 'err' => 'Impossible de sauvegarder vos choix' ];

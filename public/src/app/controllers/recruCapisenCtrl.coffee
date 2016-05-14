@@ -41,7 +41,7 @@ angular.module 'app'
         $scope.choicecConfirm = ->
             confirm = $mdDialog.confirm()
                 .title('Recrutement')
-                .textContent('Ce choix ne pourra être modifier sans passer par un administrateur (équipe FHES)')
+                .textContent('Ce choix ne pourra plus être modifié sans passer par un administrateur (équipe FHES)')
                 .ok('Confirmer')
                 .cancel('Annuler');
             $mdDialog.show(confirm).then ->

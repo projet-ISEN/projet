@@ -14,11 +14,15 @@ angular.module 'app'
         # Si la somme des points correspond à la note donnée
         $scope.testMark = ->
             totalMark = 0
-            for member in $scope.members
-                if ! isNaN(member.member_mark)
-                    totalMark += member.member_mark
+            memberWithMark = 0
 
-            $scope.restPoint = $scope.members.length * $scope.clubMark - totalMark
+            for member in $scope.members
+                if member.project != 'PR+'
+                    if !(isNaN(member.member_mark))
+                        totalMark += member.member_mark
+                        memberWithMark++
+
+            $scope.restPoint = memberWithMark * $scope.clubMark - totalMark
             $scope.errorMark = $scope.restPoint != 0
 
         # Récupère la liste des membres
@@ -92,10 +96,12 @@ angular.module 'app'
                 # On balance les notes
                 for member in $scope.members
                     if member.member_mark == null
-
                         return $mdToast.showSimple "Tous les membres n'ont pas de note"
-                    console.log $scope.members
-                $note.noteStudent $scope.members, (projet) ->
-                    console.log projet
 
+                    console.log $scope.members
+                $note.noteStudent $scope.members, (res) ->
+                    if res == '1'
+                        $mdToast.showSimple "Notes sauvegardées !"
+                    else
+                        $mdToast.showSimple "Un problème est survenu !"
 ]

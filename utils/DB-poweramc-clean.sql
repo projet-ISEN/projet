@@ -490,7 +490,7 @@ INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator
   ('vsilva19', 'Virgile', 'SILVANT', 'virgile.silvant@isen-bretagne.fr', 0, 0, null),
   ('wbeaup20', 'William', 'BEAUPERIN', 'william.beauperin@isen-bretagne.fr', 0, 0, null),
   ('ydumor20', 'Yohann', 'DUMORTIER', 'yohann.dumortier@isen-bretagne.fr', 0, 0, null),
-  ('mgoanv17', 'Maxime', 'Maxime', 'maxime.maxime@isen-bretagne.fr', 0, 0, null),
+  ('mgoanv17', 'Maxime', 'GOANVIC', 'maxime.goanvic@isen-bretagne.fr', 0, 0, null),
   ('tcouss18', 'Thomas', 'Coussot', 'Thomas.Coussot@isen-bretagne.fr', 0, 0, null),
   ('yleflo20', 'Yves', 'LE FLOCH', 'yves.le-floch@isen-bretagne.fr', 0, 0, '0786047291');
 

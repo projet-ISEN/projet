@@ -40,11 +40,12 @@
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
         //$userData["Login"]      = 'tcouss17'; //Prez club
-        $userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
+        //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        //$userData["Login"]      = 'mgoanv17';
 
 
 
@@ -94,24 +95,24 @@ if (date("n")>7) $myYear++;
     if($_SESSION['user']->is_administrator){
 
 
-        $router->post(      '/clubs',       'Club.create');
-        $router->put(       '/club/:id',    'Club.update');
-        $router->delete(    '/club/:id',    'Club.delete');
+        $router->post(      '/clubs',                   'Club.create');
+        $router->put(       '/club/:id',                'Club.update');
+        $router->delete(    '/club/:id',                'Club.delete');
 
-        $router->post(      '/projects',       'Project.create');
-        $router->put(       '/projects',       'Project.update');
-        $router->delete(    '/projects/:id',       'Project.delete');
+        $router->post(      '/projects',                'Project.create');
+        $router->put(       '/projects',                'Project.update');
+        $router->delete(    '/projects/:id',            'Project.delete');
 
-        $router->post(      '/role',       'Role.add');
-        $router->put(       '/role',       'Role.update');
-        $router->delete(    '/role/:id',       'Role.delete');
+        $router->post(      '/role',                    'Role.add');
+        $router->put(       '/role',                    'Role.update');
+        $router->delete(    '/role/:id',                'Role.delete');
 
 
-        $router->get(       '/log',                 'Logger.getLastLogs');
-        $router->get(       '/log/:number',         'Logger.getLastLogs');
-        $router->get(       '/log/:dateA/:dateB',   'Logger.getBetweenDate');
+        $router->get(       '/log',                     'Logger.getLastLogs');
+        $router->get(       '/log/:number',             'Logger.getLastLogs');
+        $router->get(       '/log/:dateA/:dateB',       'Logger.getBetweenDate');
 
-        $router->get(      '/users',                   'User.getAll');
+        $router->get(      '/users',                    'User.getAll');
         
         $router->put(      '/members/:user_login',      'Member.addClub');
         $router->get(      '/members/:user_id',         'Member.get');
@@ -121,29 +122,30 @@ if (date("n")>7) $myYear++;
     // ONLY NOT ADMINISTRATOR
     } elseif(!$_SESSION['user']->is_administrator)
     {
-        $router->get(       '/choices/:choice_number', 'Choice.getChoiceOne'    );
-        $router->get(       '/choices',     'Choice.getChoiceAll'    );
-        $router->post(      '/choices',     'Choice.create' );
-        $router->put(       '/choices',     'Choice.update' );
-        $router->delete(    '/choices',     'Choice.deleteAll' );
+        $router->get(       '/choices/:choice_number',  'Choice.getChoiceOne' );
+        $router->get(       '/choices',                 'Choice.getChoiceAll' );
+        $router->post(      '/choices',                 'Choice.create' );
+        $router->put(       '/choices',                 'Choice.update' );
+        $router->delete(    '/choices',                 'Choice.deleteAll' );
     }
 
     // ONLY EVALUATOR
     if($_SESSION['user']->school_staff)
     {
-        $router->get(       '/clubEvaluator',     'Club.ClubsIntelsEvaluator'    );
+        $router->get(       '/clubEvaluator',       'Club.ClubsIntelsEvaluator' );
 
-        $router->get(       '/clubs/:id',   'Club.getOne');
+        $router->get(       '/clubs/:id',           'Club.getOne');
 
-        $router->post(      '/pushPrez',   'Role.pushPrez');
+        $router->post(      '/pushPrez',            'Role.pushPrez');
         //$router->get(      '/IDPrez',   'Role.IDPrez');
-        $router->get(       '/whoPrez/:clubId',   'Role.whoPrez');
+        $router->get(       '/whoPrez/:clubId',     'Role.whoPrez');
 
-        $router->put(      '/lockMark/:id',   'Club.lockMark');
+        $router->put(       '/lockMark/:id',        'Club.lockMark');
+        $router->put(       '/lockProject/:id',     'Club.lockProject');
+        $router->put(       '/ulockMark/:id',       'Club.unLockMark');
+        $router->put(       '/ulockProject/:id',    'Club.unLockProject');
 
-        $router->put(      '/lockProject/:id',   'Club.lockProject');
-
-        $router->post( '/noteClub',   'Club.giveClubMark');
+        $router->post(      '/noteClub',            'Club.giveClubMark');
 
     }
 
@@ -188,7 +190,7 @@ if (date("n")>7) $myYear++;
     $router->get(       '/members/club/:id/:year',   'Member.getMemberAndIntels');
 
     $router->get(       '/capisen/candidate',   'Member.juniorCandidate');
-    $router->put(      '/members/:user_login/:main_club/:year',      'Member.addClub');
+    $router->put(       '/members/:user_login/:main_club/:year',      'Member.addClub');
 
 
 
