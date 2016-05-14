@@ -59,8 +59,18 @@ angular.module('app')
                         console.log 'ko'
                     else
                         console.log 'ok'
-            refresh()
 
         $scope.disgrace = (member)->
             if member.bad
+                $member.unDisgrace clubId, member.login, (res)->
+                    if res.err?
+                        console.log 'ko'
+                    else
+                        console.log 'ok'
+            else
+                $member.disgrace clubId, member.login, (res)->
+                    if res.err?
+                        console.log 'ko'
+                    else
+                        console.log 'ok'
 ]

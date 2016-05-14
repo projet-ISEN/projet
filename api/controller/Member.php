@@ -319,6 +319,7 @@ class Member
         return;
     }
 
+
     public static function recommend( $login )
     {
         $post = json_decode( file_get_contents("php://input"), true);
@@ -375,4 +376,56 @@ class Member
         return;
     }
 
+    public static function disgrace( $login )
+    {
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty($put['club_id']) )
+        {
+            echo json_encode([
+                'err' => 'Il manque quelque chose'
+            ]);
+            return;
+        }
+        $clubId = $put['club_id'];
+        $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
+        $member->recommandation = '0';
+        $member->ex_member_not_wanted = '1';
+
+        if( $member->save() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
+    public static function unDisgrace( $login )
+    {
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty($put['club_id']) )
+        {
+            echo json_encode([
+                'err' => 'Il manque quelque chose'
+            ]);
+            return;
+        }
+        $clubId = $put['club_id'];
+        $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
+        $member->recommandation = '0';
+        $member->ex_member_not_wanted = '0';
+
+        if( $member->save() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
 }

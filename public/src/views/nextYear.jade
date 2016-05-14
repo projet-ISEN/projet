@@ -49,7 +49,7 @@ div(
                     div.md-list-item-text( layout='column' )
                         h3 {{member.user.user_name | firstLetterUppercase}} {{member.user.user_firstname | firstLetterUppercase}}
 
-                    md-checkbox( aria-label="Select All"
+                    md-checkbox.md-warn( aria-label="Select All"
                         ng-model='member.bad'
                         ng-click='disgrace(member)'
                           )

@@ -137,5 +137,32 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb err
+
+    @disgrace = (clubId, login, cb)->
+        $http(
+            method: 'POST'
+            url: "../../api/members/disgrace/" + login
+            data:
+                club_id: clubId
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
+    @unDisgrace = (clubId, login, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/members/unDisgrace/" + login
+            data:
+                club_id: clubId
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
     return @
 ]
