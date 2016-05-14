@@ -143,7 +143,7 @@ class Member {
     {
         if(!isset($year)) $year =$_SESSION['year'];
         $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1 AND school_year='".$year."'");
-        
+
         return $req;
     }
 
