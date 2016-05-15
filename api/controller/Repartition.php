@@ -62,9 +62,9 @@ class repartition
 
 
 
-            self::score($findAClubFor, $recommanded,$notWanted, $ancient);
+         $score = self::score($findAClubFor, $recommanded,$notWanted, $ancient);
 
-
+        var_dump($score);
         //$effectif = self::total_effectif( $effectif);
 
 
@@ -126,7 +126,9 @@ class repartition
             //var_dump($choice[0]);
 
 
-            self::moulinette($completeINfo, $recommanded,$notWanted, $ancient);
+            return self::moulinette($completeINfo, $recommanded,$notWanted, $ancient);
+
+
 
             //var_dump($completeINfo);
 
@@ -191,12 +193,9 @@ class repartition
 
             //self::Changescore($member,$recommanded,2);
         }
-        //var_dump($completeINfo[0] -> choice);
+        return $completeINfo;
     }
 
-    public static function calcScore($i, $reco, $no){
-
-    }
 
 
     public static function whatTheChoices($i){
