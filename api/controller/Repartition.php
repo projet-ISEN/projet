@@ -24,8 +24,8 @@ class repartition
 
 
     public static function repartition( $year ){
-        //$trace = "Définition des projets pour chaques utilisateurs: " .self::whichProject( $year );
-        //var_dump($trace);
+        $trace = "Définition des projets pour chaques utilisateurs: " .self::whichProject( $year );
+        var_dump($trace);
 
         $findAClubFor = [];
 
@@ -94,6 +94,8 @@ class repartition
                    $count = 0;
                    if($valueA -> login == $valueB -> login){
                        $temp -> choice[intVal($valueB->choice_number)]["club_id"] = $valueB -> club_id;
+                       $number = intVal($valueB->choice_number);
+                       $temp -> choice[$number]["score"] = self::choice_numberInPoint($number);
                        $count++;
                        if($count == 3)break;
                    }
@@ -119,7 +121,7 @@ class repartition
             //var_dump($choice);
             $completeINfo = self::mergeAObjectInArray($findAClubFor,$choice);
 
-            var_dump($completeINfo[0]);
+            //var_dump($completeINfo[0]);
 
             //var_dump($choice[0]);
 
@@ -131,27 +133,58 @@ class repartition
 
     }
 
+    //choix 1 return 5
+    //choix 2 return 3
+    //choix 3 return 1
+
+    public static function choice_numberInPoint($i){
+        return $i * (-2) +7;
+    }
+
+
+    public static function pointrecommanded($member, $array){
+
+        foreach($array as $current){ //regarde dans les recommandé
+            if($member ->login == $current -> login){
+                foreach($member -> choice as $choice){
+                    //var_dump($current);
+                    //var_dump($choice);
+                     if($choice["club_id"] == $current ->club_id){
+                         //var_dump($member);
+                         $choice["score"] +=2;
+                     }
+                    var_dump($choice);
+
+                }
+                //var_dump($current);
+                //var_dump($member);
+
+            }
+        }
+        return $member;
+    }
+
+    public static function pointnotWanted($member, $array){
+        foreach($array as $current){
+            if($member ->login == $current -> login);
+        }
+    }
+
+    public static function pointancient($member, $array){
+        foreach($array as $current){
+            if($member ->login == $current -> login);
+        }
+    }
+
 
 
     public static function moulinette($completeINfo, $recommanded,$notWanted, $ancient){
 
-
+        var_dump($recommanded);
+        //var_dump($notWanted[0]);
+        //var_dump($ancient[0]);
         foreach($completeINfo as $member){
-            foreach($recommanded as $reco){
-
-                break;
-            }
-
-            foreach($notWanted as $notYou){
-
-                break;
-            }
-
-            foreach($notWanted as $notYou){
-
-                break;
-            }
-
+            self::pointrecommanded($member,$recommanded);
         }
     }
 
