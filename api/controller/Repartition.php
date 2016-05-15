@@ -151,7 +151,7 @@ class repartition
                     //var_dump($choice);
                      if($choice["club_id"] == $current ->club_id){
                          //var_dump($member);
-                         $choice["score"] = $choice["score"] +2;
+                         $choice["score"] +=2;
                      }
                     var_dump($choice);
 
