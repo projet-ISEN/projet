@@ -34,11 +34,18 @@ class repartition
 
         $loginChoice = self::user2Bplced();//renvoie une liste des demandeur de club ^^
 
+        $recommanded =self::recommanded($year);
+
+        $notWanted =self::notWanted($year);
+        $ancient = Database::Select("SELECT * FROM `member` WHERE main_club = 1 AND school_year =".($year-1));
+        //var_dump($ancient);
+        //var_dump($notWanted);
+
         foreach($loginChoice as $value){
             //var_dump($value -> login);
             array_push($findAClubFor,self::precedent_project_Validate($value -> login, $year));
         }//toutes les infos user pour la répârtition
-        var_dump($findAClubFor[0]);
+        //var_dump($findAClubFor[0]);
 
 
 
@@ -52,7 +59,12 @@ class repartition
 /*        for ($i = 1; $i <= 3; $i++) {
             self::score($findAClubFor, $i);
         }*/
-            self::score($findAClubFor, 1);
+
+
+
+            self::score($findAClubFor, $recommanded,$notWanted, $ancient);
+
+
         //$effectif = self::total_effectif( $effectif);
 
 
@@ -60,48 +72,96 @@ class repartition
 
     }
 
+    public static function recommanded($year){
+        return Database::Select("SELECT login, club_id FROM `member` WHERE project_validation = 0 AND recommandation = 1 AND school_year = ". $year);
+    }
+
+    public static function notWanted($year){
+        return Database::Select("SELECT login, club_id FROM `member` WHERE project_validation = 0 AND ex_member_not_wanted = 1 AND school_year = ". $year);
+    }
 
 
     public static function mergeAObjectInArray($member, $choice){
 
         $merge = [];
-
+        //var_dump($member[0]);
+        //var_dump($choice[0]);
            foreach($member as $valueA){
                $temp = (object)[];
+               $temp = clone $valueA;
+
                foreach($choice as $valueB){
+                   $count = 0;
                    if($valueA -> login == $valueB -> login){
-                       $temp = $valueB;
-                       $temp -> project_id = $valueA -> project_id;
-                       break;
+                       $temp -> choice[intVal($valueB->choice_number)]["club_id"] = $valueB -> club_id;
+                       $count++;
+                       if($count == 3)break;
                    }
 
                }
-               array_push($merge, $temp);
+                array_push($merge, $temp);
            }
         return $merge;
     }
 
 
 
-    public static function score($findAClubFor, $i){
+    public static function score($findAClubFor, $recommanded,$notWanted, $ancient){
 
-            $choice = self::whatTheChoices($i);
+            $choice = [];
 
+            for ($i = 1; $i <= 3; $i++) {
+
+            $temp = self::whatTheChoices($i);
+            $choice = array_merge($choice,$temp);
+
+            }
+            //var_dump($choice);
             $completeINfo = self::mergeAObjectInArray($findAClubFor,$choice);
 
-
-            var_dump($choice[0]);
-
-
             var_dump($completeINfo[0]);
+
+            //var_dump($choice[0]);
+
+
+            self::moulinette($completeINfo, $recommanded,$notWanted, $ancient);
+
+            //var_dump($completeINfo);
 
 
     }
 
 
 
+    public static function moulinette($completeINfo, $recommanded,$notWanted, $ancient){
+
+
+        foreach($completeINfo as $member){
+            foreach($recommanded as $reco){
+
+                break;
+            }
+
+            foreach($notWanted as $notYou){
+
+                break;
+            }
+
+            foreach($notWanted as $notYou){
+
+                break;
+            }
+
+        }
+    }
+
+    public static function calcScore($i, $reco, $no){
+
+    }
+
+
     public static function whatTheChoices($i){
-        return Database::Select("SELECT * FROM `choice` WHERE choice_number = ". $i);
+        return Database::Select("SELECT * FROM `choice` WHERE choice_number =".$i);
     }
 
 
