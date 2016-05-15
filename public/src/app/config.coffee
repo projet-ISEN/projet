@@ -70,6 +70,11 @@ angular.module('app')
             controller:     'evaluatorManageClubsCtrl'
             label:          'Gestion des clubs'
 
+        .when '/manageBDE',
+            templateUrl:    'views/manageBDE.html'
+            controller:     'manageBDECtrl'
+            label:          'Gestion des clubs'
+
         .when '/manage/:club_id',
             templateUrl:    'views/manageClub.html'
             controller:     'manageClubCtrl'

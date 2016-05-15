@@ -190,7 +190,7 @@ class Menu {
                     'expanded' => false,
                     'values' => [
                             [
-                                "link" => '',
+                                "link" => '#/manageBDE',
                                 "title" => 'Gestion globale des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
