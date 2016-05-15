@@ -7,14 +7,27 @@ angular.module('app')
     '$scope'
     '$routeParams'
     '$mdToast'
+    '$mdBottomSheet'
     '$user'
     '$club'
     '$member'
     '$year'
-    ($scope, $routeParams, $mdToast, $user, $club, $member, $year)->
+    ($scope, $routeParams, $mdToast, $mdBottomSheet, $user, $club, $member, $year)->
 
 
         clubId = $routeParams.clubId
+
+        $scope.openDialogEffectifs = ->
+            console.log 'coucou'
+            $mdBottomSheet.show
+                templateUrl:            'directives/effectifsBottomSheet.html'
+                controller:             'effectifsBottomSheet'
+                clickOutsideToClose:    true
+                escapeToClose:          true
+                disableParentScroll:    true
+                #parent:                 angular.element document.getElementByTagName 'viewContent'
+                locals:
+                    clubId: clubId
 
         # Fonction qui charge tout
         refresh = ->
@@ -52,11 +65,7 @@ angular.module('app')
                                     if disgracedMember.login == member.login
 
                                         if disgracedMember.ex_member_not_wanted == '1'
-
-                                            console.log member
                                             member.bad = true
-                                            console.log member
-
 
         refresh()
 
