@@ -1,8 +1,18 @@
+div#viewContent(
+  layout='row'
+  layout-align='center top'
+  layout-xs='column'
+  ng-cloak='')
+    md-button.md-raised.pull-right( ng-click='openDialogEffectifs()' )
+        | Effectifs pour l'année prochaine
 div(
   layout='row'
   layout-align='center top'
   layout-xs='column'
   ng-cloak='')
+
+
+
     md-content.borderRight( flex="50" flex-xs="100" layout-padding )
 
         h2 Recommander un non membre pour {{year}}/{{year+1}}
@@ -10,24 +20,24 @@ div(
                 label Recherche d'un élève
                 input( type='text' ng-model='searchUser')
 
-            md-list
-                md-subheader.md-no-sticky {{users.length || 0}} Utilisateurs
+        md-list
+            md-subheader.md-no-sticky {{users.length || 0}} Utilisateurs
 
-                md-list-item.md-2-line.secondary-button-padding(
-                    ng-repeat="user in users | orderBy : 'user_name' | filter: searchUser")
+            md-list-item.md-2-line.secondary-button-padding(
+                ng-repeat="user in users | orderBy : 'user_name' | filter: searchUser")
 
-                    img.md-avatar(
-                        src='images/profiles/{{user.login}}.jpg'
-                        onerror="this.src='images/blank-person.png'" )
+                img.md-avatar(
+                    src='images/profiles/{{user.login}}.jpg'
+                    onerror="this.src='images/blank-person.png'" )
 
-                    div.md-list-item-text( layout='column' )
-                        h3 {{user.user_name | firstLetterUppercase}} {{user.user_firstname | firstLetterUppercase}}
+                div.md-list-item-text( layout='column' )
+                    h3 {{user.user_name | firstLetterUppercase}} {{user.user_firstname | firstLetterUppercase}}
 
-                    md-checkbox( aria-label="Select All"
-                        ng-model='user.recommended'
-                        ng-click='recommend(user)'
-                          )
-                    md-divider
+                md-checkbox( aria-label="Select All"
+                    ng-model='user.recommended'
+                    ng-click='recommend(user)'
+                      )
+                md-divider
 
     md-content( flex="50" flex-xs="100" layout-padding )
 
@@ -36,22 +46,22 @@ div(
                 label Recherche d'un membre
                 input( type='text' ng-model='searchMember')
 
-            md-list
-                md-subheader.md-no-sticky {{clubMembers.length || 0}} Membres
+        md-list
+            md-subheader.md-no-sticky {{clubMembers.length || 0}} Membres
 
-                md-list-item.md-2-line.secondary-button-padding(
-                    ng-repeat="member in clubMembers | orderBy : 'user.user_name' | filter: searchMember")
+            md-list-item.md-2-line.secondary-button-padding(
+                ng-repeat="member in clubMembers | orderBy : 'user.user_name' | filter: searchMember")
 
-                    img.md-avatar(
-                        src='images/profiles/{{member.user.login}}.jpg'
-                        onerror="this.src='images/blank-person.png'" )
+                img.md-avatar(
+                    src='images/profiles/{{member.user.login}}.jpg'
+                    onerror="this.src='images/blank-person.png'" )
 
-                    div.md-list-item-text( layout='column' )
-                        h3 {{member.user.user_name | firstLetterUppercase}} {{member.user.user_firstname | firstLetterUppercase}}
+                div.md-list-item-text( layout='column' )
+                    h3 {{member.user.user_name | firstLetterUppercase}} {{member.user.user_firstname | firstLetterUppercase}}
 
-                    md-checkbox.md-warn( aria-label="Select All"
-                        ng-model='member.bad'
-                        ng-click='disgrace(member)'
-                          )
-                    md-divider
+                md-checkbox.md-warn( aria-label="Select All"
+                    ng-model='member.bad'
+                    ng-click='disgrace(member)'
+                      )
+                md-divider
 
