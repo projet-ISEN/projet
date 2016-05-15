@@ -66,13 +66,30 @@ class repartition
          $score = self::score($findAClubFor, $recommanded,$notWanted, $ancient);
 
          $score = self::expception($score);
-        var_dump($score);
-        //var_dump($score);
+
+        //$club = Database::Select("SELECT * FROM club WHERE actif = 1");
+        self::affectation($clubMinMaxEffectif,$score,1);
+        //var_dump($clubMinMaxEffectif);
         //$effectif = self::total_effectif( $effectif);
 
 
 
 
+    }
+
+    public static function affectation($club,$effectif,$i){
+        var_dump($club[0]);
+        var_dump($effectif[0]);
+        foreach($club as $value){
+            $value->asked_pepole = [];
+            foreach($effectif as $key=>$val){
+                if($value->club_id == $val->choice[$i]["club_id"] && $value->project_id == $val->project_id ){
+                    array_push($value->asked_pepole,$val->login);
+                }
+            }
+
+        }
+        var_dump($club);
     }
 
     public static function clubminmax($ratio){
