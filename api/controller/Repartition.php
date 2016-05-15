@@ -68,8 +68,28 @@ class repartition
          $score = self::expception($score);
 
         //$club = Database::Select("SELECT * FROM club WHERE actif = 1");
-        self::affectation($clubMinMaxEffectif,$score,1);
-        //var_dump($clubMinMaxEffectif);
+
+        for ($i = 1; $i <= 3; $i++) {
+            $club = self::affectation($clubMinMaxEffectif,$score,$i);
+            $temp = self::cutTheRest($club);
+
+
+            //var_dump($score);
+
+
+            $club = $temp[0];
+            //var_dump($rest);
+            $score = self::login2score($score, $temp[1]);
+
+
+        }
+
+
+
+        //$temp = self::affectation($clubMinMaxEffectif,$score,1);
+        //var_dump($temp[14]->asked_people);
+        //var_dump(array_splice($temp[14]->asked_people,-2));
+        //var_dump($temp[14]->asked_people);
         //$effectif = self::total_effectif( $effectif);
 
 
@@ -77,9 +97,44 @@ class repartition
 
     }
 
+
+
+    public static function login2score($score, $rest){
+            //var_dump($rest);
+            //var_dump($score);
+            $noClubYet = [];
+            foreach($score as $val){
+                foreach($rest as $value){
+                    if($val -> login == $value["login"] ){
+                        array_push($noClubYet, $val);
+                        break;
+                    }
+                }
+            }
+            var_dump($noClubYet);
+        return $noClubYet;
+    }
+
+    public static function cutTheRest($club){
+        //var_dump($club);
+        $rest = [];
+        foreach($club as $value){
+            $count = count($value->asked_people);
+            if($count > $value -> nb_asked_max){
+                $toCut = $value -> nb_asked_max - $count;
+                //var_dump($toCut);
+                $rest = array_merge($rest,array_splice($value->asked_people,$toCut));
+            }
+
+        }        //var_dump($club);
+
+        return [$club,$rest];
+    }
+
+
     public static function affectation($club,$effectif,$i){
-        var_dump($club[0]);
-        var_dump($effectif[0]);
+        //var_dump($club[0]);
+        //var_dump($effectif[0]);
         foreach($club as $value){
             $value->asked_people = [];
             foreach($effectif as $key=>$val){
@@ -92,8 +147,9 @@ class repartition
 
 
         //asort($club[14]->asked_people[1]);
-        var_dump($club[14]);
+        //var_dump($club);
         //var_dump($club[14]->asked_people);
+        return $club;
         //var_dump(asort($club[14]->asked_people));
     }
 
