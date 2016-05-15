@@ -30,6 +30,7 @@ class repartition
         $findAClubFor = [];
 
         $minMax_effectif = self::minMaxEffectif( );
+
         //var_dump($minMax_effectif);
 
         $loginChoice = self::user2Bplced();//renvoie une liste des demandeur de club ^^
@@ -60,16 +61,37 @@ class repartition
             self::score($findAClubFor, $i);
         }*/
 
-
+        $clubMinMaxEffectif = self::clubminmax($ratio);
 
          $score = self::score($findAClubFor, $recommanded,$notWanted, $ancient);
 
+         $score = self::expception($score);
         var_dump($score);
+        //var_dump($score);
         //$effectif = self::total_effectif( $effectif);
 
 
 
 
+    }
+
+    public static function clubminmax($ratio){
+       $effectif = Database::Select("SELECT * FROM effectif");
+        //var_dump($ratio);
+
+        foreach($effectif as $value){
+            foreach($ratio as $r){
+                if($value -> project_id == $r -> id){
+                    $value -> nb_asked_min = floor(intval($value -> nb_asked_min) * $r -> minratio);
+                    $value -> nb_asked_max = ceil(intval($value -> nb_asked_max) * $r -> maxratio);
+
+                    break;
+                }
+            }
+
+        }
+        return $effectif;
+        //var_dump($ratio[0]);
     }
 
     public static function recommanded($year){
@@ -106,6 +128,23 @@ class repartition
         return $merge;
     }
 
+
+
+    public static function expception($score){
+
+        foreach($score as $value){
+            foreach($value->choice as $key=> $val){
+                //var_dump($value->choice[$key]);
+                if(self::CHECKexpception($val["club_id"] ))$value->choice[$key]["score"] = 0;
+            }
+
+        }
+        return $score;
+    }
+
+        public static function CHECKexpception($val){
+            return ($val == $_SESSION['Capisenid'] || $val == $_SESSION['BDEid'] || $val == $_SESSION['BDSid'] );
+        }
 
 
     public static function score($findAClubFor, $recommanded,$notWanted, $ancient){
