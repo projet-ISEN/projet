@@ -1,3 +1,37 @@
-md-bottom-sheet
-    p {{clubId}}
-    p Hello
+md-bottom-sheet( layout='column' )
+    p Demande d'éfféctifs pour {{year + 1}}
+    md-list
+        md-list-item( ng-repeat='project in projects' layout='row')
+
+            md-input-container( flex='20' )
+                p( flex='20' ) {{project.project_type}}
+
+            md-input-container( flex='20' )
+                label minimum
+                input(
+                    type='number'
+                    ng-change='testValue()'
+                    ng-model='project.min'
+                    min='0'
+                    step='1'
+                    ng-init='0' )
+
+
+
+            md-input-container( flex='20' )
+                label maximum
+                input(
+                    type='number'
+                    ng-change='testValue()'
+                    ng-model='project.max'
+                    min='0'
+                    step='1'
+                    ng-init='0' )
+
+                //span.red( ng-if="project.max < project.min" ) Le maximum doit être supérieur au minimum
+            p.red( ng-if="project.max < project.min" ) Le maximum doit être supérieur au minimum
+
+        md-list-item.md-grid-item-content
+            md-button.md-primary.md-raised(
+                ng-click='save()'
+                ng-disabled='error') Sauvegarder
