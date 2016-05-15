@@ -44,8 +44,8 @@
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        $userData["Login"]      = 'mgoanv17';
+        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        //$userData["Login"]      = 'mgoanv17';
 
 
 
@@ -179,6 +179,7 @@ if (date("n")>7) $myYear++;
 
     $router->get(       '/effectifs',           'Effectif.getAll');
     $router->get(       '/effectifs/:id',       'Effectif.getOne');
+    $router->put(       '/effectifs/:club_id',  'Effectif.set');
 
     $router->get(       '/notes',               'NotationProf.allNotes');
     $router->get(       '/notes/xlsx',          'NotationProf.toXlsx');

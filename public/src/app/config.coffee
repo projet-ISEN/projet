@@ -45,7 +45,7 @@ angular.module('app')
             controller:     'candidatureCtrl'
             label:          'Candidature'
 
-        .when '/nextyear/:clubId',
+        .when '/nextyear/:club_id',
             templateUrl:    'views/nextYear.html'
             controller:     'nextYearCtrl'
             label:          'Année prospéctive'

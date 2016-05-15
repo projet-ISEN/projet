@@ -11,9 +11,7 @@ angular.module "app"
             $mdSidenav(menuId).toggle()
 
         $user.me (me)->
-
             $scope.me = me
-
 
         $rootScope.$on '$routeChangeSuccess', ->
             crumble.update()

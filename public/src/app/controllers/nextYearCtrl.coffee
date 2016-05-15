@@ -15,17 +15,16 @@ angular.module('app')
     ($scope, $routeParams, $mdToast, $mdBottomSheet, $user, $club, $member, $year)->
 
 
-        clubId = $routeParams.clubId
+        clubId = $routeParams.club_id
 
         $scope.openDialogEffectifs = ->
-            console.log 'coucou'
             $mdBottomSheet.show
                 templateUrl:            'directives/effectifsBottomSheet.html'
                 controller:             'effectifsBottomSheet'
                 clickOutsideToClose:    true
                 escapeToClose:          true
                 disableParentScroll:    true
-                #parent:                 angular.element document.getElementByTagName 'viewContent'
+                parent:                 angular.element document.getElementById 'viewContent'
                 locals:
                     clubId: clubId
 
