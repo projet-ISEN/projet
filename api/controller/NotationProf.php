@@ -133,7 +133,7 @@ class NotationProf
             ];
         }
         //var_dump( $notes );
-        $E = new Excel( 'Notes clubs ' . $_SESSION['year'] );
+        $E = new Excel( 'notes_clubs_' . $_SESSION['year'] );
 
         $i=0;
         foreach( $notes as $classeName => $eleves )

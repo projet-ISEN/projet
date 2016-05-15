@@ -180,7 +180,9 @@ class Club {
             "SELECT * FROM member WHERE club_id='" . $this->club_id . "' AND main_club=1".
             " AND school_year='". $year ."'");
         foreach ($req as $member) {
-            array_push($members, new \Models\Member( $this->club_id, $member->login ) );
+            $tmp = new \Models\Member( $this->club_id, $member->login );
+            $tmp->load();
+            array_push($members, $tmp );
         }
 
         return $members;
