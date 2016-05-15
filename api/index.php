@@ -34,7 +34,7 @@
 
         //test variable
 
-        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
         //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
@@ -193,7 +193,7 @@ if (date("n")>7) $myYear++;
     $router->get(       '/members/recommended/:club_id',    'Member.recommended');
     $router->put(       '/members/unRecommend/:login',      'Member.unRecommend');
     $router->post(      '/members/recommend/:login',        'Member.recommend');
-    $router->put(       '/members/unDdisgrace/:login',      'Member.unDisgrace');
+    $router->put(       '/members/unDisgrace/:login',       'Member.unDisgrace');
     $router->post(      '/members/disgrace/:login',         'Member.disgrace');
 
     $router->get(       '/capisen/candidate',   'Member.juniorCandidate');

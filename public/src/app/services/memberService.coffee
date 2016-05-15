@@ -101,6 +101,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
+    # For next year
     @recommendedMember = (club_id, cb)->
         $http(
             method: 'GET'
@@ -112,6 +113,19 @@ angular.module('app')
             console.log err if err?
             cb err
 
+    # For next year
+    @disgracedMember = (club_id, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/members/recommended/" + club_id
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
+    # Recommand an user for a club for next year
     @recommend = (clubId, login, cb)->
         $http(
             method: 'POST'
@@ -125,6 +139,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
+    # Recommand an user for a club for next year
     @unRecommend = (clubId, login, cb)->
         $http(
             method: 'PUT'
@@ -138,6 +153,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
+     # Disgrace an user for a club for next year
     @disgrace = (clubId, login, cb)->
         $http(
             method: 'POST'
@@ -151,6 +167,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
+     # undisgrace an user for a club for next year
     @unDisgrace = (clubId, login, cb)->
         $http(
             method: 'PUT'

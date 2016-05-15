@@ -3,6 +3,8 @@
 #------------------------------------------------------------------------------
 angular.module('app')
 .service '$club', ['$http', ($http)->
+
+    # List all clubs
     @all = (cb)->
         $http(
             method: 'GET'
@@ -25,6 +27,7 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    # Get one club with his uid
     @one = (id, cb)->
         $http(
             method: 'GET'
@@ -36,6 +39,7 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    # Get one club with his name
     @getByName = (name, cb)=>
         @all (clubs)->
             for club in clubs
@@ -43,6 +47,7 @@ angular.module('app')
                     return cb club
             cb null
 
+    # Get statistics of a club
     @stat = (id, cb)->
         $http(
             method: 'GET'
@@ -53,6 +58,7 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
+
     ###send back the member of a club of the current year###
     @getMembers = (id, cb)->
         $http(
@@ -65,8 +71,7 @@ angular.module('app')
             console.log err if err?
             cb null
 
-        ###send back the member of a club of a specific year###
-
+    ###send back the member of a club of a specific year###
     @getMembersYear = (id, year, cb)->
         $http(
             method: 'GET'

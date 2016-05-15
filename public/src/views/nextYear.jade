@@ -5,7 +5,7 @@ div(
   ng-cloak='')
     md-content.borderRight( flex="50" flex-xs="100" layout-padding )
 
-        h2 Recommander un non membre
+        h2 Recommander un non membre pour {{year}}/{{year+1}}
         md-input-container
                 label Recherche d'un élève
                 input( type='text' ng-model='searchUser')
@@ -31,16 +31,16 @@ div(
 
     md-content( flex="50" flex-xs="100" layout-padding )
 
-        h2 Pénaliser un membre actuel
+        h2 Pénaliser un membre actuel pour {{year}}/{{year+1}}
         md-input-container
                 label Recherche d'un membre
                 input( type='text' ng-model='searchMember')
 
             md-list
-                md-subheader.md-no-sticky {{clubMembers.length || 0}} Utilisateurs
+                md-subheader.md-no-sticky {{clubMembers.length || 0}} Membres
 
                 md-list-item.md-2-line.secondary-button-padding(
-                    ng-repeat="member in clubMembers | orderBy : 'user.user_name' | filter: searchUser")
+                    ng-repeat="member in clubMembers | orderBy : 'user.user_name' | filter: searchMember")
 
                     img.md-avatar(
                         src='images/profiles/{{member.user.login}}.jpg'
