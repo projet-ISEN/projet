@@ -319,7 +319,10 @@ class Member
         return;
     }
 
-
+    /**
+     * Recommand a member for next year for a club
+     * @param $login
+     */
     public static function recommend( $login )
     {
         $post = json_decode( file_get_contents("php://input"), true);
@@ -348,6 +351,10 @@ class Member
         return;
     }
 
+    /**
+     * Unrecommand a member for next year for a club
+     * @param $login
+     */
     public static function unRecommend( $login )
     {
         $put = json_decode( file_get_contents("php://input"), true);
@@ -376,6 +383,10 @@ class Member
         return;
     }
 
+    /**
+     * Say a member is not wanted for a club, next year
+     * @param $login
+     */
     public static function disgrace( $login )
     {
         $put = json_decode( file_get_contents("php://input"), true);
@@ -402,6 +413,11 @@ class Member
         ]);
         return;
     }
+
+    /**
+     * * Say a member finally not not wanted for a club, next year
+     * @param $login
+     */
     public static function unDisgrace( $login )
     {
         $put = json_decode( file_get_contents("php://input"), true);

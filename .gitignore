@@ -6,3 +6,5 @@
 /public/node_modules/
 /public/build/
 /public/src/libs
+*.phar
+/phpDoc/
