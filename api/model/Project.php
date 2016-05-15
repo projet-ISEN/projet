@@ -95,5 +95,16 @@ class Project
         return $req->execute(array('project_id'=> $this->project_id));
     }
 
-
+    /**
+     * Return name of project ID
+     * @param $id
+     */
+    public static function id2Type ($id)
+    {
+        $res = Database::Select("SELECT project_type FROM projet WHERE project_id='" . $id . "'");
+        if( !empty($res) && !empty($res[0]) ){
+            return $res[0]->project_type;
+        }
+        return null;
+    }
 }

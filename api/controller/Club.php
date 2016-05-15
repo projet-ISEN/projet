@@ -8,6 +8,8 @@
 
 namespace Controllers;
 
+use \API\Excel;
+use Models\User;
 
 /**
  * Class Club
@@ -49,16 +51,18 @@ class Club
         echo \Models\Club::juniorEntrepriseID();
     }
 
+    /**
+     * Send statistics of a club, with a club_id
+     * @param $id_Club
+     */
     public static function stat( $id_Club )
     {
-
         $club = new \Models\Club($id_Club);
-
         echo json_encode( [
-
             'members' => $club->numberOfMembers(),
             'details' => $club->memberDetails()
         ]);
+        return;
     }
 
     /**
@@ -119,13 +123,10 @@ class Club
 
     }
 
-
-
     /**
      * Supprime un club existant
      * @param $id
      */
-
     public static function delete( $id_Club ) {
 
         $club = new \Models\Club($id_Club);
@@ -139,7 +140,7 @@ class Club
 
     }
 
-        /**
+    /**
      * Renvoi les clubs qu'un Evaluateur peut administrer
      */
     public static function ClubsIntelsEvaluator($login = null)
@@ -180,22 +181,90 @@ class Club
         echo json_encode ($club -> markClub($id));
     }
 
+    /**
+     * Lock the mark of a club (no limitations for Evaluator)
+     * @param $id
+     */
     public static function lockMark($id)
     {
         echo json_encode ( \Models\Club::lock($id, "lock_member_mark"));
     }
 
+    /**
+     * Lock projects validation of a club (no limitations for Evaluator)
+     * @param $id
+     */
     public static function lockProject($id)
     {
         echo json_encode ( \Models\Club::lock($id, "lock_member_project_validation"));
     }
+
+    /**
+     * Unlock the mark of a club
+     * @param $id
+     */
     public static function unLockMark($id)
     {
         echo json_encode ( \Models\Club::unLock($id, "lock_member_mark"));
     }
 
+    /**
+     * Unlock projects validation of a club
+     * @param $id
+     */
     public static function unLockProject($id)
     {
         echo json_encode ( \Models\Club::unLock($id, "lock_member_project_validation"));
+    }
+
+    public static function clubMembers2excel( $club_id=null )
+    {
+        $all = [];
+        $clubs = \Models\Club::get( $club_id );
+
+        foreach( $clubs as $club )
+        {
+            $clubObj = new \Models\Club( $club->club_id );
+            $clubObj->load();
+            $users = [];
+            foreach( $clubObj->getMembers() as $member )
+            {
+                $user = new \Models\User($member->login);
+                $user->load();
+                $user->project_id = $member->project_id;
+                array_push($users, $user);
+            }
+
+            $all[ $clubObj->club_name] = $users;
+
+        }
+        $E = new Excel( 'Composition_clubs_' . $_SESSION['year'] );
+        $sheet = $E->file->getActiveSheet();
+
+        $sheet->getStyle('A1:AK1')->getFont()->setBold(true);
+        //$sheet->getStyle('A1:AK1')->getBorders()->getAllBorders()->setBorderStyle('medium');
+        //$sheet->getStyle('A2:AK500')->getBorders()->getAllBorders()->setBorderStyle('thin');
+        //$sheet->setAutoFilter('A1:K50');
+
+        $i=0;
+        foreach( $all as $k => $clubs )
+        {
+            $sheet->setCellValueByColumnAndRow($i, 1, $k);
+            $j=2;
+
+            foreach ($clubs as $member)
+            {
+                $projet = \Models\Project::id2Type($member->project_id);
+                $sheet->setCellValueByColumnAndRow($i,$j, $projet .' '. $member->user_firstname .' '. $member->user_name);
+                //$sheet->getCellByColumnAndRow($i, $j)->getStyle()->getBorders()->getAllBorders()->setBorderStyle('thin');
+                $j++;
+            }
+            $i++;
+        }
+        $sheet->setAutoFilterByColumnAndRow(0, 1, $i - 1, 100);
+        for($col = 0; $col < $i; $col++) {
+            $sheet->getColumnDimensionByColumn($col)->setAutoSize(true);
+        }
+        $E->send();
     }
 }

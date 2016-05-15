@@ -120,7 +120,7 @@ if (date("n")>7) $myYear++;
 
 
 
-        $router->get(   '/repartition/:year',           'Repartition.repartition');
+        $router->get(       '/repartition/:year',       'Repartition.repartition');
         $router->delete(    '/choices',                 'Choice.deleteAll' );
 
     // ONLY NOT ADMINISTRATOR
@@ -162,7 +162,6 @@ if (date("n")>7) $myYear++;
     $router->get(       '/contact/:club_id',    'Member.membersIntelsInClub'    );
     $router->get(       '/whoPrez/:clubId',     'Role.whoPrez');
 
-
     $router->get(       '/menu',                'Menu.jsonMenu'    );
 
     $router->get(       '/me',                  'User.getMe');
@@ -172,11 +171,15 @@ if (date("n")>7) $myYear++;
     $router->get(       '/projects/:id',        'Project.getOne');
     $router->post(      '/validateProjectStudent',   'Member.projectValidationStudent');
 
-    $router->get(       '/clubs',               'Club.getAll');
-    $router->get(       '/clubs/:id',           'Club.getOne');
-    $router->get(       '/clubs/:id/stat',      'Club.stat');
-    $router->get(       '/clubs/junior',        'Club.juniorEntrepriseID');
-    $router->get(       '/clubs/junior/candidate/:year', 'Member.juniorMember');
+    $router->get(       '/clubs/excel',                   'Club.clubMembers2excel');
+    $router->get(       '/clubs',                           'Club.getAll');
+    $router->get(       '/clubs/:id',                       'Club.getOne');
+    $router->get(       '/clubs/:id/stat',                  'Club.stat');
+    $router->get(       '/clubs/junior',                    'Club.juniorEntrepriseID');
+    $router->get(       '/clubs/junior/candidate/:year',    'Member.juniorMember');
+    //$router->get(       '/clubs/excel/:club_id',          'Club.clubMembers2excel');
+
+
 
     $router->get(       '/effectifs',           'Effectif.getAll');
     $router->get(       '/effectifs/:id',       'Effectif.getOne');
