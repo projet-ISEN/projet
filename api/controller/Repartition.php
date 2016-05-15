@@ -81,15 +81,37 @@ class repartition
         var_dump($club[0]);
         var_dump($effectif[0]);
         foreach($club as $value){
-            $value->asked_pepole = [];
+            $value->asked_people = [];
             foreach($effectif as $key=>$val){
                 if($value->club_id == $val->choice[$i]["club_id"] && $value->project_id == $val->project_id ){
-                    array_push($value->asked_pepole,$val->login);
+                    array_push($value->asked_people,["login"=>$val->login,"score"=>$val->choice[$i]["score"]]);
                 }
             }
-
+            $value->asked_people = self::rearrange($value->asked_people);
         }
-        var_dump($club);
+
+
+        //asort($club[14]->asked_people[1]);
+        var_dump($club[14]);
+        //var_dump($club[14]->asked_people);
+        //var_dump(asort($club[14]->asked_people));
+    }
+
+    public static function rearrange($array){
+
+        $temp = array();
+        foreach($array as $k => $value) {
+            //var_dump($value);
+          $temp[$k] = $value["score"];
+        }
+
+        //var_dump($array);
+        array_multisort($temp, SORT_DESC, $array);
+        return $array;
+
+        //var_dump($array);
+
+
     }
 
     public static function clubminmax($ratio){
