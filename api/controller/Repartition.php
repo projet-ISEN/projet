@@ -142,50 +142,56 @@ class repartition
     }
 
 
-    public static function pointrecommanded($member, $array){
+    public static function Changescore($member, $array,$point){
 
-        foreach($array as $current){ //regarde dans les recommandé
+        $change = false;
+
+        foreach($array as $current){
             if($member ->login == $current -> login){
-                foreach($member -> choice as $choice){
+                foreach($member -> choice as $key => $choice){
                     //var_dump($current);
                     //var_dump($choice);
                      if($choice["club_id"] == $current ->club_id){
                          //var_dump($member);
-                         $choice["score"] +=2;
+                         $member -> choice[$key]["score"] +=$point;
+                         //var_dump($key);
+                         $change = true;
                      }
-                    var_dump($choice);
-
+                    //var_dump($choice);
                 }
+
                 //var_dump($current);
                 //var_dump($member);
 
             }
         }
-        return $member;
-    }
-
-    public static function pointnotWanted($member, $array){
-        foreach($array as $current){
-            if($member ->login == $current -> login);
-        }
-    }
-
-    public static function pointancient($member, $array){
-        foreach($array as $current){
-            if($member ->login == $current -> login);
-        }
+        return [$member,$change];
     }
 
 
 
     public static function moulinette($completeINfo, $recommanded,$notWanted, $ancient){
 
-        var_dump($recommanded);
-        //var_dump($notWanted[0]);
+        //var_dump($recommanded);
+        //var_dump($notWanted);
         //var_dump($ancient[0]);
         foreach($completeINfo as $member){
-            self::pointrecommanded($member,$recommanded);
+
+            $no = self::Changescore($member,$notWanted,-2);
+            if($no[1]) $member = $no[0];
+            else{
+                $old = self::Changescore($member,$ancient,2);
+                if($old[1]) $member = $old[0];
+                else{
+                    $reco = self::Changescore($member,$recommanded,2);
+                    if($reco[1]) $member = $reco[0];
+                }
+            }
+
+
+            //self::Changescore($member,$recommanded,2);
         }
+        //var_dump($completeINfo[0] -> choice);
     }
 
     public static function calcScore($i, $reco, $no){
