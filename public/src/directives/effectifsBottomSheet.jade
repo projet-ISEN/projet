@@ -10,6 +10,7 @@ md-bottom-sheet( layout='column' )
                 label minimum
                 input(
                     type='number'
+                    ng-change='testValue()'
                     ng-model='project.min'
                     min='0'
                     step='1'
@@ -21,6 +22,7 @@ md-bottom-sheet( layout='column' )
                 label maximum
                 input(
                     type='number'
+                    ng-change='testValue()'
                     ng-model='project.max'
                     min='0'
                     step='1'
@@ -30,4 +32,6 @@ md-bottom-sheet( layout='column' )
             p.red( ng-if="project.max < project.min" ) Le maximum doit être supérieur au minimum
 
         md-list-item.md-grid-item-content
-            md-button.md-primary.md-raised(ng-click='save()') Sauvegarder
+            md-button.md-primary.md-raised(
+                ng-click='save()'
+                ng-disabled='error') Sauvegarder
