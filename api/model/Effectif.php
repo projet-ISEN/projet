@@ -117,4 +117,16 @@ class Effectif
         }
         return $req->execute($values);
     }
+
+
+
+
+    /**
+     * Supprime tous les élément de la table effectif
+     */
+    public static function deleteAll() {
+        $req = Database::getInstance()->PDOInstance->exec("Delete from effectif");
+        if( $req ) return array( 'err' => null );
+        else return array( 'err' => "An error occurred" );
+    }
 }
