@@ -25,7 +25,7 @@ class repartition
 
     public static function repartition( $year ){
         $trace = "Définition des projets pour chaques utilisateurs: " .self::whichProject( $year );
-        var_dump($trace);
+        //var_dump($trace);
 
         $findAClubFor = [];
 
@@ -33,7 +33,7 @@ class repartition
 
         //var_dump($minMax_effectif);
 
-        $loginChoice = self::user2Bplced();//renvoie une liste des demandeur de club ^^
+        $loginChoice = self::user2Bplced();//renvoie une liste des demandeurs de club ^^
 
         $recommanded =self::recommanded($year);
 
@@ -67,37 +67,94 @@ class repartition
 
          $score = self::expception($score);
 
-        //$club = Database::Select("SELECT * FROM club WHERE actif = 1");
+        $club = $clubMinMaxEffectif;
+        $club = self::initiateClub($club);
+                //var_dump(count($score));
 
         for ($i = 1; $i <= 3; $i++) {
-            $club = self::affectation($clubMinMaxEffectif,$score,$i);
+            //var_dump($clubMinMaxEffectif);
+
+            $temp = self::affectation($club,$score,$i);
+            $club = $temp[0];
+            $rest = $temp[1];
+                        //var_dump($clubMinMaxEffectif);
+
             $temp = self::cutTheRest($club);
 
-
-            //var_dump($score);
-
-
             $club = $temp[0];
+                        //var_dump($club[14]);
+
             //var_dump($rest);
             $score = self::login2score($score, $temp[1]);
+
+            //var_dump($rest);
+            //var_dump($score);
+
+            $score = array_merge($score,$rest);
+                            //var_dump($howmanyplaced);
 
 
         }
 
+        //var_dump($club);
+        self::removeB4Choice($year);
+        self::addWaitingConfirm($club,"waiting validation",$year);
 
+/*        $howmanyplaced =0;
+        foreach($club as $value){
+            $howmanyplaced += count($value -> asked_people);
+        }*/
 
-        //$temp = self::affectation($clubMinMaxEffectif,$score,1);
-        //var_dump($temp[14]->asked_people);
-        //var_dump(array_splice($temp[14]->asked_people,-2));
-        //var_dump($temp[14]->asked_people);
-        //$effectif = self::total_effectif( $effectif);
-
-
-
+        //var_dump($howmanyplaced);
+        //var_dump(count($score));
+        echo(json_encode($score));
 
     }
 
 
+    public static function validate($year){
+        Database::getInstance()->PDOInstance->exec("DELETE FROM member WHERE main_club = 1  AND project_validation = 0 AND member_comment IS NULL AND school_year = ". $year);
+
+
+        Database::getInstance()->PDOInstance->exec("UPDATE member SET member_comment = NULL, project_validation = 1 WHERE main_club = 1  AND project_validation = 0 AND school_year = ". $year);
+
+
+
+        \Models\Choice::deleteAll();
+
+        \Models\Effectif::deleteAll();
+
+    }
+
+    public static function removeB4Choice($year){
+        return Database::getInstance()->PDOInstance->exec("DELETE FROM member WHERE member_comment = 'waiting validation' AND school_year=".$year);
+    }
+
+    public static function addWaitingConfirm($club, $message, $year){
+        $allGood =true;
+
+        foreach($club as $val){
+            foreach($val->asked_people as $value){
+                $temp = Database::Select("SELECT COUNT(*) AS nb FROM `member` WHERE login ='".$value["login"]."' AND main_club = 1 AND club_id = '".$val -> club_id."' AND project_validation = 0 AND school_year = ". $year)[0] -> nb;
+                if(!$temp){
+                    $req = Database::getInstance()->PDOInstance->prepare(
+                            "INSERT INTO `member`(`club_id`, `login`, `school_year`, `project_id`, `main_club`, `project_validation`, `member_comment`) VALUES (:club_id,:login,:school_year,:project_id,:main_club,:project_validation,:member_comment)");
+
+                    $values["club_id"] = $val -> club_id;
+                    $values["login"] = $value["login"];
+                    $values["school_year"] = $year;
+                    $values["project_id"] = $val -> project_id;
+                    $values["main_club"] = 1;
+                    $values["project_validation"] = 0;
+                    $values["member_comment"] = $message;
+                    if(!$req->execute($values))$allGood=false;
+                }else{
+                    Database::getInstance()->PDOInstance->exec("UPDATE member SET member_comment = 'waiting validation' WHERE login ='".$value["login"]."' AND main_club = 1 AND club_id = '".$val -> club_id."' AND project_validation = 0 AND school_year = ". $year);
+                }
+            }
+        }
+        return $allGood;
+    }
 
     public static function login2score($score, $rest){
             //var_dump($rest);
@@ -111,7 +168,7 @@ class repartition
                     }
                 }
             }
-            var_dump($noClubYet);
+            //var_dump($noClubYet);
         return $noClubYet;
     }
 
@@ -132,24 +189,45 @@ class repartition
     }
 
 
+    public static function initiateClub($club){
+        foreach($club as $value){
+            $value->asked_people = [];
+        }
+        return $club;
+    }
+
     public static function affectation($club,$effectif,$i){
         //var_dump($club[0]);
         //var_dump($effectif[0]);
-        foreach($club as $value){
-            $value->asked_people = [];
-            foreach($effectif as $key=>$val){
-                if($value->club_id == $val->choice[$i]["club_id"] && $value->project_id == $val->project_id ){
-                    array_push($value->asked_people,["login"=>$val->login,"score"=>$val->choice[$i]["score"]]);
-                }
-            }
-            $value->asked_people = self::rearrange($value->asked_people);
+                                //var_dump($club[14]);
+        foreach($effectif as $value){
+            $value-> notAttribuate = true;
         }
 
+        $not_added = [];
+        $test = true;
+        foreach($club as $value){
+            foreach($effectif as $val){
+                if($value->club_id == $val->choice[$i]["club_id"] && $value->project_id == $val->project_id ){
+                    array_push($value->asked_people,["login"=>$val->login,"score"=>$val->choice[$i]["score"]]);
+                    $val->notAttribuate = false;
+                }
+            }
+            //var_dump(count($value->asked_people));
+            $value->asked_people = self::rearrange($value->asked_people);            //var_dump(count($value->asked_people));
+
+        }
+
+        foreach($effectif as $value){
+            if($value-> notAttribuate) array_push($not_added,$value) ;
+        }
+
+                        //var_dump($club[14]);
 
         //asort($club[14]->asked_people[1]);
         //var_dump($club);
         //var_dump($club[14]->asked_people);
-        return $club;
+        return [$club,$not_added];
         //var_dump(asort($club[14]->asked_people));
     }
 
@@ -190,10 +268,12 @@ class repartition
     }
 
     public static function recommanded($year){
+        $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET member_comment = NULL WHERE project_validation = 0 AND member_comment='waiting validation' AND recommandation = 1 AND school_year=".$year);
         return Database::Select("SELECT login, club_id FROM `member` WHERE project_validation = 0 AND recommandation = 1 AND school_year = ". $year);
     }
 
     public static function notWanted($year){
+        $req = Database::getInstance()->PDOInstance->exec("UPDATE member SET member_comment = NULL WHERE project_validation = 0 AND member_comment='waiting validation' AND ex_member_not_wanted = 1 AND school_year=".$year);
         return Database::Select("SELECT login, club_id FROM `member` WHERE project_validation = 0 AND ex_member_not_wanted = 1 AND school_year = ". $year);
     }
 
