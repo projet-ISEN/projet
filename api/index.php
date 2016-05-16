@@ -118,6 +118,9 @@ if (date("n")>7) $myYear++;
         $router->put(      '/members/setMain/:login',   'Member.setMain');
         $router->delete(   '/members/:login',           'Member.delete');
 
+        $router->delete(   '/repartition/:year',           'Repartition.validate');
+
+
 
 
         $router->get(       '/repartition/:year',       'Repartition.repartition');
