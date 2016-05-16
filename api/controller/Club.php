@@ -147,7 +147,6 @@ class Club
             echo json_encode( array('err' => "Impossible de supprimer ce club, vérfiez qu'il n'éxiste ".
                 'pas de dépendances comme des membres par exemple'));
         }
-
     }
 
     /**
