@@ -12,10 +12,14 @@ angular.module('app')
     '$club'
     '$member'
     '$year'
-    ($scope, $routeParams, $mdToast, $mdBottomSheet, $user, $club, $member, $year)->
+    '$effectif'
+    ($scope, $routeParams, $mdToast, $mdBottomSheet, $user, $club, $member, $year, $effectif)->
 
 
         clubId = $routeParams.club_id
+
+        $effectif.canSetEffectifs clubId, (res)->
+            $scope.allow = res.right
 
         $scope.openDialogEffectifs = ->
             $mdBottomSheet.show

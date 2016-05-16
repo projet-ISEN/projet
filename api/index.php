@@ -28,8 +28,8 @@
 
 
     $_SESSION['Capisenid'] = "7cbed24e-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
-    $_SESSION['BDEid'] = "7cbed127-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
-    $_SESSION['BDSid'] = "7cbed09a-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
+    $_SESSION['BDEid']     = "7cbed127-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
+    $_SESSION['BDSid']     = "7cbed09a-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
 
 
 
@@ -50,7 +50,7 @@
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
         //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        //$userData["Login"]      = 'mgoanv17';
+        $userData["Login"]      = 'mgoanv17';
 
         $userData["Name"]       = 'prename name'; // prénom nom
         $userData["FirstName"]  = 'prename'; // prénom
@@ -184,9 +184,10 @@ if (date("n")>7) $myYear++;
 
 
 
-    $router->get(       '/effectifs',           'Effectif.getAll');
-    $router->get(       '/effectifs/:id',       'Effectif.getOne');
-    $router->put(       '/effectifs/:club_id',  'Effectif.set');
+    $router->get(       '/effectifs',                   'Effectif.getAll');
+    $router->get(       '/effectifs/:id',               'Effectif.getOne');
+    $router->put(       '/effectifs/:club_id',          'Effectif.set');
+    $router->get(       '/effectifs/rights/:club_id',   'Effectif.rights');
 
     $router->get(       '/notes',               'NotationProf.allNotes');
     $router->get(       '/notes/xlsx',          'NotationProf.toXlsx');

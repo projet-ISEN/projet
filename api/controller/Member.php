@@ -333,6 +333,13 @@ class Member
      */
     public static function recommended ($club_id)
     {
+        if( in_array($club_id, [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'err' => 'Non autorisé'
+            ]);
+            return;
+        }
+
         $res = \Models\Member::getMembersOfClub($club_id, $_SESSION['year'] + 1 );
         echo json_encode($res);
         return;
@@ -353,6 +360,14 @@ class Member
             ]);
             return;
         }
+
+        if( in_array($post['club_id'], [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'right' => false
+            ]);
+            return;
+        }
+
         $clubId = $post['club_id'];
         $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
         $member->recommandation = '1';
@@ -385,6 +400,14 @@ class Member
             ]);
             return;
         }
+
+        if( in_array($put['club_id'], [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'right' => false
+            ]);
+            return;
+        }
+
         $clubId = $put['club_id'];
         $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
         $member->recommandation = '0';
@@ -416,6 +439,14 @@ class Member
             ]);
             return;
         }
+
+        if( in_array($put['club_id'], [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'right' => false
+            ]);
+            return;
+        }
+
         $clubId = $put['club_id'];
         $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
         $member->recommandation = '0';
@@ -447,6 +478,14 @@ class Member
             ]);
             return;
         }
+
+        if( in_array($put['club_id'], [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'right' => false
+            ]);
+            return;
+        }
+
         $clubId = $put['club_id'];
         $member = new \Models\Member($clubId, $login, $_SESSION['year'] + 1);
         $member->recommandation = '0';
