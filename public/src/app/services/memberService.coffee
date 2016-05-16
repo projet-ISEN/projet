@@ -16,6 +16,18 @@ angular.module('app')
             console.log err if err?
             cb err
 
+    # Les clubs d'un user
+    @oneWithYear = (login, year, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/members/" + login + '/' + year
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb err
+
     # Ajoute un club à ce user avec ce projet
     @add = (login, club, projet, cb)->
         $http(
@@ -31,7 +43,7 @@ angular.module('app')
             console.log err
             cb err
 
-    # Ajoute un club à ce user avec ce projet
+    # Ajoute un club à ce user avec ce projet pour l'annee pro
     @addNextYear = (login, club, projet, year, cb)->
         $http(
             method: 'PUT'
@@ -76,10 +88,10 @@ angular.module('app')
             cb err
 
     # Supprime un membre d'un club
-    @delete = (login, club, cb)->
+    @delete = (login, club, year, cb)->
         $http(
             method: 'DELETE'
-            url: "../../api/members/" + login
+            url: "../../api/members/" + login + '/' + year
             data:
                 club_id: club
 

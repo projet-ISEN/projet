@@ -42,7 +42,14 @@ angular.module('app')
             cb err
 
     @delete = (login)->
-        console.log login
+        $http
+            method: 'DELETE'
+            url: "../../api/choices/" + login
+        .then (res)->
+            cb res.data
+        , (err)->
+            console.log err if err?
+            cb err
 
     return @
 ]

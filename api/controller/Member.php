@@ -42,9 +42,10 @@ class Member
         $user = new \Models\User($user_login);
         if( !$user->exist() ){
 
-            return json_encode([
+            echo json_encode([
                 'err' => "Cet utilisateur n'existe pas."
             ]);
+            return;
         }
 
         $put = json_decode( file_get_contents("php://input"), true);
@@ -55,9 +56,9 @@ class Member
             ]);
         }
 
-        $member = new \Models\Member($put['club_id'], $user_login, $year );
-        $member->project_id = $put['project_id'];
-        $member->main_club = $main_club;
+        $member                 = new \Models\Member($put['club_id'], $user_login, $year );
+        $member->project_id     = $put['project_id'];
+        $member->main_club      = $main_club;
 
         if( $member->save() )
         {
@@ -96,9 +97,25 @@ class Member
      * Return all members object of an user
      * @param $login
      */
-    public static function get( $login ) {
+    public static function get( $login, $year )
+    {
 
         $members = \Models\Member::clubOfMember( $login );
+        foreach( $members as $member ) {
+            $member->load();
+        }
+        echo json_encode( $members );
+        return;
+    }
+
+    /**
+     * Return all members object of an user at a specific year
+     * @param $login
+     */
+    public static function getWithYear( $login, $year )
+    {
+
+        $members = \Models\Member::clubOfMemberAtYear( $login, $year );
         foreach( $members as $member ) {
             $member->load();
         }
@@ -110,8 +127,10 @@ class Member
      * Delete a member in a club
      * @param $login
      */
-    public static function delete( $login )
+    public static function delete( $login, $year=null )
     {
+        if( empty($year) ) $year = $_SESSION['year'];
+
         $delete = json_decode( file_get_contents("php://input"), true);
         if( empty($delete['club_id']) ) {
             echo json_encode([
@@ -119,7 +138,7 @@ class Member
             ]);
             return;
         }
-        $tmp = new \Models\Member($delete['club_id'], $login);
+        $tmp = new \Models\Member($delete['club_id'], $login, $year);
         if( $tmp->delete() ) {
             echo json_encode([
                 'err' => "Membre du club supprimé"

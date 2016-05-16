@@ -2,15 +2,25 @@ angular.module 'app'
 .controller 'administrationUsersCtrl', [
     '$mdDialog'
     '$scope'
-    '$user',
-    ($mdDialog, $scope, $user)->
+    '$user'
+    '$year'
+    ($mdDialog, $scope, $user, $year)->
 
         $user.all (users) ->
             $scope.users = users
 
 
+        $year.currentYear (year)->
 
-        $scope.showDialog = ( user ) ->
+            # fix, this year
+            $scope.currentYear = parseInt year
+            # possibles years
+            $scope.years = [ $scope.currentYear , $scope.currentYear + 1 ]
+            # choosing year
+            $scope.year = $scope.currentYear
+
+        $scope.showDialog = ( user, year ) ->
+
             $mdDialog.show
                 controller: 'adminUserDialogCtrl'
                 templateUrl: 'directives/dialogAdminUser.html'
@@ -19,6 +29,7 @@ angular.module 'app'
                 clickOutsideToClose:true
                 locals:
                     user: user
+                    specificYear: year
 
             .then (answer)->
                 $scope.status = 'You said the information was "' + answer + '".';
