@@ -268,6 +268,12 @@ class Menu {
                                 "title" => 'Administration',
                                 "icon" => 'dashboard',
                                 "active" => false
+                            ],
+                            [
+                                "link" => '#/evaluatorsOfClubs',
+                                "title" => 'Evaluateurs de clubs',
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]

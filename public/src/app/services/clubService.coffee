@@ -93,5 +93,19 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
+
+    @update = (club, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/clubs/" + club.club_id
+            data:
+                club: club
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
     return @
 ]

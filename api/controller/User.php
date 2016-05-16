@@ -60,6 +60,20 @@ class User {
         return;
     }
 
+    /**
+     * Return all evaluators
+     */
+    public function getEvaluators()
+    {
+        $evals = \Models\User::getAllEvaluators();
+        foreach( $evals as $user)
+        {
+            $user->load();
+        }
+        echo json_encode($evals);
+        return;
+    }
+
     public static function getMe() {
         echo json_encode( $_SESSION['user'] );
         return;

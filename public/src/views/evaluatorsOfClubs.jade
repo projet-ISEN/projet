@@ -1,0 +1,28 @@
+md-content
+
+    md-card
+        md-card-content
+            p Si la personne que vous souhaitez passer évaluateur
+                | d'un club n'apparaît pas, il est possible que cette personne
+                | ne soit pas connue de l'application. Pour corriger ce détail
+                | demandez à cette personne de se connecter à l'application.
+
+    md-list
+        md-subheader.md-no-sticky {{clubs.length}} Clubs
+
+        md-list-item.md-2-line.secondary-button-padding(
+            ng-repeat="club in clubs | orderBy : 'club_name' | filter: searchClub")
+
+            img.md-avatar(
+                ng-src='images/{{club.club_id}}.jpg'
+                onerror="this.src='images/blank.jpg'" )
+
+            div.md-list-item-text( layout='column' )
+                h3 {{club.club_name }}
+
+            md-select.md-secondary( ng-model='club.login' ng-change='changeEval(club)')
+                md-option(
+                    ng-repeat='evaluator in evaluators'
+                    ng-value='evaluator.login' )
+                        | {{evaluator.user_name | firstLetterUppercase}}
+                        | {{evaluator.user_name | firstLetterUppercase}}

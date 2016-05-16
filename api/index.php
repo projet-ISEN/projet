@@ -50,7 +50,7 @@
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
         //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        $userData["Login"]      = 'mgoanv17';
+        //$userData["Login"]      = 'mgoanv17';
 
         $userData["Name"]       = 'prename name'; // prénom nom
         $userData["FirstName"]  = 'prename'; // prénom
@@ -95,9 +95,10 @@ if (date("n")>7) $myYear++;
     // ONLY ADMINISTRATEUR
     if($_SESSION['user']->is_administrator){
 
+        $router->get(       '/users/evaluators',        'User.getEvaluators');
 
         $router->post(      '/clubs',                   'Club.create');
-        $router->put(       '/club/:id',                'Club.update');
+        $router->put(       '/clubs/:id',                'Club.update');
         $router->delete(    '/club/:id',                'Club.delete');
 
         $router->post(      '/projects',                'Project.create');
@@ -113,14 +114,12 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:number',             'Logger.getLastLogs');
         $router->get(       '/log/:dateA/:dateB',       'Logger.getBetweenDate');
 
-        $router->put(      '/members/:user_login',      'Member.addClub');
-        $router->get(      '/members/:user_id',         'Member.get');
-        $router->get(      '/members/:user_id/:year',   'Member.getWithYear');
-        $router->put(      '/members/setMain/:login',   'Member.setMain');
-        $router->delete(   '/members/:login/:year',     'Member.delete');
+        $router->get(      '/members/:login',           'Member.get');
+        $router->put(      '/members/:login',           'Member.addClub');
         $router->delete(   '/members/:login',           'Member.delete');
-
-
+        $router->get(      '/members/:login/:year',     'Member.getWithYear');
+        $router->delete(   '/members/:login/:year',     'Member.delete');
+        $router->put(      '/members/setMain/:login',   'Member.setMain');
 
         $router->get(       '/repartition/:year',       'Repartition.repartition');
         $router->delete(    '/choices/:login',          'Choice.deleteOne' );
@@ -154,7 +153,7 @@ if (date("n")>7) $myYear++;
     }
 
 
-    $router->get(       '/users/:id',           'User.get');
+    $router->get(       '/users/:id',            'User.get');
     $router->get(       '/users',                'User.getAll');
 
     $router->get(       '/noteClub/:id',        'Club.markClub');

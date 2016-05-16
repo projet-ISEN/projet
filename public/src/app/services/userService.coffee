@@ -4,7 +4,7 @@
 angular.module('app')
 .service '$user', ['$http', ($http)->
 
-        
+
     @me = (cb)->
         $http(
             method: 'GET'
@@ -20,6 +20,17 @@ angular.module('app')
         $http(
             method: 'GET'
             url: "../../api/users"
+
+        ).then (res)->
+            cb res.data
+        , (err)->
+            console.log err if err?
+            cb null
+
+    @allEvaluators = (cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/users/evaluators"
 
         ).then (res)->
             cb res.data

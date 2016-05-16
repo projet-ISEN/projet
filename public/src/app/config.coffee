@@ -55,6 +55,11 @@ angular.module('app')
             controller:     'administrationCtrl'
             label:          'Administration'
 
+        .when '/evaluatorsOfClubs',
+            templateUrl:    'views/evaluatorsOfClubs.html'
+            controller:     'evaluatorsOfClubsCtrl'
+            label:          'Gestion des évaluateurs de club'
+
         .when '/adminUsers',
             templateUrl:    'views/administrationUsers.html'
             controller:     'administrationUsersCtrl'

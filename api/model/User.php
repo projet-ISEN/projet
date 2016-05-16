@@ -92,12 +92,32 @@ class User {
 
     }
 
+    /**
+     * Return all users without evaluators
+     * @return array
+     */
     public static function getAll()
     {
         $objUsers = [];
-        $users = Database::Select("SELECT login FROM users");
+        $users = Database::Select("SELECT login FROM users WHERE school_staff='0'");
         foreach ($users as $user) {
             array_push( $objUsers, new self($user->login) );
+        }
+        return $objUsers;
+    }
+
+    /**
+     * Return all evaluators
+     * @return array
+     */
+    public static function getAllEvaluators()
+    {
+        $objUsers = [];
+        $users = Database::Select("SELECT login FROM users WHERE school_staff='1'");
+        foreach ($users as $user)
+        {
+            if( $user->login != 'rcolli17' && $user->login != 'vrioua17')
+                array_push( $objUsers, new self($user->login) );
         }
         return $objUsers;
     }
