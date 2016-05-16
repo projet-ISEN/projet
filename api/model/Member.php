@@ -43,6 +43,7 @@ class Member {
         $this->club_id      = $club_id;
         $this->school_year  = $year;
         $this->main_club    = 1;
+        $this->project_validation = 1;
     }
 
     /**
@@ -79,6 +80,21 @@ class Member {
     public static function clubOfMember( $login ){
         $members = [];
         $req = Database::Select("SELECT club_id, login FROM member WHERE login='". $login ."'");
+        foreach( $req as $member) {
+            array_push( $members, new self($member->club_id, $member->login) );
+        }
+        return $members;
+    }
+
+    /**
+     * Return list all member of user, in obj
+     * @param $login
+     */
+    public static function clubOfMemberAtYear( $login, $year ){
+        $members = [];
+        $req = Database::Select(
+            "SELECT club_id, login FROM member WHERE login='". $login ."' AND school_year='" . $year . "'"
+        );
         foreach( $req as $member) {
             array_push( $members, new self($member->club_id, $member->login) );
         }
@@ -225,30 +241,29 @@ class Member {
  /*   foreach( $res as $key => $val ) {
         $this->$key = $val;
     }*/
-
-
-
     }
 
     /**
      * Charge toutes les données d'un membre portant le login de l'objet courant
      */
-    public function load() {
-
+    public function load()
+    {
         if( empty($this->login) || empty($this->club_id) )
         {
             return [
                 "err" => "Sans login et club serieux?"
             ];
         }
-
         // Récupère toutes les infos d'un club pour l'uid du this
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM member WHERE club_id='". $this->club_id .
             "' AND login='" . $this->login . "' AND school_year='" . $this->school_year . "'")
-            ->fetchAll( \PDO::FETCH_ASSOC )[0];
-        // complète le this avec les valeurs récupérées
-        foreach( $res as $key => $val ) {
-            $this->$key = $val;
+            ->fetchAll( \PDO::FETCH_ASSOC );
+
+        if( !empty($res) && !empty($res[0]) ) {
+            // complète le this avec les valeurs récupérées
+            foreach( $res[0] as $key => $val ) {
+                $this->$key = $val;
+            }
         }
     }
 

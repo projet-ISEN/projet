@@ -28,8 +28,8 @@
 
 
     $_SESSION['Capisenid'] = "7cbed24e-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
-    $_SESSION['BDEid'] = "7cbed127-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
-    $_SESSION['BDSid'] = "7cbed09a-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
+    $_SESSION['BDEid']     = "7cbed127-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
+    $_SESSION['BDSid']     = "7cbed09a-0df3-11e6-9aa9-448a5b42bfcd";//La junior entreprise
 
 
 
@@ -39,8 +39,8 @@
 
         //test variable
 
-        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -95,9 +95,10 @@ if (date("n")>7) $myYear++;
     // ONLY ADMINISTRATEUR
     if($_SESSION['user']->is_administrator){
 
+        $router->get(       '/users/evaluators',        'User.getEvaluators');
 
         $router->post(      '/clubs',                   'Club.create');
-        $router->put(       '/club/:id',                'Club.update');
+        $router->put(       '/clubs/:id',                'Club.update');
         $router->delete(    '/club/:id',                'Club.delete');
 
         $router->post(      '/projects',                'Project.create');
@@ -113,17 +114,20 @@ if (date("n")>7) $myYear++;
         $router->get(       '/log/:number',             'Logger.getLastLogs');
         $router->get(       '/log/:dateA/:dateB',       'Logger.getBetweenDate');
 
-        $router->put(      '/members/:user_login',      'Member.addClub');
-        $router->get(      '/members/:user_id',         'Member.get');
-        $router->put(      '/members/setMain/:login',   'Member.setMain');
+        $router->get(      '/members/:login',           'Member.get');
+        $router->put(      '/members/:login',           'Member.addClub');
         $router->delete(   '/members/:login',           'Member.delete');
 
         $router->delete(   '/repartition/:year',           'Repartition.validate');
 
 
 
+        $router->get(      '/members/:login/:year',     'Member.getWithYear');
+        $router->delete(   '/members/:login/:year',     'Member.delete');
+        $router->put(      '/members/setMain/:login',   'Member.setMain');
 
         $router->get(       '/repartition/:year',       'Repartition.repartition');
+        $router->delete(    '/choices/:login',          'Choice.deleteOne' );
         $router->delete(    '/choices',                 'Choice.deleteAll' );
 
     // ONLY NOT ADMINISTRATOR
@@ -154,7 +158,7 @@ if (date("n")>7) $myYear++;
     }
 
 
-    $router->get(       '/users/:id',           'User.get');
+    $router->get(       '/users/:id',            'User.get');
     $router->get(       '/users',                'User.getAll');
 
     $router->get(       '/noteClub/:id',        'Club.markClub');
@@ -184,9 +188,10 @@ if (date("n")>7) $myYear++;
 
 
 
-    $router->get(       '/effectifs',           'Effectif.getAll');
-    $router->get(       '/effectifs/:id',       'Effectif.getOne');
-    $router->put(       '/effectifs/:club_id',  'Effectif.set');
+    $router->get(       '/effectifs',                   'Effectif.getAll');
+    $router->get(       '/effectifs/:id',               'Effectif.getOne');
+    $router->put(       '/effectifs/:club_id',          'Effectif.set');
+    $router->get(       '/effectifs/rights/:club_id',   'Effectif.rights');
 
     $router->get(       '/notes',               'NotationProf.allNotes');
     $router->get(       '/notes/xlsx',          'NotationProf.toXlsx');

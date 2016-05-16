@@ -45,5 +45,17 @@ angular.module('app')
             return cb null
         return
 
+    @canSetEffectifs = (clubId, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/effectifs/rights/" + clubId
+
+        ).then (res)->          # On success
+            return cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            return cb null
+        return
+
     return this
 ]

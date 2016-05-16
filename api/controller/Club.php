@@ -103,24 +103,34 @@ class Club
      */
     public static function update( $id_Club ) {
 
-        parse_str(file_get_contents("php://input"),$_PUT);
+        $put = json_decode( file_get_contents("php://input"), true);
+
+        if( empty($put['club']) ){
+            echo json_encode([
+                'err' => 'Il manque des paramètres'
+            ]);
+            return;
+        }
 
         $club = new \Models\Club($id_Club);
         $club->load();
 
         // Pour toutes les modifs encoyées
-        foreach ($_PUT as $k => $v) {
+        foreach ($put['club'] as $k => $v) {
             // Si l'attribut existe
             $club->$k = $v;
         }
 
         if( $club->save() ){
-            echo json_encode($club);
+            echo json_encode([
+                'err' => null
+            ]);
         }
         else {
-            echo json_encode(array('err'=> 'Impossible de modifier ce club'));
+            echo json_encode([
+                'err'=> 'Impossible de modifier ce club'
+            ]);
         }
-
     }
 
     /**

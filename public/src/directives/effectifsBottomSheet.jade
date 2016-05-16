@@ -13,8 +13,7 @@ md-bottom-sheet( layout='column' )
                     ng-change='testValue()'
                     ng-model='project.min'
                     min='0'
-                    step='1'
-                    ng-init='0' )
+                    step='1' )
 
 
 
@@ -25,8 +24,7 @@ md-bottom-sheet( layout='column' )
                     ng-change='testValue()'
                     ng-model='project.max'
                     min='0'
-                    step='1'
-                    ng-init='0' )
+                    step='1' )
 
                 //span.red( ng-if="project.max < project.min" ) Le maximum doit être supérieur au minimum
             p.red( ng-if="project.max < project.min" ) Le maximum doit être supérieur au minimum

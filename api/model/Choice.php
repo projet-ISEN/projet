@@ -25,11 +25,11 @@ class Choice {
     /**
      * Choice constructor.
      */
-    public function __construct( ) {
-
+    public function __construct( $login=null )
+    {
         $this->login            =  $_SESSION["user"] -> login;
 
-
+        if( !empty($login) ) $this->login = $login;
     }
 
     /**
@@ -141,10 +141,19 @@ class Choice {
     /**
      * Supprime tous les élément de la table choice
      */
-    public static function deleteAll() {
+    public static function deleteAll()
+    {
         $req = Database::getInstance()->PDOInstance->exec("Delete from choice");
         if( $req ) return array( 'err' => null );
         else return array( 'err' => "An error occurred" );
+    }
+
+    public function delete() {
+        $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM choice WHERE login=:login");
+        $values = [
+            ':login' => $this->login
+        ];
+        return $req->execute( $values );
     }
 }
 ?>

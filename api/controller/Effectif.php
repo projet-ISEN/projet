@@ -56,6 +56,16 @@ class Effectif
      */
     public static function set( $club_id )
     {
+        $notAllow = [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']];
+        # Some clubs can't give effectifs
+        if( in_array($club_id, $notAllow) )
+        {
+            echo  json_encode([
+                'err' => "Votre club ne peut pas donner d'éffectifs"
+            ]);
+            return;
+        }
+
         if( !$_SESSION['user']->isPresident() ) {
             echo json_encode([
                 'err' => "Vous n'êtes pas autorisé à faire ça"
@@ -93,6 +103,24 @@ class Effectif
                 'err' => 'Un problème est survenu'
             ]);
         }
+        return;
+    }
+
+    /**
+     * Is this club can give effectifs
+     * @param $club_id
+     */
+    public static function rights( $club_id )
+    {
+        if( in_array($club_id, [$_SESSION['Capisenid'], $_SESSION['BDEid'], $_SESSION['BDSid']]) ){
+            echo json_encode([
+                'right' => false
+            ]);
+            return;
+        }
+        echo json_encode([
+           'right' => true
+        ]);
         return;
     }
 }

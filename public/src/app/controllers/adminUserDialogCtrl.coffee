@@ -3,27 +3,56 @@ angular.module 'app'
     '$mdDialog'
     '$mdToast'
     '$scope'
+    '$year'
     '$club'
     '$project'
     '$member'
+    '$choice'
     'user'
-    '$http'
-    ($mdDialog, $mdToast, $scope, $club, $project, $member, user)->
+    'specificYear'
+    ($mdDialog, $mdToast, $scope, $year, $club, $project, $member, $choice, user, specificYear)->
 
         $scope.user = user
 
-        $scope.closeDialog = ->
+        $year.currentYear (year)->
+            # Année courante
+            $scope.currentYear = parseInt year
+            console.log 'current: ' + typeof $scope.currentYear
+            console.log 'asked: '   + typeof specificYear
+            # Es-ce cette année
+            $scope.forThisYear = specificYear == $scope.currentYear
+            console.log 'this year? ' + (specificYear == $scope.currentYear)
 
+        $scope.closeDialog = ->
             $mdDialog.hide()
 
-        $scope.addClub = ->
 
-            $member.add user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, (res)->
-                if res.err?
-                    $mdToast.showSimple 'Une erreur est survenue : ' + res.err
-                else
-                    $mdToast.showSimple 'Membre enregistré!'
-                    displayAll()
+        $scope.addClub = ->
+            if $scope.forThisYear
+                # Si pour l'annee courante
+                $member.add user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, (res)->
+                    if res.err?
+                        $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                    else
+                        $mdToast.showSimple 'Membre enregistré!'
+                        displayAll()
+            else
+                # Pour une autre année
+                $member.addNextYear user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, specificYear, (res)->
+                    if res.err?
+                        $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                    else
+                        $mdToast.showSimple 'Membre enregistré!'
+
+                        $choice.delete user.login, (res)->
+                            if res.err?
+                                $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                            else
+                                $mdToast.showSimple 'choix supprimés!'
+
+
+
+                        displayAll()
 
         $scope.switchMain = (index)->
             newMain = $scope.userMembers[index]
@@ -35,20 +64,20 @@ angular.module 'app'
                 else
                     $mdToast.showSimple 'Club principal changé!'
                     displayAll()
-                    
+
         $scope.delete = (member)->
             console.log member
-            $member.delete member.login, member.club_id, (res)->
+            $member.delete member.login, member.club_id, specificYear, (res)->
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                 else
                     $mdToast.showSimple "Le membre n'est plus dans le club"
                     displayAll()
 
-            
+
         displayAll = ->
 
-            $member.one user.login, (members)->
+            $member.oneWithYear user.login, specificYear, (members)->
                 $scope.userMembers = members
 
                 $club.all (clubs)->

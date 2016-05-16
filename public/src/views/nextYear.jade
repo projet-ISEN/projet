@@ -3,9 +3,18 @@ div#viewContent(
   layout-align='center top'
   layout-xs='column'
   ng-cloak='')
-    md-button.md-raised.pull-right( ng-click='openDialogEffectifs()' )
+    md-button.md-raised.pull-right(
+        ng-click='openDialogEffectifs()'
+        ng-if='allow')
         | Effectifs pour l'année prochaine
+
+div( ng-if='!allow' )
+    md-card
+        md-card-content
+            p Votre club ne peux ni donner d'éfféctifs,
+                | ni donner une recommandation à un élève.
 div(
+  ng-if='allow'
   layout='row'
   layout-align='center top'
   layout-xs='column'

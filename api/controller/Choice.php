@@ -93,4 +93,25 @@ class Choice
     public static function deleteAll() {
         echo json_encode (\Models\Choice::deleteAll());
     }
+
+    /**
+     * Delete all choices from a user
+     * STATIC
+     */
+    public static function deleteOne( $login )
+    {
+        $tmp = new \Models\Choice( $login );
+        if( $tmp->delete() ) {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        else {
+            echo json_encode([
+                'err' => "Impossible de supprimer les choix de l'utilisateurs"
+            ]);
+            return;
+        }
+    }
 }
