@@ -100,8 +100,7 @@ class NoteClub
         }
         // Update
         else {
-            echo 'update';
-            var_dump($values);
+            //var_dump($values);
             $req = Database::getInstance()->PDOInstance->prepare(
                 "UPDATE note_club SET note_club=:note_club, procurement_file=:procurement_file, budget=:budget, lock_member_mark=:lock_member_mark, lock_member_project_validation=:lock_member_project_validation ".
                 "WHERE club_id=:club_id AND school_year=:school_year"

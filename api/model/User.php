@@ -99,7 +99,7 @@ class User {
     public static function getAll()
     {
         $objUsers = [];
-        $users = Database::Select("SELECT login FROM users WHERE school_staff='0'");
+        $users = Database::Select("SELECT login FROM users ");
         foreach ($users as $user) {
             array_push( $objUsers, new self($user->login) );
         }

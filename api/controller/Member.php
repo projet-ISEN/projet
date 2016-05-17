@@ -300,6 +300,8 @@ class Member
     public static function projectValidationStudent()
     {
         $post = json_decode( file_get_contents("php://input"), true);
+        if( empty($post['member']) || empty( $post['member'][0] ) ) return 0;
+
         $id =  ($post["member"][0]['club_id']);
 
         $club   = new \Models\Club();
