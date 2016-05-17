@@ -140,6 +140,18 @@ angular.module('app')
             cb null
         return
 
+    @sendPassation = (clubId, formData, cb)->
+        $http.post '../../api/passations/' + clubId, formData,
+            transformRequest: angular.identity,
+            headers:
+                'Content-Type': undefined
+        .then (res)->
+            cb res
+        , (err)->
+            console.log err
+            cb err
+
+
 
     return @
 ]

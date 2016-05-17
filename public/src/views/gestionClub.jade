@@ -1,11 +1,40 @@
-md-content
+md-content( layout-padding layout='column')
+
+
     h1 Dossiers de passation précédents
+
+    md-container
+
+        div
+            h5 Téléversez le dossier de passation de cette année (PDF de moins de 10 Mo)
+        lf-ng-md-file-input(
+            flex='100'
+            accept='application/pdf'
+            lf-files='passationFiles'
+            lf-maxcount='80MB'
+            lf-drag-and-drop-label="Glisser-déposer"
+            lf-browse-label="Parcourir"
+            lf-remove-label="Supprimer"
+            lf-placeholder='Mon dossier de passation...'
+            progress
+            preview )
+        div( ng-messages="file.$error" )
+            div(ng-message="required") This is required.
+                div( ng-message="maxcount" ) Too many files.
+                div( ng-message="filesize" ) File size too large.
+                div( ng-message="totalsize" ) Total size too large.
+                div( ng-message="mimetype" ) Mimetype error.
+        div
+            md-button.md-primary.md-raised( ng-click='send()' ) Téléverser le fichier
+
+    md-divider
 
     md-list
         md-list-item( ng-repeat="file in passations | orderBy: 'year': true" )
             md-list-item-text
                 p {{file.year}} {{file.name}}
             a.md-button.md-secondary.md-raised.md-primary(
-                ng-href='../../api/club/{{clubId}}/passations/{{file.year}}' ) Telecharger
+                ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Telecharger
+            md-divider
 
 

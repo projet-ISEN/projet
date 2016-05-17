@@ -9,6 +9,7 @@
 namespace Controllers;
 
 use \API\Excel;
+use Models\NoteClub;
 use Models\User;
 
 /**
@@ -237,11 +238,13 @@ class Club
         foreach( $noteClubs as $noteClub )
         {
             $noteClub->load();
-            array_push($passations, [
-                'file' => $noteClub->procurement_file,
-                'name' => 'dossier_passation_' . $noteClub->school_year,
-                'year' => $noteClub->school_year
-            ]);
+            if( $noteClub->procurement_file == '1' )
+            {
+                array_push($passations, [
+                    'name' => 'dossier_passation_' . $noteClub->school_year,
+                    'year' => $noteClub->school_year
+                ]);
+            }
         }
         echo json_encode( $passations );
         return;
@@ -254,7 +257,6 @@ class Club
      */
     public static function getOnePassation( $clubId, $year )
     {
-        echo 'one file';
         $noteClub   = new \Models\NoteClub($clubId, $year);
         $noteClub->load();
         $club       = new \Models\Club( $clubId );
@@ -262,7 +264,7 @@ class Club
         $file       = $noteClub->club_id . '&' . $noteClub->school_year; # 16144.2016.pdf
         $path       = realpath(__DIR__ . '../../../uploads/passation/');
         $filePath   = $path . '/' . $file . '.pdf';
-        var_dump($path);
+        //var_dump($path);
         var_dump($filePath);
         $clubName   = str_replace(' ', '_', $club->club_name);
 
@@ -307,12 +309,12 @@ class Club
         $fileName   = $clubId . '&' . $_SESSION['year'] . '.pdf' ;
         $filePath   = $path . '/' . $fileName;
 
-        if(is_uploaded_file($file['tmp_name'])) {
+        /*if( is_uploaded_file($file['tmp_name']) ) {
             echo json_encode([
                 'err' => "Le fichier n'a pas réussi à être téléversé"
             ]);
             return;
-        }
+        }*/
 
         if( $file["error"] !== UPLOAD_ERR_OK) {
             echo json_encode([
@@ -321,7 +323,7 @@ class Club
             return;
         }
 
-        if( filesize($file['tmp_name']) < 30000000 ) // 30Mo
+        if( filesize($file['tmp_name']) > 30000000 ) // 30Mo
         {
             echo json_encode([
                 'err' => "Fichier trop volumineux"
@@ -330,6 +332,11 @@ class Club
         }
         if( move_uploaded_file($file['tmp_name'], $filePath ) )
         {
+
+            $noteClub = new NoteClub($clubId, $year);
+            $noteClub->procurement_file = '1';
+            $noteClub->save();
+
             echo json_encode([
                'err' => null
             ]);
