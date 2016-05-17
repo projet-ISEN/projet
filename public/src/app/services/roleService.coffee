@@ -56,5 +56,33 @@ angular.module('app')
             console.log err if err?
             cb null
         return
+
+    @roleOfMember = (club, login, cb)->
+        @pushPrez = (login, clubId, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/roles/" + club + '/' + login
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
+    @setRoleOfMember = (member, cb)->
+        $http(
+            method: 'POST'
+            url: "../../api/roles/" + member.club_id + '/' + member.login
+            headers:
+                'Content-Type': 'application/json'
+            data:
+                member: member
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
     return @
 ]

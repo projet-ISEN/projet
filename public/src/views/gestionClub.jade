@@ -1,40 +1,64 @@
 md-content( layout-padding layout='column')
+    md-tabs( md-dynamic-height )
+        md-tab( label="Dossiers de passation" )
 
+            md-content( layout-padding )
 
-    h1 Dossiers de passation précédents
+                h1 Dossiers de passation précédents
 
-    md-container
+                div
+                    h5 Téléversez le dossier de passation de cette année (PDF de moins de 10 Mo)
+                lf-ng-md-file-input(
+                    flex='100'
+                    accept='application/pdf'
+                    lf-files='passationFiles'
+                    lf-maxcount='80MB'
+                    lf-drag-and-drop-label="Glisser-déposer"
+                    lf-browse-label="Parcourir"
+                    lf-remove-label="Supprimer"
+                    lf-placeholder='Mon dossier de passation...'
+                    progress
+                    preview )
+                div( ng-messages="file.$error" )
+                    div(ng-message="required") This is required.
+                        div( ng-message="maxcount" ) Too many files.
+                        div( ng-message="filesize" ) File size too large.
+                        div( ng-message="totalsize" ) Total size too large.
+                        div( ng-message="mimetype" ) Mimetype error.
+                div
+                    md-button.md-primary.md-raised( ng-click='send()' ) Téléverser le fichier
 
-        div
-            h5 Téléversez le dossier de passation de cette année (PDF de moins de 10 Mo)
-        lf-ng-md-file-input(
-            flex='100'
-            accept='application/pdf'
-            lf-files='passationFiles'
-            lf-maxcount='80MB'
-            lf-drag-and-drop-label="Glisser-déposer"
-            lf-browse-label="Parcourir"
-            lf-remove-label="Supprimer"
-            lf-placeholder='Mon dossier de passation...'
-            progress
-            preview )
-        div( ng-messages="file.$error" )
-            div(ng-message="required") This is required.
-                div( ng-message="maxcount" ) Too many files.
-                div( ng-message="filesize" ) File size too large.
-                div( ng-message="totalsize" ) Total size too large.
-                div( ng-message="mimetype" ) Mimetype error.
-        div
-            md-button.md-primary.md-raised( ng-click='send()' ) Téléverser le fichier
-
-    md-divider
-
-    md-list
-        md-list-item( ng-repeat="file in passations | orderBy: 'year': true" )
-            md-list-item-text
-                p {{file.year}} {{file.name}}.pdf
-            a.md-button.md-secondary.md-raised.md-primary(
-                ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Telecharger
             md-divider
+
+            md-list
+                md-list-item( ng-repeat="file in passations | orderBy: 'year': true" )
+                    md-list-item-text
+                        p {{file.year}} {{file.name}}.pdf
+                    a.md-button.md-secondary.md-raised.md-primary(
+                        ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Telecharger
+                    md-divider
+
+        md-tab( label='Bureau' )
+            md-content( layout-padding )
+
+                h1 Attribution d'un rôle à un membre
+                md-list
+                    md-list-item.md-2-line( ng-repeat='member in members' )
+                        .md-list-item-text
+                            h3 {{member.user.user_name}} {{member.user.user_firstname}}
+                            p {{member.project}}
+
+                        md-select.md-secondary(
+                            ng-change='updateRole(member)'
+                            ng-disabled ='member.isPres'
+                            ng-model='member.role.id_role'
+                            aria-label='choice project')
+                            md-option(
+                                ng-repeat='role in roles'
+                                ng-disabled="role.role=='président'"
+                                ng-value='role.id_role' ) {{role.role}}
+        md-tab( label='Description' )
+            md-content
+                h1 Description du club
 
 
