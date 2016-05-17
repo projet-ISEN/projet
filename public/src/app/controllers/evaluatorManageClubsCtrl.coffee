@@ -21,6 +21,7 @@ angular.module 'app'
             $scope.totalMb = 0
             temp = true
             countMember = 0
+            no_validation = 0;
             angular.forEach $scope.changeClub.member, (value, key) ->
 
                 if value.project != 'PR+'
@@ -30,17 +31,23 @@ angular.module 'app'
                     if value.project == "PR"
                         if value.project_validation
                             if value.member_mark < 10
+                                no_validation++
                                 temp = false
                         if !value.project_validation
                             if value.member_mark >= 10
                                 temp = false
 
+
             $scope.errorNote = temp
+            maxTot = (countMember-no_validation) * 20 + no_validation* 9
             #console.log "error on PR " + $scope.errorNote
             #console.log $scope.changeClub.member
             $scope.changeClub.totalClub = countMember * $scope.changeClub.mark
             #console.log "total club " + $scope.changeClub.totalClub
             #console.log "total membre " + $scope.totalMb
+            if(maxTot < $scope.changeClub.totalClub)
+                console.log "test"
+
             $scope.changeClub.totalClub == $scope.totalMb && temp
 
 
