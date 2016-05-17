@@ -58,10 +58,9 @@ angular.module('app')
 
         $http(
             method: 'GET'
-            url: "../../api/users/"+login
+            url: "../../api/users/" + login
             headers:
                 'Content-Type': 'application/json'
-
 
         ).then (res)->
             cb res.data

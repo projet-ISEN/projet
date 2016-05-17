@@ -94,6 +94,53 @@ class Role
         echo json_encode( $role->remove() );
     }
 
+    /**
+     * Get role of a member in a club
+     */
+    public static function roleOfMember( $clubId, $login )
+    {
+
+
+            $res = \Models\Role::roleOfMember($clubId, $login);
+            if (empty($res[0])) {
+                echo json_encode([
+                    'err' => 'No roles'
+                ]);
+            } else {
+                echo json_encode($res[0]);
+            }
+            return;
+    }
+
+    /**
+     * Set Role of member in a club
+     * @param $clubId
+     * @param $login
+     * @param $id_project
+     */
+    public static function setRoleOfMember( $clubId, $login )
+    {
+        $post = json_decode( file_get_contents("php://input"), true);
+        if(empty($post['member']) || empty($post['member']['id_project']))
+
+        if( $_SESSION['user']->isPresident() )
+        {
+            $roleName = \Models\Role::ID2Role( $post['member']['role']['id_role'] );
+            //var_dump($roleName);
+            \Models\Role::setRoleOfMember($clubId, $login, $post['member']['role']['id_role'], $_SESSION['year']);
+
+            echo json_encode([
+                'err' => null
+            ]);
+
+        }
+        else {
+            echo json_encode([
+                'err' => "Vous n'êtes pas autoriser à faire ca"
+            ]);
+        }
+    }
+
 }
 
 

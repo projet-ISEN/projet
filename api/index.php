@@ -18,10 +18,10 @@
                         Global Variable
  ================================================================*/
 
-    $_SESSION['president'] = "président";
+    $_SESSION['president']      = "président";
     $_SESSION['vice-president'] = "vice-président";
-    $_SESSION['tresorier'] = "trésorier";
-    $_SESSION['secrétaire'] = "secrétaire";
+    $_SESSION['tresorier']      = "trésorier";
+    $_SESSION['secrétaire']     = "secrétaire";
 
     $_SESSION['BDE'] = "Bureau des élèves";
     $_SESSION['Capisen'] = "Capisen";//La junior entreprise
@@ -183,6 +183,7 @@ if (date("n")>7) $myYear++;
     $router->get(           '/clubs/:id/stat',                  'Club.stat');
     $router->get(           '/clubs/junior',                    'Club.juniorEntrepriseID');
     $router->get(           '/clubs/junior/candidate/:year',    'Member.juniorMember');
+    $router->put(           'clubdescription/:clubId',          'Club.setDescription');
 
     $router->get(           '/effectifs',                           'Effectif.getAll');
     $router->get(           '/effectifs/:id',                       'Effectif.getOne');
@@ -204,6 +205,9 @@ if (date("n")>7) $myYear++;
     $router->post(          '/members/recommend/:login',            'Member.recommend');
     $router->put(           '/members/unDisgrace/:login',           'Member.unDisgrace');
     $router->post(          '/members/disgrace/:login',             'Member.disgrace');
+
+    $router->get(           '/roles/:club/:login',                  'Role.roleOfMember');
+    $router->post(          '/roles/:club/:login',                  'Role.setRoleOfMember');
 
     $router->get(           '/capisen/candidate',                   'Member.juniorCandidate');
     $router->put(           '/members/:user_login/:main_club/:year',      'Member.addClub');

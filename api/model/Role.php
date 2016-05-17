@@ -86,11 +86,7 @@ class Role {
                 );
 
             return  $req->execute($values);
-
         }
-
-
-
     }
 
     public static function Role2ID($roleName){
@@ -102,24 +98,19 @@ class Role {
      * Return name of the role
      * @return string
      */
-    public static function ID2Role($role_id){
-
+    public static function ID2Role($role_id)
+    {
         $role = Database::Select("SELECT role FROM role WHERE id_role = '".$role_id."'");
-
         return (isset($role[0]->role))? $role[0]->role : false;
     }
 
-     public static function getAll()
+    public static function getAll()
     {
         return  Database::Select("SELECT * FROM role");
     }
 
-
-
     public function add()
     {
-
-
         $values['id_role'] =  Database::getUID();
         $values['role'] = $this->role_name ;
 
@@ -135,13 +126,11 @@ class Role {
             else {
                 return ['err' => 'Impossible de d\'enregistrer le nouveau club'];
             }
-
     }
 
-        public function update() {
+    public function update()
+    {
         //création d'une variable locale _PUT
-
-
         $req = Database::getInstance()->PDOInstance->prepare("UPDATE role SET  role = :role WHERE id_role = :id_role ");
 
         $status = true;
@@ -162,9 +151,8 @@ class Role {
      * delete the project
      * @return bool
      */
-    public function remove() {
-
-
+    public function remove()
+    {
         $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM role WHERE id_role='" . $this->role_id . "'")
             ->fetchAll(\PDO::FETCH_NUM)[0][0];
 
@@ -175,9 +163,49 @@ class Role {
             return array('err'=> "Role déjà endossé");
     }
 
+    /**
+     * Return all roles of member
+     * @param $club
+     * @param $login
+     *
+     * @return null
+     */
+    public static function roleOfMember($club, $login)
+    {
+        $res = Database::Select("SELECT * FROM role_link WHERE club_id='". $club ."' AND login='". $login ."'");
+        return $res;
+    }
 
+    /**
+     * Set a role for a member in a club
+     * @param $club
+     * @param $login
+     * @param $role_id
+     */
+    public static function setRoleOfMember( $club, $login, $role_id, $year )
+    {
+        $valuesD = [
+            ':club_id'      => $club,
+            ':login'        => $login,
+            ':school_year'  => $year
+        ];
 
+        $valuesI = [
+            ':club_id'      => $club,
+            ':login'        => $login,
+            ':id_role'      => $role_id,
+            ':school_year'  => $year
+        ];
 
+        $reqI = "INSERT INTO role_link (club_id, login, school_year, id_role) VALUES ".
+                "(:club_id, :login, :school_year, :id_role)";
 
+        $reqD = "DELETE FROM role_link WHERE club_id=:club_id AND login=:login AND school_year=:school_year";
+
+        $reqi = Database::getInstance()->PDOInstance->prepare( $reqI );
+        $reqd = Database::getInstance()->PDOInstance->prepare( $reqD );
+        $reqd->execute( $valuesD );
+        return $reqi->execute( $valuesI );
+    }
 }
 ?>

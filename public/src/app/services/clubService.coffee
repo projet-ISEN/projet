@@ -107,5 +107,18 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @setDescription = (club, cb)->
+        $http(
+            method: 'PUT'
+            url: "../../api/clubdescription/" + club.club_id
+            data:
+                club: club
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
     return @
 ]
