@@ -1,0 +1,9 @@
+h2 Dossiers de passation des années précédentes
+
+md-list
+        md-list-item( ng-repeat="file in passations | orderBy: 'year': true" )
+            md-list-item-text
+                p {{file.year}} {{file.name}}.pdf
+            a.md-button.md-secondary.md-raised.md-primary(
+                ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Telecharger
+            md-divider

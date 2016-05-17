@@ -49,7 +49,7 @@
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
         //$userData["Login"]      = 'mgoanv17';
 
         $userData["Name"]       = 'prename name'; // prénom nom
@@ -208,9 +208,9 @@ if (date("n")>7) $myYear++;
     $router->get(           '/capisen/candidate',                   'Member.juniorCandidate');
     $router->put(           '/members/:user_login/:main_club/:year',      'Member.addClub');
 
-    $router->get(           '/passations/:clubId',              'Club.getAllPassations');
-    $router->get(           '/passations/:clubId/:year',        'Club.getOnePassation');
-    $router->post(          '/passations/:clubId',              'Club.addPassation');
+    $router->get(           '/passations/:clubId',                  'Club.getAllPassations');
+    $router->get(           '/passations/:clubId/:year',            'Club.getOnePassation');
+    $router->post(          '/passations/:clubId',                  'Club.addPassation');
 
 
 

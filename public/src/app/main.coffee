@@ -6,4 +6,5 @@ app = angular.module 'app', [
     'ngMessages'
     'ngSanitize'
     'crumble'
+    'lfNgMdFileInput'
 ]

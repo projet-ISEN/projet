@@ -95,7 +95,7 @@ class Menu {
                             ,
 
                             [
-                                "link" => '',
+                                "link" => '#/passation/' . $club_id,
                                 "title" => 'Informations du clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
