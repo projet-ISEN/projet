@@ -1,0 +1,49 @@
+md-content(
+    layout='column'
+    layout-padding)
+
+    md-input-container
+        md-button.md-raised.md-primary(
+            ng-click='lunch()' )
+            | Lancer une affecation automatique pour {{ year }}/{{ year + 1 }}
+
+    div( layout='row' )
+        md-input-container.md-block
+            label Spécifier une autre année
+            input(
+                ng-model='choosedYear'
+                type='number'
+                min='2016'
+                max='{{year + 1}}'
+                step='1' )
+
+    md-input-container
+        a.md-button.md-raised.md-primary(
+            ng-href='../../api/clubs/excel/{{choosedYear}}' )
+            | Récupérer l'affectation de {{choosedYear - 1}}/{{choosedYear}}
+
+    h2( ng-if='lostMembers' ) Ces élèves n'ont pas trouvé de club,
+        | il faut les placer manuellement
+
+    div(
+        layout="row"
+        layout-sm="column"
+        layout-align="space-around" )
+
+        md-progress-circular( ng-if='waiting' md-mode="indeterminate" )
+
+    md-list( ng-if='lostMembers' )
+        md-list-item.md-4-line( ng-repeat='member in lostMembers' )
+            h3( flex='50' ) {{member.user.user_name}} {{member.user.user_firstname}}
+
+            ol( flex='30' )
+                li( ng-repeat="c in member.choices | orderBy:'-score' " ) {{c.club.club_name}}
+
+            md-button.md-primary.md-raised( ng-click='openDialog(member.user)' ) Affecter
+
+            md-divider
+
+
+    md-input-container
+        md-button.md-raised.md-warn(
+            ng-click='lock()') Vérouiller l'affectation pour l'année prochaine

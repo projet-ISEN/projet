@@ -274,6 +274,12 @@ class Menu {
                                 "title" => 'Evaluateurs de clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
+                            ],
+                            [
+                                "link" => '#/adminAffectation',
+                                "title" => 'Affectation automatique',
+                                "icon" => 'dashboard',
+                                "active" => false
                             ]
                         ]
                     ]

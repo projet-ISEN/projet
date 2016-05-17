@@ -60,6 +60,11 @@ angular.module('app')
             controller:     'evaluatorsOfClubsCtrl'
             label:          'Gestion des évaluateurs de club'
 
+        .when '/adminAffectation',
+            templateUrl:    'views/adminAffectation.html'
+            controller:     'adminAffectationCtrl'
+            label:          'Affectation automatique'
+
         .when '/adminUsers',
             templateUrl:    'views/administrationUsers.html'
             controller:     'administrationUsersCtrl'

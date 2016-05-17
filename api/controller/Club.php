@@ -226,7 +226,24 @@ class Club
         echo json_encode ( \Models\Club::unLock($id, "lock_member_project_validation"));
     }
 
-    public static function clubMembers2excel( $club_id=null )
+    /**
+     * Generate an xls of members of all clubs for a specific year
+     * @param $year
+     */
+    public static function clubMembers2excelWithYear( $year )
+    {
+        self::generateXls( $year );
+    }
+
+    /**
+     * genetate an Xls of members of club for this year
+     */
+    public static function clubMembers2excel()
+    {
+        self::generateXls( $_SESSION['year'] );
+    }
+
+    public static function generateXls( $year, $club_id=null )
     {
         $all = [];
         $clubs = \Models\Club::get( $club_id );
@@ -236,7 +253,7 @@ class Club
             $clubObj = new \Models\Club( $club->club_id );
             $clubObj->load();
             $users = [];
-            foreach( $clubObj->getMembers() as $member )
+            foreach( $clubObj->getMembers($year) as $member )
             {
                 $user = new \Models\User($member->login);
                 $user->load();
@@ -247,6 +264,7 @@ class Club
             $all[ $clubObj->club_name] = $users;
 
         }
+        //var_dump($all);
         $E = new Excel( 'Composition_clubs_' . $_SESSION['year'] );
         $sheet = $E->file->getActiveSheet();
 

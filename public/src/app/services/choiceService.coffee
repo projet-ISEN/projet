@@ -41,7 +41,7 @@ angular.module('app')
             console.log err if err?
             cb err
 
-    @delete = (login)->
+    @delete = (login, cb)->
         $http
             method: 'DELETE'
             url: "../../api/choices/" + login

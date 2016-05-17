@@ -6,7 +6,10 @@ md-content
                 | d'un club n'apparaît pas, il est possible que cette personne
                 | ne soit pas connue de l'application. Pour corriger ce détail
                 | demandez à cette personne de se connecter à l'application.
-
+    md-input-container( flex='20' )
+        label Recherche d'un club
+        input( type='text' ng-model='searchClub')
+md-content
     md-list
         md-subheader.md-no-sticky {{clubs.length}} Clubs
 

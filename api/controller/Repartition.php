@@ -124,6 +124,10 @@ class repartition
 
         \Models\Effectif::deleteAll();
 
+        echo json_encode([
+            'err' => null
+        ]);
+        return;
     }
 
     public static function removeB4Choice($year){
