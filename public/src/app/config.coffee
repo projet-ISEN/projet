@@ -60,6 +60,11 @@ angular.module('app')
             controller:     'evaluatorsOfClubsCtrl'
             label:          'Gestion des évaluateurs de club'
 
+        .when '/adminAffectation',
+            templateUrl:    'views/adminAffectation.html'
+            controller:     'adminAffectationCtrl'
+            label:          'Affectation automatique'
+
         .when '/adminUsers',
             templateUrl:    'views/administrationUsers.html'
             controller:     'administrationUsersCtrl'
@@ -84,6 +89,12 @@ angular.module('app')
             templateUrl:    'views/manageClub.html'
             controller:     'manageClubCtrl'
             label:          'Gestion du club'
+
+        .when '/gestion/:club_id',
+            templateUrl:    'views/gestionClub.html'
+            controller:     'gestionClubCtrl'
+            label:          'Gestion du club'
+
 
         .when '/recruCapisen',
             templateUrl:    'views/recruCapisen.html'

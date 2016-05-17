@@ -116,5 +116,30 @@ angular.module('app')
             cb null
         return
 
+    @getPassations = (clubId, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/passations/"+ clubId
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
+    @getPassation = (clubId, year, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/passations/" + clubId +'/'+ year
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+        return
+
+
     return @
 ]

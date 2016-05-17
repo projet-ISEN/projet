@@ -174,7 +174,9 @@ class Member
      */
     public static function getMembersOfClub($club_id)
     {
-        echo json_encode(\Models\Member::getMembersOfClub($club_id));
+        $tmp = \Models\Member::getMembersOfClub($club_id);
+        //var_dump($tmp);
+        echo json_encode($tmp);
     }
 
     /**

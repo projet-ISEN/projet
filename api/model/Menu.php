@@ -148,7 +148,7 @@ class Menu {
                             ],
 
                             [
-                                "link" => '',
+                                "link" => '#/gestion/'.$club_id,
                                 "title" => 'Gestion du club',
                                 "icon" => 'dashboard',
                                 "active" => false
@@ -272,6 +272,12 @@ class Menu {
                             [
                                 "link" => '#/evaluatorsOfClubs',
                                 "title" => 'Evaluateurs de clubs',
+                                "icon" => 'dashboard',
+                                "active" => false
+                            ],
+                            [
+                                "link" => '#/adminAffectation',
+                                "title" => 'Affectation automatique',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]

@@ -63,7 +63,7 @@ angular.module('app')
     @getMembers = (id, cb)->
         $http(
             method: 'GET'
-            url: "../../api/members/club/" + id
+            url: "../../api/membersclub/" + id
 
         ).then (res)->          # On success
             cb res.data
@@ -75,7 +75,7 @@ angular.module('app')
     @getMembersYear = (id, year, cb)->
         $http(
             method: 'GET'
-            url: "../../api/members/club/" + id + "/" +year
+            url: "../../api/membersclub/" + id + "/" +year
 
         ).then (res)->          # On success
             cb res.data

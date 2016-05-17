@@ -27,6 +27,13 @@ class repartition
         $trace = "Définition des projets pour chaques utilisateurs: " .self::whichProject( $year );
         //var_dump($trace);
 
+        if( !self::preventBug() ) {
+            echo json_encode([
+               'err' => 'Aucun effectif demandé par les clubs'
+            ]);
+            return;
+        }
+
         $findAClubFor = [];
 
         $minMax_effectif = self::minMaxEffectif( );
@@ -112,6 +119,12 @@ class repartition
     }
 
 
+    public static function preventBug() {
+
+        $res = Database::Select("SELECT count(*) AS nb FROM effectif");
+        return $res[0]->nb;
+    }
+
     public static function validate($year){
         Database::getInstance()->PDOInstance->exec("DELETE FROM member WHERE main_club = 1  AND project_validation = 0 AND member_comment IS NULL AND school_year = ". $year);
 
@@ -124,6 +137,10 @@ class repartition
 
         \Models\Effectif::deleteAll();
 
+        echo json_encode([
+            'err' => null
+        ]);
+        return;
     }
 
     public static function removeB4Choice($year){

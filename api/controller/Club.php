@@ -226,7 +226,145 @@ class Club
         echo json_encode ( \Models\Club::unLock($id, "lock_member_project_validation"));
     }
 
-    public static function clubMembers2excel( $club_id=null )
+    /**
+     * Return all procurement file of a club
+     * @param $clubId
+     */
+    public function getAllPassations( $clubId )
+    {
+        $noteClubs = \Models\NoteClub::getAll( $clubId );
+        $passations = [];
+        foreach( $noteClubs as $noteClub )
+        {
+            $noteClub->load();
+            array_push($passations, [
+                'file' => $noteClub->procurement_file,
+                'name' => 'dossier_passation_' . $noteClub->school_year,
+                'year' => $noteClub->school_year
+            ]);
+        }
+        echo json_encode( $passations );
+        return;
+    }
+
+    /**
+     *
+     * @param $clubId
+     * @param $year
+     */
+    public static function getOnePassation( $clubId, $year )
+    {
+        echo 'one file';
+        $noteClub   = new \Models\NoteClub($clubId, $year);
+        $noteClub->load();
+        $club       = new \Models\Club( $clubId );
+        $club->load();
+        $file       = $noteClub->club_id . '&' . $noteClub->school_year; # 16144.2016.pdf
+        $path       = realpath(__DIR__ . '../../../uploads/passation/');
+        $filePath   = $path . '/' . $file . '.pdf';
+        var_dump($path);
+        var_dump($filePath);
+        $clubName   = str_replace(' ', '_', $club->club_name);
+
+        if( file_exists( $filePath ) )
+        {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename=dossier_passation_'.
+                $clubName . '_' . $noteClub->school_year .'.pdf' );
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($filePath));
+            ob_clean();
+            flush();
+            readfile($filePath);
+            die();
+            return;
+        }
+        else {
+            echo json_encode([
+                'err' => 'No file'
+            ]);
+            return;
+        }
+    }
+
+    public static function addPassation( $clubId )
+    {
+        if( empty($_FILES['file']['tmp_name']) )
+        {
+            echo json_encode([
+                'err' => 'Ou est le fichier?'
+            ]);
+            return;
+        }
+
+        $file       = $_FILES   ['file'];
+        $year       = $_SESSION ['year'];
+        $path       = realpath(__DIR__ . '../../../uploads/passation/');
+        $fileName   = $clubId . '&' . $_SESSION['year'] . '.pdf' ;
+        $filePath   = $path . '/' . $fileName;
+
+        if(is_uploaded_file($file['tmp_name'])) {
+            echo json_encode([
+                'err' => "Le fichier n'a pas réussi à être téléversé"
+            ]);
+            return;
+        }
+
+        if( $file["error"] !== UPLOAD_ERR_OK) {
+            echo json_encode([
+                'err' => "Téléversement interrompu"
+            ]);
+            return;
+        }
+
+        if( filesize($file['tmp_name']) < 30000000 ) // 30Mo
+        {
+            echo json_encode([
+                'err' => "Fichier trop volumineux"
+            ]);
+            return;
+        }
+        if( move_uploaded_file($file['tmp_name'], $filePath ) )
+        {
+            echo json_encode([
+               'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+
+    }
+
+    /**
+     * Generate an xls of members of all clubs for a specific year
+     * @param $year
+     */
+    public static function clubMembers2excelWithYear( $year )
+    {
+        self::generateXls( $year );
+    }
+
+    /**
+     * genetate an Xls of members of club for this year
+     */
+    public static function clubMembers2excel()
+    {
+        self::generateXls( $_SESSION['year'] );
+    }
+
+    /**
+     * Create an xls for a year and a club (null = all clubs)
+     * @param      $year
+     * @param null $club_id
+     */
+    public static function generateXls( $year, $club_id=null )
     {
         $all = [];
         $clubs = \Models\Club::get( $club_id );
@@ -236,7 +374,7 @@ class Club
             $clubObj = new \Models\Club( $club->club_id );
             $clubObj->load();
             $users = [];
-            foreach( $clubObj->getMembers() as $member )
+            foreach( $clubObj->getMembers($year) as $member )
             {
                 $user = new \Models\User($member->login);
                 $user->load();
@@ -247,6 +385,7 @@ class Club
             $all[ $clubObj->club_name] = $users;
 
         }
+        //var_dump($all);
         $E = new Excel( 'Composition_clubs_' . $_SESSION['year'] );
         $sheet = $E->file->getActiveSheet();
 
@@ -264,6 +403,8 @@ class Club
             foreach ($clubs as $member)
             {
                 $projet = \Models\Project::id2Type($member->project_id);
+                //var_dump($member->project_id);
+                //var_dump( $projet);
                 $sheet->setCellValueByColumnAndRow($i,$j, $projet .' '. $member->user_firstname .' '. $member->user_name);
                 //$sheet->getCellByColumnAndRow($i, $j)->getStyle()->getBorders()->getAllBorders()->setBorderStyle('thin');
                 $j++;

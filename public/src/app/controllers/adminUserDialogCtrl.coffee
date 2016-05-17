@@ -28,8 +28,13 @@ angular.module 'app'
 
 
         $scope.addClub = ->
+
+            unless $scope.chooseProject?
+                    $scope.chooseProject.project_id = ''
+
             if $scope.forThisYear
                 # Si pour l'annee courante
+
                 $member.add user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue : ' + res.err
