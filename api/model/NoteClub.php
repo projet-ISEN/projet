@@ -41,6 +41,17 @@ class NoteClub
         $this->lock_member_project_validation   = 1;
     }
 
+
+    public static function getAll( $clubId ) {
+        $res = Database::Select("SELECT school_year FROM note_club WHERE club_id='" . $clubId . "'");
+        $noteClubs = [];
+        foreach( $res as $noteClub)
+        {
+            array_push($noteClubs, new self($clubId, $noteClub->school_year));
+        }
+        return $noteClubs;
+    }
+
     /**
      * Load data from a club_id and a year
      */

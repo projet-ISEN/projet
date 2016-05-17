@@ -90,6 +90,12 @@ angular.module('app')
             controller:     'manageClubCtrl'
             label:          'Gestion du club'
 
+        .when '/gestion/:club_id',
+            templateUrl:    'views/gestionClub.html'
+            controller:     'gestionClubCtrl'
+            label:          'Gestion du club'
+
+
         .when '/recruCapisen',
             templateUrl:    'views/recruCapisen.html'
             controller:     'recruCapisenCtrl'

@@ -148,7 +148,7 @@ class Menu {
                             ],
 
                             [
-                                "link" => '',
+                                "link" => '#/gestion/'.$club_id,
                                 "title" => 'Gestion du club',
                                 "icon" => 'dashboard',
                                 "active" => false

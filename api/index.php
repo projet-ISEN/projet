@@ -208,6 +208,10 @@ if (date("n")>7) $myYear++;
     $router->get(           '/capisen/candidate',                   'Member.juniorCandidate');
     $router->put(           '/members/:user_login/:main_club/:year',      'Member.addClub');
 
+    $router->get(           '/passations/:clubId',              'Club.getAllPassations');
+    $router->get(           '/passations/:clubId/:year',        'Club.getOnePassation');
+    $router->post(          '/passations/:clubId',              'Club.addPassation');
+
 
 
     /*    $router->get(       '/choice',   function(){
