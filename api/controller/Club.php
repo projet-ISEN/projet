@@ -282,6 +282,8 @@ class Club
             foreach ($clubs as $member)
             {
                 $projet = \Models\Project::id2Type($member->project_id);
+                //var_dump($member->project_id);
+                //var_dump( $projet);
                 $sheet->setCellValueByColumnAndRow($i,$j, $projet .' '. $member->user_firstname .' '. $member->user_name);
                 //$sheet->getCellByColumnAndRow($i, $j)->getStyle()->getBorders()->getAllBorders()->setBorderStyle('thin');
                 $j++;

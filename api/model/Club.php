@@ -177,14 +177,14 @@ class Club {
         $members = [];
 
         $req = Database::Select(
-            "SELECT * FROM member WHERE club_id='" . $this->club_id . "' AND main_club=1".
+            "SELECT * FROM member WHERE club_id='" . $this->club_id . "'".
             " AND school_year='". $year ."'");
         foreach ($req as $member) {
-            $tmp = new \Models\Member( $this->club_id, $member->login );
+            $tmp = new \Models\Member( $this->club_id, $member->login, $year );
             $tmp->load();
             array_push($members, $tmp );
         }
-
+        //var_dump($members);
         return $members;
     }
 
