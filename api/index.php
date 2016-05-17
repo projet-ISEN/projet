@@ -183,6 +183,7 @@ if (date("n")>7) $myYear++;
     $router->get(           '/clubs/:id/stat',                  'Club.stat');
     $router->get(           '/clubs/junior',                    'Club.juniorEntrepriseID');
     $router->get(           '/clubs/junior/candidate/:year',    'Member.juniorMember');
+    $router->put(           'clubdescription/:clubId',          'Club.setDescription');
 
     $router->get(           '/effectifs',                           'Effectif.getAll');
     $router->get(           '/effectifs/:id',                       'Effectif.getOne');

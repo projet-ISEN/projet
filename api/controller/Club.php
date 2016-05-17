@@ -350,6 +350,38 @@ class Club
     }
 
     /**
+     * Set description of club
+     * @param $clubID
+     */
+    public static function setDescription ($clubID)
+    {
+        $club = new \Models\Club( $clubID );
+        $club->load();
+
+        $put = json_decode( file_get_contents("php://input"), true);
+        if( empty($put['club']['club_description']) )
+        {
+            echo json_encode([
+                'err' => "Aucune description ?"
+            ]);
+            return;
+        }
+
+        $club->club_description = $put['club']['club_description'];
+        if( $club->save() )
+        {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur est survenue"
+        ]);
+        return;
+    }
+
+    /**
      * Generate an xls of members of all clubs for a specific year
      * @param $year
      */

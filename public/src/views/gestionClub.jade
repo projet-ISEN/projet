@@ -61,4 +61,11 @@ md-content( layout-padding layout='column')
             md-content
                 h1 Description du club
 
+                md-input-container.md-block
+                    label Description visible par tous
+                    textarea(
+                        ng-change='updateDescription()'
+                        ng-model="thisClub.club_description"
+                        md-maxlength="10000"
+                        rows="12" )
 

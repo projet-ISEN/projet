@@ -43,6 +43,16 @@ angular.module 'app'
                 else
                     $mdToast.showSimple "Rôle enregistré !"
 
+        $scope.updateDescription = ->
+            console.log 'changed'
+            $club.setDescription $scope.thisClub, (res)->
+                if res.err?
+                    $mdToast.showSimple "Une erreur c'est produite : " + err
+                else
+                    $mdToast.showSimple "Description chargée !"
+
+
+
         $club.getMembers $scope.clubId, (members)->
             $scope.members = members
 
@@ -65,6 +75,9 @@ angular.module 'app'
                             $role.roleOfMember $scope.clubId, member.login, (roles)->
                                 member.role = roles
                                 console.log member
+        $club.one $scope.clubId, (club)->
+            $scope.thisClub = club
+
 
 
 
