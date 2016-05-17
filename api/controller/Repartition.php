@@ -59,7 +59,7 @@ class repartition
 
         $nbAsked = self::minMaxProject($findAClubFor );
         //var_dump($nbAsked);
-
+        //var_dump($findAClubFor);
         $ratio = self::ratio($minMax_effectif, $nbAsked);
         //var_dump($ratio);
 
@@ -69,7 +69,8 @@ class repartition
         }*/
 
         $clubMinMaxEffectif = self::clubminmax($ratio);
-
+         //if($val->login == "ftoque17")var_dump($val);
+        //var_dump($findAClubFor);
          $score = self::score($findAClubFor, $recommanded,$notWanted, $ancient);
 
          $score = self::expception($score);
@@ -154,6 +155,7 @@ class repartition
             foreach($val->asked_people as $value){
                 $temp = Database::Select("SELECT COUNT(*) AS nb FROM `member` WHERE login ='".$value["login"]."' AND main_club = 1 AND club_id = '".$val -> club_id."' AND project_validation = 0 AND school_year = ". $year)[0] -> nb;
                 if(!$temp){
+
                     $req = Database::getInstance()->PDOInstance->prepare(
                             "INSERT INTO `member`(`club_id`, `login`, `school_year`, `project_id`, `main_club`, `project_validation`, `member_comment`) VALUES (:club_id,:login,:school_year,:project_id,:main_club,:project_validation,:member_comment)");
 
@@ -225,6 +227,7 @@ class repartition
         $test = true;
         foreach($club as $value){
             foreach($effectif as $val){
+
                 if($value->club_id == $val->choice[$i]["club_id"] && $value->project_id == $val->project_id ){
                     array_push($value->asked_people,["login"=>$val->login,"score"=>$val->choice[$i]["score"]]);
                     $val->notAttribuate = false;
@@ -506,7 +509,6 @@ class repartition
     public static function minMaxProject($list ){
 
 
-
         $memberAsk_nb = [];
         $PI = $PA = $PR = $PRplus = 0;
 
@@ -523,6 +525,7 @@ class repartition
         //var_dump($memberAsk_nb);
         //var_dump($project_type);
         //var_dump($list);nbasked
+                //var_dump($memberAsk_nb);
 
         foreach($list as $value){
             foreach($memberAsk_nb as $projet){
@@ -531,7 +534,7 @@ class repartition
                     break;
                 }
 
-                if($projet->name == "PR" && $value->project_id= $projet->id){
+                if($projet->name == "PR" && $value->project_id== $projet->id){
                     $projet->nbasked++;
                     break;
                 }
@@ -546,6 +549,7 @@ class repartition
                 }
             }
         }
+        //var_dump($list);
 
 
 /*        var_dump($PI);
@@ -620,13 +624,19 @@ class repartition
          $_SESSION['PR'] = Database::Select("SELECT `project_id` FROM `projet` WHERE `project_type` = 'PR'")[0]->project_id;
          $_SESSION['PR+'] = Database::Select("SELECT `project_id` FROM `projet` WHERE `project_type` = 'PR+'")[0]->project_id;
 
+
     }
 
     public static function nextProject($project){
 
+            //var_dump($project);
+
         if($project -> project_id == null) $project -> project_id = $_SESSION['PA'];
         elseif($project -> project_id == $_SESSION['PA']) $project -> project_id = $_SESSION['PR'];
-        elseif($project -> project_id == $_SESSION['PR']) $project -> project_id = $_SESSION['PR+'];
+        elseif($project -> project_id == $_SESSION['PR']){
+            $project -> project_id = $_SESSION['PR+'];
+
+        }
         else $project -> project_id = null;
 
         return $project;
