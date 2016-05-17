@@ -49,7 +49,7 @@
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
         //$userData["Login"]      = 'mgoanv17';
 
         $userData["Name"]       = 'prename name'; // prénom nom
@@ -197,8 +197,8 @@ if (date("n")>7) $myYear++;
     $router->get(           '/role',                                'Role.getAll');
 
     $router->get(           '/year',                                'Year.currentYear');
-    $router->get(           '/members/club/:id',                    'Member.getMembersOfClub');
-    $router->get(           '/members/club/:id/:year',              'Member.getMemberAndIntels');
+    $router->get(           '/membersclub/:id',                     'Member.getMembersOfClub');
+    //$router->get(           '/membersclub/:id/:year',              'Member.getMemberAndIntels');
     $router->get(           '/members/recommended/:club_id',        'Member.recommended');
     $router->put(           '/members/unRecommend/:login',          'Member.unRecommend');
     $router->post(          '/members/recommend/:login',            'Member.recommend');

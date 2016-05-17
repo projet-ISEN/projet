@@ -157,9 +157,9 @@ class Member {
      */
     public static function getMembersOfClub($club_id, $year = null)
     {
-        if(!isset($year)) $year =$_SESSION['year'];
-        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND main_club=1 AND school_year='".$year."'");
-
+        if(empty($year)) $year = $_SESSION['year'];
+        $req = Database::Select("SELECT * FROM member WHERE club_id='" . $club_id . "' AND school_year='".$year."'");
+        //var_dump($req);
         return $req;
     }
 
