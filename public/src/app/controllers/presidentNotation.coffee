@@ -13,17 +13,29 @@ angular.module 'app'
 
         # Si la somme des points correspond à la note donnée
         $scope.testMark = ->
-            totalMark = 0
-            memberWithMark = 0
+            totalMark       = 0
+            memberWithMark  = 0
+            nbNoValidation  = 0
 
             for member in $scope.members
+
                 if member.project != 'PR+'
                     if !(isNaN(member.member_mark))
                         totalMark += member.member_mark
                         memberWithMark++
+                        if !member.project_validation_bool
+                            nbNoValidation++
 
-            $scope.restPoint = memberWithMark * $scope.clubMark - totalMark
-            $scope.errorMark = $scope.restPoint != 0
+
+            maxTot = ( memberWithMark - nbNoValidation) * 20 + nbNoValidation * 9
+
+            if maxTot < memberWithMark * $scope.clubMark
+                totalclub = maxTot
+            else
+                totalclub = memberWithMark * $scope.clubMark
+
+            $scope.restPoint = totalclub - totalMark
+            $scope.errorMark = totalclub == memberWithMark
 
         # Récupère la liste des membres
         $club.getMembers $routeParams.club_id, (members)->

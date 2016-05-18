@@ -120,5 +120,16 @@ angular.module('app')
             console.log err if err?
             cb null
 
+    @setLogo = (clubId, formData, cb)->
+        $http.post '../../api/clublogo/' + clubId, formData,
+            transformRequest: angular.identity,
+            headers:
+                'Content-Type': undefined
+        .then (res)->
+            cb res
+        , (err)->
+            console.log err
+            cb err
+
     return @
 ]

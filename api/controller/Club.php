@@ -366,6 +366,62 @@ class Club
     }
 
     /**
+     * Add a logo for this year
+     * @param $clubId
+     */
+    public static function setLogo( $clubId )
+    {
+        //var_dump( $_FILES );
+        if( empty($_FILES['file']['tmp_name']) )
+        {
+            echo json_encode([
+                'err' => 'Ou est le fichier?'
+            ]);
+            return;
+        }
+
+        if( !$_SESSION['user']->isPresident() )
+        {
+            echo json_encode([
+                'err' => "Vous n'êtes pas autorisé à faire ça"
+            ]);
+            return;
+        }
+
+        $file       = $_FILES   ['file'];
+        $path       = realpath(__DIR__ . '../../../public/build/images/');
+        $fileName   = $clubId .'.jpg' ;
+        $filePath   = $path . '/' . $fileName;
+
+        if( $file["error"] !== UPLOAD_ERR_OK) {
+            echo json_encode([
+                'err' => "Téléversement interrompu"
+            ]);
+            return;
+        }
+
+        if( filesize($file['tmp_name']) > 10000000 ) // 30Mo
+        {
+            echo json_encode([
+                'err' => "Fichier trop volumineux"
+            ]);
+            return;
+        }
+        if( move_uploaded_file($file['tmp_name'], $filePath ) )
+        {
+            echo json_encode([
+                'err' => null
+            ]);
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
+
+
+    /**
      * Set description of club
      * @param $clubID
      */

@@ -13,7 +13,7 @@ angular.module 'app'
         $scope.clubId           = $routeParams.club_id
         $scope.passationFiles   = []
 
-        $scope.send = ->
+        $scope.sendFile = ->
 
             formData = new FormData()
             formData.append 'file', ($scope.passationFiles[0]).lfFile
@@ -23,6 +23,17 @@ angular.module 'app'
                     $mdToast.showSimple "Une erreur c'est produite : " + err
                 else
                     $mdToast.showSimple "Votre fichier est enregistré !"
+
+        $scope.sendLogo = ->
+
+            formData = new FormData()
+            formData.append 'file', ($scope.clubLogo[0]).lfFile
+
+            $club.setLogo $scope.clubId, formData, (res)->
+                unless res.err?
+                    $mdToast.showSimple "Votre Logo est enregistré !"
+                else
+                    $mdToast.showSimple "Une erreur c'est produite : " + err
 
         $note.getPassations $scope.clubId , (res)->
             $scope.passations = res

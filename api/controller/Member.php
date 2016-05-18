@@ -238,8 +238,10 @@ class Member
         //var_dump($noteClub); // 20
         $tempPR = true;
         //var_dump($post["member"]);
-        $total_member = 0;
-        $count_member = 0;
+        $total_member   = 0;
+        $count_member   = 0;
+        $nbValidate     = 0;
+        $nbNoValidate   = 0;
 
         foreach ($post["member"] as $value)
         {
@@ -251,17 +253,20 @@ class Member
                 {
                     if ($value["project_validation"]) { // Si projet validé
                         //var_dump($value);
+                        $nbValidate++;
                         if ($value["member_mark"] < 10) {
                             $tempPR = false;
                         }
                     }
                     else {
+                        $nbNoValidate++;
                         if ($value["member_mark"] >= 10) $tempPR = false;
                     }
                 }
             }
         }
-        $total = $noteClub * $count_member  ;
+        $total = $noteClub * $count_member;
+        $max = 20 * ( $count_member - $nbNoValidate ) + $nbNoValidate * 9;
 
         $lockmark = \Models\Club::isLock($id);
         $lockmark = $lockmark['lock_member_mark'];
@@ -271,7 +276,8 @@ class Member
         //var_dump($lockmark);
         //var_dump($tempPR);
 
-        if($total_member <= $total && $lockmark && $tempPR){
+        //if($total_member <= $total && $lockmark && $tempPR){
+        if( ($count_member * $noteClub > $max)  && $lockmark && $tempPR){
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::noteStudent($value),10);

@@ -24,8 +24,9 @@ md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
             a( href="https://web.isen-bretagne.fr" ) ENT
             | ?
     club-card(
-        flex="30"
-        flex-xs="100"
+        flex="5"
+
+        flex-xs="50"
         club="club"
         ng-repeat="club in clubs | orderBy: 'club_name' | club: search"
     )
