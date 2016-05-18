@@ -41,7 +41,13 @@ class Role {
         return (isset($role[0]->id_role))? $role : false;
     }
 
-    //renvoie le login des role dans un club l'année courante
+    /**
+     * renvoie le login des role dans un club l'année courante
+     * @param $clubId
+     * @param $idPrez
+     *
+     * @return null
+     */
     public static function ClubRole2Login($clubId, $idPrez){
 
         $year = $_SESSION['year'];
@@ -52,7 +58,6 @@ class Role {
         return $role;
 
     }
-
 
      /**
      * Make someone the president for the year not marked
@@ -89,6 +94,12 @@ class Role {
         }
     }
 
+    /**
+     * Convert a role to ID
+     * @param $roleName
+     *
+     * @return bool
+     */
     public static function Role2ID($roleName){
         $role = Database::Select("SELECT id_role FROM role WHERE role = '".$roleName."'");
         return (isset($role[0]->id_role))? $role[0]->id_role : false;
@@ -104,11 +115,19 @@ class Role {
         return (isset($role[0]->role))? $role[0]->role : false;
     }
 
+    /**
+     * Retuen all roles
+     * @return null
+     */
     public static function getAll()
     {
         return  Database::Select("SELECT * FROM role");
     }
 
+    /**
+     * Add a new role
+     * @return array
+     */
     public function add()
     {
         $values['id_role'] =  Database::getUID();
@@ -128,6 +147,10 @@ class Role {
             }
     }
 
+    /**
+     * Update an existing role
+     * @return array
+     */
     public function update()
     {
         //création d'une variable locale _PUT
@@ -178,9 +201,12 @@ class Role {
 
     /**
      * Set a role for a member in a club
+     *
      * @param $club
      * @param $login
      * @param $role_id
+     *
+     * @return bool
      */
     public static function setRoleOfMember( $club, $login, $role_id, $year )
     {

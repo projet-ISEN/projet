@@ -28,7 +28,7 @@ class Effectif
     }
 
     /**
-     * Renvoi tout les effectifs demandés par les clubs
+     * Return all asked effectifs
      */
     public function getAll()
     {
@@ -39,7 +39,7 @@ class Effectif
     }
 
     /**
-     * Return all effectif demand of club
+     * Return effectif demand of club
      * @param $id
      */
     public function getOne( $id )

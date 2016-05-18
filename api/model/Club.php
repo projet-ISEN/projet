@@ -189,7 +189,7 @@ class Club {
     }
 
     /**
-     * Note Club
+     * Gieve a mark to Club
      */
     public static function giveClubMark($club_id, $note)
     {
@@ -230,9 +230,8 @@ class Club {
         }else return 1;
     }
 
-
     /**
-     * Récupère la note_club d'un Note Club
+     * Get note_club form club
      */
     public static function markClub($club_id)
     {
@@ -247,10 +246,8 @@ class Club {
         return $res;
     }
 
-
-
     /**
-     * Charge toutes les données du club portant l'ID de l'objet courant
+     * Loader
      */
     public function load() {
 
@@ -267,7 +264,10 @@ class Club {
         }
     }
 
-
+    /**
+     *
+     * @return null
+     */
     public static function juniorEntrepriseID() {
 
         $res = Database::getInstance()->PDOInstance->query("SELECT club_id FROM club WHERE club_name='". $_SESSION['Capisen'] ."'")
@@ -382,6 +382,14 @@ class Club {
         //var_dump( "UPDATE note_club SET ". $case."=".$temp." WHERE club_id = '".$id."' AND school_year='".$year."'");
         return $req;*/
     }
+
+    /**
+     * Unlock a lock on club
+     * @param $id
+     * @param $case
+     *
+     * @return int
+     */
     public static function unLock($id, $case)
     {
         $note_club = new \Models\NoteClub($id);

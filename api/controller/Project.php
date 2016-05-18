@@ -9,7 +9,7 @@
 namespace Controllers;
 
 /**
- * Gère les type de projets (PA PI PR)
+ * manage projects (PA PI PR)
  * Class Project
  * @package Controllers
  */
@@ -28,6 +28,9 @@ class Project
         return;
     }
 
+    /**
+     * Return all projects
+     */
     public function getAll()
     {
         $projects = new \Models\Project();
@@ -35,6 +38,9 @@ class Project
         return;
     }
 
+    /**
+     * Create a new project
+     */
     public function create()
     {
         $post = json_decode( file_get_contents("php://input"), true);
@@ -46,6 +52,9 @@ class Project
         echo json_encode( $projects -> create() );
     }
 
+    /**
+     * Edit a project
+     */
     public static function update() {
 
         $put = json_decode( file_get_contents("php://input"), true);

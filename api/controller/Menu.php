@@ -27,8 +27,11 @@ class Menu
         $this->params = $params;
     }
 
-    public static function jsonMenu() {
-
+    /**
+     * Send his menu to user
+     */
+    public static function jsonMenu()
+    {
         echo json_encode(\Models\Menu::jsonMenu());
     }
 

@@ -164,7 +164,7 @@ class Member {
     }
 
     /**
-     * donne une note
+     * Give a note to student
      */
     public static function noteStudent($member)
     {
@@ -185,7 +185,7 @@ class Member {
     }
 
     /**
-     * Valide ou non le projet
+     * Valid or not a project
      */
     public static function projectValidationStudent($member)
     {
@@ -215,7 +215,10 @@ class Member {
 
     }
 
-    //callback a list with the the people who asked Capisen in first choice
+    /**
+     * callback a list with the the people who asked Capisen in first choice
+     * @return array|null
+     */
     public static function juniorCandidate()
     {
         $idJunior = \Models\Club::juniorEntrepriseID();
@@ -238,9 +241,9 @@ class Member {
         }else return null;
 
 
- /*   foreach( $res as $key => $val ) {
-        $this->$key = $val;
-    }*/
+        /*   foreach( $res as $key => $val ) {
+            $this->$key = $val;
+        }*/
     }
 
     /**
@@ -267,7 +270,12 @@ class Member {
         }
     }
 
-
+    /**
+     *
+     * @param $year
+     *
+     * @return mixed
+     */
     public static function juniorMember($year){
         $club_id = \Models\Club::juniorEntrepriseID();
         $res = Database::Select("SELECT COUNT(*) AS nb FROM member WHERE club_id='". $club_id ."' AND school_year='" . $year . "'");
@@ -277,7 +285,7 @@ class Member {
 
 
     /**
-     * Fait un UPDATE ou un INSERT
+     * do UPDATE if exist or an INSERT
      * @return bool
      */
     public function save()
@@ -327,6 +335,10 @@ class Member {
         }
     }
 
+    /**
+     * Delete current object
+     * @return int
+     */
     public function delete()
     {
         return Database::getInstance()->PDOInstance->exec(

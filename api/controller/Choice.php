@@ -28,28 +28,31 @@ class Choice
     }
 
     /**
-     * Renvoi la liste des choix de l'utilisateur courrant
+     * Return all choices of current user
      * STATIC
      */
-    public static function getChoiceAll() {
+    public static function getChoiceAll()
+    {
         echo json_encode( \Models\Choice::getChoice() );
     }
 
 
     /**
-     * Renvoi un choix particulier de l'utilisateur courrant
+     * Return a specific choice of current user
      * STATIC
      */
-    public static function getChoiceOne($choice_number) {
+    public static function getChoiceOne($choice_number)
+    {
         echo json_encode( \Models\Choice::getChoice($choice_number) );
     }
 
 
     /**
-     * Permet d'ajouter des choix lorsque qu'ils n'ont jamais été fait
+     * Create 3 choices for current user when doesn't exist
      * STATIC
      */
-    public static function create() {
+    public static function create()
+    {
         // Get angular POST variables
         $post = json_decode( file_get_contents("php://input"), true);
         if( empty($post['choices']) ) {
@@ -66,12 +69,12 @@ class Choice
     }
 
     /**
-     * Permet de changer un choix de l'utilisateur connecté
+     * Change choices of current user
      * @param $choice_number
      * STATIC
      */
-    public static function update() {
-
+    public static function update()
+    {
         $put = json_decode( file_get_contents("php://input"), true);
         if( empty($put['choices']) ) {
 
@@ -87,10 +90,11 @@ class Choice
     }
 
     /**
-     * Supprime tous les élément de la table choice
+     * DELETE ALL CHOICES
      * STATIC
      */
-    public static function deleteAll() {
+    public static function deleteAll()
+    {
         echo json_encode (\Models\Choice::deleteAll());
     }
 

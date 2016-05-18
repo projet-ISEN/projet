@@ -37,7 +37,7 @@ class Effectif
     }
 
     /**
-     * Renvoi tout les effectifs existants si pas de club_id
+     * Return all effectifs
      * Sinon renvoi tout les effectifs de ce club
      * @return null
      */
@@ -56,7 +56,7 @@ class Effectif
     }
 
     /**
-     * Charge l'objet courant en fonction du club_id et du project_id
+     * Loader
      */
     public function load()
     {
@@ -72,7 +72,7 @@ class Effectif
     }
 
     /**
-     * Sauvegarde l'objet courant
+     * Save, do insert or update if exist
      * @return array|bool
      */
     public function save()
@@ -118,11 +118,8 @@ class Effectif
         return $req->execute($values);
     }
 
-
-
-
     /**
-     * Supprime tous les élément de la table effectif
+     * Delete all effectifs
      */
     public static function deleteAll() {
         $req = Database::getInstance()->PDOInstance->exec("Delete from effectif");

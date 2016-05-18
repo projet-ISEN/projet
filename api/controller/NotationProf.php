@@ -10,10 +10,14 @@ namespace Controllers;
 
 use \API\Excel;
 
+/**
+ * Class NotationProf
+ * @package Controllers
+ */
 class NotationProf
 {
     /**
-     * Attribue une note a un club
+     * Set a mark to club
      * @param $id_club
      */
     public static function setNote( $id_club ){
@@ -105,10 +109,10 @@ class NotationProf
     }
 
     /**
-     * Retourne toutes les notes des élèves d'un évaluateur sous forme de fichier Excel
+     * Return all marks of member by class of teacher
      */
-    public function toXlsx() {
-
+    public function toXlsx()
+    {
         $notes      = [];
         $members    = [];
         /**

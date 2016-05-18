@@ -49,8 +49,9 @@
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
+        //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
         //$userData["Login"]      = 'mgoanv17';
+        $userData["Login"]        = 'mcabon';
 
         $userData["Name"]       = 'prename name'; // prénom nom
         $userData["FirstName"]  = 'prename'; // prénom
@@ -64,13 +65,12 @@
 /*================================================================
                         WHICH DATE ARE WE
  ================================================================*/
-date_default_timezone_set('UTC');
+    date_default_timezone_set('UTC');
 
-$myYear = date("Y");
+    $myYear = date("Y");
 
-if (date("n")>7) $myYear++;
-
- $_SESSION['year'] = $myYear;
+    if (date("n")>7) $myYear++;
+    $_SESSION['year'] = $myYear;
 
 /*================================================================
                             WHO IS THIS
@@ -229,4 +229,5 @@ if (date("n")>7) $myYear++;
     })->with('id', '[0-9]+')->with('nom', '[A-z\-0-9]+');*/
 
     //header('Content-Type: application/json; charset=utf-8');
+
     $router->run();

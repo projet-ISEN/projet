@@ -10,6 +10,9 @@ div( flex ="66" flex-xs = "100" layout='row' layout-xs='column' layout-padding l
                     li Noter les clubs et les élèves
 
 md-content
+
+    a.md-button( ng-href='../../api/notes/xlsx' ) Telecharger toutes mes notes
+
     md-list
         md-subheader(ng-if="clubsActif != ''") Mes clubs actifs
         md-list-item.md-2-line(ng-if="clubsActif != ''" ng-repeat="club in clubsActif | orderBy: 'club_name'" ng-click="toggleMenu(club)")
