@@ -23,7 +23,7 @@ angular.module 'app'
                     if $scope.alreadyMembers
                         $club.getMembersYear $scope.id , $scope.year, (members)->
                             $scope.members = members
-                            console.log members
+                            #console.log members
 
         $scope.init()
 
@@ -53,6 +53,7 @@ angular.module 'app'
             $scope.selectMember = $scope.candidates.filter (e) ->
                     e.select == true
             angular.forEach $scope.selectMember, (value, key) ->
+                console.log $scope.id
                 $member.addNextYear value.login, $scope.id, null, $scope.year, (ret) ->
                     console.log value
 

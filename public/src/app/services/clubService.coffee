@@ -86,7 +86,7 @@ angular.module('app')
     @junior = (cb)->
         $http(
             method: 'GET'
-            url: "../../api/clubs/junior"
+            url: "../../api/clubsjunior"
 
         ).then (res)->          # On success
             cb res.data

@@ -307,7 +307,7 @@ class Member {
             $k = $prop->name;
             $values[$prop->name] = $this->$k;
         }
-
+        var_dump($this);
         $test = Database::Select("SELECT login FROM member WHERE login='". $this->login .
             "' AND school_year='". $this->school_year ."' AND club_id='". $this->club_id . "'"
         );

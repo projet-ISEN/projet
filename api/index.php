@@ -44,13 +44,13 @@
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
-        $userData["Login"]      = 'tcouss18'; //Prez club
+        //$userData["Login"]      = 'tcouss18'; //Prez club
         //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
         //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        //$userData["Login"]      = 'mgoanv17';
+        $userData["Login"]      = 'mgoanv17';
         //$userData["Login"]        = 'mcabon';
 
         $userData["Name"]       = 'prename name'; // prénom nom
@@ -182,8 +182,8 @@
     $router->get(           '/clubs',                           'Club.getAll');
     $router->get(           '/clubs/:id',                       'Club.getOne');
     $router->get(           '/clubs/:id/stat',                  'Club.stat');
-    $router->get(           '/clubs/junior',                    'Club.juniorEntrepriseID');
-    $router->get(           '/clubs/junior/candidate/:year',    'Member.juniorMember');
+    $router->get(           '/clubsjunior',                    'Club.juniorEntrepriseID');
+    $router->get(           '/clubsjunior/candidate/:year',    'Member.juniorMember');
     $router->put(           'clubdescription/:clubId',          'Club.setDescription');
     $router->post(          'clublogo/:clubId',                 'Club.setLogo');
 
@@ -201,7 +201,7 @@
 
     $router->get(           '/year',                                'Year.currentYear');
     $router->get(           '/membersclub/:id',                     'Member.getMembersOfClub');
-    //$router->get(           '/membersclub/:id/:year',              'Member.getMemberAndIntels');
+    $router->get(           '/membersclub/:id/:year',              'Member.getMemberAndIntels');
     $router->get(           '/members/recommended/:club_id',        'Member.recommended');
     $router->put(           '/members/unRecommend/:login',          'Member.unRecommend');
     $router->post(          '/members/recommend/:login',            'Member.recommend');

@@ -64,7 +64,7 @@ angular.module('app')
     @juniorMember = (year, cb)->
         $http(
             method: 'GET'
-            url: "../../api/clubs/junior/candidate/" + year
+            url: "../../api/clubsjunior/candidate/" + year
 
         ).then (res)->          # On success
             cb res.data
