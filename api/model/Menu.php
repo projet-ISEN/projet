@@ -25,12 +25,11 @@ class Menu {
      * Menu constructor.
      */
     public function __construct( ) {
-
-
-
-
     }
 
+    /**
+     * @return array
+     */
     public static function addMenuUserNonMember() {
         return [
                     'notMember' => [
@@ -64,13 +63,19 @@ class Menu {
                 ];
     }
 
+    /**
+     * @param $club
+     * @param $club_id
+     *
+     * @return array
+     */
     public static function addMenuUserMember($club, $club_id) {
         return [
                     $club => [
                     'name' => $club,
                     'expanded' => false,
                     'values' => [
-                            [
+                            /*[
                                 "link" => '',
                                 "title" => 'Evénements',
                                 "icon" => 'dashboard',
@@ -84,7 +89,7 @@ class Menu {
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]
-                            ,
+                            ,*/
 
                             [
                                 "link" => '#/clubs/'.$club_id.'/contact/',
@@ -100,26 +105,32 @@ class Menu {
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]
-                            ,
+                            /*,
 
                             [
                                 "link" => '',
                                 "title" => 'Mon/mes projet(s)',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ]
+                            ]*/
                         ]
                     ]
                 ];
     }
 
+    /**
+     * @param $club
+     * @param $club_id
+     *
+     * @return array
+     */
     public static function addMenuPresident($club, $club_id) {
         return [
                     'Pres'.$club => [
                     'name' => ' Administration de "' . $club.'"',//TODO add club name
                     'expanded' => false,
                     'values' => [
-                            [
+                            /*[
                                 "link" => '',
                                 "title" => 'Projets dans le club',
                                 "icon" => 'dashboard',
@@ -131,7 +142,7 @@ class Menu {
                                 "title" => 'Réunions de club',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ],
+                            ],*/
 
                             [
                                 "link" => '#/clubs/'. $club_id . '/notation',
@@ -152,19 +163,22 @@ class Menu {
                                 "title" => 'Gestion du club',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ],
+                            ]/*,
 
                             [
                                 "link" => '',
                                 "title" => 'Effectif',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ]
+                            ]*/
                         ]
                     ]
                 ];
     }
 
+    /**
+     * @return array
+     */
     public static function addMenuCapisen() {
         return [
                     'Capisenadministration' => [
@@ -182,7 +196,9 @@ class Menu {
                 ];
     }
 
-
+    /**
+     * @return array
+     */
     public static function addMenuBDE() {
         return [
                     'BDEadministration' => [
@@ -200,7 +216,9 @@ class Menu {
                 ];
     }
 
-
+    /**
+     * @return array
+     */
     public static function addMenuEvaluator() {
         return [
                     'evaluator' => [
@@ -225,7 +243,7 @@ class Menu {
                                 "title" => 'Gestions des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ],
+                            ]/*,
                             [
                                 "link" => '',
                                 "title" => 'Réunions',
@@ -237,14 +255,16 @@ class Menu {
                                 "title" => 'Activités des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
-                            ]
+                            ]*/
                         ]
                     ]
                 ];
 
     }
 
-
+    /**
+     * @return array
+     */
     public static function addMenuAdministrator() {
         return [
                     'administrator' => [
@@ -286,9 +306,9 @@ class Menu {
                 ];
     }
 
-
-
-
+    /**
+     * @return array
+     */
     public static function jsonMenu() {
 
         $menu = [];
@@ -332,8 +352,6 @@ class Menu {
                             }
                         }
 
-
-
                        if( $prez )$menu = array_merge($menu, self::addMenuPresident($list[$i -1] -> club_name, $club_id));//if president we add the menu
 
 
@@ -346,17 +364,9 @@ class Menu {
                        if($prez)$menu = array_merge($menu, self::addMenuCapisen());
                    }
                 }
-
             }
-
-
-
-
-
         }
         return $menu;
-
     }
-
 }
 ?>

@@ -1,13 +1,28 @@
-md-input-container
-    label Rechercher un membre ou fonction
-    input( type='text' ng-model='search')
 
-md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
+md-content( layout-padding )
+    form
+        md-input-container( flex='20' )
+            label Rechercher un membre ou fonction
+            input( type='text' ng-model='search')
 
-md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
-    contact-card(
-        flex="30"
-        flex-xs="100"
-        contact="contact"
-        ng-repeat="contact in contacts | orderBy : 'user_name' | filter: search"
-    )
+            md-button(ng-click="clearValue()" ng-disabled="!search" style="margin-right: 20px;") Effacer
+
+
+
+        md-input-container.pull-right( flex='20' )
+            label Spécifier une année
+            input(
+                type='number'
+                ng-model='year'
+                min='2016'
+                max='{{currentYear + 1}}'
+                ng-change='updateContacts()' )
+
+
+    md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
+        contact-card(
+            flex="30"
+            flex-xs="100"
+            contact="contact"
+            ng-repeat="contact in contacts | orderBy : 'user_name' | filter: search"
+        )

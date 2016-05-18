@@ -73,6 +73,10 @@ class User {
         return ($res >= 1);
     }
 
+    /**
+     * Check if user is president
+     * @return bool
+     */
     public function isPresident()
     {
         $pres_id = \Models\Role::Role2ID( $_SESSION['president'] );
@@ -85,7 +89,12 @@ class User {
         return true;
     }
 
-
+    /**
+     * Get infos of user
+     * @param $login
+     *
+     * @return null
+     */
     public static function Info($login) {
 
         return Database::Select("SELECT * FROM users WHERE login='" .$login . "'" );
@@ -122,6 +131,9 @@ class User {
         return $objUsers;
     }
 
+    /**
+     * Loader
+     */
     public function load() {
 
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM users WHERE login='" . $this->login . "'" )

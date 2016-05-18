@@ -28,23 +28,37 @@ class Role
         return;
     }
 
+    /**
+     * Convert a role into ID
+     * @param $roleName
+     */
     public static function Role2ID($roleName){
        $role = new \Models\Role();
        echo $role -> Role2ID($roleName);
     }
 
+    /**
+     * Get login of president project
+     * @return bool
+     */
     public static function IDPrez(){
         $role = new \Models\Role();
        return $role -> Role2ID($_SESSION['president']);
     }
 
+    /**
+     * Get president of club
+     * @param $clubId
+     */
     public static function whoPrez($clubId){
         $role = new \Models\Role();
        echo json_encode($role -> ClubRole2Login($clubId, self::IDPrez()));
 
     }
 
-
+    /**
+     * Set president of club
+     */
     public static function pushPrez()
     {
 
@@ -54,6 +68,9 @@ class Role
         return;
     }
 
+    /**
+     * Add a role
+     */
     public static function add()
     {
 
@@ -66,6 +83,9 @@ class Role
         return;
     }
 
+    /**
+     * Change a role
+     */
     public static function update() {
 
         $put = json_decode( file_get_contents("php://input"), true);

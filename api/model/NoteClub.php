@@ -41,7 +41,12 @@ class NoteClub
         $this->lock_member_project_validation   = 1;
     }
 
-
+    /**
+     * get Note_club
+     * @param $clubId
+     *
+     * @return array
+     */
     public static function getAll( $clubId ) {
         $res = Database::Select("SELECT school_year FROM note_club WHERE club_id='" . $clubId . "'");
         $noteClubs = [];
@@ -70,7 +75,7 @@ class NoteClub
     }
 
     /**
-     *
+     * Check if exist
      * @return bool
      */
     public function exist()
@@ -83,7 +88,7 @@ class NoteClub
     }
 
     /**
-     * Enregistre les données de l'objet courant en base
+     * Do an insert or an update if exist
      * @return bool
      */
     public function save()

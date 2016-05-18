@@ -11,12 +11,35 @@ namespace Models;
 use \API\Database;
 use \ReflectionObject;
 
+/**
+ * Class Classe
+ * @package Models
+ */
 class Classe
 {
+    /**
+     * year
+     * @var null
+     */
     public $school_year;
+    /**
+     * Login of user
+     * @var string
+     */
     public $login;
+    /**
+     * Classe of user
+     * @var null|string
+     */
     public $classe_name;
 
+    /**
+     * Classe constructor.
+     *
+     * @param string $login
+     * @param null   $year
+     * @param string $classe
+     */
     public function __construct( $login='', $year=null, $classe='' )
     {
         if( empty($year) )      $year   = $_SESSION['year'];
@@ -27,6 +50,12 @@ class Classe
         $this->classe_name = $classe;
     }
 
+    /**
+     * get a classe from a GID
+     * @param $gid
+     *
+     * @return null|string
+     */
     public static function gidToClasse( $gid )
     {
         switch( $gid ) {
@@ -105,6 +134,10 @@ class Classe
         }
     }
 
+    /**
+     * Already have a classe
+     * @return bool
+     */
     public function haveClasse()
     {
         $req = Database::Select("SELECT classe_name FROM classe WHERE login='". $this->login .
@@ -112,6 +145,9 @@ class Classe
         return !empty($req[0]->classe_name);
     }
 
+    /**
+     * Loader
+     */
     public function load()
     {
         $res = Database::getInstance()->PDOInstance->query("SELECT * FROM classe WHERE login='" . $this->login .
@@ -127,7 +163,7 @@ class Classe
     }
 
     /**
-     * Fait un UPDATE ou un INSERT
+     * do UPDATE if exist or INSERT
      * @return bool
      */
     public function save()

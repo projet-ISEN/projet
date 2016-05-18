@@ -14,12 +14,28 @@ require_once( '../PHPExcel/Classes/PHPExcel/Writer/Excel2007.php' );
 use \PHPExcel;
 use \PHPExcel_Writer_Excel2007;
 
+/**
+ * Class Excel
+ * @package API
+ */
 class Excel
 {
+    /**
+     * PHPExcel object
+     * @var PHPExcel
+     */
     public $file;
+    /**
+     * Filename of the new Excel sheet
+     * @var string
+     */
     public $name;
 
-
+    /**
+     * Excel constructor.
+     *
+     * @param string $name
+     */
     public function __construct( $name="My excel" )
     {
         $this->name = $name;
@@ -29,6 +45,10 @@ class Excel
         $this->file->getProperties()->setTitle( $name );
     }
 
+    /**
+     * Send an Excel to client, with goog Headers
+     * @throws \PHPExcel_Writer_Exception
+     */
     public function send()
     {
         // We'll be outputting an excel file

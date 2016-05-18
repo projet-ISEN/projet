@@ -26,11 +26,8 @@ class Member
         $this->params = $params;
     }
 
-
-
-
     /**
-     * Ajoute un membre avec le login, annee, et club par default
+     * Add a member
      * @param      $user_login
      * @param null $year
      * @param int  $main_club
@@ -76,7 +73,7 @@ class Member
 
 
     /**
-     *returns the number of clubs which the member belongs
+     * Returns the number of clubs which the member belongs
      */
     public function isAMemberOf($year = null , $club = null) {
 
@@ -162,11 +159,23 @@ class Member
         echo json_encode(\Models\Member::membersInClub($club_id,$year));
     }
 
-
-    public function membersIntelsInClub($club_id,$year = null)
+    /**
+     * @param $club_id
+     */
+    public function membersIntelsInClub( $club_id )
     {
-        echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
+        echo json_encode(\Models\Member::membersIntelsInClub($club_id, $_SESSION['year']  ));
     }
+
+    /**
+     * @param $club_id
+     * @param $year
+     */
+    public function membersIntelsInClubForYear( $club_id, $year )
+    {
+        echo json_encode( \Models\Member::membersIntelsInClub($club_id, $year) );
+    }
+
 
     /**
      * Return all members of a club
@@ -216,7 +225,9 @@ class Member
         return;
     }
 
-
+    /**
+     * Set mark of student
+     */
     public static function noteStudent()
     {
         $post = json_decode( file_get_contents("php://input"), true);
@@ -229,6 +240,7 @@ class Member
         //var_dump($post["member"]);
         $total_member = 0;
         $count_member = 0;
+
         foreach ($post["member"] as $value)
         {
             if( $value['project'] != 'PR+' )
@@ -237,11 +249,15 @@ class Member
                 $count_member++;
                 if ($value["project"] == "PR")
                 {
-                    if ($value["project_validation"])
-                        if ($value["member_mark"] < 10) $tempPR = false;
-                        else {
-                            if ($value["member_mark"] >= 10) $tempPR = false;
+                    if ($value["project_validation"]) { // Si projet validé
+                        //var_dump($value);
+                        if ($value["member_mark"] < 10) {
+                            $tempPR = false;
                         }
+                    }
+                    else {
+                        if ($value["member_mark"] >= 10) $tempPR = false;
+                    }
                 }
             }
         }
@@ -249,8 +265,11 @@ class Member
 
         $lockmark = \Models\Club::isLock($id);
         $lockmark = $lockmark['lock_member_mark'];
+        //if( $_SESSION['user']->is_Evaluator == '1')
 
-        //var_dump($total_member == $total && !$lockmark);
+        //var_dump($total_member == $total);
+        //var_dump($lockmark);
+        //var_dump($tempPR);
 
         if($total_member == $total && $lockmark && $tempPR){
             $i = 0;
@@ -265,7 +284,7 @@ class Member
       //callback a list with the the people who asked Capisen in first choice
 
     /**
-     * Ajout des membres pour CAPISEN l'&année pro
+     * Add member to Capisen for nex year
      */
     public static function juniorCandidate()
     {
@@ -274,6 +293,11 @@ class Member
         //var_dump($idJunior);
     }
 
+    /**
+     * Return member and intels of club
+     * @param $club_id
+     * @param $year
+     */
     public static function getMemberAndIntels($club_id, $year){
          //echo json_encode(\Models\Member::getMembersOfClub($club_id, $year));
          $members = \Models\Member::getMembersOfClub($club_id, $year);
@@ -292,13 +316,18 @@ class Member
 
      }
 
-
-    public static function juniorMember($year){
+    /**
+     *
+     * @param $year
+     */
+    public static function juniorMember($year)
+    {
         echo \Models\Member::juniorMember($year);
-     }
+    }
 
-
-
+    /**
+     * @return int
+     */
     public static function projectValidationStudent()
     {
         $post = json_decode( file_get_contents("php://input"), true);
@@ -332,7 +361,7 @@ class Member
     }
 
     /**
-     * Retourne la liste des membres recommandées par un club
+     * Return a list of member recommended by a club
      * @param $club_id
      */
     public static function recommended ($club_id)
@@ -469,7 +498,7 @@ class Member
     }
 
     /**
-     * * Say a member finally not not wanted for a club, next year
+     * Say a member finally not not wanted for a club, next year
      * @param $login
      */
     public static function unDisgrace( $login )

@@ -27,7 +27,7 @@ class User {
     }
 
     /**
-     * Récupère les informations d'un utilisateur en fonction de son Login
+     * Get a user with his login
      * @throws \Exception
      */
     public static function get( $id ) {
@@ -39,7 +39,7 @@ class User {
     }
 
     /**
-     * Renvoie tous les utilisateurs
+     * Return all users
      */
     public static function getAll()
     {
@@ -74,11 +74,17 @@ class User {
         return;
     }
 
+    /**
+     * Return current user
+     */
     public static function getMe() {
         echo json_encode( $_SESSION['user'] );
         return;
     }
 
+    /**
+     * Set my informations
+     */
     public static function updateMe() {
 
         $put = json_decode( file_get_contents("php://input"), true);

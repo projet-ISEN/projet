@@ -10,12 +10,22 @@ namespace Models;
 
 use \API\Database;
 
+/**
+ * Class Project
+ * @package Models
+ */
 class Project
 {
+
     public $project_id;
     public $project_type;
     public $project_description;
 
+    /**
+     * Project constructor.
+     *
+     * @param null $project_id
+     */
     public function __construct( $project_id = null )
     {
         $this->project_id           = $project_id;
@@ -24,7 +34,7 @@ class Project
     }
 
     /**
-     * Charge toutes les données du projet portant l'ID de l'objet courant
+     * Loader
      */
     public function load() {
 
@@ -44,6 +54,10 @@ class Project
         }
     }
 
+    /**
+     * Create a new project
+     * @return array
+     */
     public function create() {
 
             $this->project_id = Database::getUID();
@@ -65,6 +79,10 @@ class Project
             }
     }
 
+    /**
+     * Update an existing project
+     * @return array
+     */
     public function update() {
         //création d'une variable locale _PUT
 

@@ -18,7 +18,10 @@ class Choice {
 
     // Equivalent d'une collection JS, plus simple pour les modifier
     // Tout les attributs doivent correspondre à la table correspondante
-
+    /**
+     * Login of user
+     * @var null
+     */
     public $login;
 
 
@@ -33,9 +36,8 @@ class Choice {
     }
 
     /**
-     * Renvoi un boolean en fonction de si les choix ont été fait ou non
+     * return a boolean if user had already choosing
      */
-
     public function alreadyChoose() {
         $res = Database::getInstance()->PDOInstance->query("SELECT count(*) FROM choice WHERE login='" . $this->login . "'")
             ->fetchAll(\PDO::FETCH_NUM)[0][0];
@@ -43,7 +45,7 @@ class Choice {
     }
 
     /**
-     * Renvoi la liste des choix de l'utilisateur connécté
+     * Return choice of currrent user
      * sous forme de JSON
      * @param null $choiceNumber
      */
@@ -66,7 +68,7 @@ class Choice {
     }
 
     /**
-     * Ajoute les 3 choix de la personne postulante dans une club dans la base de donnée
+     * Add 3 choice for this user
      *param $choices
      */
     public function create($choices) {
@@ -112,7 +114,7 @@ class Choice {
     }
 
     /**
-     * Permet de changer un choix de l'utilisateur connecté
+     * Edit choices of current user
      * @param $choice_number
      */
     public static function update( $choices ) {
@@ -139,7 +141,7 @@ class Choice {
 
 
     /**
-     * Supprime tous les élément de la table choice
+     * DELETE all choices
      */
     public static function deleteAll()
     {
@@ -148,6 +150,10 @@ class Choice {
         else return array( 'err' => "An error occurred" );
     }
 
+    /**
+     * Delete choices of user
+     * @return bool
+     */
     public function delete() {
         $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM choice WHERE login=:login");
         $values = [

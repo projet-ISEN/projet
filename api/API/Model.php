@@ -52,6 +52,9 @@
 
         }
 
+        /**
+         *
+         */
         public function update() {
 
             // take $data and push it into db with good id
@@ -65,6 +68,9 @@
             // delete in db with id
         }
 
+        /**
+         * @return null
+         */
         public static function getAll() {
 
             $req = "SELECT * FROM " . static::$table;
@@ -72,6 +78,12 @@
             return $d->Select( $req );
         }
 
+        /**
+         * @param null $uid
+         *
+         * @return bool|void
+         * @throws \Exception
+         */
         public function load( $uid = null ) {
 
             $id = $uid? $uid : $this->uid;
@@ -98,7 +110,11 @@
 
         }
 
-
+        /**
+         * @param $param
+         *
+         * @return string
+         */
         public function toJson($param) {
 
             return json_encode( $param );

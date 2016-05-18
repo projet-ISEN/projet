@@ -29,15 +29,16 @@ class Club
     }
 
     /**
-     * Renvoie la liste tout les clubs
+     * Return a list of all clubs
      * STATIC
      */
-    public static function getAll() {
+    public static function getAll()
+    {
         echo json_encode( \Models\Club::get() );
     }
 
     /**
-     * Renvoie les informations d' 1 club
+     * Return informations of club
      * STATIC
      * @param $id
      */
@@ -48,7 +49,11 @@ class Club
         echo json_encode($club);
     }
 
-    public static function juniorEntrepriseID() {
+    /**
+     * Get Capisen ID?
+     */
+    public static function juniorEntrepriseID()
+    {
         echo \Models\Club::juniorEntrepriseID();
     }
 
@@ -67,11 +72,11 @@ class Club
     }
 
     /**
-     * Crée un nouveau club
+     * Create a new Club
      * STATIC
      */
-    public static function create() {
-
+    public static function create()
+    {
         $post = json_decode( file_get_contents("php://input"), true);
 
         // if evaluator or admin
@@ -98,12 +103,12 @@ class Club
     }
 
     /**
-     * Modifie un club existant
+     * Edit an existing club
      * STATIC
      * @param $id
      */
-    public static function update( $id_Club ) {
-
+    public static function update( $id_Club )
+    {
         $put = json_decode( file_get_contents("php://input"), true);
 
         if( empty($put['club']) ){
@@ -135,11 +140,11 @@ class Club
     }
 
     /**
-     * Supprime un club existant
+     * Delete an existing club
      * @param $id
      */
-    public static function delete( $id_Club ) {
-
+    public static function delete( $id_Club )
+    {
         $club = new \Models\Club($id_Club);
         if( $club->delete() ) {
             echo json_encode( array('err' => 'null') );
@@ -151,7 +156,7 @@ class Club
     }
 
     /**
-     * Renvoi les clubs qu'un Evaluateur peut administrer
+     * Return club of evaluator
      */
     public static function ClubsIntelsEvaluator($login = null)
     {
@@ -159,6 +164,10 @@ class Club
          echo json_encode ($club -> getMyClubsIntelsEvaluator($login));
     }
 
+    /**
+     * Check locks
+     * @param $id
+     */
     public static function isLock($id)
     {
         $club = new \Models\Club();
@@ -166,7 +175,7 @@ class Club
     }
 
     /**
-     * Renvoi les clubs qu'un Evaluateur peut administrer
+     * Return members of specific club
      */
     public static function getMembersCurrent($id)
     {
@@ -175,6 +184,9 @@ class Club
         echo json_encode ($club -> getMembers());
     }
 
+    /**
+     * Give a mark to club
+     */
     public static function giveClubMark(){
         $post = json_decode( file_get_contents("php://input"), true);
         $club = new \Models\Club();
@@ -182,7 +194,7 @@ class Club
     }
 
     /**
-     * Renvoi les clubs qu'un Evaluateur peut administrer
+     * Get a club's mark
      */
     public static function markClub($id)
     {
@@ -251,7 +263,7 @@ class Club
     }
 
     /**
-     *
+     *  Get a procurement file for a club at a year
      * @param $clubId
      * @param $year
      */
@@ -293,6 +305,10 @@ class Club
         }
     }
 
+    /**
+     * Add a procurment file for this year
+     * @param $clubId
+     */
     public static function addPassation( $clubId )
     {
         if( empty($_FILES['file']['tmp_name']) )

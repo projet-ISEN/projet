@@ -10,6 +10,19 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
-    return this
+
+
+    @allForYear = (clubId, year, cb)->
+        $http(
+            method: 'GET'
+            url: "../../api/contact/" + clubId + '/' + year
+
+        ).then (res)->          # On success
+            cb res.data
+        , (err)->              # On error
+            console.log err if err?
+            cb null
+
+    return @
 
 ]

@@ -11,12 +11,35 @@ namespace Models;
 use \API\Database;
 use \DateTime;
 
+/**
+ * Class Log
+ * @package Models
+ */
 class Log
 {
+    /**
+     * Current time
+     * @var null
+     */
     public $timestamp;
+    /**
+     * Type of log
+     * @var null|string
+     */
     public $type;
+    /**
+     * Content of log
+     * @var null|string
+     */
     public $content;
 
+    /**
+     * Log constructor.
+     *
+     * @param null $timestamp
+     * @param null $type
+     * @param null $content
+     */
     public function __construct( $timestamp=null, $type=null, $content=null )
     {
         $this->timestamp    = $timestamp;
@@ -24,6 +47,9 @@ class Log
         $this->content      = empty($content)?  ''      : $content;
     }
 
+    /**
+     * @return array
+     */
     public function save()
     {
         $req = Database::getInstance()->PDOInstance->prepare(
@@ -43,6 +69,9 @@ class Log
         }
     }
 
+    /**
+     * Loader
+     */
     public function load()
     {
         $res = Database::Select("SELECT * FROM log WHERE timestamp='". $this->timestamp ."'")
@@ -106,6 +135,12 @@ class Log
         return $logs;
     }
 
+    /**
+     * Get last n logs
+     * @param $number
+     *
+     * @return array
+     */
     public static function searchLastLogs( $number )
     {
         $logs   = [];
