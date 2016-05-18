@@ -261,7 +261,7 @@ class Member
                 }
             }
         }
-        $total = $noteClub * $count_member;
+        $total = $noteClub * $count_member  ;
 
         $lockmark = \Models\Club::isLock($id);
         $lockmark = $lockmark['lock_member_mark'];
@@ -271,7 +271,7 @@ class Member
         //var_dump($lockmark);
         //var_dump($tempPR);
 
-        if($total_member == $total && $lockmark && $tempPR){
+        if($total_member <= $total && $lockmark && $tempPR){
             $i = 0;
             foreach ($post["member"] as $value){
                 $i += intval(\Models\Member::noteStudent($value),10);
