@@ -39,8 +39,8 @@
 
         //test variable
 
-        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -164,6 +164,7 @@ if (date("n")>7) $myYear++;
 
     $router->get(           '/isLock/:id',                       'Club.isLock');
 
+    $router->get(           '/contact/:club_id/:year',          'Member.membersIntelsInClubForYear');
     $router->get(           '/contact/:club_id',                'Member.membersIntelsInClub');
     $router->get(           '/whoPrez/:clubId',                 'Role.whoPrez');
 

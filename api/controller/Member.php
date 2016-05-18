@@ -163,10 +163,16 @@ class Member
     }
 
 
-    public function membersIntelsInClub($club_id,$year = null)
+    public function membersIntelsInClub( $club_id )
     {
-        echo json_encode(\Models\Member::membersIntelsInClub($club_id,$year));
+        echo json_encode(\Models\Member::membersIntelsInClub($club_id, $_SESSION['year']  ));
     }
+
+    public function membersIntelsInClubForYear( $club_id, $year )
+    {
+        echo json_encode( \Models\Member::membersIntelsInClub($club_id, $year) );
+    }
+
 
     /**
      * Return all members of a club
