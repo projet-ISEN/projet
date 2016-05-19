@@ -13,3 +13,21 @@ prod:
     exclude: [ "*.yml","*.yaml",".htaccess",".gitignore","*.pdf","public/src/**","utils/*","public/node_modules/*","public/build/libs/angular-material/modules/"]
     include :
         "public/build/**" : "public/build/"
+
+
+prod:
+    scheme: sftp
+    host: 192.168.2.101
+    port: 22
+    user: root
+
+    check: true
+
+    path:
+        local: /
+        remote: /var/www/html/clubsV2/
+
+    exclude: [ "*.yml","*.yaml",".htaccess",".gitignore","*.pdf","public/src/**","utils/*","public/node_modules/*","public/build/libs/angular-material/modules/"]
+    include :
+        "public/build/**" : "public/build/"
+

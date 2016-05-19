@@ -40,6 +40,8 @@ class Menu {
                                 "link" => '#/',
                                 "title" => 'Informations globales',
                                 "icon" => 'dashboard',
+                                "title" => 'Informations Globales',
+                                "icon" => 'home',
                                 "active" => false
                             ]
                             ,
@@ -47,7 +49,7 @@ class Menu {
                             [
                                 "link" => '#/candidature',
                                 "title" => 'Candidature',
-                                "icon" => 'dashboard',
+                                "icon" => 'filter_3',
                                 "active" => false
                             ]
                             ,
@@ -55,7 +57,7 @@ class Menu {
                             [
                                 "link" => '#/me',
                                 "title" => 'Mes informations',
-                                "icon" => 'dashboard',
+                                "icon" => 'person',
                                 "active" => false
                             ]
                         ]
@@ -94,7 +96,7 @@ class Menu {
                             [
                                 "link" => '#/clubs/'.$club_id.'/contact/',
                                 "title" => 'Contact',
-                                "icon" => 'dashboard',
+                                "icon" => 'contact_mail',
                                 "active" => false
                             ]
                             ,
@@ -103,6 +105,7 @@ class Menu {
                                 "link" => '#/passation/' . $club_id,
                                 "title" => 'Informations du club',
                                 "icon" => 'dashboard',
+                                "icon" => 'weekend',
                                 "active" => false
                             ]
                             /*,
@@ -147,14 +150,14 @@ class Menu {
                             [
                                 "link" => '#/clubs/'. $club_id . '/notation',
                                 "title" => 'Notation',
-                                "icon" => 'dashboard',
+                                "icon" => 'school',
                                 "active" => false
                             ],
 
                             [
                                 "link" => '#/nextyear/'.$club_id ,
                                 "title" => 'Année prospective',
-                                "icon" => 'dashboard',
+                                "icon" => 'next_week',
                                 "active" => false
                             ],
 
@@ -208,7 +211,7 @@ class Menu {
                             [
                                 "link" => '#/manageBDE',
                                 "title" => 'Gestion globale des clubs',
-                                "icon" => 'dashboard',
+                                "icon" => 'school',
                                 "active" => false
                             ]
                         ]
@@ -229,19 +232,23 @@ class Menu {
                                 "link" => '#/',
                                 "title" => 'Informations globales',
                                 "icon" => 'dashboard',
+                                "title" => 'Informations Globales',
+                                "icon" => 'home',
                                 "active" => false
                             ],
 
                             [
                                 "link" => '#/me',
                                 "title" => 'Mes informations',
-                                "icon" => 'dashboard',
+                                "icon" => 'person',
                                 "active" => false
                             ],
                             [
                                 "link" => '#/manage',
                                 "title" => 'Gestion des clubs',
                                 "icon" => 'dashboard',
+                                "title" => 'Gestions des clubs',
+                                "icon" => 'school',
                                 "active" => false
                             ]/*,
                             [
@@ -275,30 +282,36 @@ class Menu {
                                 "link" => '#/clubs/addclub',
                                 "title" => 'Création de clubs',
                                 "icon" => 'dashboard',
+                                "title" => 'Création de club',
+                                "icon" => 'plus_one',
                                 "active" => false
                             ],
                             [
                                 "link" => '#/adminUsers',
                                 "title" => 'Gestion des utilisateurs',
-                                "icon" => 'dashboard',
+                                "icon" => 'group',
                                 "active" => false
                             ],
                             [
-                                "link" => '#/administration',
-                                "title" => 'Administration',
-                                "icon" => 'dashboard',
-                                "active" => false
+                                "link"      => '#/administration',
+                                "title"     => 'Administration',
+                                "icon"      => 'security',
+                                "active"    => false
                             ],
                             [
                                 "link" => '#/evaluatorsOfClubs',
                                 "title" => 'Evaluateurs des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
+                                "link"      => '#/evaluatorsOfClubs',
+                                "title"     => 'Evaluateurs de clubs',
+                                "icon"      => 'supervisor_account',
+                                "active"    => false
                             ],
                             [
                                 "link" => '#/adminAffectation',
                                 "title" => 'Affectation automatique',
-                                "icon" => 'dashboard',
+                                "icon" => 'autorenew',
                                 "active" => false
                             ]
                         ]
