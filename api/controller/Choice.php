@@ -65,6 +65,7 @@ class Choice
             $choices = $post['choices'];//récupére les choix émis en POST
             $tmp = new \Models\Choice();
             echo json_encode( $tmp->create($choices) );
+            Logger::info( $_SESSION['user']->login . ' a fait ses choix' );
         }
     }
 
@@ -96,6 +97,7 @@ class Choice
     public static function deleteAll()
     {
         echo json_encode (\Models\Choice::deleteAll());
+        Logger::info( 'Tous les choix ont été supprimés' );
     }
 
     /**
