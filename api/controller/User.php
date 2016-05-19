@@ -55,7 +55,7 @@ class User {
             return;
         }
         echo json_encode([
-            'err' => "Vous n'avez pas le droit"
+            'err' => "Vous n'avez pas les droits"
         ]);
         return;
     }
@@ -104,7 +104,7 @@ class User {
         }
         else {
             echo json_encode([
-                'err' => 'Impossible de modifier vos données.'
+                'err' => 'Impossible de modifier vos données'
             ]);
         }
         return;

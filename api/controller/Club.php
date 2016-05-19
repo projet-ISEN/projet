@@ -81,7 +81,7 @@ class Club
 
         // if evaluator or admin
         if( empty($post['club_name']) ) {
-            echo json_encode( array('err' => 'Un nom de club est nécéssaire') );
+            echo json_encode( array('err' => 'Un nom de club est nécessaire') );
             return;
         }
 
@@ -94,6 +94,7 @@ class Club
 
         if( $club->save() ) {
             echo json_encode(['err' => null] );
+            Logger::info( $_SESSION['user']->login . ' a créé un club: ' . $post['club_name'] );
             Logger::info( $_SESSION['user']->login . ' create a club: ' . $post['club_name'] );
         }
         else {
@@ -149,11 +150,12 @@ class Club
         $club = new \Models\Club($id_Club);
         if( $club->delete() ) {
             echo json_encode( array('err' => 'null') );
+            Logger::warn( $_SESSION['user']->login . ' a supprimer le club: ' . $club->club_name );
             Logger::warn( $_SESSION['user']->login . ' delete a club: ' . $club->club_name );
         }
         else {
             echo json_encode( array('err' => "Impossible de supprimer ce club, vérfiez qu'il n'éxiste ".
-                'pas de dépendances comme des membres par exemple'));
+                'pas de dépendances, comme des membres par exemple'));
         }
     }
 
@@ -193,6 +195,7 @@ class Club
         $post = json_decode( file_get_contents("php://input"), true);
         $club = new \Models\Club();
         echo json_encode($club -> giveClubMark($post["club_id"], $post["note"]));
+        Logger::info( $_SESSION['user']->login . ' a noté le club: ' . $post["club_id"] );
         Logger::info( $_SESSION['user']->login . ' give a mark to club: ' . $post["club_id"] );
     }
 
@@ -364,7 +367,7 @@ class Club
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
 
@@ -417,6 +420,7 @@ class Club
             echo json_encode([
                 'err' => null
             ]);
+            Logger::info( $_SESSION['user']->login . ' mise en place du nouveau logo du club '. $clubId );
             Logger::info( $_SESSION['user']->login . ' set new logo of club '. $clubId );
             return;
         }
@@ -440,7 +444,7 @@ class Club
         if( empty($put['club']['club_description']) )
         {
             echo json_encode([
-                'err' => "Aucune description ?"
+                'err' => "Aucune description n'est renseignée"
             ]);
             return;
         }
@@ -451,6 +455,7 @@ class Club
             echo json_encode([
                 'err' => null
             ]);
+            Logger::info( $_SESSION['user']->login . ' a changé description of club ' . $club->club_name );
             Logger::info( $_SESSION['user']->login . ' change description of club ' . $club->club_name );
             return;
         }

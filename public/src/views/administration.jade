@@ -25,7 +25,7 @@ md-content(flex="100" layout='row' layout-align='center center')
                         label Abréviation du projet
                         input( ng-model="addProject.abrev" name="abrev" required="")
                         div(ng-messages="projectForm.abrev.$error")
-                            div.my-message( ng-message="required" role="alert") L'abréviation du projet est requis
+                            div.my-message( ng-message="required" role="alert") L'abréviation du projet est requise
 
                     md-input-container.md-icon-float( flex='75' flex-xs='100' )
                         label Nom du projet
@@ -44,14 +44,14 @@ md-content(flex="100" layout='row' layout-align='center center')
                     label Exemple de poste
                     textarea( ng-model="addProject.example" name="example"  md-maxlength="250" rows="5" md-select-on-focus required="")
                     div(ng-messages="projectForm.example.$error")
-                            div.my-message( ng-message="required" role="alert") Un exemple de projet est requis
+                            div.my-message( ng-message="required" role="alert") Un exemple de poste est requis
 
                 div(layout="row")
                     md-input-container.md-icon-float( flex='25'  flex-xs='100')
-                        label Quota d'heure
+                        label Quota d'heures
                         input( type="number" ng-model="addProject.quota" name="quota" required="")
                         div(ng-messages="projectForm.quota.$error")
-                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+                            div.my-message( ng-message="required" role="alert") Le quota d'heures est requis
 
                     md-input-container.md-icon-float( flex='75'  flex-xs='100')
                         label Evaluation du projet
@@ -63,7 +63,7 @@ md-content(flex="100" layout='row' layout-align='center center')
                     md-button.md-primary(
                         ng-click='clearValue_addProject()'
                         layout=''
-                        layout-align='center end') Vider
+                        layout-align='center end') Effacer
 
             md-divider( layout-padding )
 
@@ -95,7 +95,7 @@ md-content(flex="100" layout='row' layout-align='center center')
                         label Abréviation du projet
                         input( ng-model="updateProject.abrev" name="abrev" required="")
                         div(ng-messages="projectForm.abrev.$error")
-                            div.my-message( ng-message="required" role="alert") L'abréviation du projet est requis
+                            div.my-message( ng-message="required" role="alert") L'abréviation du projet est requise
 
                     md-input-container.md-icon-float( flex='75' flex-xs='100' ng-show="updateProject.projectChoice != null")
                         label Nom du projet
@@ -114,14 +114,14 @@ md-content(flex="100" layout='row' layout-align='center center')
                     label Exemple de poste
                     textarea( ng-model="updateProject.example" name="example"  md-maxlength="250" rows="5" md-select-on-focus required="")
                     div(ng-messages="projectForm.example.$error")
-                            div.my-message( ng-message="required" role="alert") Un exemple de projet est requis
+                            div.my-message( ng-message="required" role="alert") Un exemple de poste est requis
 
                 //div(layout="row" ng-show="updateProject.projectChoice != null")
                     md-input-container.md-icon-float( flex='25'  flex-xs='100')
-                        label Quota d'heure
+                        label Quota d'heures
                         input( type="number" ng-model="updateProject.quota" name="quota" required="")
                         div(ng-messages="projectForm.quota.$error")
-                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+                            div.my-message( ng-message="required" role="alert") Le quota d'heures est requis
 
                     md-input-container.md-icon-float( flex='75'  flex-xs='100')
                         label Evaluation du projet
@@ -150,10 +150,10 @@ md-content(flex="100" layout='row' layout-align='center center')
             form( name='roleaddForm' ng-submit='post_add_role()' layout-padding)
                 div(layout="row" layout-align='')
                     md-input-container.md-icon-float( flex='100' flex-xs='100' )
-                        label Nom du poste
+                        label Nom du rôle
                         input(  md-maxlength="40" ng-model="addRole.name" name="name" required="")
                         div(ng-messages="roleaddForm.name.$error")
-                            div.my-message( ng-message="required" role="alert") Le nom du projet est requis
+                            div.my-message( ng-message="required" role="alert") Le nom du rôle est requis
 
 
                 div(layout='row' layout-align='center center')

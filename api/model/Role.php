@@ -143,7 +143,7 @@ class Role {
                 return ['err' => null];
             }
             else {
-                return ['err' => 'Impossible de d\'enregistrer le nouveau club'];
+                return ['err' => 'Impossible d\'enregistrer le nouveau club'];
             }
     }
 
@@ -183,7 +183,7 @@ class Role {
             $req = Database::getInstance()->PDOInstance->prepare("DELETE FROM role WHERE id_role=:id_role");
             return $req->execute(array('id_role'=> $this->role_id));
         }else
-            return array('err'=> "Role déjà endossé");
+            return array('err'=> "Rôle déjà endossé");
     }
 
     /**

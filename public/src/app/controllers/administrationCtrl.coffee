@@ -207,7 +207,7 @@ angular.module 'app'
             .then (res)->
                 if res.data.err == null
                     $mdToast.show(
-                        $mdToast.simple 'Le role a bien été créé'
+                        $mdToast.simple 'Le rôle a bien été créé'
                         .position 'bottom right'
                     )
 
@@ -273,7 +273,7 @@ angular.module 'app'
             .then (res)->
                 if res.data && !res.data.err
                     $mdToast.show(
-                        $mdToast.simple 'Le role a été supprimé'
+                        $mdToast.simple 'Le rôle a été supprimé'
                         .position 'bottom right'
                     )
                     $scope.roles = $scope.roles.filter (e) ->
@@ -289,7 +289,7 @@ angular.module 'app'
                         )
                     else
                         $mdToast.show(
-                            $mdToast.simple "Une erreur est survenue, le role n'a pas pu être suppimé"
+                            $mdToast.simple "Une erreur est survenue, le rôle n'a pas pu être suppimé"
                             .position 'bottom right'
                         )
 

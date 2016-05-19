@@ -9,7 +9,7 @@ md-content( layout-padding layout='column')
                 h1 Dossiers de passation précédents
 
                 div
-                    h5 Téléversez le dossier de passation de cette année (PDF de moins de 10 Mo)
+                    h5 Téléverser le dossier de passation de cette année (PDF de moins de 10 Mo)
                 lf-ng-md-file-input(
                     flex='100'
                     accept='application/pdf'
@@ -37,7 +37,7 @@ md-content( layout-padding layout='column')
                     md-list-item-text
                         p {{file.year}} {{file.name}}.pdf
                     a.md-button.md-secondary.md-raised.md-primary(
-                        ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Telecharger
+                        ng-href='../../api/passations/{{clubId}}/{{file.year}}' ) Télécharger
                     md-divider
 
         md-tab( label='Bureau' )

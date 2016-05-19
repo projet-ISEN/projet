@@ -40,7 +40,7 @@ class Member
         if( !$user->exist() ){
 
             echo json_encode([
-                'err' => "Cet utilisateur n'existe pas."
+                'err' => "Cet utilisateur n'existe pas"
             ]);
             return;
         }
@@ -49,11 +49,15 @@ class Member
         if( empty( $put['club_id'] ) ) {  //empty( $put['project_id']) need to push without project
 
             return json_encode([
-                'err' => 'Dans quel club doit on mettre cet user?'
+                'err' => 'Dans quel club doit-on mettre cet utilisateur ?'
             ]);
         }
         var_dump($put);
-        
+<<<<<<< HEAD
+
+=======
+
+>>>>>>> origin/master
         $member                 = new \Models\Member($put['club_id'], $user_login, $year );
         $member->project_id     = $put['project_id'];
         $member->main_club      = $main_club;
@@ -132,7 +136,7 @@ class Member
         $delete = json_decode( file_get_contents("php://input"), true);
         if( empty($delete['club_id']) ) {
             echo json_encode([
-                'err' => "il manque quelque chose...."
+                'err' => "il manque quelque chose..."
             ]);
             return;
         }
@@ -144,7 +148,7 @@ class Member
         }
         else {
             echo json_encode([
-                'err' => "Quelque chose c'est mal passé pendant la suppression"
+                'err' => "Une erreur est survenue pendant la suppression"
             ]);
         }
         return;
@@ -199,7 +203,7 @@ class Member
 
         if( empty($put['club_id']) ){
             echo json_encode([
-                'err' => 'il manque l id de club'
+                'err' => 'Il manque l\'ID du club'
             ]);
             return;
         }
@@ -214,7 +218,7 @@ class Member
             }
             if(!$member->save() ) {
                 echo json_encode([
-                    'err' => "Quelque chose c'est mal passé pendant la mise à jour"
+                    'err' => "Une erreur est survenue pendant la mise à jour"
                 ]);
                 return;
             }
@@ -420,7 +424,7 @@ class Member
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
     }
@@ -460,7 +464,7 @@ class Member
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
     }
@@ -499,7 +503,7 @@ class Member
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
     }
@@ -538,7 +542,7 @@ class Member
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
     }

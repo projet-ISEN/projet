@@ -61,7 +61,7 @@ class Project
         if( empty($put) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçues'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {

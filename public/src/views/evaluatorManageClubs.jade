@@ -11,7 +11,7 @@ div( flex ="66" flex-xs = "100" layout='row' layout-xs='column' layout-padding l
 
 md-content
 
-    a.md-button( ng-href='../../api/notes/xlsx' ) Telecharger toutes mes notes
+    a.md-button( ng-href='../../api/notes/xlsx' ) Télécharger toutes mes notes
 
     md-list
         md-subheader(ng-if="clubsActif != ''") Mes clubs actifs
@@ -30,7 +30,7 @@ md-content
 
 
 
-        md-subheader(ng-if="clubsInactive != ''") Mes clubs Inactifs
+        md-subheader(ng-if="clubsInactive != ''") Mes clubs inactifs
         md-list-item.md-2-line(ng-if="clubsInactive != ''" ng-repeat="club in clubsInactive | orderBy: 'club_name'" ng-click="toggleMenu(club)")
             img(ng-src="images/{{club.club_id}}.jpg"
                 onerror="this.src='images/blank.jpg'"
@@ -90,9 +90,9 @@ md-sidenav.changeClub.md-sidenav-right.md-whiteframe-z2(  md-component-id='chang
                 md-input-container(flex="25" ng-hide="user.project == 'PR+'")
                     label Note
                     input( max="20" min="0" type="number" step="1" value="{{member_mark}}" ng-change="tot()" ng-model="user.member_mark" required="" ng-disabled = "!changeClub.lock_member_project_validation || changeClub.lock_member_mark")
-            p.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membres doit être égal à la note du club * le nombre d'élève, nombre de points à distribuer: {{changeClub.totalClub - totalMb}}
+            p.red(ng-show="changeClub.totalClub != totalMb") La somme des points de chaque membre doit être égale au maximum des points distribuable par le club, nombre de point(s) à distribuer: {{changeClub.totalClub - totalMb}}
 
-            p.red(ng-show="!errorNote") Un PR validé doit avoir au minimum 10 et un invalidé ne peut pas avoir plus de 9
+            p.red(ng-show="!errorNote") Un PR validé doit avoir au minimum 10 et un PR invalidé ne peut pas avoir plus de 9
 
             div(layout='row' layout-align='center center')
                 md-button.md-primary.md-raised(

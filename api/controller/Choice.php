@@ -58,13 +58,14 @@ class Choice
         if( empty($post['choices']) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçue'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {
             $choices = $post['choices'];//récupére les choix émis en POST
             $tmp = new \Models\Choice();
             echo json_encode( $tmp->create($choices) );
+            Logger::info( $_SESSION['user']->login . ' a fait ses choix' );
             Logger::info( $_SESSION['user']->login . ' made his choices' );
         }
     }
@@ -80,7 +81,7 @@ class Choice
         if( empty($put['choices']) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçues'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {
@@ -97,6 +98,7 @@ class Choice
     public static function deleteAll()
     {
         echo json_encode (\Models\Choice::deleteAll());
+        Logger::info( 'Tous les choix ont été supprimés' );
         Logger::info( 'All choices has been deleted' );
     }
 
@@ -115,7 +117,7 @@ class Choice
         }
         else {
             echo json_encode([
-                'err' => "Impossible de supprimer les choix de l'utilisateurs"
+                'err' => "Impossible de supprimer les choix de l'utilisateur"
             ]);
             return;
         }

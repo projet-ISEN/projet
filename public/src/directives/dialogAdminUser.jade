@@ -9,14 +9,14 @@ md-dialog(ng-cloak layout-padding flex="75")
         md-card( ng-show='!forThisYear' )
             md-card-content
                 p Affecter un élève dans un club pour l'année
-                    | prochaine supprimera ses choix, et l'empechera
+                    | prochaine supprimera ses choix, et l'empêchera
                     | d'être traité dans l'affectation automatique.
-                    | Il sera en revanche obligatoirement affecter
-                    | au club que vous désigner
+                    | Il sera en revanche obligatoirement affecté
+                    | au club que vous désignez
 
         md-list
             md-subheader.md-no-sticky
-                span Clubs de {{user.user_firstname}}
+                span Club de {{user.user_firstname}}
                 span.pull-right Club principal
 
             md-list-item.md-2-line.secondary-button-padding(

@@ -19,7 +19,7 @@ angular.module 'app'
         $scope.create = ->
             if $scope.clubName==""
                 return $mdToast.show (
-                    $mdToast.simple 'Vous devez renseigner le nom du Club'
+                    $mdToast.simple 'Vous devez renseigner le nom du club'
                     .position 'bottom right'
                 )
             else

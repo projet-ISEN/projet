@@ -39,7 +39,7 @@ angular.module 'app'
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                     else
-                        $mdToast.showSimple 'Membre enregistré!'
+                        $mdToast.showSimple 'Membre enregistré !'
                         displayAll()
             else
                 # Pour une autre année
@@ -47,13 +47,13 @@ angular.module 'app'
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                     else
-                        $mdToast.showSimple 'Membre enregistré!'
+                        $mdToast.showSimple 'Membre enregistré !'
 
                         $choice.delete user.login, (res)->
                             if res.err?
                                 $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                             else
-                                $mdToast.showSimple 'choix supprimés!'
+                                $mdToast.showSimple 'Choix supprimés!'
 
 
 
@@ -67,7 +67,7 @@ angular.module 'app'
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue : ' + res.err
                 else
-                    $mdToast.showSimple 'Club principal changé!'
+                    $mdToast.showSimple 'Club principal changé !'
                     displayAll()
 
         $scope.delete = (member)->

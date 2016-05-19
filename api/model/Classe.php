@@ -172,7 +172,7 @@ class Classe
         if( empty($this->login) || empty($this->school_year))
         {
             return [
-              'err' => 'Que voulez vous sauvegarder?'
+              'err' => 'Que voulez-vous sauvegarder ?'
             ];
         }
 

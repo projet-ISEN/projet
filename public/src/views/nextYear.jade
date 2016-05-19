@@ -11,7 +11,7 @@ div#viewContent(
 div( ng-if='!allow' )
     md-card
         md-card-content
-            p Votre club ne peux ni donner d'éfféctifs,
+            p Votre club ne peux ni donner d'effectifs,
                 | ni donner une recommandation à un élève.
 div(
   ng-if='allow'
@@ -24,7 +24,7 @@ div(
 
     md-content.borderRight( flex="50" flex-xs="100" layout-padding )
 
-        h2 Recommander un non membre pour {{year}}/{{year+1}}
+        h2 Recommander un postulant non ancien membre du club pour {{year}}/{{year+1}}
         md-input-container
                 label Recherche d'un élève
                 input( type='text' ng-model='searchUser')
@@ -50,13 +50,13 @@ div(
 
     md-content( flex="50" flex-xs="100" layout-padding )
 
-        h2 Pénaliser un membre actuel pour {{year}}/{{year+1}}
+        h2 Pénaliser un membre actuel pour  {{year}}/{{year+1}}
         md-input-container
                 label Recherche d'un membre
                 input( type='text' ng-model='searchMember')
 
         md-list
-            md-subheader.md-no-sticky {{clubMembers.length || 0}} Membres
+            md-subheader.md-no-sticky {{clubMembers.length || 0}} Membre(s)
 
             md-list-item.md-2-line.secondary-button-padding(
                 ng-repeat="member in clubMembers | orderBy : 'user.user_name' | filter: searchMember")

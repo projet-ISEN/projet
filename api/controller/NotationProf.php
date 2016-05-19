@@ -35,7 +35,7 @@ class NotationProf
             // Test de la note envoyée
             if( empty($post['note']) && is_float($post['note']) )
             {
-                $err = 'Vous devez envoyer une note valide.';
+                $err = 'Vous devez envoyer une note valide';
             }
             else{
 

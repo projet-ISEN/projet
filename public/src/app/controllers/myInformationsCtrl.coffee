@@ -14,13 +14,13 @@ angular.module 'app'
                 if res.err?
                     $mdToast.show(
                         $mdToast.simple()
-                        .textContent 'Un problème est survenue'
+                        .textContent 'Un problème est survenu'
                         .position 'bottom right'
                     )
                 else
                     $mdToast.show(
                         $mdToast.simple()
-                        .textContent 'Données sauvegardées!'
+                        .textContent 'Données sauvegardées !'
                         .position 'bottom right'
                     )
 

@@ -32,7 +32,7 @@ angular.module 'app'
                     specificYear: year
 
             .then (answer)->
-                $scope.status = 'You said the information was "' + answer + '".';
+                $scope.status = 'Vous avez donné comme réponse: "' + answer + '".';
             , ->
-                $scope.status = 'You cancelled the dialog.';
+                $scope.status = 'Vous avez fermé la boîte de dialogue';
 ]

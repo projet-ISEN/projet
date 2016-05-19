@@ -38,6 +38,8 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/',
+                                "title" => 'Informations globales',
+                                "icon" => 'dashboard',
                                 "title" => 'Informations Globales',
                                 "icon" => 'home',
                                 "active" => false
@@ -102,6 +104,7 @@ class Menu {
                             [
                                 "link" => '#/passation/' . $club_id,
                                 "title" => 'Informations du club',
+                                "icon" => 'dashboard',
                                 "icon" => 'weekend',
                                 "active" => false
                             ]
@@ -227,6 +230,8 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/',
+                                "title" => 'Informations globales',
+                                "icon" => 'dashboard',
                                 "title" => 'Informations Globales',
                                 "icon" => 'home',
                                 "active" => false
@@ -240,6 +245,8 @@ class Menu {
                             ],
                             [
                                 "link" => '#/manage',
+                                "title" => 'Gestion des clubs',
+                                "icon" => 'dashboard',
                                 "title" => 'Gestions des clubs',
                                 "icon" => 'school',
                                 "active" => false
@@ -273,6 +280,8 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/clubs/addclub',
+                                "title" => 'Création de clubs',
+                                "icon" => 'dashboard',
                                 "title" => 'Création de club',
                                 "icon" => 'plus_one',
                                 "active" => false
@@ -290,6 +299,10 @@ class Menu {
                                 "active"    => false
                             ],
                             [
+                                "link" => '#/evaluatorsOfClubs',
+                                "title" => 'Evaluateurs des clubs',
+                                "icon" => 'dashboard',
+                                "active" => false
                                 "link"      => '#/evaluatorsOfClubs',
                                 "title"     => 'Evaluateurs de clubs',
                                 "icon"      => 'supervisor_account',

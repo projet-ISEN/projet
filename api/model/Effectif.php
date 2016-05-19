@@ -81,7 +81,7 @@ class Effectif
         if( empty($this->club_id) || empty($this->project_id) )
         {
             return [
-                'err' => 'Que voulez vous sauvegarder?'
+                'err' => 'Que voulez-vous sauvegarder ?'
             ];
         }
 
