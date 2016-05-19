@@ -14,14 +14,14 @@ env:
 before_script:
 
   - mysql -e 'create database projet;'
-  - mysql projet < utils/DumpTheBase.sql
+  - mysql projet < utils/DB-poweramc-clean.sql
   - mysql projet -e 'SELECT * FROM club;'
 
   - cd public/
   - npm install -g bower
   - npm install
   - bower install
-  
-script: 
+
+script:
   - gulp make
   - gulp build
