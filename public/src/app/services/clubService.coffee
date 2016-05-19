@@ -86,7 +86,7 @@ angular.module('app')
     @junior = (cb)->
         $http(
             method: 'GET'
-            url: "../../api/clubs/junior"
+            url: "../../api/clubsjunior"
 
         ).then (res)->          # On success
             cb res.data
@@ -119,6 +119,17 @@ angular.module('app')
         , (err)->              # On error
             console.log err if err?
             cb null
+
+    @setLogo = (clubId, formData, cb)->
+        $http.post '../../api/clublogo/' + clubId, formData,
+            transformRequest: angular.identity,
+            headers:
+                'Content-Type': undefined
+        .then (res)->
+            cb res
+        , (err)->
+            console.log err
+            cb err
 
     return @
 ]
