@@ -417,7 +417,7 @@ class Club
             echo json_encode([
                 'err' => null
             ]);
-            Logger::info( $_SESSION['user']->login . ' set new logo of club '. $clubId );
+            Logger::info( $_SESSION['user']->login . ' mise en place du nouveau logo du club '. $clubId );
             return;
         }
         echo json_encode([
@@ -451,7 +451,7 @@ class Club
             echo json_encode([
                 'err' => null
             ]);
-            Logger::info( $_SESSION['user']->login . ' change description of club ' . $club->club_name );
+            Logger::info( $_SESSION['user']->login . ' a changé description of club ' . $club->club_name );
             return;
         }
         echo json_encode([

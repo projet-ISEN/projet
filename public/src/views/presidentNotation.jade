@@ -51,7 +51,7 @@ md-content( flex="75" layout='column' )
 
     span.red(
         ng-show='errorMark && !locks.lock_member_mark')
-        | La somme des points de chaque membre doit être égale à la note du club * le nombre d'élèves
+        | La somme des points de chaque membre doit être égale au maximum des points distribuable par le club
 
     div( layout='row' layout-align='center center' ng-if='!locks.lock_member_mark || !locks.lock_member_project_validation' )
         md-button.md-primary.md-raised(

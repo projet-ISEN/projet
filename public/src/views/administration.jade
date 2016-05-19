@@ -150,10 +150,10 @@ md-content(flex="100" layout='row' layout-align='center center')
             form( name='roleaddForm' ng-submit='post_add_role()' layout-padding)
                 div(layout="row" layout-align='')
                     md-input-container.md-icon-float( flex='100' flex-xs='100' )
-                        label Nom du poste
+                        label Nom du rôle
                         input(  md-maxlength="40" ng-model="addRole.name" name="name" required="")
                         div(ng-messages="roleaddForm.name.$error")
-                            div.my-message( ng-message="required" role="alert") Le nom du poste est requis
+                            div.my-message( ng-message="required" role="alert") Le nom du rôle est requis
 
 
                 div(layout='row' layout-align='center center')
