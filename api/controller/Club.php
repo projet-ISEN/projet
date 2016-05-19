@@ -10,7 +10,6 @@ namespace Controllers;
 
 use \API\Excel;
 use Models\NoteClub;
-use Models\User;
 
 /**
  * Class Club
@@ -280,10 +279,10 @@ class Club
         $club       = new \Models\Club( $clubId );
         $club->load();
         $file       = $noteClub->club_id . '&' . $noteClub->school_year; # 16144.2016.pdf
-        $path       = realpath(__DIR__ . '../../../uploads/passation/');
+        $path       = realpath(__DIR__ . '/../../../uploads/passation/');
         $filePath   = $path . '/' . $file . '.pdf';
         //var_dump($path);
-        var_dump($filePath);
+        //var_dump($filePath);
         $clubName   = str_replace(' ', '_', $club->club_name);
 
         if( file_exists( $filePath ) )
