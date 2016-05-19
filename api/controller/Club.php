@@ -94,6 +94,7 @@ class Club
 
         if( $club->save() ) {
             echo json_encode(['err' => null] );
+            Logger::info( $_SESSION['user']->login . ' a créé un club: ' . $post['club_name'] );
         }
         else {
             echo json_encode( array(
@@ -148,6 +149,7 @@ class Club
         $club = new \Models\Club($id_Club);
         if( $club->delete() ) {
             echo json_encode( array('err' => 'null') );
+            Logger::warn( $_SESSION['user']->login . ' delete a club: ' . $club->club_name );
         }
         else {
             echo json_encode( array('err' => "Impossible de supprimer ce club, vérfiez qu'il n'éxiste ".
@@ -191,6 +193,7 @@ class Club
         $post = json_decode( file_get_contents("php://input"), true);
         $club = new \Models\Club();
         echo json_encode($club -> giveClubMark($post["club_id"], $post["note"]));
+        Logger::info( $_SESSION['user']->login . ' give a mark to club: ' . $post["club_id"] );
     }
 
     /**
@@ -355,7 +358,9 @@ class Club
 
             echo json_encode([
                'err' => null
+
             ]);
+            Logger::info( $_SESSION['user']->login . ' add procurement file' );
             return;
         }
         echo json_encode([
@@ -364,6 +369,63 @@ class Club
         return;
 
     }
+
+    /**
+     * Add a logo for this year
+     * @param $clubId
+     */
+    public static function setLogo( $clubId )
+    {
+        //var_dump( $_FILES );
+        if( empty($_FILES['file']['tmp_name']) )
+        {
+            echo json_encode([
+                'err' => 'Ou est le fichier?'
+            ]);
+            return;
+        }
+
+        if( !$_SESSION['user']->isPresident() )
+        {
+            echo json_encode([
+                'err' => "Vous n'êtes pas autorisé à faire ça"
+            ]);
+            return;
+        }
+
+        $file       = $_FILES   ['file'];
+        $path       = realpath(__DIR__ . '../../../public/build/images/');
+        $fileName   = $clubId .'.jpg' ;
+        $filePath   = $path . '/' . $fileName;
+
+        if( $file["error"] !== UPLOAD_ERR_OK) {
+            echo json_encode([
+                'err' => "Téléversement interrompu"
+            ]);
+            return;
+        }
+
+        if( filesize($file['tmp_name']) > 10000000 ) // 30Mo
+        {
+            echo json_encode([
+                'err' => "Fichier trop volumineux"
+            ]);
+            return;
+        }
+        if( move_uploaded_file($file['tmp_name'], $filePath ) )
+        {
+            echo json_encode([
+                'err' => null
+            ]);
+            Logger::info( $_SESSION['user']->login . ' set new logo of club '. $clubId );
+            return;
+        }
+        echo json_encode([
+            'err' => "Une erreur c'est produite"
+        ]);
+        return;
+    }
+
 
     /**
      * Set description of club
@@ -389,6 +451,7 @@ class Club
             echo json_encode([
                 'err' => null
             ]);
+            Logger::info( $_SESSION['user']->login . ' change description of club ' . $club->club_name );
             return;
         }
         echo json_encode([
