@@ -8,6 +8,7 @@ angular.module('app')
         scope:
             club: '='
         templateUrl: "directives/clubCard.html"
+        transclude: true
     }
 
 
