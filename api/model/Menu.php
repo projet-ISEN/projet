@@ -299,10 +299,6 @@ class Menu {
                                 "active"    => false
                             ],
                             [
-                                "link" => '#/evaluatorsOfClubs',
-                                "title" => 'Evaluateurs des clubs',
-                                "icon" => 'dashboard',
-                                "active" => false
                                 "link"      => '#/evaluatorsOfClubs',
                                 "title"     => 'Evaluateurs de clubs',
                                 "icon"      => 'supervisor_account',
