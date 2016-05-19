@@ -100,8 +100,10 @@ angular.module 'app'
                     console.log res
                     if res == '1'
                         $mdToast.showSimple "Enregistré !"
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Un problème est survenu !"
+                        .position 'bottom right'
 
 
             else
@@ -109,11 +111,14 @@ angular.module 'app'
                 for member in $scope.members
                     if member.member_mark == null
                         return $mdToast.showSimple "Tous les membres n'ont pas de note"
+                        .position 'bottom right'
 
                     console.log $scope.members
                 $note.noteStudent $scope.members, (res) ->
                     if res == '1'
                         $mdToast.showSimple "Notes sauvegardées !"
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Un problème est survenu !"
+                        .position 'bottom right'
 ]

@@ -38,22 +38,28 @@ angular.module 'app'
                 $member.add user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple 'Membre enregistré !'
+                        .position 'bottom right'
                         displayAll()
             else
                 # Pour une autre année
                 $member.addNextYear user.login, $scope.chooseClub.club_id, $scope.chooseProject.project_id, specificYear, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple 'Membre enregistré !'
+                        .position 'bottom right'
 
                         $choice.delete user.login, (res)->
                             if res.err?
                                 $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                                .position 'bottom right'
                             else
                                 $mdToast.showSimple 'Choix supprimés!'
+                                .position 'bottom right'
 
 
 
@@ -66,8 +72,10 @@ angular.module 'app'
 
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple 'Club principal changé !'
+                    .position 'bottom right'
                     displayAll()
 
         $scope.delete = (member)->
@@ -75,8 +83,10 @@ angular.module 'app'
             $member.delete member.login, member.club_id, specificYear, (res)->
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple "Le membre n'est plus dans le club"
+                    .position 'bottom right'
                     displayAll()
 
 

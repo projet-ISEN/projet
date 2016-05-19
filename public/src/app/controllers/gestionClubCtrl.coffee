@@ -21,8 +21,10 @@ angular.module 'app'
             $note.sendPassation $scope.clubId, formData, (res)->
                 if res.err?
                     $mdToast.showSimple "Une erreur s'est produite : " + err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple "Votre fichier est enregistré !"
+                    .position 'bottom right'
 
         $scope.sendLogo = ->
 
@@ -32,9 +34,10 @@ angular.module 'app'
             $club.setLogo $scope.clubId, formData, (res)->
                 unless res.err?
                     $mdToast.showSimple "Votre Logo est enregistré !"
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple "Une erreur s'est produite : " + err
-                    $mdToast.showSimple "Une erreur c'est produite : " + err
+                    .position 'bottom right'
 
         $note.getPassations $scope.clubId , (res)->
             $scope.passations = res
@@ -52,16 +55,20 @@ angular.module 'app'
             $role.setRoleOfMember member, (res)->
                 if res.err?
                     $mdToast.showSimple "Une erreur s'est produite : " + err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple "Rôle enregistré !"
+                    .position 'bottom right'
 
         $scope.updateDescription = ->
             console.log 'changed'
             $club.setDescription $scope.thisClub, (res)->
                 if res.err?
                     $mdToast.showSimple "Une erreur s'est produite : " + err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple "Description enregistrée !"
+                    .position 'bottom right'
 
 
 

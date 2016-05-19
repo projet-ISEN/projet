@@ -8,8 +8,8 @@
 
 namespace API;
 
-require_once( '../PHPExcel/Classes/PHPExcel.php' );
-require_once( '../PHPExcel/Classes/PHPExcel/Writer/Excel2007.php' );
+require_once( '../../PHPExcel/Classes/PHPExcel.php' );
+require_once( '../../PHPExcel/Classes/PHPExcel/Writer/Excel2007.php' );
 
 use \PHPExcel;
 use \PHPExcel_Writer_Excel2007;
@@ -36,7 +36,7 @@ class Excel
      *
      * @param string $name
      */
-    public function __construct( $name="My excel" )
+    public function __construct( $name="My_excel" )
     {
         $this->name = $name;
 
@@ -56,7 +56,11 @@ class Excel
         // It will be called file.xls
         header('Content-Disposition: attachment; filename="' . $this->name . '.xlsx"');
         // Write file to the browser
+
+
         $objWriter = new PHPExcel_Writer_Excel2007( $this->file );
+        ob_end_clean();
+
         $objWriter->save( 'php://output' );
         die();
     }
