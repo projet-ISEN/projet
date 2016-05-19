@@ -151,7 +151,5 @@ angular.module('app')
             console.log err
             cb err
 
-
-
     return @
 ]

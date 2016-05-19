@@ -1,5 +1,7 @@
 md-content( layout-padding layout='column')
     md-tabs( md-dynamic-height )
+
+
         md-tab( label="Dossiers de passation" )
 
             md-content( layout-padding )
@@ -26,7 +28,7 @@ md-content( layout-padding layout='column')
                         div( ng-message="totalsize" ) Total size too large.
                         div( ng-message="mimetype" ) Mimetype error.
                 div
-                    md-button.md-primary.md-raised( ng-click='send()' ) Téléverser le fichier
+                    md-button.md-primary.md-raised( ng-click='sendFile()' ) Téléverser le fichier
 
             md-divider
 
@@ -68,4 +70,17 @@ md-content( layout-padding layout='column')
                         ng-model="thisClub.club_description"
                         md-maxlength="10000"
                         rows="12" )
+                md-input-container.md-block
+                    lf-ng-md-file-input(
+                        flex='100'
+                        accept='image/jpg'
+                        lf-files='clubLogo'
+                        lf-maxcount='10MB'
+                        lf-drag-and-drop-label="Glisser-déposer"
+                        lf-browse-label="Parcourir"
+                        lf-remove-label="Supprimer"
+                        lf-placeholder='Logo de mon club...'
+                        progress
+                        preview )
+                    md-button.md-primary.md-raised( ng-click='sendLogo()' ) Téléverser le fichier
 
