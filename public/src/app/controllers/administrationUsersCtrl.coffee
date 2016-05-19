@@ -34,5 +34,5 @@ angular.module 'app'
             .then (answer)->
                 $scope.status = 'Vous avez donné comme réponse: "' + answer + '".';
             , ->
-                $scope.status = 'You cancelled the dialog';
+                $scope.status = 'Vous avez fermé la boîte de dialogue';
 ]
