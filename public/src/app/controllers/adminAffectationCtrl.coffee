@@ -72,11 +72,14 @@ angular.module 'app'
                     $affectation.lock $scope.year + 1, (res)->
                         if res.err?
                             $mdToast.showSimple "Une erreur s'est produite"
+                            .position 'bottom right'
                         else
                             $mdToast.showSimple "Affectation terminée"
+                            .position 'bottom right'
                             $scope.lostMembers = null
             , ->
                     $mdToast.showSimple 'Affectation annulée'
+                    .position 'bottom right'
             )
 
 ]

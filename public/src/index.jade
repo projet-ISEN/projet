@@ -29,7 +29,7 @@ html( lang="fr" )
             div( data-ng-include = "'views/toolbar.html'")
             div( data-ng-view layout-padding flex='noshrink')
             //on charge la vue ici
-            div( data-ng-include = "'views/footer.html'")
+            div( data-ng-include = "'views/footer.html'" ng-controller='footerCtrl')
 
         script( type="text/javascript" src="libs/angular/angular.js" )
         script( type="text/javascript" src="libs/angular-sanitize/angular-sanitize.js" )

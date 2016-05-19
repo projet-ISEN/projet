@@ -53,6 +53,7 @@ angular.module('app')
 
                 if project.min > project.max
                     return $mdToast.showSimple "Corrigez d'abord les valeurs"
+                    .position 'bottom right'
 
                 effectifs.push
                     nb_asked_min: project.min
@@ -71,6 +72,8 @@ angular.module('app')
                 #console.log res
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue'
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple 'Modifications prises en compte'
+                    .position 'bottom right'
 ]

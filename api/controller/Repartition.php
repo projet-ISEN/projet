@@ -416,7 +416,7 @@ class repartition
             $no = self::Changescore($member,$notWanted,-2);
             if($no[1]) $member = $no[0];
             else{
-                $old = self::Changescore($member,$ancient,2);
+                $old = self::Changescore($member,$ancient,3);
                 if($old[1]) $member = $old[0];
                 else{
                     $reco = self::Changescore($member,$recommanded,2);

@@ -77,28 +77,36 @@ angular.module('app')
                 $member.unRecommend clubId, user.login, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue'
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Ce membre n'est plus recommandé !"
+                        .position 'bottom right'
             else
                 $member.recommend clubId, user.login, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue'
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Ce membre est recommandé !"
+                        .position 'bottom right'
 
         $scope.disgrace = (member)->
             if member.bad
                 $member.unDisgrace clubId, member.login, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue'
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Ce membre est grâcié !"
+                        .position 'bottom right'
             else
                 $member.disgrace clubId, member.login, (res)->
                     if res.err?
                         $mdToast.showSimple 'Une erreur est survenue'
+                        .position 'bottom right'
                     else
                         $mdToast.showSimple "Ce membre tombe en disgrâce !"
+                        .position 'bottom right'
 
         $year.currentYear (year)->
             $scope.year = parseInt(year)

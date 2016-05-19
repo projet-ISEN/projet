@@ -880,118 +880,6 @@ INSERT INTO choice (login, club_id, choice_number) VALUES
  ('yleflo20', '7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 3);
 
 
-
-
-INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
-  VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
-          ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 0, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
-            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 3),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
-            (SELECT project_id FROM projet WHERE project_type="PR+"), 5, 9),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
-            (SELECT project_id FROM projet WHERE project_type="PA"),  0, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 4, 6),
-          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 6, 8),
-          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 12, 14),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 2, 4),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 3),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
-            (SELECT project_id FROM projet WHERE project_type="PR"),  3, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
-            (SELECT project_id FROM projet WHERE project_type="PR+"), 1, 2),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
-            (SELECT project_id FROM projet WHERE project_type="PA"),  3, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
-            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 3),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 6, 8),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 5, 8),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des sports"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 4, 5),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 5),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 6),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 3, 5),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 4),
-          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
-          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 2, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 2),
-          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 1, 2),
-          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 1, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
-            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 6),
-          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
-            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
-          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
-            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
-            (SELECT project_id FROM projet WHERE project_type="PR+"), 10, 12),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
-            (SELECT project_id FROM projet WHERE project_type="PR"),  8, 10),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
-            (SELECT project_id FROM projet WHERE project_type="PA"),  8, 10),
-          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
-            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
-            (SELECT project_id FROM projet WHERE project_type="PR+"), 3, 4),
-          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
-            (SELECT project_id FROM projet WHERE project_type="PR"),  4, 6),
-          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
-            (SELECT project_id FROM projet WHERE project_type="PA"),  4, 6),
-          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
-            (SELECT project_id FROM projet WHERE project_type="PI"),  1, 2),
-
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
-            (SELECT project_id FROM projet WHERE project_type="PR+"), 2, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
-            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 5),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
-            (SELECT project_id FROM projet WHERE project_type="PA"),  1, 3),
-          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
-            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2)
-;
-
-
 INSERT INTO member (club_id, login, school_year, id_projet_club, project_id, main_club, member_mark, ex_member_not_wanted, recommandation, project_validation, member_comment) VALUES
   ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'mlariv19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, 1, null),
   ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'afremo18', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, 1, null),
@@ -1061,3 +949,312 @@ INSERT INTO member (club_id, login, school_year, id_projet_club, project_id, mai
   ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'omassa19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, 1, null),
   ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'tthere18', 2016, null, 'd6b8f8d7-1818-11e6-8166-d850e61e53c9', 1, null, null, null, 1, null),
   ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'fpalud19', 2016, null, 'd6b8fa87-1818-11e6-8166-d850e61e53c9', 1, null, null, null, 1, null);
+
+
+
+
+INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max)
+  VALUES  ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 0, 2),
+          ( (SELECT club_id FROM club WHERE club.club_name="Soutien ISEN"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 0, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 3),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 5, 9),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club foyer"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  0, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 4, 6),
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 6, 8),
+          ( (SELECT club_id FROM club WHERE club.club_name="Gala"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 12, 14),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 2, 4),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Eva"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 3),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club musique"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  3, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 1, 2),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  3, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau des Arts"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 3),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 3),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club glisse"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 5),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 3, 6),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau du développement durable"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 3, 5),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 4),
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
+          ( (SELECT club_id FROM club WHERE club.club_name="Pon Pon Nippon"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 2, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 1, 2),
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 1, 2),
+          ( (SELECT club_id FROM club WHERE club.club_name="Kengred"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 1, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PR"), 3, 6),
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PA"), 2, 4),
+          ( (SELECT club_id FROM club WHERE club.club_name="Digital Design"),
+            (SELECT project_id FROM projet WHERE project_type="PI"), 0, 1),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 10, 12),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  8, 10),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  8, 10),
+          ( (SELECT club_id FROM club WHERE club.club_name="Club Elec"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 3, 4),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  4, 6),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  4, 6),
+          ( (SELECT club_id FROM club WHERE club.club_name="Moviezen"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  1, 2),
+
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PR+"), 2, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PR"),  2, 5),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PA"),  1, 3),
+          ( (SELECT club_id FROM club WHERE club.club_name="Bureau de l'international"),
+            (SELECT project_id FROM projet WHERE project_type="PI"),  0, 2)
+;
+
+INSERT INTO effectif (club_id, project_id, nb_asked_min, nb_asked_max) VALUES
+  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 1),
+  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 5),
+  ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 5),
+  ('ab0df346-15be-11e6-8c14-363366383662', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 15),
+
+  ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 2),
+  ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 2),
+  ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 2),
+
+  ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 30),
+  ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 30),
+  ('7cbed7bc-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 30),
+
+  ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 2),
+  ('7cbeab9e-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 2),
+
+  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 10),
+  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 10),
+  ('7cbed503-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 10),
+
+  ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 8),
+  ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 8),
+  ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 8),
+
+  ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 7),
+
+  ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 4),
+  ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 4),
+  ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 4),
+
+  ('7cbece9d-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 4),
+
+  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 12),
+  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 12),
+  ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 12),
+
+  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 3),
+  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 3),
+  ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 3),
+
+  ('ab0df318-15be-11e6-8c14-363366383662', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 3),
+  ('ab0df318-15be-11e6-8c14-363366383662', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 3),
+  ('ab0df318-15be-11e6-8c14-363366383662', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 3),
+
+  ('ab0df152-15be-11e6-8c14-363366383662', 'd6b37f9f-1818-11e6-8166-d850e61e53c9',1, 4),
+  ('ab0df152-15be-11e6-8c14-363366383662', 'd6b8f8d7-1818-11e6-8166-d850e61e53c9',1, 4),
+  ('ab0df152-15be-11e6-8c14-363366383662', 'd6b8fa87-1818-11e6-8166-d850e61e53c9',1, 4)
+
+;
+
+
+
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'alauna17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'anicol17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'aroue017', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ccleuz17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ejezeq17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ejoly017', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'fduboi17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ftoque17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'gbiann17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jleny017', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'kchopi17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mgauth17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mgoanv17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'pyming17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rcolli17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tfundo17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vlacqu17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vrioua17', 'M1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'afremo18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'hsilva18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ksalvi18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mlohez18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'npirio18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'pyboul18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rmoric18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tthere18', 'CSI3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'adome019', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'afouca19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'alegue19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'bflury19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cgallo19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cgroll19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cheuve19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cvanco19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'elefau19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'fcheva19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'flucas19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'fpalud19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ftanne19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'gbreto19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'gletro19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'glibou19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jdiver19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ldemeo19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mlariv19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mlegal19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'nkorpe19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'nserio19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'oburti19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'omassa19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'prabin19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rjegu019', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tlefla19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tmal0019', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'torvai19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vgauth19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vsilva19', 'CSI2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'abouza20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'acariv20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ahusse20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'aleman20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'alinig20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'amarde20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'aregna20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cbourg20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cindia20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cpelle20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'elesao20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'erouza20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'fguill20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'fthiba20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jfhatt20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jsandr20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'laudou20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ldorie20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lfrelo20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lgilbe20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lgramo20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'llemag19', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lpouch20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mbouad20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mferra20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mgilib20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mlebra20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mroued20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'nbaron19', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'panton20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'papich20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'pedieu20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'plcast20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'qsolli20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rcroya20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rlaot020', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'rmadec20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'sheng020', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tbaron20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tpicar20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vpruvo20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'wbeaup20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'yleflo20', 'CSI1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'baboli18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'chardy18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'eguela18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ejames18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jcaill18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jmerli18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lbotho18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'oelisb18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ryavor18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tcouss18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tdebay18', 'CIR3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ablond19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'aclave19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'apreme19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'asorre19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cbaron19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cboyer19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cmear019', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'cpoiss19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'dcrenn19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'echeva19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'equill19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'gedern19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'glecor19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jbenez19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jlejeu19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jperra19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'kaupee19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'matoui19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mderri19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'mouarn19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'pleple19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tcevae19', 'CIR2');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'aauffr20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'alucas20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'eroue020', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'glecam20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'gmonne20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jboise20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'jwalla20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'lguegu20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'llemeu20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'slevro20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tcones20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tdupon20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'tlelie20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vprin020', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ydumor20', 'CIR1');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'bcourt18', 'CIPA3');
+INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ccosse18', 'CIPA3');

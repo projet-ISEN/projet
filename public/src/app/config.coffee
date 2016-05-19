@@ -122,6 +122,22 @@ angular.module('app')
 
 
 ]
+
+.controller 'footerCtrl', [
+    '$scope'
+    '$mdDialog'
+    ($scope, $mdDialog)->
+
+
+        $scope.openDialog = ->
+            $mdDialog.show(
+                $mdDialog.alert()
+                .title 'Informations sur vos données privées'
+                .textContent "Les données ne seront traitées que dans le but de vous permettre d'utiliser divers outils à vocation informative, d'effectuer les démarches administratives demandées et de recevoir de l'information sur les outils et services proposés"
+                .ok "OK"
+
+            )
+]
 #------------------------------------------------------------------------------
 #           BREADCRUMBS SERVICE
 #------------------------------------------------------------------------------

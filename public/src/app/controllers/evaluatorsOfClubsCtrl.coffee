@@ -19,7 +19,9 @@ angular.module 'app'
             $club.update club, (res)->
                 if res.err?
                     $mdToast.showSimple 'Une erreur est survenue : ' + res.err
+                    .position 'bottom right'
                 else
                     $mdToast.showSimple 'Modification prise en compte !'
+                    .position 'bottom right'
 
 ]
