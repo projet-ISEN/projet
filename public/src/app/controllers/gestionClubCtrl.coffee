@@ -34,6 +34,7 @@ angular.module 'app'
                     $mdToast.showSimple "Votre Logo est enregistré !"
                 else
                     $mdToast.showSimple "Une erreur s'est produite : " + err
+                    $mdToast.showSimple "Une erreur c'est produite : " + err
 
         $note.getPassations $scope.clubId , (res)->
             $scope.passations = res

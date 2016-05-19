@@ -66,6 +66,7 @@ class Choice
             $tmp = new \Models\Choice();
             echo json_encode( $tmp->create($choices) );
             Logger::info( $_SESSION['user']->login . ' a fait ses choix' );
+            Logger::info( $_SESSION['user']->login . ' made his choices' );
         }
     }
 
@@ -98,6 +99,7 @@ class Choice
     {
         echo json_encode (\Models\Choice::deleteAll());
         Logger::info( 'Tous les choix ont été supprimés' );
+        Logger::info( 'All choices has been deleted' );
     }
 
     /**
