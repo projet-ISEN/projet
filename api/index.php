@@ -50,7 +50,7 @@
         //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
         //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
-        $userData["Login"]      = 'mgoanv17';
+        //$userData["Login"]      = 'mgoanv17';
         //$userData["Login"]        = 'mcabon';
 
         $userData["Name"]       = 'prename name'; // prénom nom
