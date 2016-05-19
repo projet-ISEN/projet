@@ -149,7 +149,7 @@ class Club
         $club = new \Models\Club($id_Club);
         if( $club->delete() ) {
             echo json_encode( array('err' => 'null') );
-            Logger::warn( $_SESSION['user']->login . ' delete a club: ' . $club->club_name );
+            Logger::warn( $_SESSION['user']->login . ' a supprimer le club: ' . $club->club_name );
         }
         else {
             echo json_encode( array('err' => "Impossible de supprimer ce club, vérfiez qu'il n'éxiste ".
@@ -193,7 +193,7 @@ class Club
         $post = json_decode( file_get_contents("php://input"), true);
         $club = new \Models\Club();
         echo json_encode($club -> giveClubMark($post["club_id"], $post["note"]));
-        Logger::info( $_SESSION['user']->login . ' give a mark to club: ' . $post["club_id"] );
+        Logger::info( $_SESSION['user']->login . ' a noté le club: ' . $post["club_id"] );
     }
 
     /**
