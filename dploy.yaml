@@ -27,7 +27,7 @@ prod:
         local: /
         remote: /var/www/html/clubsV2/
 
-    exclude: [ "*.yml","*.yaml",".htaccess",".gitignore","*.pdf","public/src/**","utils/*","public/node_modules/*","public/build/libs/angular-material/modules/"]
+    exclude: [ "*.yml","*.yaml",".htaccess",".gitignore","*.pdf","public/src/**","utils/*", "public/node_modules/*", "public/build/libs/angular-material/modules/**", "PHPExcel/**"]
     include :
         "public/build/**" : "public/build/"
 
