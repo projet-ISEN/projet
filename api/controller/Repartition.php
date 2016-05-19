@@ -24,7 +24,7 @@ class repartition
 
 
     public static function repartition( $year ){
-        $trace = "Définition des projets pour chaques utilisateurs: " .self::whichProject( $year );
+        $trace = "Définition des projets pour chaque utilisateur: " .self::whichProject( $year );
         //var_dump($trace);
 
         if( !self::preventBug() ) {

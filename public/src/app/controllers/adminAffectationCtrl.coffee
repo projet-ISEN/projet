@@ -60,17 +60,18 @@ angular.module 'app'
         $scope.lock = ->
 
             $mdDialog.show( $mdDialog.confirm()
-                .title "Voulez-vous vraiment vérouiller l'affectation ?"
-                .textContent "Cette action sera irréversible, vérifier que " +\
+                .title "Voulez-vous vraiment verrouiller l'affectation ?"
+                .textContent "Cette action sera irréversible, vérifiez que " +\
                            "les compositions de clubs vous conviennent avant de valider"
                 .ariaLabel 'lock? or not?'
                 .clickOutsideToClose true
-                .ok "Procéder à l'affectation"
-                .cancel "Il me reste des changements à faire"
+                .ok "Procédez à l'affectation"
+                .cancel "Annuler"
+                #.cancel "Il me reste des changements à faire"
             ).then( ->
                     $affectation.lock $scope.year + 1, (res)->
                         if res.err?
-                            $mdToast.showSimple "Une erreur c'est produite"
+                            $mdToast.showSimple "Une erreur s'est produite"
                         else
                             $mdToast.showSimple "Affectation terminée"
                             $scope.lostMembers = null

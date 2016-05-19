@@ -3,18 +3,18 @@ md-dialog
         h3.
             Fonctionnement de la notation d'un club
         p.
-            La notation d'un club ce fait en 5 temps:
+            La notation d'un club se fait en 5 temps:
         md-list
             md-list-item  Le président du club va annoncer qui, selon lui, a validé ou non son projet
-            md-list-item Vous allez pouvoir modifié ses choix s'ils ne vous conviennent pas,
+            md-list-item Vous allez pouvoir modifier ses choix s'ils ne vous conviennent pas,
                 | puis les verrouiller afin qu'ils ne puissent plus être changés
             md-list-item Vous allez également donner une note au club
             md-list-item Le président va pouvoir redistribuer les points aux membres du club
-            md-list-item Vous allez ensuite pouvoir modifier ces notes si elles ne vous semble pas justifiées.
-                | Vous pouvez aussi les verrouiller de suite après avoir donné une note au club, afin
-                | que tout le monde ai la même note
+            md-list-item Vous allez ensuite pouvoir modifier ces notes si elles ne vous semblent pas justifiées.
+                | Vous pouvez aussi les verrouiller tout de suite après avoir donné une note au club, afin
+                | que tout le monde ait la même note
 
-        p Les PA valide obligatoirementleur projet peut importe leur nom. Un PR validé a forcément plus de 10 tandis que s'il est invalidé in a forcément moins de 10. Enfin, un PR+ n'a pas de note, seul la validation rentre en compte.
+        p Les PA valident obligatoirement leur projet, peu importe leur note. Un PR validé a forcément au moins 10 tandis que s'il est invalidé il a forcément moins de 10. Enfin, un PR+ n'a pas de note, seule la validation rentre en compte.
 
     md-dialog-actions(layout='row')
         md-button(ng-click="closeDialog()") J'ai compris

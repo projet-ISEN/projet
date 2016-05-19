@@ -38,7 +38,7 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/',
-                                "title" => 'Informations Globales',
+                                "title" => 'Informations globales',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]
@@ -101,7 +101,7 @@ class Menu {
 
                             [
                                 "link" => '#/passation/' . $club_id,
-                                "title" => 'Informations du clubs',
+                                "title" => 'Informations du club',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]
@@ -227,7 +227,7 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/',
-                                "title" => 'Informations Globales',
+                                "title" => 'Informations globales',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ],
@@ -240,7 +240,7 @@ class Menu {
                             ],
                             [
                                 "link" => '#/manage',
-                                "title" => 'Gestions des clubs',
+                                "title" => 'Gestion des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ]/*,
@@ -273,7 +273,7 @@ class Menu {
                     'values' => [
                             [
                                 "link" => '#/clubs/addclub',
-                                "title" => 'Création de club',
+                                "title" => 'Création de clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ],
@@ -291,7 +291,7 @@ class Menu {
                             ],
                             [
                                 "link" => '#/evaluatorsOfClubs',
-                                "title" => 'Evaluateurs de clubs',
+                                "title" => 'Evaluateurs des clubs',
                                 "icon" => 'dashboard',
                                 "active" => false
                             ],

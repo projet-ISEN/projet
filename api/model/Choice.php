@@ -81,7 +81,7 @@ class Choice {
             // Check les tricheurs
             if( count($choices) != 3 )
             {
-                return [ 'err' => '3 choix obligatoirement ' . count($choices) . ' envoyés' ];
+                return [ 'err' => '3 choix obligatoirement: ' . count($choices) . ' envoyé(s)' ];
             }
             if( $choices[1] == $choices[2] OR $choices[2] == $choices[3] OR $choices[1] == $choices[3] )
             {
@@ -105,7 +105,7 @@ class Choice {
 
             if($status) {
                 return [ 'err' => null ];
-                \Controllers\Logger::info( $_SESSION['user']->login . "made his choices");
+                \Controllers\Logger::info( $_SESSION['user']->login . " a fait ses choix");
             }
             else {
                 return [ 'err' => 'Impossible de sauvegarder vos choix' ];

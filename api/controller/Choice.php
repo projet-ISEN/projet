@@ -58,7 +58,7 @@ class Choice
         if( empty($post['choices']) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçue'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {
@@ -79,7 +79,7 @@ class Choice
         if( empty($put['choices']) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçues'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {
@@ -113,7 +113,7 @@ class Choice
         }
         else {
             echo json_encode([
-                'err' => "Impossible de supprimer les choix de l'utilisateurs"
+                'err' => "Impossible de supprimer les choix de l'utilisateur"
             ]);
             return;
         }

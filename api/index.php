@@ -39,8 +39,8 @@
 
         //test variable
 
-        $userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
+        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
@@ -51,7 +51,7 @@
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
         //$userData["Login"]      = 'gbiann17'; //Evaluator & administrator
         //$userData["Login"]      = 'mgoanv17';
-        $userData["Login"]        = 'mcabon';
+        //$userData["Login"]        = 'mcabon';
 
         $userData["Name"]       = 'prename name'; // prénom nom
         $userData["FirstName"]  = 'prename'; // prénom

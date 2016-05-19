@@ -65,7 +65,7 @@ class Log
             return ['err' => null];
         }
         else {
-            return ['err' => "Impossible d'enregistrer ce log."];
+            return ['err' => "Impossible d'enregistrer ce log"];
         }
     }
 

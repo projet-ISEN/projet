@@ -92,7 +92,7 @@ class Role
         if( empty($put) ) {
 
             echo json_encode([
-                'err' => 'Aucune données reçues'
+                'err' => 'Aucune donnée reçue'
             ]);
         }
         else {
@@ -156,7 +156,7 @@ class Role
         }
         else {
             echo json_encode([
-                'err' => "Vous n'êtes pas autoriser à faire ca"
+                'err' => "Vous n'êtes pas autorisé à faire cela"
             ]);
         }
     }

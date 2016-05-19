@@ -10,7 +10,7 @@ md-content.md-padding( layout-xs="column" layout="row" )
 
     span.flex
     md-input-container
-        label Recherche de club
+        label Recherche de clubs
         input( type='text' ng-model='search')
 
     div(layout="column")
@@ -20,7 +20,7 @@ md-content.md-padding( layout-xs="column" layout="row" layout-wrap)
 
     md-card( ng-if="!clubs" )
         p
-            | Rien ne s'affiche? Avez-vous penser à vous connecter sur l'
+            | Rien ne s'affiche ? Avez-vous pensé à vous connecter sur l'
             a( href="https://web.isen-bretagne.fr" ) ENT
             | ?
     club-card(

@@ -61,14 +61,14 @@ class Effectif
         if( in_array($club_id, $notAllow) )
         {
             echo  json_encode([
-                'err' => "Votre club ne peut pas donner d'éffectifs"
+                'err' => "Votre club ne peut pas donner d'effectifs"
             ]);
             return;
         }
 
         if( !$_SESSION['user']->isPresident() ) {
             echo json_encode([
-                'err' => "Vous n'êtes pas autorisé à faire ça"
+                'err' => "Vous n'êtes pas autorisé à faire cela"
             ]);
             return;
         }

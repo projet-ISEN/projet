@@ -37,7 +37,7 @@ div( layout='row' layout-padding layout-xs='column' flex-xs='100' )
                     ng-model='me.phone'
                     pattern="^0[0-9]{9}$" )
                 div( ng-messages="contactForm.phone.$error" role="alert" multiple )
-                    div( ng-message="pattern" class="my-message") Le format de votre numero ne semble pas bon
+                    div( ng-message="pattern" class="my-message") Le format de votre numéro de téléphone ne semble pas correct
 
 
             md-input-container( layout-align='center center' layout="row" )
@@ -52,6 +52,6 @@ div( layout='row' layout-xs='column' layout-padding layout-align='center center'
                 p Les informations de contact ci-dessus sont indépendantes de l'ENT.
                 p Concernant votre nom, prénom, adresse e-mail et numéro de téléphone :
                 ul
-                    li Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter.
-                    li Ces informations seront accessible à toute personne membre d'un club
-                        | dans lequel vous avez occupé une place.
+                    li Vous pouvez les modifier afin de permettre aux futurs membres de vous recontacter
+                    li Ces informations seront accessibles à tout membre de club
+                        | dans lequel vous avez occupé une place

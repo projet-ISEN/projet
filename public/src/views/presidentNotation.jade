@@ -3,7 +3,7 @@
 
 md-content( flex="75" layout='column' )
 
-    h4 Noter les membre du club
+    h4 Noter les membres du club
         md-icon( style="cursor:pointer" ng-click="infoNote()" ) info
 
     h4( ng-if="clubMark" )        Note attribuée : {{clubMark}}
@@ -11,7 +11,7 @@ md-content( flex="75" layout='column' )
 
     div( layout='row' )
         span( flex='30' ) Validation des projets
-        span( flex="40" ) Nombre de points a redistribuer {{restPoint || 0}}
+        span( flex="40" ) Nombre de point(s) à redistribuer {{restPoint || 0}}
         span( flex='30' ) Note du membre
 
     md-list(
@@ -51,7 +51,7 @@ md-content( flex="75" layout='column' )
 
     span.red(
         ng-show='errorMark && !locks.lock_member_mark')
-        | La somme des points de chaque membres doit être égal à la note du club x le nombre d'élève
+        | La somme des points de chaque membre doit être égale à la note du club * le nombre d'élèves
 
     div( layout='row' layout-align='center center' ng-if='!locks.lock_member_mark || !locks.lock_member_project_validation' )
         md-button.md-primary.md-raised(

@@ -105,7 +105,7 @@ angular.module 'app'
                                 )
                             else
                                 $mdToast.show(
-                                    $mdToast.simple 'Un problème est survenue'
+                                    $mdToast.simple 'Un problème est survenu'
                                     .position 'bottom right'
                             )
 
@@ -129,8 +129,8 @@ angular.module 'app'
                 controller: 'noteDialogCtrl'
 
         $scope.toggle_lockProject = ->
-            console.log "lock du projet is " + $scope.changeClub.lock_member_project_validation
-            console.log "lock de la note is " + $scope.changeClub.lock_member_mark
+            #console.log "lock du projet is " + $scope.changeClub.lock_member_project_validation
+            #console.log "lock de la note is " + $scope.changeClub.lock_member_mark
 
             if(!$scope.changeClub.lock_member_project_validation && $scope.changeClub.lock_member_mark)
                     console.log "inverse markLock"
@@ -140,14 +140,14 @@ angular.module 'app'
 
             if( !$scope.changeClub.lock_member_project_validation )
                 $note.lockProject $scope.changeClub.club_id, (ret)->
-                    console.log "locked Project " + ret
+                    #console.log "locked Project " + ret
                     $note.validateProjectStudent $scope.changeClub.member, (projet) ->
                         console.log 'save project validations'
                         console.log projet
                     if(!$scope.changeClub.lock_member_project_validation) then $scope.tot()
                     if ret != "0"
                         $mdToast.show(
-                            $mdToast.simple 'Le verrouillage de validation est activé'
+                            $mdToast.simple 'Le verrouillage de validation de projets est activé'
                             .position 'bottom right'
                         )
                         $scope.changeClub.lock_member_project_validation = !$scope.changeClub.lock_member_project_validation
@@ -155,12 +155,12 @@ angular.module 'app'
 
                     else
                         $mdToast.show(
-                            $mdToast.simple 'Un problème est survenue'
+                            $mdToast.simple 'Un problème est survenu'
                             .position 'bottom right'
                         )
             else
                 $note.unLockProject $scope.changeClub.club_id, (ret)->
-                    console.log "unlocked Project " + ret
+                    #console.log "unlocked Project " + ret
                     ###$note.validateProjectStudent $scope.changeClub.member, (projet) ->
                         console.log 'save project validations'
                         console.log projet
@@ -172,11 +172,11 @@ angular.module 'app'
                             .position 'bottom right'
                         )
                         $scope.changeClub.lock_member_project_validation = !$scope.changeClub.lock_member_project_validation
-                        console.log "unlock du projet " + $scope.changeClub.lock_member_project_validation
+                        #console.log "unlock du projet " + $scope.changeClub.lock_member_project_validation
 
                     else
                         $mdToast.show(
-                            $mdToast.simple 'Un problème est survenue'
+                            $mdToast.simple 'Un problème est survenu'
                             .position 'bottom right'
                         )
 
@@ -186,7 +186,7 @@ angular.module 'app'
                 $mdDialog.alert()
                 .clickOutsideToClose true
                 .title 'Attention Erreur'
-                .textContent 'La notation ne semble pas bonne vous ne pouvez pas valider ainsi, veuillez répartir tous les points avant de verrouiller les notes.'
+                .textContent 'La notation ne semble pas correcte. Vous ne pouvez pas valider, veuillez répartir tous les points avant de verrouiller les notes'
                 .ariaLabel 'Alert Dialog'
                 .ok 'OK'
             )
@@ -194,9 +194,9 @@ angular.module 'app'
 
 
         $scope.toggle_lockMark = ->
-            console.log "test tot " + $scope.tot()
+            #console.log "test tot " + $scope.tot()
             if($scope.tot() || $scope.changeClub.lock_member_mark)
-                console.log "NOT dialog box"
+                #console.log "NOT dialog box"
                 if( !$scope.changeClub.lock_member_mark ) then $scope.giveMark()
                 # Si il est pas lock
                 if( !$scope.changeClub.lock_member_mark )
@@ -208,11 +208,11 @@ angular.module 'app'
                                 .position 'bottom right'
                             )
                             $scope.changeClub.lock_member_mark = !$scope.changeClub.lock_member_mark
-                            console.log "lock de la note " + $scope.changeClub.lock_member_mark
+                            #console.log "lock de la note " + $scope.changeClub.lock_member_mark
 
                         else
                             $mdToast.show(
-                                $mdToast.simple 'Un problème est survenue'
+                                $mdToast.simple 'Un problème est survenu'
                                 .position 'bottom right'
                             )
                 else
@@ -224,11 +224,11 @@ angular.module 'app'
                                 .position 'bottom right'
                             )
                             $scope.changeClub.lock_member_mark = !$scope.changeClub.lock_member_mark
-                            console.log "lock de la note " + $scope.changeClub.lock_member_mark
+                            #console.log "lock de la note " + $scope.changeClub.lock_member_mark
 
                         else
                             $mdToast.show(
-                                $mdToast.simple 'Un problème est survenue'
+                                $mdToast.simple 'Un problème est survenu'
                                 .position 'bottom right'
                             )
             else
@@ -240,7 +240,7 @@ angular.module 'app'
         $scope.updatePrez = ->
             console.log $scope.updatePrezChoice
             $role.pushPrez $scope.updatePrezChoice.login, $scope.changeClub.club_id, (bool)->
-                console.log "retour de la fonction de changement de président: " + bool
+                #console.log "retour de la fonction de changement de président: " + bool
                 if bool != "0"
                     $mdToast.show(
                         $mdToast.simple 'Le président a bien été enregistré'
@@ -248,7 +248,7 @@ angular.module 'app'
                     )
                 else
                     $mdToast.show(
-                        $mdToast.simple 'Un problème est survenue'
+                        $mdToast.simple 'Un problème est survenu'
                         .position 'bottom right'
                     )
 

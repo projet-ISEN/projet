@@ -76,13 +76,13 @@ angular.module('app')
             if user.recommended
                 $member.unRecommend clubId, user.login, (res)->
                     if res.err?
-                        $mdToast.showSimple 'Une erreur est survenue...'
+                        $mdToast.showSimple 'Une erreur est survenue'
                     else
                         $mdToast.showSimple "Ce membre n'est plus recommandé !"
             else
                 $member.recommend clubId, user.login, (res)->
                     if res.err?
-                        $mdToast.showSimple 'Une erreur est survenue...'
+                        $mdToast.showSimple 'Une erreur est survenue'
                     else
                         $mdToast.showSimple "Ce membre est recommandé !"
 
@@ -90,13 +90,13 @@ angular.module('app')
             if member.bad
                 $member.unDisgrace clubId, member.login, (res)->
                     if res.err?
-                        $mdToast.showSimple 'Une erreur est survenue...'
+                        $mdToast.showSimple 'Une erreur est survenue'
                     else
                         $mdToast.showSimple "Ce membre est grâcié !"
             else
                 $member.disgrace clubId, member.login, (res)->
                     if res.err?
-                        $mdToast.showSimple 'Une erreur est survenue...'
+                        $mdToast.showSimple 'Une erreur est survenue'
                     else
                         $mdToast.showSimple "Ce membre tombe en disgrâce !"
 

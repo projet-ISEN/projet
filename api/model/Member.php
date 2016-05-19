@@ -294,7 +294,7 @@ class Member {
         if( empty($this->login) || empty($this->school_year) || empty($this->club_id) )
         {
             return [
-                'err' => 'Que voulez vous sauvegarder?'
+                'err' => 'Que voulez-vous sauvegarder ?'
             ];
         }
 

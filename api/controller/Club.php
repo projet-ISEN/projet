@@ -81,7 +81,7 @@ class Club
 
         // if evaluator or admin
         if( empty($post['club_name']) ) {
-            echo json_encode( array('err' => 'Un nom de club est nécéssaire') );
+            echo json_encode( array('err' => 'Un nom de club est nécessaire') );
             return;
         }
 
@@ -151,7 +151,7 @@ class Club
         }
         else {
             echo json_encode( array('err' => "Impossible de supprimer ce club, vérfiez qu'il n'éxiste ".
-                'pas de dépendances comme des membres par exemple'));
+                'pas de dépendances, comme des membres par exemple'));
         }
     }
 
@@ -359,7 +359,7 @@ class Club
             return;
         }
         echo json_encode([
-            'err' => "Une erreur c'est produite"
+            'err' => "Une erreur s'est produite"
         ]);
         return;
 
@@ -378,7 +378,7 @@ class Club
         if( empty($put['club']['club_description']) )
         {
             echo json_encode([
-                'err' => "Aucune description ?"
+                'err' => "Aucune description n'est renseignée"
             ]);
             return;
         }
