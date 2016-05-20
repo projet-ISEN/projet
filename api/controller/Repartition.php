@@ -24,6 +24,7 @@ class repartition
 
 
     public static function repartition( $year ){
+        $start = microtime(true);
         $trace = "Définition des projets pour chaque utilisateur: " .self::whichProject( $year );
         //var_dump($trace);
 
@@ -115,6 +116,8 @@ class repartition
 
         //var_dump($howmanyplaced);
         //var_dump(count($score));
+        $time_elapsed_secs = microtime(true) - $start;
+        var_dump($time_elapsed_secs);
         echo(json_encode($score));
 
     }
