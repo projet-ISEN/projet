@@ -52,7 +52,7 @@ class Member
                 'err' => 'Dans quel club doit-on mettre cet utilisateur ?'
             ]);
         }
-        var_dump($put);
+        //var_dump($put);
 
 
         $member                 = new \Models\Member($put['club_id'], $user_login, $year );

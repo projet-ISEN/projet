@@ -117,7 +117,7 @@ class repartition
         //var_dump($howmanyplaced);
         //var_dump(count($score));
         $time_elapsed_secs = microtime(true) - $start;
-        var_dump($time_elapsed_secs);
+        //var_dump($time_elapsed_secs);
         echo(json_encode($score));
 
     }

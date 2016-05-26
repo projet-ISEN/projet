@@ -377,26 +377,30 @@ INSERT INTO projet (project_id, project_type, project_description) VALUES
   ('d6b37f9f-1818-11e6-8166-d850e61e53c9', 'PR+', '{ "title": "Projet à responsabilité +",
                       "objectif": "Transmettre son savoir-faire, son expérience",
                       "exemple": "Suivre son ancien PR avec le nouveau responsable",
-                      "quota": "60 h",
+                      "quota": "60",
                       "eval": "Le responsabel du club valide ou non un crédit ECTS"}'),
   ('d6b8f8d7-1818-11e6-8166-d850e61e53c9', 'PR', '{   "title": "Projet à responsabilité",
                       "objectif": "Prendre des responsabilités, assurer l\'encadrement et la prise de décision dans les activités d\'un groupe ou d\'une association",
                       "exemple": "(Co-)Présider un club, organiser le SKISEN, animer l\'une des principales actions de son club, entrainer une équipe sportive",
-                      "quota": "60 h",
+                      "quota": "60",
                       "eval": "Note (orale et dossier), compte dans le moyenne de l\'année. La validation est obligatoire pour l\'obtention du diplome"}'),
   ('d6b8fa87-1818-11e6-8166-d850e61e53c9', 'PA', '{   "title": "Projet d\'accompagnement",
                       "objectif": "Appuyer l\'action d\'un PR sur des tâches semi-complexes en relative autonomie",
                       "exemple": "s\'occuper d\'une exposition du BDA, participation active à un club",
-                      "quota": "50 h",
+                      "quota": "50",
                       "eval": "Validation ou non validation"}'),
   ('d6b8fac7-1818-11e6-8166-d850e61e53c9', 'PI', '{ "title": "Projet d\'intégration (à l\'ISEN)",
                       "objectif": "Se mettre au service ponctuellement d\'un groupe ou d\'une association",
                       "exemple": "Participer au rangement des tables après des portes-ouvertes, aider l\'équipe du Gala",
-                      "quota": "15 h",
+                      "quota": "15",
                       "eval": "Note de groupe comprise dans la moyenne de l\'année"}');
 
 
-INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, school_staff, phone) VALUES ('aauffr20', 'Antoine', 'AUFFRET', 'antoine.auffret@isen-bretagne.fr', 0, 0, null),
+INSERT INTO users (login, user_firstname, user_name, user_mail, is_administrator, school_staff, phone) VALUES
+
+ ('dmarrat', 'Dominique', 'Marratray', 'Dominique.Maratray@isen-bretagne.fr', 0, 1, null),
+ ('qduche17', 'Quentin', 'Ducher', 'quentin.ducher@isen-bretagne.fr', 0, 0, null),
+ ('aauffr20', 'Antoine', 'AUFFRET', 'antoine.auffret@isen-bretagne.fr', 0, 0, null),
  ('ablond19', 'Antoine', 'BLONDEAU', 'antoine.blondeau@isen-bretagne.fr', 0, 0, '0670169118'),
  ('abouza20', 'Alexis', 'BOUZAT', 'alexis.bouzat@isen-bretagne.fr', 0, 0, null),
  ('acariv20', 'Alexandre', 'CARIVENC', 'alexandre.carivenc@isen-bretagne.fr', 0, 0, '0604404604'),
@@ -556,17 +560,17 @@ INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif)
   ('7cbecf95-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des Arts', '', '', 1),
   ('7cbecff8-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Tournée info', '', '', 1),
   ('7cbed049-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Asso. sociale A.F.E.V.', '', '', 1),
-  ('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des sports', '', '', 1),
+  ('7cbed09a-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Bureau des sports', '', '', 1),
   ('7cbed0e3-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Gala', '', '', 1),
-  ('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Bureau des élèves', '', '', 1),
+  ('7cbed127-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Bureau des élèves', '', '', 1),
   ('7cbed174-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Club foyer', '', '', 1),
   ('7cbed1bd-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club musique', '', '', 1),
   ('7cbed206-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Intégration', '', '', 1),
-  ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Capisen', '', '', 1),
+  ('7cbed24e-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Capisen', '', '', 1),
   ('7cbed29b-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Digital Design', '', '', 1),
-  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
+  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Club Elec', 'Le club éléctronique de l\'ISEN', 'clubelec@isen.fr', 1),
   ('7cbed346-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Web TV ISEN', '', '', 1),
-  ('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
+  ('7cbed38f-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Moviezen', 'Le club vidéo de l\'ISEN', 'moviezen@isen.fr', 1),
   ('7cbed3e0-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Bureau du développement durable', '', '', 1),
   ('7cbed429-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club glisse', '', '', 1),
   ('7cbed472-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Kengred', '', '', 1),
@@ -576,7 +580,7 @@ INSERT INTO club (club_id, login, club_name, club_description, club_mail, actif)
   ('7cbed590-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Banque alimentaire', '', '', 1),
   ('7cbed5d5-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Forums', '', '', 1),
   ('7cbed619-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'ISEN Immo', '', '', 1),
-  ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'vrioua17', 'Club Eva', '', '', 1),
+  ('7cbed65e-0df3-11e6-9aa9-448a5b42bfcd', 'mcabon', 'Club Eva', '', '', 1),
   ('7cbed6a2-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Club international', '', '', 1),
   ('7cbed6e6-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Pon Pon Nippon', '', '', 1),
   ('7cbed72f-0df3-11e6-9aa9-448a5b42bfcd', 'rcolli17', 'Soutien ISEN', '', '', 1),
@@ -1258,3 +1262,7 @@ INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'vprin020', '
 INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ydumor20', 'CIR1');
 INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'bcourt18', 'CIPA3');
 INSERT INTO classe (school_year, login, classe_name) VALUES (2016, 'ccosse18', 'CIPA3');
+
+
+INSERT INTO role_link (club_id, login, school_year, id_role) VALUES
+  ('7cbed2e4-0df3-11e6-9aa9-448a5b42bfcd', 'tcouss18', 2016, '7cbc7230-0df3-11e6-9aa9-448a5b42bfcd');

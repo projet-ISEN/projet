@@ -36,22 +36,22 @@
     if(! \API\Conf::isDebug()) require_once ('/var/www/html/CAS/pluginCasBis.php');
     else {
         // Données de l'ENT
-
         //test variable
-
         //$userData["Login"]      = 'rcolli17'; $userData["gidNumber"] = "1000";//Evaluator & administrator adn school staf
-        $userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
+        //$userData["Login"]      = 'vrioua17';  $userData["gidNumber"] = "1000"; //Evaluator school_staff
         //$userData["Login"]      = 'pverba17'; //Prez BDE
         //$userData["Login"]      = 'fduboi17'; //trez BDE
         //$userData["Login"]      = 'mgoanv17'; //Capisen Prez
-        //$userData["Login"]      = 'tcouss18'; //Prez club
         //$userData["Login"]      = 'gbiann17'; //Double PR main club moviezen secon Club Elec
         //$userData["Login"]      = 'ftoque17'; //PR+ Moviezen
-        //$userData["Login"]      = 'qduche17'; //PA BDE
         //$userData["Login"]      = 'gymorv17'; //PA Capisen
-        $userData["Login"]      = 'gbiann17'; //Evaluator & administrator
         //$userData["Login"]      = 'mgoanv17';
-        //$userData["Login"]        = 'mcabon';
+        //$userData["Login"]      = 'qduche17'; // NON MEMBRE
+        //$userData["Login"]      = 'gbiann17'; // just member
+
+        $userData["Login"]      = 'tcouss18'; // Prez club
+        //$userData["Login"]      = 'dmarrat';
+        $userData["Login"]      = 'mcabon';
 
         $userData["Name"]       = 'prename name'; // prénom nom
         $userData["FirstName"]  = 'prename'; // prénom
@@ -59,7 +59,7 @@
         $userData["Mail"]       = 'email'; // mail
         $userData["Telephone"]  = 'tel'; // telephone
         $userData["uidNumber"]  = 'number'; // numero d'identifiant (pas nécessaire pour vous)
-        $userData["gidNumber"] = "1000";
+        $userData["gidNumber"]  = "1000";
     }
 
 /*================================================================
